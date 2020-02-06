@@ -1,23 +1,23 @@
 from flask import Flask, request, render_template
 import pandas as pd
+from flask_cors import CORS
 
 
 df_kings = pd.read_csv("../rois-france-avec-dates.csv")
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def index():
-    df_king = which_king(1543)
-    #return df_king.to_html()
-    return render_template('myform.html')
+    return "BackEnd King"
 
 
-@app.route('/', methods=['POST'])
-def my_form_post():
-    text = request.form['text']    
-    df_king = which_king(int(text))
-    return df_king.to_html()
+@app.route('/year/<year>')
+def king_date(year):
+    df_king = which_king(int(year))
+    return df_king.to_json(orient='records')
+
 
 def which_king(year):
     df_king = df_kings[df_kings["startYear"] <= year]
