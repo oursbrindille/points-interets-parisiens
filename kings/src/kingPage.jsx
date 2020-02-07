@@ -50,39 +50,59 @@ class KingPage extends Component {
           "fatherLabel": "",
           "motherLabel":"",
           "mannersOfDeath":"",
+          "monuments":[]
         };
-        this.handleget = this.handleget.bind(this);
-        this.handleget(987)
+        this.handleGetKing = this.handleGetKing.bind(this);
+        this.handleGetMonument = this.handleGetMonument.bind(this);
+        this.handleGetKing(987)
+        this.handleGetMonument(987)
     }
     
-    handleget(year){
-        console.log("http://localhost:5000/year/"+year)
-        let self = this;
-        gethttp().get("http://localhost:5000/year/"+year).end(function(err, res){
-            if(err) alert("Erreur lors de la récupération des données sur le serveur : " + err.message);
-            else {
-              var obj = JSON.parse(res.text);
-              console.log(obj)
-              self.setState({king: obj[0].nom});
-              self.setState({startYear: obj[0].startYear});
-              self.setState({endYear: obj[0].endYear});
-              self.setState({birthYear: obj[0].birthYear});
-              self.setState({deathYear: obj[0].deathYear});
-              self.setState({spouses: obj[0].spouses});
-              self.setState({placeOfDeathLabel: obj[0].placeOfDeathLabel});
-              self.setState({placeOfBurialLabel: obj[0].placeOfBurialLabel});
-              self.setState({fatherLabel: obj[0].fatherLabel});
-              self.setState({motherLabel: obj[0].motherLabel});
-              if(obj[0].mannersOfDeath != null){
-                self.setState({mannersOfDeath: "de "+obj[0].mannersOfDeath});
-              }
+    handleGetKing(year){
+      console.log("http://localhost:5000/king/year/"+year)
+      let self = this;
+      gethttp().get("http://localhost:5000/king/year/"+year).end(function(err, res){
+          if(err) alert("Erreur lors de la récupération des données sur le serveur : " + err.message);
+          else {
+            var obj = JSON.parse(res.text);
+            console.log(obj)
+            self.setState({king: obj[0].nom});
+            self.setState({startYear: obj[0].startYear});
+            self.setState({endYear: obj[0].endYear});
+            self.setState({birthYear: obj[0].birthYear});
+            self.setState({deathYear: obj[0].deathYear});
+            self.setState({spouses: obj[0].spouses});
+            self.setState({placeOfDeathLabel: obj[0].placeOfDeathLabel});
+            self.setState({placeOfBurialLabel: obj[0].placeOfBurialLabel});
+            self.setState({fatherLabel: obj[0].fatherLabel});
+            self.setState({motherLabel: obj[0].motherLabel});
+            if(obj[0].mannersOfDeath != null){
+              self.setState({mannersOfDeath: "de "+obj[0].mannersOfDeath});
             }
-          });
-    }
+          }
+        });
+  }
+
+  handleGetMonument(year){
+      console.log("http://localhost:5000/monument/year/"+year)
+      let self = this;
+      gethttp().get("http://localhost:5000/monument/year/"+year).end(function(err, res){
+          if(err) alert("Erreur lors de la récupération des données sur le serveur : " + err.message);
+          else {
+            var obj = JSON.parse(res.text);
+            console.log(obj)
+            if(obj.length > 0){
+              console.log("not empty");
+              self.setState({monuments: obj});
+            }
+          }
+        });
+  }
     
     handleChange = sliderValue => {
         this.setState({ sliderValue });
-        this.handleget(sliderValue);
+        this.handleGetKing(sliderValue);
+        this.handleGetMonument(sliderValue);
       };
     render() 
     { 
@@ -90,16 +110,23 @@ class KingPage extends Component {
             <div style={wrapperStyle}>
             <p>Choisissez votre date : </p>
             <Slider min={987} max={1773} defaultValue={987} handle={handle} onChange={this.handleChange}/>
+            <div style={{textAlign:"center"}}><h1>Année : {this.state.sliderValue}</h1></div>
             </div>
-            <div style={{textAlign: "center"}}>
-              <div><h1>Année : {this.state.sliderValue}</h1></div>
-              <div><h1>{this.state.king}({this.state.birthYear} - {this.state.deathYear})</h1></div>
-              <div>Roi de {this.state.startYear} à {this.state.endYear}</div>
-              <div>Epouse(s) : {this.state.spouses}</div>
-              <div>Père : {this.state.fatherLabel} - Mère : {this.state.motherLabel}</div>
-              <div>Mort à {this.state.placeOfDeathLabel} {this.state.mannersOfDeath}</div>
-              <div>Repose à : {this.state.placeOfBurialLabel}</div>
-
+            <div>
+              <div style={{textAlign: "center", float:"left", width:"50%"}}>
+                <div><h1>Chef d'état</h1></div>
+                <div><h1>{this.state.king}({this.state.birthYear} - {this.state.deathYear})</h1></div>
+                <div>Roi de {this.state.startYear} à {this.state.endYear}</div>
+                <div>Epouse(s) : {this.state.spouses}</div>
+                <div>Père : {this.state.fatherLabel} - Mère : {this.state.motherLabel}</div>
+                <div>Mort à {this.state.placeOfDeathLabel} {this.state.mannersOfDeath}</div>
+                <div>Repose à : {this.state.placeOfBurialLabel}</div>
+                <br /><br />
+              </div>
+              <div style={{textAlign: "center", float:"left", width:"50%"}}>
+                <div><h1>Monuments Parisiens</h1></div>
+                <div>{this.state.monuments.map(monument => (<div>{monument.nom}</div>))}</div>
+              </div>
             </div>
         </div>;
       } 
