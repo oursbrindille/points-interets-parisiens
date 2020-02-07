@@ -48,7 +48,8 @@ class KingPage extends Component {
           "placeOfDeathLabel": "",
           "placeOfBurialLabel": "",
           "fatherLabel": "",
-          "motherLabel":""
+          "motherLabel":"",
+          "mannersOfDeath":"",
         };
         this.handleget = this.handleget.bind(this);
         this.handleget(987)
@@ -72,6 +73,9 @@ class KingPage extends Component {
               self.setState({placeOfBurialLabel: obj[0].placeOfBurialLabel});
               self.setState({fatherLabel: obj[0].fatherLabel});
               self.setState({motherLabel: obj[0].motherLabel});
+              if(obj[0].mannersOfDeath != null){
+                self.setState({mannersOfDeath: "de "+obj[0].mannersOfDeath});
+              }
             }
           });
     }
@@ -82,19 +86,18 @@ class KingPage extends Component {
       };
     render() 
     { 
-        return <div>
+        return <div style={{color: 'white'}}>
             <div style={wrapperStyle}>
             <p>Choisissez votre date : </p>
-            <Slider min={987} max={1800} defaultValue={987} handle={handle} onChange={this.handleChange}/>
+            <Slider min={987} max={1773} defaultValue={987} handle={handle} onChange={this.handleChange}/>
             </div>
             <div style={{textAlign: "center"}}>
               <div><h1>Année : {this.state.sliderValue}</h1></div>
               <div><h1>{this.state.king}({this.state.birthYear} - {this.state.deathYear})</h1></div>
               <div>Roi de {this.state.startYear} à {this.state.endYear}</div>
               <div>Epouse(s) : {this.state.spouses}</div>
-              <div>Père : {this.state.fatherLabel}</div>
-              <div>Mère : {this.state.motherLabel}</div>
-              <div>Mort à {this.state.placeOfDeathLabel}</div>
+              <div>Père : {this.state.fatherLabel} - Mère : {this.state.motherLabel}</div>
+              <div>Mort à {this.state.placeOfDeathLabel} {this.state.mannersOfDeath}</div>
               <div>Repose à : {this.state.placeOfBurialLabel}</div>
 
             </div>
