@@ -50,12 +50,15 @@ class KingPage extends Component {
           "fatherLabel": "",
           "motherLabel":"",
           "mannersOfDeath":"",
-          "monuments":[]
+          "monuments":[],
+          "evts":[]
         };
         this.handleGetKing = this.handleGetKing.bind(this);
         this.handleGetMonument = this.handleGetMonument.bind(this);
+        this.handleGetEvt = this.handleGetEvt.bind(this);
         this.handleGetKing(987)
         this.handleGetMonument(987)
+        this.handleGetEvt(987)
     }
     
     handleGetKing(year){
@@ -84,25 +87,45 @@ class KingPage extends Component {
   }
 
   handleGetMonument(year){
-      console.log("http://localhost:5000/monument/year/"+year)
-      let self = this;
-      gethttp().get("http://localhost:5000/monument/year/"+year).end(function(err, res){
-          if(err) alert("Erreur lors de la récupération des données sur le serveur : " + err.message);
-          else {
-            var obj = JSON.parse(res.text);
-            console.log(obj)
-            if(obj.length > 0){
-              console.log("not empty");
-              self.setState({monuments: obj});
-            }
+    console.log("http://localhost:5000/monument/year/"+year)
+    let self = this;
+    gethttp().get("http://localhost:5000/monument/year/"+year).end(function(err, res){
+        if(err) alert("Erreur lors de la récupération des données sur le serveur : " + err.message);
+        else {
+          var obj = JSON.parse(res.text);
+          console.log(obj)
+          if(obj.length > 0){
+            console.log("not empty");
+            self.setState({monuments: obj});
           }
-        });
-  }
+        }
+      });
+}
+
+
+handleGetEvt(year){
+  console.log("http://localhost:5000/evenement/year/"+year)
+  let self = this;
+  gethttp().get("http://localhost:5000/evenement/year/"+year).end(function(err, res){
+      if(err) alert("Erreur lors de la récupération des données sur le serveur : " + err.message);
+      else {
+        var obj = JSON.parse(res.text);
+        console.log(obj)
+        if(obj.length > 0){
+          console.log("not empty");
+          self.setState({evts: obj});
+        }else{
+          self.setState({evts: []});
+        }
+      }
+    });
+}
     
     handleChange = sliderValue => {
         this.setState({ sliderValue });
         this.handleGetKing(sliderValue);
         this.handleGetMonument(sliderValue);
+        this.handleGetEvt(sliderValue);
       };
     render() 
     { 
@@ -112,7 +135,7 @@ class KingPage extends Component {
             <Slider min={987} max={1773} defaultValue={987} handle={handle} onChange={this.handleChange}/>
             <div style={{textAlign:"center"}}><h1>Année : {this.state.sliderValue}</h1></div>
             </div>
-            <div>
+            <div style={{height:"100%"}}>
               <div style={{textAlign: "center", float:"left", width:"50%"}}>
                 <div><h1>Chef d'état</h1></div>
                 <div><h1>{this.state.king}({this.state.birthYear} - {this.state.deathYear})</h1></div>
@@ -124,9 +147,13 @@ class KingPage extends Component {
                 <br /><br />
               </div>
               <div style={{textAlign: "center", float:"left", width:"50%"}}>
+                <div><h1>Evenement en cours</h1></div>
+                <div>{this.state.evts.map(evt => (<div>- {evt.evenement}</div>))}</div>
+              </div>
+            </div>         
+            <div style={{textAlign: "center", float:"left", width:"10%"}}>
                 <div><h1>Monuments Parisiens</h1></div>
                 <div>{this.state.monuments.map(monument => (<div>{monument.nom}</div>))}</div>
-              </div>
             </div>
         </div>;
       } 
