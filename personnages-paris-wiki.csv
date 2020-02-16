@@ -1,0 +1,737 @@
+nom,dateOfBirth,placeOfBirthLabel,dateOfDeath,placeOfDeathLabel,positions
+Guillaume Budé,1467-02-04T00:00:00Z,Paris,1540-09-02T00:00:00Z,Paris,"prévôt des marchands de Paris, Maître de la Librairie du Roi"
+François II de Rohan,1480-01-01T00:00:00Z,,1536-10-23T00:00:00Z,Paris,archevêque catholique
+Armand Jean du Plessis de Richelieu,1585-09-09T00:00:00Z,Paris,1642-12-04T00:00:00Z,Paris,"cardinal, évêque catholique, évêque diocésain, Secrétaire d'État des Affaires étrangères, gouverneur de Bretagne"
+Louis XIII,1601-09-27T00:00:00Z,Fontainebleau,1643-05-14T00:00:00Z,Saint-Germain-en-Laye,roi de France et de Navarre
+Nicolas Fouquet,1615-01-27T00:00:00Z,Paris,1680-03-23T00:00:00Z,Pignerol,"Surintendant des finances, Intendant de la généralité de Paris, Procureur général au Parlement de Paris, Intendant de la généralité de Grenoble"
+Charles Le Brun,1619-02-24T00:00:00Z,Paris,1690-02-12T00:00:00Z,Paris,Premier peintre du Roi
+Molière,1622-01-15T00:00:00Z,Paris,1673-02-17T00:00:00Z,Paris,
+Marquise de Sévigné,1626-02-05T00:00:00Z,Paris,1696-04-17T00:00:00Z,Grignan,
+Charles Perrault,1628-01-12T00:00:00Z,Paris,1703-05-16T00:00:00Z,Paris,fauteuil 23 de l'Académie française
+François de Nesmond,1629-08-31T00:00:00Z,Paris,1715-06-16T00:00:00Z,Bayeux,"évêque catholique, évêque diocésain"
+Madame de La Fayette,1634-03-16T00:00:00Z,Paris,1693-05-25T00:00:00Z,Paris,
+Nicolas Boileau,1636-11-01T00:00:00Z,Paris,1711-03-13T00:00:00Z,Paris,fauteuil 1 de l'Académie française
+François Michel Le Tellier de Louvois,1641-01-18T00:00:00Z,Paris,1691-07-16T00:00:00Z,Versailles,"Département de la Maison du roi, ministre de la Guerre"
+Louis XIV,1638-09-05T00:00:00Z,château de Saint-Germain-en-Laye,1715-09-01T00:00:00Z,château de Versailles,roi de France et de Navarre
+Marc Aurèle,0121-04-25T00:00:00Z,Rome,0180-03-16T00:00:00Z,Vindobona,"empereur romain, sénateur romain, consul de l'Empire romain"
+Jean de La Bruyère,1645-08-16T00:00:00Z,Paris,1696-05-10T00:00:00Z,Versailles,"Trésorier général de France, fauteuil 36 de l'Académie française"
+Jules Hardouin-Mansart,1646-04-16T00:00:00Z,Paris,1708-05-11T00:00:00Z,Marly-le-Roi,Surintendant des Bâtiments
+François Mansart,1598-01-13T00:00:00Z,Paris,1666-09-23T00:00:00Z,Paris,
+François Couperin l'ancien,1631-01-01T00:00:00Z,Chaumes-en-Brie,1701-01-01T00:00:00Z,Paris,
+Paul de Tarse,0005-01-01T00:00:00Z,Tarse,0067-01-01T00:00:00Z,Rome,apôtre
+Simón Bolívar,1783-07-24T00:00:00Z,Caracas,1830-12-17T00:00:00Z,Santa Marta,"président, président de la Bolivie, président du Pérou, Président du Venezuela"
+Voltaire,1694-11-21T00:00:00Z,Paris,1778-05-30T00:00:00Z,Paris,"historiographe de France, fauteuil 33 de l'Académie française"
+Jean Le Rond d'Alembert,1717-11-16T00:00:00Z,Paris,1783-10-29T00:00:00Z,Paris,"secrétaire perpétuel, fauteuil 25 de l'Académie française"
+Madame de Pompadour,1721-12-29T00:00:00Z,Paris,1764-04-15T00:00:00Z,Versailles,Favori
+Louis XVI,1754-08-23T00:00:00Z,château de Versailles,1793-01-21T00:00:00Z,place de la Concorde,"roi de France et de Navarre, roi des Français"
+marquis de Sade,1740-06-02T00:00:00Z,Paris,1814-12-02T00:00:00Z,Saint-Maurice,
+Jean-Paul II,1920-05-18T00:00:00Z,Wadowice,2005-04-02T00:00:00Z,palais du Vatican,"pape, cardinal, évêque auxiliaire, évêque catholique, évêque titulaire, Archevêque de Cracovie, archevêque catholique"
+Jacques Chirac,1932-11-29T00:00:00Z,Paris,2019-09-26T00:00:00Z,Paris,"député européen, président, président de la République française, coprince d'Andorre, Premier ministre français, président de conseil général, député, maire de Paris, ministre de l'Intérieur, ministre délégué aux Relations avec le Parlement, ministre de l'Agriculture et du Développement rural, Conseiller général de la Corrèze"
+Jacques-Louis David,1748-08-30T00:00:00Z,Paris,1825-12-29T00:00:00Z,Bruxelles,député de la Convention nationale
+Charles Aznavour,1924-05-22T00:00:00Z,Paris,2018-10-01T00:00:00Z,Mouriès,ambassadeur d'Arménie
+Q61628608,1843-01-25T00:00:00Z,,1917-01-05T00:00:00Z,,
+François Mitterrand,1916-10-26T00:00:00Z,Jarnac,1996-01-08T00:00:00Z,7e arrondissement de Paris,"ministre, président de la République française, coprince d'Andorre, premier secrétaire du Parti socialiste français, président de conseil général, député, conseiller général, sénateur, garde des Sceaux, ministre de la Justice, ministre de la Justice, sénateur de la Communauté, ministre de l'Intérieur, maire de Château-Chinon (Ville)"
+Jean Baudoin,1590-01-01T00:00:00Z,Pradelles,1650-01-01T00:00:00Z,Paris,fauteuil 18 de l'Académie française
+Charles Percier,1764-08-22T00:00:00Z,Paris,1838-09-05T00:00:00Z,Paris,
+Julie Philipault,1780-01-01T00:00:00Z,Paris,1834-01-01T00:00:00Z,Paris,
+Hippolyte Ganneron,1792-05-22T00:00:00Z,Paris,1847-05-23T00:00:00Z,Paris,"vice-président, président, député de la Seine"
+Achille Chaper,1795-05-05T00:00:00Z,Paris,1874-07-27T00:00:00Z,Grenoble,"député de la Côte-d'Or, préfet du Gard"
+Jules Michelet,1798-08-21T00:00:00Z,Paris,1874-02-09T00:00:00Z,Hyères,
+Émile Littré,1801-02-01T00:00:00Z,Paris,1881-06-02T00:00:00Z,Paris,"député, sénateur inamovible, fauteuil 17 de l'Académie française"
+Alexandre Pouchkine,1799-06-06T00:00:00Z,Moscou,1837-02-10T00:00:00Z,Saint-Pétersbourg,membre de la Filikí Etería
+Alexandre-Gabriel Decamps,1803-03-03T00:00:00Z,Paris,1860-08-22T00:00:00Z,Fontainebleau,
+Adolphe Adam,1803-07-24T00:00:00Z,Paris,1856-05-03T00:00:00Z,Paris,
+Prosper Mérimée,1803-09-28T00:00:00Z,Paris,1870-09-23T00:00:00Z,Cannes,"sénateur du Second Empire, fauteuil 25 de l'Académie française"
+Eugène Sue,1804-01-26T00:00:00Z,Paris,1857-07-03T00:00:00Z,Annecy,député de la Seine
+George Sanderson,1810-01-01T00:00:00Z,,,,sénateur de Pennsylvanie
+Alexis de Tocqueville,1805-07-29T00:00:00Z,Paris,1859-04-16T00:00:00Z,Cannes,"président, député, ministre des Affaires étrangères, fauteuil 18 de l'Académie française"
+Napoléon III,1808-04-20T00:00:00Z,Paris,1873-01-09T00:00:00Z,Chislehurst,"président de la République française, député, empereur des Français, chef du gouvernement français, grand maître de la Légion d'honneur"
+Gérard de Nerval,1808-05-22T00:00:00Z,Paris,1855-01-26T00:00:00Z,Paris,
+Georges Eugène Haussmann,1809-03-27T00:00:00Z,Paris,1891-01-11T00:00:00Z,Paris,"préfet, député, sous-préfet, secrétaire général, sénateur du Second Empire, conseiller de préfecture"
+Alfred de Musset,1810-12-11T00:00:00Z,Paris,1857-05-02T00:00:00Z,Paris,fauteuil 10 de l'Académie française
+Eugène Viollet-le-Duc,1814-01-27T00:00:00Z,Paris,1879-09-17T00:00:00Z,Lausanne,"architecte diocésain, conseiller municipal de Paris"
+Eugène Labiche,1815-05-05T00:00:00Z,Paris,1888-01-22T00:00:00Z,Paris,"maire de Souvigny-en-Sologne, fauteuil 15 de l'Académie française"
+Eugène Pottier,1816-10-04T00:00:00Z,Paris,1887-11-06T00:00:00Z,Paris,maire du 2e arrondissement de Paris
+Charles Gounod,1818-06-17T00:00:00Z,,1893-10-18T00:00:00Z,Saint-Cloud,
+Charles Baudelaire,1821-04-09T00:00:00Z,Paris,1867-08-31T00:00:00Z,Paris,
+Charles Garnier,1825-11-06T00:00:00Z,Paris,1898-08-03T00:00:00Z,Paris,
+Victor Frédéric Verrimst,1825-10-29T00:00:00Z,Paris,1893-01-10T00:00:00Z,Houilles,
+Gustave Moreau,1826-04-06T00:00:00Z,Paris,1898-04-18T00:00:00Z,Rennes,
+Lisa Cristiani,1827-01-01T00:00:00Z,Paris,1853-10-24T00:00:00Z,Novotcherkassk,
+Jules de Goncourt,1830-12-17T00:00:00Z,Paris,1870-06-20T00:00:00Z,Paris,
+Édouard Manet,1832-01-23T00:00:00Z,Paris,1883-04-30T00:00:00Z,8e arrondissement de Paris,
+Edgar Degas,1834-07-19T00:00:00Z,Paris,1917-09-27T00:00:00Z,Paris,
+Camille Saint-Saëns,1835-10-09T00:00:00Z,Paris,1921-12-16T00:00:00Z,Alger,
+Saensurin,1511-01-01T00:00:00Z,Nong Khai,1582-01-01T00:00:00Z,Vientiane,"régent, Lan Xang, roi de Lan Xang"
+Georges Bizet,1838-10-25T00:00:00Z,rue Louise-Émilie-de-La-Tour-d'Auvergne,1875-06-03T00:00:00Z,Bougival,
+Alfred Sisley,1839-10-30T00:00:00Z,Paris,1899-01-29T00:00:00Z,Moret-sur-Loing,
+Émile Zola,1840-04-02T00:00:00Z,rue Saint-Joseph,1902-09-29T00:00:00Z,Paris,président
+Francesco Filippini,1853-09-18T00:00:00Z,Brescia,1895-03-06T00:00:00Z,Milan,
+Nélie Jacquemart,1841-07-25T00:00:00Z,Paris,1912-05-14T00:00:00Z,Paris,
+Stéphane Mallarmé,1842-03-18T00:00:00Z,Paris,1898-09-09T00:00:00Z,Fontainebleau,
+Sarah Bernhardt,1844-10-22T00:00:00Z,Paris,1923-03-26T00:00:00Z,Paris,sociétaire de la Comédie-Française
+Anatole France,1844-04-16T00:00:00Z,Paris,1924-10-12T00:00:00Z,manoir de la Béchellerie,"président, fauteuil 38 de l'Académie française"
+Jean Casimir du Palatinat,1543-03-07T00:00:00Z,Simmern,1592-01-16T00:00:00Z,Heidelberg,régent
+François Perrier,1594-01-01T00:00:00Z,Pontarlier,1649-11-02T00:00:00Z,Paris,peintre de cour
+Jules Guesde,1845-11-11T00:00:00Z,Paris,1922-07-28T00:00:00Z,Saint-Mandé,député
+Alexandre Millerand,1859-02-10T00:00:00Z,Paris,1943-04-06T00:00:00Z,Versailles,"président de la République française, coprince d'Andorre, député, président du Conseil, grand maître de la Légion d'honneur, sénateur, conseiller municipal de Paris"
+Pierre Curie,,,,,
+Henri Bergson,1859-10-18T00:00:00Z,Paris,1941-01-04T00:00:00Z,Paris,fauteuil 7 de l'Académie française
+Georges Méliès,1861-12-08T00:00:00Z,Paris,1938-01-21T00:00:00Z,Paris,
+Paul Signac,1863-11-11T00:00:00Z,Paris,1935-08-15T00:00:00Z,Paris,
+Félix Fournery,1865-05-13T00:00:00Z,Paris,1938-02-02T00:00:00Z,Montagnac-la-Crempse,
+Gaston Leroux,1948-10-01T00:00:00Z,Montréal,,,député de la Chambre des communes du Canada
+André Gide,1869-11-22T00:00:00Z,Paris,1951-02-19T00:00:00Z,Paris,
+Henry Février,1875-10-02T00:00:00Z,Paris,1957-07-06T00:00:00Z,Paris,
+Anna de Noailles,1876-11-15T00:00:00Z,Paris,1933-04-30T00:00:00Z,Paris,
+Pierre Taittinger,1887-10-04T00:00:00Z,18e arrondissement de Paris,1965-01-22T00:00:00Z,Paris,"président, député, président du conseil municipal de Paris, conseiller général de la Seine, Q62569432, maire de Saint-Georges-des-Coteaux"
+Jacques Trolley de Prévaux,1888-04-02T00:00:00Z,Paris,1944-08-19T00:00:00Z,Bron,
+Marcel L'Herbier,1888-04-23T00:00:00Z,Paris,1979-11-26T00:00:00Z,Paris,
+Maurice Chevalier,1888-09-12T00:00:00Z,Paris,1972-01-01T00:00:00Z,Paris,
+Marcel Dassault,1892-01-22T00:00:00Z,9e arrondissement de Paris,1986-04-17T00:00:00Z,Neuilly-sur-Seine,"Sénateur des Alpes-Maritimes, député"
+Pierre Drieu la Rochelle,1893-01-03T00:00:00Z,10e arrondissement de Paris,1945-03-15T00:00:00Z,Paris,
+Maurice Guillaudot,1893-06-28T00:00:00Z,Paris,1979-05-23T00:00:00Z,Ille-et-Vilaine,
+Irène Joliot-Curie,1897-09-12T00:00:00Z,13e arrondissement de Paris,1956-03-17T00:00:00Z,5e arrondissement de Paris,"ministre, ministère de l'Enseignement supérieur et de la Recherche"
+Henri Curiel,1914-09-13T00:00:00Z,Le Caire,1978-05-04T00:00:00Z,Paris,
+Claude Bonnier,1897-11-04T00:00:00Z,Paris,1944-02-09T00:00:00Z,Bordeaux,
+Pierre Penet,1749-01-01T00:00:00Z,,1801-01-01T00:00:00Z,,
+Roger-Gérard Schwartzenberg,1943-04-17T00:00:00Z,Pau,,,"député européen, député, maire de Villeneuve-Saint-Georges"
+Philippe Livry-Level,1898-06-16T00:00:00Z,Paris,1960-12-14T00:00:00Z,Paris,"Conseiller général du Calvados, député du Calvados, maire d’Audrieu"
+Francis Poulenc,1899-01-07T00:00:00Z,Paris,1963-01-30T00:00:00Z,Paris,
+Jean-Remy de Chestret,1739-01-01T00:00:00Z,Liège,1809-01-01T00:00:00Z,Paris,député
+Emmanuel d'Astier de La Vigerie,1900-01-09T00:00:00Z,8e arrondissement de Paris,1969-06-12T00:00:00Z,15e arrondissement de Paris,député d'Ille-et-Vilaine
+Jean Nohain,1900-02-16T00:00:00Z,Paris,1981-01-25T00:00:00Z,Paris,
+Frédéric Joliot-Curie,1900-03-19T00:00:00Z,Paris,1958-08-14T00:00:00Z,Paris,directeur
+Pierre Marie de Saint-Georges,1795-02-15T00:00:00Z,Auxerre,1870-04-28T00:00:00Z,Paris,"bâtonnier, député"
+Robert Desnos,1900-07-04T00:00:00Z,Paris,1945-06-08T00:00:00Z,camp de concentration de Theresienstadt,
+Alexandre Parodi,1901-06-01T00:00:00Z,Paris,1979-03-15T00:00:00Z,Paris,"ambassadeur, vice-président du Conseil d'État"
+Raymond Souplex,1901-06-01T00:00:00Z,Paris,1972-11-22T00:00:00Z,18e arrondissement de Paris,
+Charles Serre,1901-09-25T00:00:00Z,Paris,1954-04-01T00:00:00Z,Champagnac-de-Belair,député
+Aimée Mortimer,1901-10-19T00:00:00Z,,1978-04-13T00:00:00Z,16e arrondissement de Paris,
+André Malraux,1901-11-03T00:00:00Z,Marseille,1976-11-23T00:00:00Z,Créteil,"ministre d'État, ministre de la Culture"
+André Gillois,1902-02-08T00:00:00Z,9e arrondissement de Paris,2004-06-18T00:00:00Z,Paris,
+Marcel Rochas,1902-02-24T00:00:00Z,11e arrondissement de Paris,1955-03-14T00:00:00Z,Paris,
+Jean Marcillac,1902-10-16T00:00:00Z,1er arrondissement de Paris,1996-08-14T00:00:00Z,Vernon,
+Jane Sourza,1902-12-01T00:00:00Z,18e arrondissement de Paris,1969-06-03T00:00:00Z,Paris,
+Gilbert Grandval,1904-02-12T00:00:00Z,Paris,1981-11-29T00:00:00Z,Paris,"ambassadeur, ministre du Travail, Résident général de France au Maroc"
+Jules de Koenigswarter,1904-03-07T00:00:00Z,Paris,1995-02-15T00:00:00Z,Malaga,"ambassadeur de France en Indonésie, ambassadeur de France au Pérou"
+André Bergeret,1904-04-15T00:00:00Z,Paris,1966-12-26T00:00:00Z,Paris,
+Paul Chenailler,1904-05-06T00:00:00Z,Paris,1960-06-18T00:00:00Z,Quéven,
+Jean-Gabin Moubeke,1982-03-03T00:00:00Z,Abidjan,,,
+Pierre-Olivier Lapie,1901-04-02T00:00:00Z,Rennes,1994-03-10T00:00:00Z,Paris,"député européen, député, suppléant de l'Assemblée parlementaire du Conseil de l'Europe"
+Roger Féral,1904-10-19T00:00:00Z,,1964-10-05T00:00:00Z,,
+Jan Doornik,1905-06-26T00:00:00Z,Paris,1941-08-29T00:00:00Z,forteresse du Mont-Valérien,
+René Dary,1905-07-18T00:00:00Z,6e arrondissement de Paris,1974-10-06T00:00:00Z,Plan-de-Cuques,
+Jacques Renouvin,1905-10-06T00:00:00Z,Paris,1944-01-24T00:00:00Z,Mauthausen,
+Maurice Claisse,1905-12-14T00:00:00Z,Paris,1986-09-14T00:00:00Z,Neuilly-sur-Seine,
+Pierre Brasseur,1963-03-02T00:00:00Z,,,,"maire de Geville, conseiller municipal de Geville, conseiller communautaire des Côtes de Meuse Woëvre"
+Pierre Billotte,1906-03-08T00:00:00Z,Paris,1992-06-29T00:00:00Z,Boulogne-Billancourt,"ministre d'État, député, ministre des Outre-mer, député de la Côte-d'Or, maire de Créteil"
+Jean Rosenthal,1906-09-05T00:00:00Z,1er arrondissement de Paris,1993-08-02T00:00:00Z,Garches,
+René de Naurois,1906-11-24T00:00:00Z,Paris,2006-01-12T00:00:00Z,,
+Pierre Mendès France,1907-01-11T00:00:00Z,Paris,1982-10-18T00:00:00Z,Paris,"député, président du Conseil, ministre des Affaires étrangères, maire de Louviers"
+Pierre Lazareff,1907-04-16T00:00:00Z,9e arrondissement de Paris,1972-04-24T00:00:00Z,Neuilly-sur-Seine,
+Bernard Dupérier,1907-06-13T00:00:00Z,Paris,1995-06-08T00:00:00Z,Paris,député
+Adolphe Diagne,1907-10-17T00:00:00Z,Paris,1985-02-28T00:00:00Z,,
+Simone de Beauvoir,1908-01-09T00:00:00Z,Paris,1986-04-14T00:00:00Z,Paris,
+Jacques Bingen,1908-03-16T00:00:00Z,16e arrondissement de Paris,1944-05-12T00:00:00Z,Clermont-Ferrand,
+Pierre Louis Moreau de Maupertuis,1698-07-17T00:00:00Z,Saint-Malo,1759-07-27T00:00:00Z,Bâle,"président, fauteuil 8 de l'Académie française"
+Alfred Dreyfus,1859-10-09T00:00:00Z,Mulhouse,1935-07-12T00:00:00Z,Paris,
+Raymond Massiet,1908-07-01T00:00:00Z,Paris,1995-12-27T00:00:00Z,,
+René Poyen,1908-10-05T00:00:00Z,20e arrondissement de Paris,1968-02-04T00:00:00Z,10e arrondissement de Paris,
+Françoise Dolto,1908-11-06T00:00:00Z,16e arrondissement de Paris,1988-08-25T00:00:00Z,5e arrondissement de Paris,
+Ray Ramsey,1921-07-18T00:00:00Z,Springfield,2009-08-25T00:00:00Z,Springfield,
+Simone Weil,1909-02-03T00:00:00Z,Paris,1943-08-24T00:00:00Z,Ashford,
+Marcel Carné,1906-08-18T00:00:00Z,Paris,1996-10-31T00:00:00Z,Clamart,
+Claude Bourdet,1909-10-28T00:00:00Z,Paris,1996-03-20T00:00:00Z,Paris,
+Juan Carlos Ier d'Espagne,1938-01-05T00:00:00Z,Rome,,,"Prince d'Espagne, Q58637583"
+José España y Puerta,1819-02-04T00:00:00Z,Soto en Cameros,1889-08-10T00:00:00Z,Madrid,"député espagnol, sénateur d'Espagne"
+Geoffroy Frotier de Bagneux,1909-12-29T00:00:00Z,Paris,1973-10-14T00:00:00Z,Fontainebleau,
+Claude Darget,1910-01-26T00:00:00Z,Paris,1992-03-26T00:00:00Z,Antony,
+Philippe Roques,1910-02-07T00:00:00Z,Paris,1943-02-07T00:00:00Z,Perpignan,
+Jean Volvey,1910-06-15T00:00:00Z,Paris,1994-05-25T00:00:00Z,Le Cannet,
+Paulette Dubost,1910-10-08T00:00:00Z,Paris,2011-09-21T00:00:00Z,Longjumeau,
+Augustin Jordan,1910-12-10T00:00:00Z,Paris,2004-03-24T00:00:00Z,Saint-Léger-sous-Beuvray,"ambassadeur de France en Autriche, ambassadeur de France en Pologne"
+Pierre Rougeyron,1817-04-01T00:00:00Z,Clermont-Ferrand,1902-11-15T00:00:00Z,Balade (Nouvelle-Calédonie),vicaire apostolique
+François Binoche,1911-03-23T00:00:00Z,Paris,1997-05-18T00:00:00Z,Nice,
+André Dewavrin,1911-06-09T00:00:00Z,16e arrondissement de Paris,1998-12-20T00:00:00Z,Paris,directeur
+Maurice Schumann,1911-04-10T00:00:00Z,16e arrondissement de Paris,1998-02-09T00:00:00Z,Paris,"président, député, sénateur, ministre des Affaires étrangères, représentant de l'Assemblée parlementaire du Conseil de l'Europe, fauteuil 13 de l'Académie française"
+André Postel-Vinay,1911-06-04T00:00:00Z,Paris,2007-02-11T00:00:00Z,,
+Jacques Florentin,1945-12-18T00:00:00Z,,,,"maire de Lanfroicourt, conseiller municipal de Lanfroicourt, conseiller communautaire de Seille et Grand Couronné"
+Alexandre Ginsburg,1936-11-21T00:00:00Z,Moscou,2002-07-19T00:00:00Z,Paris,
+Michel Debré,1912-01-15T00:00:00Z,Paris,1996-08-02T00:00:00Z,Montlouis-sur-Loire,"député européen, Premier ministre français, député, garde des Sceaux, ministre de la Justice, ministre de l'Économie, des Finances et de l'Industrie, ministre des Affaires étrangères, sénateur, conseiller régional de La Réunion, suppléant de l'Assemblée parlementaire du Conseil de l'Europe, fauteuil 1 de l'Académie française"
+Claude Bouchinet-Serreulles,1912-01-26T00:00:00Z,17e arrondissement de Paris,2000-12-08T00:00:00Z,Neuilly-sur-Seine,"aide de camp, Commissaire de la République institué par le Gouvernement provisoire de la République française, secrétaire général, directeur de cabinet, Secrétaire général adjoint"
+Ginette Leclerc,1912-02-09T00:00:00Z,Paris,1992-01-02T00:00:00Z,Paris,
+Michel Maurice-Bokanowski,1912-11-06T00:00:00Z,Paris,2005-05-03T00:00:00Z,Paris,"député européen, député, sénateur, maire d'Asnières-sur-Seine"
+Jean Gemähling,1912-11-19T00:00:00Z,Paris,2003-05-02T00:00:00Z,Lagny-sur-Marne,
+Gabriel Brunet de Sairigné,1913-02-09T00:00:00Z,7e arrondissement de Paris,1948-03-01T00:00:00Z,Viêt Nam,
+André Zirnheld,1913-03-07T00:00:00Z,Paris,1942-07-27T00:00:00Z,Benghazi,
+André Ballatore,1913-04-07T00:00:00Z,Paris,1997-06-09T00:00:00Z,La Valette-du-Var,
+Jacques Maillet,1913-04-20T00:00:00Z,Paris,2009-03-31T00:00:00Z,Oise,président
+Jean Daurand,1913-06-21T00:00:00Z,14e arrondissement de Paris,1989-03-11T00:00:00Z,Argenteuil,
+Madame Soleil,1913-07-18T00:00:00Z,Paris,1996-10-27T00:00:00Z,Paris,
+Robert Masson,1945-10-23T00:00:00Z,,,,"maire de Carqueiranne, conseiller municipal de Carqueiranne"
+Jean Dreyfus,,,,,
+Jacques-Robert de Pourtalès,1821-04-19T00:00:00Z,Paris,1874-09-03T00:00:00Z,château de Bandeville,"député de Seine-et-Oise, maire de Saint-Cyr-sous-Dourdan"
+Antoine Péronne,1914-04-09T00:00:00Z,Paris,1946-06-18T00:00:00Z,Friedrichshafen,
+Toulo de Graffenried,1914-05-18T00:00:00Z,Paris,2007-01-22T00:00:00Z,Lonay,
+Daniel Dreyfous-Ducas,1914-06-11T00:00:00Z,Paris,1985-03-10T00:00:00Z,Paris,député
+Michel Doukas,1400-01-01T00:00:00Z,,1500-01-01T00:00:00Z,,
+Gisèle Casadesus,1914-06-14T00:00:00Z,Paris,2017-09-24T00:00:00Z,Paris,sociétaire de la Comédie-Française
+Jacques Bauche,1914-07-26T00:00:00Z,Paris,1982-01-01T00:00:00Z,Loiret,
+Pierre Iehle,1914-08-27T00:00:00Z,14e arrondissement de Paris,1984-10-09T00:00:00Z,Toulon,
+Henri Rendu,1844-07-24T00:00:00Z,Paris,1902-04-16T00:00:00Z,Paris,
+Renaud de Corta,1915-02-02T00:00:00Z,Paris,1979-04-20T00:00:00Z,Paris,
+Robert Cunibil,1915-02-03T00:00:00Z,Paris,1999-06-05T00:00:00Z,Alès,
+Jacques Chaban-Delmas,1915-03-07T00:00:00Z,Paris,2000-11-10T00:00:00Z,Paris,"Premier ministre français, député, sénateur de la Communauté, membre de l'Assemblée parlementaire du Conseil de l'Europe, maire de Bordeaux, conseiller régional d'Aquitaine, président de l'Aquitaine, représentant de l'Assemblée parlementaire du Conseil de l'Europe, suppléant de l'Assemblée parlementaire du Conseil de l'Europe"
+Delmas Carl Hill,1906-10-09T00:00:00Z,Wamego,1989-12-02T00:00:00Z,,Juge à la cour d'appel des États-Unis pour le circuit fédéral
+Étienne Schlumberger,1915-03-20T00:00:00Z,8e arrondissement de Paris,2014-09-09T00:00:00Z,Crozon,
+Édith Piaf,1915-12-19T00:00:00Z,Paris,1963-10-10T00:00:00Z,Grasse,
+Bernard Barberon,1916-08-26T00:00:00Z,Paris,1982-10-18T00:00:00Z,Paris,
+François Bolifraud,1917-02-05T00:00:00Z,Paris,1942-06-11T00:00:00Z,Libye,
+Maurice Druon,1918-04-23T00:00:00Z,Paris,2009-04-14T00:00:00Z,Paris,"député européen, président, secrétaire perpétuel, ministre de la Culture, député, suppléant de l'Assemblée parlementaire du Conseil de l'Europe, fauteuil 30 de l'Académie française"
+Patachou,1918-06-10T00:00:00Z,Paris,2015-04-30T00:00:00Z,Neuilly-sur-Seine,
+Claude Lamirault,1918-06-01T00:00:00Z,16e arrondissement de Paris,1945-01-01T00:00:00Z,Orléans,
+Jean Achard,1946-12-17T00:00:00Z,,,,"maire de Saint-André-le-Puy, conseiller municipal de Saint-André-le-Puy"
+Raymond Meyer,1918-08-28T00:00:00Z,14e arrondissement de Paris,2002-12-31T00:00:00Z,Livry-Gargan,
+Didier Béguin,1918-12-14T00:00:00Z,Paris,1944-11-26T00:00:00Z,Moscou,"maire, député"
+Jackie Sardou,1919-04-07T00:00:00Z,10e arrondissement de Paris,1998-04-02T00:00:00Z,Paris,
+Gérard Oury,1919-04-29T00:00:00Z,Paris,2006-07-19T00:00:00Z,Saint-Tropez,
+Guy Lux,1919-06-21T00:00:00Z,Paris,2003-06-13T00:00:00Z,Neuilly-sur-Seine,
+Q64021632,,,,,
+Claude Raoul-Duval,1919-10-22T00:00:00Z,Paris,2018-05-10T00:00:00Z,Saint-Mandé,
+Jean-Jacques Duval d'Eprémesnil,1745-12-05T00:00:00Z,Pondichéry,1794-04-23T00:00:00Z,Paris,député aux États généraux de 1789
+Q46169558,,,,,
+Francisco Adolfo Sauvalle,1807-07-01T00:00:00Z,Charleston,1879-01-01T00:00:00Z,,
+Francis Ryck,1920-03-04T00:00:00Z,Paris,2007-08-19T00:00:00Z,Paris,
+Jean de Tedesco,1920-03-01T00:00:00Z,Paris,1943-01-01T00:00:00Z,Russie,
+Serge Ravanel,1920-05-12T00:00:00Z,Paris,2009-04-27T00:00:00Z,Paris,
+Michel Audiard,1920-05-15T00:00:00Z,Paris,1985-07-27T00:00:00Z,Dourdan,
+André Bollier,1920-05-30T00:00:00Z,Saint-Maur-des-Fossés,1944-06-17T00:00:00Z,Lyon,
+Pierre Mallet,1962-03-16T00:00:00Z,,,,"conseiller départemental des Landes, maire de Benquet, conseiller municipal de Benquet, conseiller communautaire de Mont-de-Marsan Agglomération"
+Jean Rousseau,1738-03-13T00:00:00Z,Witry-lès-Reims,1813-09-07T00:00:00Z,Châtillon,"député, Membre du Conseil des Anciens, membre du Sénat conservateur"
+Hubert Germain,1920-08-06T00:00:00Z,Paris,,,"député, ministre des Postes et Télécommunications, ministre des Relations avec le Parlement, maire de Saint-Chéron"
+François de La Grange,1920-08-20T00:00:00Z,Paris,1976-03-03T00:00:00Z,Bukavu,
+René Blanchard,1920-09-10T00:00:00Z,Paris,1996-03-14T00:00:00Z,Nice,
+Jacques Sallebert,1920-10-20T00:00:00Z,16e arrondissement de Paris,2000-11-27T00:00:00Z,Mougins,
+Guy Flavien,1920-11-12T00:00:00Z,Paris,1945-04-01T00:00:00Z,Buchenwald,
+Robert Galley,1921-01-11T00:00:00Z,Paris,2012-06-08T00:00:00Z,Troyes,"député, conseiller général, sénateur, maire de Troyes, représentant de l'Assemblée parlementaire du Conseil de l'Europe, suppléant de l'Assemblée parlementaire du Conseil de l'Europe"
+Eddie Barclay,1921-01-26T00:00:00Z,Paris,2005-05-12T00:00:00Z,Boulogne-Billancourt,
+Michel Carage,1921-03-01T00:00:00Z,Paris,2008-01-28T00:00:00Z,Neuilly-sur-Seine,
+Claude Lepeu,1921-03-03T00:00:00Z,Paris,2016-07-11T00:00:00Z,Paris,
+Jacqueline Joubert,1921-03-29T00:00:00Z,Paris,2005-01-08T00:00:00Z,Neuilly-sur-Seine,
+Francis Blanche,1921-07-20T00:00:00Z,11e arrondissement de Paris,1974-07-06T00:00:00Z,15e arrondissement de Paris,
+Guy Tréjan,1921-09-18T00:00:00Z,Paris,2001-01-25T00:00:00Z,Paris,
+Henri Lévy-Bruhl,1884-12-18T00:00:00Z,Paris,1964-05-02T00:00:00Z,Paris,président
+Larry Heard,1960-05-31T00:00:00Z,Chicago,,,
+Charles Gonard,1921-10-11T00:00:00Z,Paris,2016-06-12T00:00:00Z,Vence,
+Claude Villedieu,1921-10-30T00:00:00Z,Paris,1980-03-08T00:00:00Z,,
+Micheline Presle,1922-08-22T00:00:00Z,Paris,,,
+Marcel Mouloudji,1922-09-16T00:00:00Z,Paris,1994-06-14T00:00:00Z,Neuilly-sur-Seine,
+Liliane Bettencourt,1922-10-21T00:00:00Z,Paris,2017-09-20T00:00:00Z,Neuilly-sur-Seine,
+Eugène Schueller,1881-03-20T00:00:00Z,6e arrondissement de Paris,1957-08-23T00:00:00Z,Côtes-d'Armor,
+Alain Gayet,1922-11-29T00:00:00Z,Paris,2017-04-20T00:00:00Z,Boulogne-Billancourt,
+Francis Bouygues,1922-12-05T00:00:00Z,Paris,1993-07-25T00:00:00Z,Saint-Malo,président-directeur général
+Jacques Capelovici,1922-12-19T00:00:00Z,6e arrondissement de Paris,2011-03-20T00:00:00Z,Île-de-France,
+Yvonne Deslandres,1923-02-08T00:00:00Z,,1986-12-12T00:00:00Z,,
+Claude Piéplu,1923-05-09T00:00:00Z,14e arrondissement de Paris,2006-05-24T00:00:00Z,16e arrondissement de Paris,
+José Giovanni,1923-06-22T00:00:00Z,Paris,2004-04-24T00:00:00Z,Lausanne,
+Maria Pacôme,1923-07-18T00:00:00Z,Paris,2018-12-01T00:00:00Z,Ballainvilliers,
+Roger De Wulf,1929-01-05T00:00:00Z,Vilvorde,2016-04-04T00:00:00Z,Machelen,"député, sénateur"
+Léon Schwartzenberg,1923-12-02T00:00:00Z,Paris,2003-10-14T00:00:00Z,Villejuif,député européen
+Zizi Jeanmaire,1924-04-29T00:00:00Z,Paris,,,
+Charles Aznavour,1924-05-22T00:00:00Z,Paris,2018-10-01T00:00:00Z,Mouriès,ambassadeur d'Arménie
+Jean d'Ormesson,1925-06-16T00:00:00Z,7e arrondissement de Paris,2017-12-05T00:00:00Z,Neuilly-sur-Seine,"président, secrétaire général, fauteuil 12 de l'Académie française"
+Françoise Bertin,1925-09-23T00:00:00Z,Paris,2014-10-26T00:00:00Z,Galan,
+Michel Bouquet,1958-07-01T00:00:00Z,,,,"maire de Barbaise, conseiller municipal de Barbaise, conseiller communautaire des crêtes préardennaises"
+Michel Piccoli,1925-12-27T00:00:00Z,Paris,,,
+Robert Clary,1926-03-01T00:00:00Z,Paris,,,
+Jeannette Hubert,1926-05-21T00:00:00Z,Paris,2015-01-30T00:00:00Z,Saint-Cloud,
+René Goscinny,1926-08-14T00:00:00Z,5e arrondissement de Paris,1977-11-05T00:00:00Z,17e arrondissement de Paris,rédacteur en chef
+Jean Poiret,1926-08-17T00:00:00Z,Paris,1992-03-14T00:00:00Z,Suresnes,
+Arlette Accart,1926-12-06T00:00:00Z,18e arrondissement de Paris,1957-04-09T00:00:00Z,Paris,
+Philippe Clay,1927-03-07T00:00:00Z,14e arrondissement de Paris,2007-12-13T00:00:00Z,Issy-les-Moulineaux,
+Roger Carel,1927-08-14T00:00:00Z,11e arrondissement de Paris,,,
+Q2369958,,,,,
+Robert Hossein,1927-12-30T00:00:00Z,Paris,,,
+Jeanne Moreau,1928-01-23T00:00:00Z,Paris,2017-07-31T00:00:00Z,8e arrondissement de Paris,"président du jury du festival de Cannes, Q66023877"
+Pierre Tchernia,1928-01-29T00:00:00Z,Paris,2016-10-08T00:00:00Z,Paris,
+Roger Vadim,1928-01-26T00:00:00Z,Paris,2000-02-11T00:00:00Z,Paris,
+Lazare Pytkowicz,1928-02-29T00:00:00Z,12e arrondissement de Paris,2004-10-12T00:00:00Z,,
+Robert Badinter,1928-03-30T00:00:00Z,16e arrondissement de Paris,,,"président, sénateur, garde des Sceaux, ministre de la Justice, commissaire de la Commission internationale contre la peine de mort"
+Serge Gainsbourg,1928-02-02T00:00:00Z,Paris,1991-03-02T00:00:00Z,Paris,
+Hubert Monteilhet,1928-07-10T00:00:00Z,Paris,2019-05-12T00:00:00Z,Garlin,
+Teddy Vrignault,1928-11-22T00:00:00Z,Paris,1984-11-01T00:00:00Z,,
+Daniel Wayenberg,1929-10-11T00:00:00Z,Paris,2019-09-18T00:00:00Z,Paris,
+Jacqueline Huet,1929-10-20T00:00:00Z,18e arrondissement de Paris,1986-10-08T00:00:00Z,,
+Michel Lebrun,1949-01-31T00:00:00Z,Namur,,,"député, député wallon, suppléant de l'Assemblée parlementaire du Conseil de l'Europe"
+Michel Polacco,1948-11-12T00:00:00Z,Paris,,,rédacteur en chef
+Jean Rochefort,1930-04-29T00:00:00Z,20e arrondissement de Paris,2017-10-09T00:00:00Z,hôpital de la Salpêtrière,
+Marisol Escobar,1930-05-22T00:00:00Z,Paris,2016-04-30T00:00:00Z,New York,
+Claude Véga,1930-06-02T00:00:00Z,Paris,,,
+Barbara Stanwyck,1907-07-16T00:00:00Z,Brooklyn,1990-01-20T00:00:00Z,Santa Monica,
+Odile Versois,1930-06-14T00:00:00Z,Paris,1980-06-23T00:00:00Z,Neuilly-sur-Seine,
+Claude Chabrol,1930-06-24T00:00:00Z,Paris,2010-09-12T00:00:00Z,Paris,
+Christine Fabréga,1931-04-08T00:00:00Z,14e arrondissement de Paris,1988-06-11T00:00:00Z,18e arrondissement de Paris,
+Anicet Le Pors,1931-04-28T00:00:00Z,Paris,,,"conseiller d'État, conseiller général, sénateur"
+Annie Girardot,1931-10-25T00:00:00Z,Paris,2011-02-28T00:00:00Z,Paris,
+François Truffaut,1932-02-06T00:00:00Z,Paris,1984-10-21T00:00:00Z,Neuilly-sur-Seine,
+Michel Legrand,1946-06-16T00:00:00Z,,,,"maire de Vacquerie-le-Boucq, conseiller municipal de Vacquerie-le-Boucq"
+Anouk Ferjac,1932-05-25T00:00:00Z,Paris,,,
+Pierre Casselle,1950-01-05T00:00:00Z,,2018-05-12T00:00:00Z,,président
+Jacques Chirac,1932-11-29T00:00:00Z,Paris,2019-09-26T00:00:00Z,Paris,"député européen, président, président de la République française, coprince d'Andorre, Premier ministre français, président de conseil général, député, maire de Paris, ministre de l'Intérieur, ministre délégué aux Relations avec le Parlement, ministre de l'Agriculture et du Développement rural, Conseiller général de la Corrèze"
+Sacha Distel,1933-01-29T00:00:00Z,13e arrondissement de Paris,2004-07-22T00:00:00Z,Rayol-Canadel-sur-Mer,
+Jean Becker,1833-05-11T00:00:00Z,Mannheim,1884-10-10T00:00:00Z,Mannheim,
+Bernadette Chirac,1933-05-18T00:00:00Z,16e arrondissement de Paris,,,"président, épouse du président de la République française, conseiller général"
+Roman Polanski,1933-08-18T00:00:00Z,Paris,,,président du jury du festival de Cannes
+Jacques Séguéla,1934-02-23T00:00:00Z,Paris,,,
+Claude Berri,1934-07-01T00:00:00Z,Paris,2009-01-12T00:00:00Z,Paris,
+Brigitte Bardot,1934-09-28T00:00:00Z,Paris,,,
+Sylvie Joly,1934-10-18T00:00:00Z,Paris,2015-09-03T00:00:00Z,Paris,
+Georges Perec,1936-03-07T00:00:00Z,Paris,1982-03-03T00:00:00Z,Ivry-sur-Seine,
+Popeck,1936-05-18T00:00:00Z,Paris,,,
+Victor Lanoux,1936-06-18T00:00:00Z,Paris,2017-05-04T00:00:00Z,Royan,
+Michel Guyard,1936-06-19T00:00:00Z,Paris,,,"évêque catholique, évêque diocésain"
+Henri Guybet,1936-12-21T00:00:00Z,14e arrondissement de Paris,,,
+Guy Marchand,1937-05-22T00:00:00Z,Paris,,,
+Édith Scob,1937-10-21T00:00:00Z,Paris,2019-06-26T00:00:00Z,Paris,
+Claude Lelouch,1937-10-30T00:00:00Z,Paris,,,
+Pierre Santini,1938-08-09T00:00:00Z,Paris,,,
+Pierre Cangioni,1939-07-29T00:00:00Z,Paris,,,
+Michel Chevalet,1939-08-30T00:00:00Z,Paris,,,
+Jacques Debout,1872-12-18T00:00:00Z,,1939-02-02T00:00:00Z,,
+Arlette Laguiller,1940-03-18T00:00:00Z,14e arrondissement de Paris,,,"député européen, conseiller régional d'Île-de-France"
+Françoise Dorléac,1942-03-21T00:00:00Z,Paris,1967-06-26T00:00:00Z,Villeneuve-Loubet,
+Eddy Mitchell,1942-07-03T00:00:00Z,19e arrondissement de Paris,,,
+Yves Mourousi,1942-07-20T00:00:00Z,Suresnes,1998-04-07T00:00:00Z,Paris,rédacteur en chef
+Gérard Rinaldi,1943-02-17T00:00:00Z,14e arrondissement de Paris,2012-03-02T00:00:00Z,Fontenay-lès-Briis,
+Henri Pescarolo,1942-09-25T00:00:00Z,Paris,,,
+André Vingt-Trois,1942-11-07T00:00:00Z,Paris,,,"cardinal, évêque auxiliaire, évêque catholique, évêque titulaire, archevêque de Paris, archevêque de Tours, archevêque catholique"
+Bernard Tapie,1943-01-26T00:00:00Z,20e arrondissement de Paris,,,"député européen, député"
+Georgina Dufoix,1942-02-16T00:00:00Z,Paris,,,"député, conseiller général"
+Carlos Fuentes,1928-11-11T00:00:00Z,Panama,2012-05-15T00:00:00Z,Mexico,ambassadeur du Mexique en France
+Hervé Villechaize,1943-04-23T00:00:00Z,Paris,1993-09-04T00:00:00Z,North Hollywood,
+Jacques Dutronc,1943-04-28T00:00:00Z,Paris,,,
+Johnny Hallyday,1943-06-15T00:00:00Z,Paris,2017-12-05T00:00:00Z,Marnes-la-Coquette,
+Catherine Deneuve,1943-10-22T00:00:00Z,Paris,,,
+Françoise Hardy,1944-01-17T00:00:00Z,9e arrondissement de Paris,,,
+Dominique Bromberger,1944-03-24T00:00:00Z,Paris,,,
+Pierre Bachelet,1926-05-19T00:00:00Z,Boulogne-sur-Mer,2014-05-17T00:00:00Z,Le Cannet,"maire, député"
+Geneviève Grad,1944-07-05T00:00:00Z,Paris,,,
+François Corbier,1944-10-17T00:00:00Z,14e arrondissement de Paris,2018-07-01T00:00:00Z,Évreux,
+Coluche,1944-10-28T00:00:00Z,14e arrondissement de Paris,1986-06-19T00:00:00Z,Opio,
+Pierre Arditi,1944-12-01T00:00:00Z,6e arrondissement de Paris,,,
+Patrick Topaloff,1944-12-30T00:00:00Z,Paris,2010-03-07T00:00:00Z,Paris,
+Bernard Rappaz,1953-02-18T00:00:00Z,Saxon,,,
+Pierre Lescure,1945-07-02T00:00:00Z,Choisy-le-Roi,,,
+David Robert Michel,1735-01-01T00:00:00Z,,1805-03-01T00:00:00Z,,membre au Parlement de Grande-Bretagne
+Pascal Sevran,1945-10-16T00:00:00Z,Paris,2008-05-09T00:00:00Z,Limoges,
+Hervé Claude,1945-11-19T00:00:00Z,Paris,,,
+Yann Arthus-Bertrand,1946-03-13T00:00:00Z,Paris,,,peintre de la Marine
+Bertrand Russell,1872-05-18T00:00:00Z,Trellech,1970-02-02T00:00:00Z,Penrhyndeudraeth,membre de la Chambre des lords
+Alain Madelin,1946-03-26T00:00:00Z,Paris,,,"député européen, maire, député, conseiller général, conseiller régional, ministre de l'Économie, des Finances et de l'Industrie"
+Laurent Fabius,1946-08-20T00:00:00Z,16e arrondissement de Paris,,,"député européen, Premier ministre français, député, conseiller général, ministre de l'Économie, des Finances et de l'Industrie, ministre des Affaires étrangères, conseiller régional de Haute-Normandie, maire du Grand-Quevilly"
+Yves Lecoq,1946-05-04T00:00:00Z,15e arrondissement de Paris,,,
+Georges Beller,1946-01-10T00:00:00Z,Paris,,,
+Hervé Vilard,1946-07-24T00:00:00Z,Paris,,,
+Christian Blachas,1946-06-16T00:00:00Z,Paris,2012-02-05T00:00:00Z,Boulogne-Billancourt,
+Gérard Holtz,1946-12-08T00:00:00Z,10e arrondissement de Paris,,,
+C. Jérôme,1946-12-21T00:00:00Z,Paris,2000-03-14T00:00:00Z,Paris,
+Michel Sardou,1947-01-26T00:00:00Z,18e arrondissement de Paris,,,
+Jacques Pradel,1963-07-22T00:00:00Z,,,,"maire de Saint-Michel, conseiller municipal de Saint-Michel"
+Erik Orsenna,1947-03-22T00:00:00Z,Paris,,,"président, conseiller d'État, Maître des requêtes au Conseil d'État, fauteuil 17 de l'Académie française"
+Daniel Bilalian,1947-04-10T00:00:00Z,Paris,,,
+Dominique Baudis,1947-04-14T00:00:00Z,9e arrondissement de Paris,2014-04-10T00:00:00Z,hôpital d'instruction des armées du Val-de-Grâce,"député européen, député, conseiller général, président du Conseil supérieur de l'audiovisuel, maire de Toulouse, conseiller régional de Midi-Pyrénées"
+Martin Lamotte,1947-06-02T00:00:00Z,16e arrondissement de Paris,,,
+Julien Clerc,1947-10-04T00:00:00Z,19e arrondissement de Paris,,,
+France Gall,1947-10-09T00:00:00Z,12e arrondissement de Paris,2018-01-07T00:00:00Z,Neuilly-sur-Seine,
+Patrice Leconte,1947-11-12T00:00:00Z,Paris,,,
+Alain Bashung,1947-12-01T00:00:00Z,Paris,2009-03-14T00:00:00Z,14e arrondissement de Paris,
+Patrice Drevet,1948-01-04T00:00:00Z,Paris,,,
+Gérard Darmon,1948-02-29T00:00:00Z,Paris,,,
+Guy Montagné,1948-03-06T00:00:00Z,Paris,,,
+Dominique Chapatte,1948-09-18T00:00:00Z,Paris,,,
+Guy Konopnicki,1948-09-29T00:00:00Z,Paris,,,conseiller régional d'Île-de-France
+Daniel Guichard,1948-09-21T00:00:00Z,,,,"maire de Pouilly-sur-Meuse, conseiller municipal de Pouilly-sur-Meuse, conseiller communautaire du Pays de Stenay et du Val Dunois"
+Laurent Voulzy,1948-12-18T00:00:00Z,Paris,,,
+Maxime Le Forestier,1949-02-10T00:00:00Z,Paris,,,
+Alain Chamfort,1949-03-02T00:00:00Z,11e arrondissement de Paris,,,
+Yves Duteil,1949-07-24T00:00:00Z,Neuilly-sur-Seine,,,maire de Précy-sur-Marne
+Julien Lepers,1949-08-12T00:00:00Z,Paris,,,
+Sabine Azéma,1949-09-20T00:00:00Z,Paris,,,
+Miou-Miou,1950-02-22T00:00:00Z,Paris,,,
+Josiane Balasko,1950-04-15T00:00:00Z,Paris,,,
+Élie Chouraqui,1950-07-03T00:00:00Z,19e arrondissement de Paris,,,
+Richard Berry,1951-04-17T00:00:00Z,,,,membre de la Chambre des lords
+Martine Aubry,1950-08-08T00:00:00Z,Paris,,,"ministère du Travail, de l'Emploi, de la Formation professionnelle et du Dialogue social, député, maire de Lille, conseiller municipal de Lille, conseiller de la Métropole européenne de Lille"
+Patrick Simpson-Jones,1950-09-23T00:00:00Z,Paris,,,
+William Jones,1746-09-28T00:00:00Z,Londres,1794-04-27T00:00:00Z,Calcutta,juge
+Gérard Jugnot,1951-05-04T00:00:00Z,Paris,,,
+Fabrice Luchini,1951-11-01T00:00:00Z,Paris,,,
+Patrick Sabatier,1951-11-12T00:00:00Z,Paris,,,
+Gilbert Montagné,1951-12-28T00:00:00Z,20e arrondissement de Paris,,,
+Corine Marienneau,1952-03-07T00:00:00Z,Paris,,,
+Thierry Le Luron,1952-04-02T00:00:00Z,Paris,1986-11-13T00:00:00Z,Boulogne-Billancourt,
+François Berléand,1952-04-22T00:00:00Z,Paris,,,
+Christian Clavier,1952-05-06T00:00:00Z,Paris,,,
+Desireless,1952-12-25T00:00:00Z,Paris,,,
+Richard Anconina,1953-01-28T00:00:00Z,Paris,,,
+Patrick Montels,1959-01-06T00:00:00Z,,,,"maire d'Amarens, conseiller municipal d'Amarens, conseiller communautaire de Gaillac-Graulhet"
+Pierre d'Ornellas,1953-05-09T00:00:00Z,Paris,,,"évêque auxiliaire, évêque catholique, évêque titulaire, archevêque de Rennes, Dol et Saint-Malo, archevêque catholique"
+Dorothée-Sophie de Neubourg,1670-07-05T00:00:00Z,Neubourg-sur-le-Danube,1748-09-15T00:00:00Z,Parme,régent
+Antoine de Caunes,1953-12-01T00:00:00Z,Paris,,,
+Richard Clayderman,1953-12-28T00:00:00Z,Paris,,,
+Laurent Broomhead,1954-02-05T00:00:00Z,Paris,,,
+Louis Bertignac,1954-02-23T00:00:00Z,Oran,,,
+Didier Barbelivien,1954-03-10T00:00:00Z,14e arrondissement de Paris,,,
+Nicolas Sarkozy,1955-01-28T00:00:00Z,Paris,,,"député européen, président de la République française, coprince d'Andorre, député, conseiller général, ministre de la Culture, ministre de l'Économie, des Finances et de l'Industrie, ministre de l'Intérieur, président de conseil départemental, conseiller régional d'Île-de-France, maire de Neuilly-sur-Seine"
+Bertrand Renard,1952-07-26T00:00:00Z,,,,"maire de Luchapt, conseiller municipal de Luchapt, conseiller communautaire de Vienne et Gartempe"
+Valérie Mairesse,1955-06-08T00:00:00Z,8e arrondissement de Paris,,,
+Isabelle Adjani,1955-06-27T00:00:00Z,17e arrondissement de Paris,,,président du jury du festival de Cannes
+François Cluzet,1955-09-21T00:00:00Z,Paris,,,
+Yo Mahesh,1987-12-21T00:00:00Z,Chennai,,,
+Christine Lagarde,1956-01-01T00:00:00Z,9e arrondissement de Paris,,,"président, président de la Banque centrale européenne, administrateur de société, stagiaire, directeur général du Fonds monétaire international, ministre de l'Économie, des Finances et de l'Industrie, ministre de l'Agriculture et de la Pêche"
+Christine Bravo,1956-05-13T00:00:00Z,Paris,,,
+Isabelle Morini-Bosc,1956-10-01T00:00:00Z,4e arrondissement de Paris,,,
+Michel Cymes,1957-05-14T00:00:00Z,Paris,,,
+Laurent Boyer,1958-01-23T00:00:00Z,Paris,,,
+Daniel Schneidermann,1958-04-05T00:00:00Z,Paris,,,
+Laurent Baffie,1958-04-18T00:00:00Z,Montreuil,,,
+Isabelle Mergault,1958-05-11T00:00:00Z,Aubervilliers,,,
+François Feldman,1958-05-23T00:00:00Z,Paris,,,
+Pierre Sled,1958-07-25T00:00:00Z,Paris,,,
+Bernard Thibault,1959-01-02T00:00:00Z,Paris,,,secrétaire général de la Confédération générale du travail
+Pascal Légitimus,1959-03-13T00:00:00Z,Paris,,,
+Luc Besson,1959-03-18T00:00:00Z,Paris,,,président du jury du festival de Cannes
+Yasmina Reza,1959-05-01T00:00:00Z,Paris,,,
+Rémy Sarrazin,1959-07-12T00:00:00Z,Paris,,,
+Thierry Marx,1959-09-21T00:00:00Z,20e arrondissement de Paris,,,
+Marc Alexandre,1959-10-30T00:00:00Z,Paris,,,
+Harlem Désir,1959-11-29T00:00:00Z,Paris,,,"député européen, ministre, membre du Conseil économique, social et environnemental"
+Bruno Madinier,1960-05-10T00:00:00Z,Paris,,,
+Laëtitia Meignan,1985-11-09T00:00:00Z,,,,conseiller départemental d'Ille-et-Vilaine
+Isabelle Martinet,1960-06-05T00:00:00Z,Paris,,,
+Laurent Fignon,1960-08-12T00:00:00Z,18e arrondissement de Paris,2010-08-31T00:00:00Z,13e arrondissement de Paris,
+Frédéric Taddeï,1961-01-05T00:00:00Z,Paris,,,
+Virginie Lemoine,1961-02-26T00:00:00Z,18e arrondissement de Paris,,,
+Nicolas Dupont-Aignan,1961-03-07T00:00:00Z,15e arrondissement de Paris,,,"député, maire de Yerres"
+Aignan d'Orléans,0358-01-01T00:00:00Z,Vienne,0453-11-17T00:00:00Z,Orléans,évêque
+Axel Bauer,1961-04-07T00:00:00Z,Paris,,,
+Marina Carrère d'Encausse,1961-10-09T00:00:00Z,Paris,,,
+Gilles Bouleau,1962-05-25T00:00:00Z,Paris,,,
+Alexandre Pesle,1963-08-01T00:00:00Z,Paris,,,
+Élie Semoun,1963-10-16T00:00:00Z,Antony,,,
+Philippe Lelièvre,1964-01-21T00:00:00Z,16e arrondissement de Paris,,,
+Charly Nestor,1964-04-10T00:00:00Z,15e arrondissement de Paris,,,
+Bruno Solo,1964-09-23T00:00:00Z,Paris,,,
+Vincent Moscato,1965-07-28T00:00:00Z,14e arrondissement de Paris,,,
+Anne Roumanoff,1965-09-25T00:00:00Z,Paris,,,
+Olivier Martinez,1973-08-02T00:00:00Z,,,,"conseiller départemental des Landes, conseiller municipal de Saint-Sever, conseiller communautaire de Chalosse Tursan"
+Richard Orlinski,1966-01-19T00:00:00Z,Paris,,,
+José García y Goldaraz,1893-10-27T00:00:00Z,Hernani,1973-07-10T00:00:00Z,Valladolid,"évêque catholique, évêque diocésain, archevêque catholique, Q50214173, archevêque titulaire"
+Hervé Mathoux,1966-11-06T00:00:00Z,Paris,,,
+Vincent Cassel,1966-11-23T00:00:00Z,Paris,,,
+Édouard Baer,1966-12-01T00:00:00Z,Boulogne-Billancourt,,,
+David Guetta,1967-11-07T00:00:00Z,Paris,,,
+Mathilde Seigner,1968-01-17T00:00:00Z,Paris,,,
+Valéria Hidvéghy,1914-06-12T00:00:00Z,Budapest,2011-07-14T00:00:00Z,Palm Beach Gardens,
+Alain Bouzigues,1968-05-14T00:00:00Z,Paris,,,
+Armelle Guinebertière,1944-07-27T00:00:00Z,Carquefou,,,"député européen, conseiller général"
+Pascal Soetens,1969-10-18T00:00:00Z,Paris,,,
+Alexia Laroche-Joubert,1969-12-18T00:00:00Z,16e arrondissement de Paris,,,
+Sandrine Quétier,1970-12-30T00:00:00Z,Paris,,,
+Emmanuel Levy,1971-02-26T00:00:00Z,Paris,,,
+Guillaume Depardieu,1971-04-07T00:00:00Z,Paris,2008-10-13T00:00:00Z,Garches,
+Lââm,1971-09-01T00:00:00Z,Paris,,,
+Nathanaël de Rincquesen,1972-03-09T00:00:00Z,Paris,,,
+Judith Godrèche,1972-03-23T00:00:00Z,Paris,,,
+Elsa Lunghini,1973-05-20T00:00:00Z,Paris,,,
+Thomas Sotto,1973-07-02T00:00:00Z,Paris,,,
+Ary Abittan,1974-01-31T00:00:00Z,15e arrondissement de Paris,,,
+Julie Andrieu,1974-02-27T00:00:00Z,Paris,,,
+Matthieu Delormeau,1974-03-05T00:00:00Z,14e arrondissement de Paris,,,
+Benoît Magimel,1974-05-11T00:00:00Z,Paris,,,
+Romain Duris,1974-05-28T00:00:00Z,Paris,,,
+Cyril Hanouna,1974-09-23T00:00:00Z,Paris,,,
+Elsa Fayer,1974-11-09T00:00:00Z,Paris,,,
+Marie Drucker,1974-12-03T00:00:00Z,Paris,,,
+Thomas Bangalter,1975-01-03T00:00:00Z,Paris,,,
+Vincent Niclo,1969-01-06T00:00:00Z,Paris,,,
+ʿAbd Al-Malik,0646-01-01T00:00:00Z,Médine,0705-10-08T00:00:00Z,Damas,"Omeyyades, Q67497236"
+Jamel Debbouze,1975-06-18T00:00:00Z,Paris,,,
+Julia Vignali,1975-07-13T00:00:00Z,Paris,,,
+Patricia Spehar,1975-09-13T00:00:00Z,Paris,,,
+Marion Cotillard,1975-09-30T00:00:00Z,Paris,,,
+Vincent Desagnat,1976-03-09T00:00:00Z,France,,,
+Céline Lebrun,1976-08-25T00:00:00Z,18e arrondissement de Paris,,,
+Virginie Ledoyen,1976-11-15T00:00:00Z,Paris,,,
+Estelle Denis,1976-12-06T00:00:00Z,Paris,,,
+Koxie,1977-02-26T00:00:00Z,Paris,,,
+Christina Goh,1977-07-14T00:00:00Z,Paris,,,
+Noémie de Lattre,1977-08-11T00:00:00Z,Paris,,,
+Virginie Guilhaume,1977-11-30T00:00:00Z,Paris,,,
+Yael Naim,1978-02-06T00:00:00Z,Paris,,,
+Aurélie Saada,1978-08-04T00:00:00Z,Paris,,,
+Thomas N'Gijol,1978-10-30T00:00:00Z,Paris,,,
+Noom Diawara,1978-12-26T00:00:00Z,Paris,,,
+Max Boublil,1979-05-17T00:00:00Z,Paris,,,
+Caroline Ithurbide,1979-07-21T00:00:00Z,Paris,,,
+Frédéric de Lanouvelle,1979-09-09T00:00:00Z,Paris,,,
+Larusso,1979-10-11T00:00:00Z,Paris,,,
+Dot Pierson,1979-10-27T00:00:00Z,Paris,,,
+Burchard II de Souabe,0883-01-01T00:00:00Z,t1791276396,0926-05-04T00:00:00Z,Novare,duc de Souabe
+Eva Greenslit Anderson,1889-01-01T00:00:00Z,,1972-01-01T00:00:00Z,,député à la Chambre des représentants de l'État de Washington
+Amelle Chahbi,1980-08-21T00:00:00Z,Paris,,,
+Julie Zenatti,1981-02-05T00:00:00Z,Paris,,,
+Louise Monot,1981-12-30T00:00:00Z,Paris,,,
+Marilou Berry,1983-02-01T00:00:00Z,Paris,,,
+Marlène Schiappa,1982-11-18T00:00:00Z,Paris,,,"secrétaire d'État à l’Égalité des femmes et des hommes, conseiller municipal du Mans, conseiller communautaire de Le Mans Métropole"
+Mélanie Laurent,1983-02-21T00:00:00Z,Paris,,,
+Amir John Haddad,1975-01-01T00:00:00Z,Fribourg-en-Brisgau,,,
+Amel Bent,1985-06-21T00:00:00Z,Paris,,,
+Léa Seydoux,1985-07-01T00:00:00Z,16e arrondissement de Paris,,,
+Gaël Monfils,1986-09-01T00:00:00Z,Bobigny,,,
+Kévin Razy,1987-12-23T00:00:00Z,Paris,,,
+Camille Rowe-Pourcheresse,1990-01-07T00:00:00Z,Paris,,,
+Q21457960,1842-01-01T00:00:00Z,,1905-01-01T00:00:00Z,,
+Benjamin Lecomte,1991-04-26T00:00:00Z,Paris,,,
+Kev Adams,1991-07-01T00:00:00Z,16e arrondissement de Paris,,,
+Tony Yoka,1992-04-28T00:00:00Z,Paris,,,
+Alphonse Areola,1993-02-27T00:00:00Z,Paris,,,
+Vincent Lacoste,1982-09-12T00:00:00Z,,,,"maire de La Douze, conseiller municipal de La Douze, conseiller communautaire du Grand Périgueux"
+Adèle Exarchopoulos,1993-11-22T00:00:00Z,Paris,,,
+EnjoyPhoenix,1995-03-18T00:00:00Z,Paris,,,
+Kingsley Coman,1996-06-13T00:00:00Z,Paris,,,
+Kylian Mbappé,1998-12-20T00:00:00Z,19e arrondissement de Paris,,,
+Claudette Colbert,1903-09-13T00:00:00Z,Saint-Mandé,1996-07-30T00:00:00Z,Speightstown,
+Jean Langlois,1824-02-16T00:00:00Z,Saint-Laurent-de-l'Île-d'Orléans,1886-03-08T00:00:00Z,Québec,député de la Chambre des communes du Canada
+Henri IV du Saint-Empire,1050-11-17T00:00:00Z,Goslar,1106-08-14T00:00:00Z,Liège,"empereur, empereur romain germanique, duc de Bavière"
+François Ravaillac,1578-01-01T00:00:00Z,Angoulême,1610-05-27T00:00:00Z,Paris,
+Armand Jean du Plessis de Richelieu,1585-09-09T00:00:00Z,Paris,1642-12-04T00:00:00Z,Paris,"cardinal, évêque catholique, évêque diocésain, Secrétaire d'État des Affaires étrangères, gouverneur de Bretagne"
+Vincent de Paul,1581-05-04T00:00:00Z,Saint-Vincent-de-Paul,1660-09-27T00:00:00Z,Paris,chapelain
+Blaise Pascal Talla,1953-01-01T00:00:00Z,,,,
+Anne d'Autriche,1601-09-22T00:00:00Z,Valladolid,1666-01-20T00:00:00Z,Paris,gouverneur de Bretagne
+Jean de La Fontaine,1621-07-08T00:00:00Z,Château-Thierry,1695-04-13T00:00:00Z,Paris,fauteuil 24 de l'Académie française
+Jean Racine,1639-12-21T00:00:00Z,La Ferté-Milon,1699-04-21T00:00:00Z,Paris,fauteuil 13 de l'Académie française
+Antoine Coysevox,1640-09-29T00:00:00Z,Lyon,1720-10-10T00:00:00Z,Paris,
+Marguerite de Rochechouart,1665-01-01T00:00:00Z,,1727-10-23T00:00:00Z,Paris,abbesse
+Nicolas Coustou,1658-01-09T00:00:00Z,Lyon,1733-05-01T00:00:00Z,Paris,
+Montesquieu,1689-01-18T00:00:00Z,château de La Brède,1755-02-10T00:00:00Z,Paris,"juge, fauteuil 2 de l'Académie française"
+Jean Le Rond d'Alembert,1717-11-16T00:00:00Z,Paris,1783-10-29T00:00:00Z,Paris,"secrétaire perpétuel, fauteuil 25 de l'Académie française"
+Denis Diderot,1713-10-05T00:00:00Z,Langres,1784-07-31T00:00:00Z,Paris,
+Honoré-Gabriel Riqueti de Mirabeau,1749-03-09T00:00:00Z,Le Bignon-Mirabeau,1791-04-02T00:00:00Z,Paris,"député aux États généraux de 1789, Président de l'Assemblée constituante"
+Louis XVI,1754-08-23T00:00:00Z,château de Versailles,1793-01-21T00:00:00Z,place de la Concorde,"roi de France et de Navarre, roi des Français"
+Marie-Antoinette,1755-11-02T00:00:00Z,Vienne,1793-10-16T00:00:00Z,Paris,reine de France
+Olympe de Gouges,1748-05-07T00:00:00Z,Montauban,1793-11-03T00:00:00Z,Paris,
+Maximilien de Robespierre,1758-05-06T00:00:00Z,Arras,1794-07-28T00:00:00Z,Paris,député
+Louis XVIII,1755-11-17T00:00:00Z,Versailles,1824-09-16T00:00:00Z,Paris,roi de France et de Navarre
+Claude Perier,1742-05-28T00:00:00Z,Grenoble,1801-02-06T00:00:00Z,Paris,"Régent de la Banque de France, député de l'Isère"
+Joseph Cugnot,1725-09-25T00:00:00Z,Lorraine,1804-10-02T00:00:00Z,Paris,
+Saint Louis,1214-05-02T00:00:00Z,Poissy,1270-09-01T00:00:00Z,Tunis,roi de France
+Auguste Brunet,1878-01-04T00:00:00Z,Saint-Benoît,1957-10-07T00:00:00Z,Toulon,"sous-secrétaire d'État, Gouverneur général de Madagascar, député de La Réunion, Gouverneur général de l'Afrique-Occidentale française"
+André Masséna,1758-05-06T00:00:00Z,Nice,1817-04-04T00:00:00Z,Paris,"député, Pair de France, maire de Nice"
+Anne de Grande-Bretagne,1665-02-06T00:00:00Z,palais Saint James,1714-08-01T00:00:00Z,palais de Kensington,"monarque, reine régnante, monarque d'Angleterre, roi d'Écosse"
+Napoléon Ier,1769-01-01T00:00:00Z,Ajaccio,1821-01-01T00:00:00Z,Longwood House,empereur des Français
+Abraham Breguet,1747-01-10T00:00:00Z,Neuchâtel,1823-09-17T00:00:00Z,Paris,
+Jacques de Vincens de Mauléon de Causans,1751-07-31T00:00:00Z,château de Causans,1824-04-14T00:00:00Z,Paris,"député aux États généraux de 1789, député de Vaucluse"
+François XII de La Rochefoucauld,1747-01-11T00:00:00Z,La Roche-Guyon,1827-03-27T00:00:00Z,Paris,"député, conseiller général, pair de France"
+Gilbert du Motier de La Fayette,1757-09-06T00:00:00Z,Chavaniac-Lafayette,1834-05-19T00:00:00Z,ancien 1er arrondissement de Paris,député
+Stendhal,1783-01-23T00:00:00Z,Grenoble,1842-03-23T00:00:00Z,Paris,auditeur au Conseil d'État
+Juliette Récamier,1777-12-04T00:00:00Z,Lyon,1849-05-04T00:00:00Z,Paris,
+Ulrich Molitor,1442-01-01T00:00:00Z,Constance,1507-01-01T00:00:00Z,Constance,
+Henri Frédéric Schopin,1804-06-12T00:00:00Z,Lübeck,1880-10-21T00:00:00Z,Montigny-sur-Loing,
+Honoré de Balzac,1799-05-20T00:00:00Z,Tours,1850-08-18T00:00:00Z,Paris,président
+Louis Faure-Dujarric,1875-02-05T00:00:00Z,9e arrondissement de Paris,1943-07-20T00:00:00Z,Nice,architecte diocésain
+Pietro Lanza di Scalea,1863-10-20T00:00:00Z,Palerme,1938-05-29T00:00:00Z,Rome,"sénateur du Royaume d'Italie, député du Royaume d'Italie"
+Antoine de Gratet du Bouchage,1794-03-19T00:00:00Z,Grenoble,1855-09-25T00:00:00Z,Paris,député
+Hippolyte Louis Joseph Olivier de Gérente,1782-06-11T00:00:00Z,Pernes-les-Fontaines,1856-05-07T00:00:00Z,Paris,député
+Eugène Delacroix,1798-04-26T00:00:00Z,Saint-Maurice,1863-08-13T00:00:00Z,Paris,
+Alfred de Vigny,1797-03-27T00:00:00Z,Loches,1863-09-17T00:00:00Z,Paris,fauteuil 32 de l'Académie française
+Alphonse de Lamartine,1790-10-21T00:00:00Z,Mâcon,1869-02-28T00:00:00Z,Paris,"député, conseiller général, fauteuil 7 de l'Académie française"
+Hector Berlioz,1803-12-11T00:00:00Z,La Côte-Saint-André,1869-03-08T00:00:00Z,Paris,
+Hubert Beuve-Méry,1902-01-05T00:00:00Z,Paris,1989-08-06T00:00:00Z,Fontainebleau,
+comtesse de Ségur,1799-08-01T00:00:00Z,Saint-Pétersbourg,1874-02-09T00:00:00Z,Paris,
+Pierre Larousse,1817-10-23T00:00:00Z,Toucy,1875-01-03T00:00:00Z,Paris,
+Marie d’Agoult,1805-12-31T00:00:00Z,Francfort-sur-le-Main,1876-03-05T00:00:00Z,Paris,
+Louis Antoine de Saint-Just,1767-08-25T00:00:00Z,Decize,1794-07-28T00:00:00Z,Paris,"Comité de salut public, député de la Convention nationale, Q65963741"
+Aristide Boucicaut,1810-07-14T00:00:00Z,Bellême,1877-12-26T00:00:00Z,Ф,
+Jacques Offenbach,1819-06-20T00:00:00Z,Cologne,1880-10-05T00:00:00Z,Paris,
+Émile Littré,1801-02-01T00:00:00Z,Paris,1881-06-02T00:00:00Z,Paris,"député, sénateur inamovible, fauteuil 17 de l'Académie française"
+Maurice Sidoine Storez,1804-01-01T00:00:00Z,Douai,1881-12-28T00:00:00Z,,
+Gustave Doret,1866-09-20T00:00:00Z,Aigle,1943-04-19T00:00:00Z,Lausanne,
+Victor Hugo,1802-02-26T00:00:00Z,maison natale de Victor Hugo,1885-05-22T00:00:00Z,Paris,"président, député, sénateur, Pair de France, fauteuil 14 de l'Académie française"
+Georges Eugène Haussmann,1809-03-27T00:00:00Z,Paris,1891-01-11T00:00:00Z,Paris,"préfet, député, sous-préfet, secrétaire général, sénateur du Second Empire, conseiller de préfecture"
+Théodore de Banville,1823-03-14T00:00:00Z,Moulins,1891-03-13T00:00:00Z,Paris,
+Ernest Renan,1823-02-28T00:00:00Z,Tréguier,1892-10-02T00:00:00Z,Paris,"président, fauteuil 29 de l'Académie française, administrateur du Collège de France"
+Antoine Chevandier,1822-05-27T00:00:00Z,Serres,1893-01-09T00:00:00Z,Paris,"député, sénateur"
+Jules Ferry,1832-04-05T00:00:00Z,Saint-Dié-des-Vosges,1893-03-17T00:00:00Z,Paris,"député, président du Conseil, maire de Paris, ministre des Affaires étrangères, sénateur, ambassadeur de France en Grèce, ministre de l'Instruction publique et des Beaux-arts"
+Guy de Maupassant,1850-08-05T00:00:00Z,Tourville-sur-Arques,1893-07-06T00:00:00Z,Passy,
+Jules Lagneau,1851-08-08T00:00:00Z,Metz,1894-04-22T00:00:00Z,14e arrondissement de Paris,
+Paul Verlaine,1844-03-30T00:00:00Z,Metz,1896-01-08T00:00:00Z,Paris,
+Jules Simon,1814-12-31T00:00:00Z,Lorient,1896-06-08T00:00:00Z,Paris,"député, président du Conseil, sénateur inamovible, sénateur, fauteuil 8 de l'Académie française"
+Alphonse Daudet,1840-05-13T00:00:00Z,Nîmes,1897-12-16T00:00:00Z,Paris,
+Joseph Bertrand,1822-03-11T00:00:00Z,Paris,1900-04-03T00:00:00Z,Paris,fauteuil 40 de l'Académie française
+Alexandre Falguière,1831-09-07T00:00:00Z,Toulouse,1900-04-19T00:00:00Z,Paris,
+Alphonse Milne-Edwards,1835-10-13T00:00:00Z,Paris,1900-04-21T00:00:00Z,Paris,Directeur du Muséum national d'histoire naturelle
+Edwards Pierrepont,1817-03-04T00:00:00Z,New York,1892-03-06T00:00:00Z,New York,"ambassadeur, procureur général des États-Unis"
+Oscar Underwood,1862-05-06T00:00:00Z,Louisville,1929-01-25T00:00:00Z,Woodlawn,"sénateur des États-Unis, représentant des États-Unis"
+Ignace Hoff,1836-07-20T00:00:00Z,Marmoutier,1902-05-29T00:00:00Z,Paris,
+Louis Bizarelli,1836-01-25T00:00:00Z,Saint-Florent,1902-06-19T00:00:00Z,Paris,"député, sénateur"
+Jean-Baptiste Clément Dulac,1805-11-26T00:00:00Z,Pointe-à-Pitre,1889-04-05T00:00:00Z,Tours,député
+Bernard Lazare,1865-06-14T00:00:00Z,Nîmes,1903-09-01T00:00:00Z,Paris,
+Joseph Fayard,1816-04-02T00:00:00Z,Metz,1908-01-28T00:00:00Z,Paris,"sénateur, maire de Chabeuil"
+Nadarajah Raviraj,1962-06-25T00:00:00Z,Sri Lanka,2006-11-10T00:00:00Z,Sri Lanka,"Maire de Jaffna, parlementaire du Sri Lanka"
+Henri Poincaré,1854-04-29T00:00:00Z,Nancy,1912-07-17T00:00:00Z,Paris,"président, fauteuil 24 de l'Académie française"
+Jean Jaurès,1859-09-03T00:00:00Z,Castres,1914-07-31T00:00:00Z,Paris,"président, député"
+Odilon Redon,1840-04-20T00:00:00Z,Bordeaux,1916-07-06T00:00:00Z,Paris,
+Amédée Bollée,1844-01-11T00:00:00Z,quartier Bollée-Sainte-Croix,1917-01-20T00:00:00Z,Paris,
+Jules Lachelier,1832-05-27T00:00:00Z,Fontainebleau,1918-01-26T00:00:00Z,Paris,
+Guillaume Apollinaire,1880-08-26T00:00:00Z,Rome,1918-11-09T00:00:00Z,Paris,
+Jeanne Hébuterne,1898-04-06T00:00:00Z,Meaux,1920-01-26T00:00:00Z,Paris,
+Hortense Schneider,1833-04-30T00:00:00Z,Bordeaux,1920-05-06T00:00:00Z,Paris,
+Paul Deschanel,1855-02-13T00:00:00Z,Schaerbeek,1922-04-28T00:00:00Z,Paris,"président de la République française, coprince d'Andorre, député, sénateur, fauteuil 19 de l'Académie française"
+Raymond Radiguet,1903-06-18T00:00:00Z,Saint-Maur-des-Fossés,1923-12-12T00:00:00Z,Paris,
+Gustave Eiffel,1832-12-15T00:00:00Z,Dijon,1923-12-27T00:00:00Z,Paris,
+Gabriel Faure,1958-12-03T00:00:00Z,,,,"maire de Suzan, conseiller municipal de Suzan, conseiller communautaire de Couserans-Pyrénées"
+Jules César,-0099-07-01T00:00:00Z,Rome,-0043-03-13T00:00:00Z,théâtre de Pompée,"consul, questeur, édile, dictateur, sénateur romain"
+Theophile Boucher,1802-03-13T00:00:00Z,Sélestat,1871-12-20T00:00:00Z,Édimbourg,
+Erik Satie,1866-05-17T00:00:00Z,Honfleur,1925-07-01T00:00:00Z,Paris,
+Max Linder,1883-12-16T00:00:00Z,Saint-Loubès,1925-10-31T00:00:00Z,Paris,
+Georges Clemenceau,1841-09-28T00:00:00Z,Mouilleron-en-Pareds,1929-11-24T00:00:00Z,Paris,"député, maire d'arrondissement, président du Conseil, ministre de la Guerre, sénateur, fauteuil 3 de l'Académie française"
+Aristide Briand,1862-03-28T00:00:00Z,Nantes,1932-03-07T00:00:00Z,Paris,"député, président du Conseil"
+Paul Doumer,1857-03-22T00:00:00Z,Aurillac,1932-05-07T00:00:00Z,Paris,"président de la République française, député, conseiller général, sénateur"
+René Bazin,1853-12-26T00:00:00Z,Angers,1932-07-20T00:00:00Z,Paris,fauteuil 30 de l'Académie française
+Louis Lépine,1846-08-06T00:00:00Z,Lyon,1933-11-09T00:00:00Z,Paris,"député, sous-préfet, préfet de police de Paris"
+Raymond Poincaré,1860-08-20T00:00:00Z,Bar-le-Duc,1934-10-15T00:00:00Z,Paris,"président de la République française, coprince d'Andorre, bâtonnier, Premier ministre français, député, président du Conseil, conseiller général, sénateur, ministre de l'Éducation nationale, ministre de l'Économie, des Finances et de l'Industrie, fauteuil 34 de l'Académie française"
+Fulgence Bienvenüe,1852-01-27T00:00:00Z,Uzel,1936-08-03T00:00:00Z,Paris,
+Edmond Huet,1827-02-06T00:00:00Z,,1906-11-12T00:00:00Z,7e arrondissement de Paris,
+Henri Delacroix,1873-12-02T00:00:00Z,Paris,1937-12-03T00:00:00Z,Paris,doyen
+Maurice Ravel,1875-03-07T00:00:00Z,Ciboure,1937-12-28T00:00:00Z,Paris,
+Lucie Manvel,1863-05-01T00:00:00Z,Marseille,1943-11-03T00:00:00Z,Paris,
+Albert Marquet,1875-03-27T00:00:00Z,Bordeaux,1947-06-14T00:00:00Z,Paris,
+Tristan Bernard,1866-09-07T00:00:00Z,Besançon,1947-12-07T00:00:00Z,Paris,
+Albert Lebrun,1871-08-29T00:00:00Z,Mercy-le-Haut,1950-03-06T00:00:00Z,16e arrondissement de Paris,"ministre, président de la République française, coprince d'Andorre, député, Président du Sénat français, ministre de la Guerre, sénateur, ministre des Colonies"
+Jules Berry,1883-02-09T00:00:00Z,Poitiers,1951-04-23T00:00:00Z,Paris,
+Jean Camille Cipra,1893-04-16T00:00:00Z,Plzeň,1952-01-01T00:00:00Z,Paris,
+Arthur Honegger,1924-09-27T00:00:00Z,Saint-Gall,2017-08-15T00:00:00Z,Nesslau,rédacteur en chef
+Curnonsky,1872-10-12T00:00:00Z,Angers,1956-07-22T00:00:00Z,Paris,
+Sacha Guitry,1885-02-21T00:00:00Z,Saint-Pétersbourg,1957-07-24T00:00:00Z,Paris,
+Marcelle Meyer,1897-05-22T00:00:00Z,Lille,1958-11-17T00:00:00Z,15e arrondissement de Paris,
+Boris Vian,1920-03-10T00:00:00Z,Ville-d'Avray,1959-06-22T00:00:00Z,Paris,Satrape du Collège de 'Pataphysique
+Gérard Philipe,1922-12-04T00:00:00Z,Cannes,1959-11-25T00:00:00Z,Paris,
+Henri Vidal,1925-08-27T00:00:00Z,,2012-03-06T00:00:00Z,,secrétaire perpétuel
+Mado Robin,1918-12-29T00:00:00Z,Yzeures-sur-Creuse,1960-12-10T00:00:00Z,Paris,
+Gaston Bachelard,1884-06-27T00:00:00Z,Bar-sur-Aube,1962-10-16T00:00:00Z,Paris,
+Robert Arnoux,1899-10-23T00:00:00Z,Lille,1964-03-13T00:00:00Z,Paris,
+Jacques Audiberti,1899-03-25T00:00:00Z,Antibes,1965-07-09T00:00:00Z,5e arrondissement de Paris,
+Vincent Auriol,1884-08-27T00:00:00Z,Revel,1966-01-01T00:00:00Z,Paris,"président, président de la République française, coprince d'Andorre, député, garde des Sceaux, ministre de la Justice, ministre des Finances, maire de Muret"
+Patricia Viterbo,1939-03-21T00:00:00Z,Le Vésinet,1966-11-10T00:00:00Z,Paris,
+Alphonse Juin,1888-12-16T00:00:00Z,Annaba,1967-01-27T00:00:00Z,Paris,
+Marcel Aymé,1902-03-29T00:00:00Z,Joigny,1967-10-14T00:00:00Z,Paris,
+Julien Duvivier,1896-10-03T00:00:00Z,Lille,1967-10-29T00:00:00Z,Paris,
+Cassandre de Macédoine,-0354-01-01T00:00:00Z,,-0296-01-01T00:00:00Z,royaume de Macédoine,roi de Macédoine
+Mariano Ospina Pérez,1891-11-24T00:00:00Z,Cali,1976-04-14T00:00:00Z,Bogota,président de Colombie
+Bourvil,1917-07-25T00:00:00Z,Seine-Maritime,1970-09-23T00:00:00Z,Paris,
+Fernandel,1903-05-08T00:00:00Z,Marseille,1971-02-26T00:00:00Z,Paris,
+Curley Jim Morrison,2000-01-01T00:00:00Z,,,,
+Lucien Raimbourg,1903-09-14T00:00:00Z,Villeneuve-Saint-Georges,1973-02-20T00:00:00Z,Paris,
+Georges Pompidou,1911-07-05T00:00:00Z,Montboudif,1974-04-02T00:00:00Z,Paris,"président de la République française, Premier ministre français, député"
+Marcel Pagnol,1895-02-28T00:00:00Z,Aubagne,1974-04-18T00:00:00Z,Paris,"président, président du jury du festival de Cannes, fauteuil 25 de l'Académie française"
+Pierre Daccache,1928-01-01T00:00:00Z,,,,membre du parlement libanais
+Joséphine Baker,1906-06-03T00:00:00Z,Saint-Louis,1975-04-12T00:00:00Z,hôpital de la Salpêtrière,
+Mike Brant,1947-02-01T00:00:00Z,Famagouste,1975-04-25T00:00:00Z,Paris,
+Guy Mollet,1905-12-31T00:00:00Z,Flers,1975-10-03T00:00:00Z,Paris,"président, député, président du Conseil, conseiller général, secrétaire général, sénateur de la Communauté, président de l'Assemblée parlementaire du Conseil de l'Europe, maire d'Arras, représentant de l'Assemblée parlementaire du Conseil de l'Europe"
+Raymond Queneau,1903-02-21T00:00:00Z,Le Havre,1976-10-25T00:00:00Z,Paris,
+Maria Callas,1923-12-02T00:00:00Z,Manhattan,1977-09-16T00:00:00Z,Paris,
+Pierre Collet,1914-03-10T00:00:00Z,Montrouge,1977-10-30T00:00:00Z,18e arrondissement de Paris,
+Jacques Grello,1915-04-28T00:00:00Z,Saint-Ouen-sur-Seine,1978-03-08T00:00:00Z,10e arrondissement de Paris,
+Claude François Chauveau-Lagarde,1756-01-21T00:00:00Z,Chartres,1841-02-20T00:00:00Z,Paris,"bâtonnier, avocat aux conseils, Conseiller à la Cour de cassation"
+Jacques Mesrine,1936-12-28T00:00:00Z,Clichy,1979-11-02T00:00:00Z,18e arrondissement de Paris,
+Romy Schneider,1938-09-23T00:00:00Z,Vienne,1982-05-29T00:00:00Z,Paris,
+Patrick Dewaere,1947-01-26T00:00:00Z,Saint-Brieuc,1982-07-16T00:00:00Z,Paris,
+Jean Girault,1825-10-11T00:00:00Z,Saint-Amand-Montrond,1909-04-16T00:00:00Z,Bruère-Allichamps,"député, sénateur"
+Jacques Tati,1907-10-09T00:00:00Z,Le Pecq,1982-11-04T00:00:00Z,Paris,
+Suzanne Belperron,1900-09-26T00:00:00Z,Saint-Claude,1983-03-26T00:00:00Z,Paris,
+Denise Glaser,1920-11-30T00:00:00Z,Arras,1983-06-07T00:00:00Z,Paris,
+Roger Couderc,1918-07-12T00:00:00Z,Souillac,1984-02-25T00:00:00Z,Lyon,
+Jacques Monod,1910-02-09T00:00:00Z,Paris,1976-05-31T00:00:00Z,Cannes,directeur
+Wallis Simpson,1896-01-01T00:00:00Z,Baltimore,1986-01-01T00:00:00Z,Paris,
+Robert Dalban,1903-07-19T00:00:00Z,Celles-sur-Belle,1987-04-03T00:00:00Z,Paris,
+Dalila Di Lazzaro,1953-01-29T00:00:00Z,Udine,,,
+Pierre Desproges,1939-05-09T00:00:00Z,Pantin,1988-04-18T00:00:00Z,Paris,
+Guy Larocherie,1954-11-20T00:00:00Z,,,,"maire de Barges, conseiller municipal de Barges, conseiller communautaire des Hauts du val de Saône"
+Alice Sapritch,1916-07-29T00:00:00Z,Constantinople,1990-03-24T00:00:00Z,Paris,
+Jacques Demy,1931-06-05T00:00:00Z,Pontchâteau,1990-10-27T00:00:00Z,Paris,
+Raymond Oliver,1909-03-27T00:00:00Z,Langon,1990-11-05T00:00:00Z,7e arrondissement de Paris,
+Jacqueline Maillan,1923-01-11T00:00:00Z,Paray-le-Monial,1992-05-12T00:00:00Z,Paris,
+Arletty,1898-05-15T00:00:00Z,Courbevoie,1992-07-23T00:00:00Z,Paris,
+René Pleven,1901-04-15T00:00:00Z,Rennes,1993-01-13T00:00:00Z,Paris,"député européen, député, président du Conseil, conseiller général, conseiller régional, garde des Sceaux, ministre de la Justice, ministre de l'Économie, des Finances et de l'Industrie, ministre des Affaires étrangères"
+Pierre Desgraupes,1918-12-18T00:00:00Z,Angoulême,1993-08-17T00:00:00Z,Paris,
+Luc Peire,1916-07-07T00:00:00Z,Bruges,1994-04-07T00:00:00Z,Paris,
+Pierre Sabbagh,1918-07-18T00:00:00Z,Lannion,1994-09-30T00:00:00Z,Paris,
+Léon Zitrone,1914-11-25T00:00:00Z,Saint-Pétersbourg,1995-11-25T00:00:00Z,Levallois-Perret,
+François Mitterrand,1916-10-26T00:00:00Z,Jarnac,1996-01-08T00:00:00Z,7e arrondissement de Paris,"ministre, président de la République française, coprince d'Andorre, premier secrétaire du Parti socialiste français, président de conseil général, député, conseiller général, sénateur, garde des Sceaux, ministre de la Justice, ministre de la Justice, sénateur de la Communauté, ministre de l'Intérieur, maire de Château-Chinon (Ville)"
+Denise Grey,1896-09-17T00:00:00Z,Châtillon,1996-01-13T00:00:00Z,Paris,
+Marguerite Duras,1914-04-04T00:00:00Z,Q2681546,1996-03-03T00:00:00Z,Paris,
+Marcello Mastroianni,1924-09-28T00:00:00Z,Fontana Liri,1996-12-19T00:00:00Z,Paris,
+Robert Chapatte,1921-10-14T00:00:00Z,Neuilly-sur-Seine,1997-01-19T00:00:00Z,Paris,
+Paul Préboist,1927-02-21T00:00:00Z,Marseille,1997-03-04T00:00:00Z,Paris,
+Lady Diana Beauclerk,1734-03-24T00:00:00Z,Grande-Bretagne,1808-08-01T00:00:00Z,,Lady of the Bedchamber
+Diana de Vere,1679-01-01T00:00:00Z,,1742-01-15T00:00:00Z,château de Windsor,Lady of the Bedchamber
+Georges Marchais,1920-06-07T00:00:00Z,La Hoguette,1997-11-16T00:00:00Z,Paris,"député européen, député"
+Haroun Tazieff,1914-05-11T00:00:00Z,Varsovie,1998-02-02T00:00:00Z,Paris,secrétaire d'État
+Stéphane Sirkis,1959-06-22T00:00:00Z,Antony,1999-02-27T00:00:00Z,Paris,
+Élie Kakou,1960-01-12T00:00:00Z,Nabeul,1999-06-10T00:00:00Z,Paris,
+Alain Gillot,1927-03-21T00:00:00Z,Fougères,,,député européen
+Petre P. Carp,1837-06-29T00:00:00Z,Iași,1919-06-19T00:00:00Z,Țibănești,"Premier ministre de Roumanie, député roumain, sénateur roumain, ministre des Affaires étrangères, Q64691471"
+Claude Sautet,1924-02-23T00:00:00Z,Montrouge,2000-07-22T00:00:00Z,Paris,
+Louis Leprince-Ringuet,1901-03-27T00:00:00Z,Alès,2000-12-23T00:00:00Z,Paris,"président, fauteuil 35 de l'Académie française"
+Nicolas-Jean-Baptiste Raguenet,1715-01-01T00:00:00Z,Paris,1793-04-17T00:00:00Z,Gentilly,
+Philippe Léotard,1940-08-28T00:00:00Z,Nice,2001-08-25T00:00:00Z,Paris,
+Gilbert Bécaud,1927-10-24T00:00:00Z,Toulon,2001-12-18T00:00:00Z,Paris,
+Yves Robert,,,,,directeur
+Daniel Gélin,1921-05-19T00:00:00Z,Angers,2002-11-29T00:00:00Z,Paris,
+Sophie Daumier,1934-11-24T00:00:00Z,Boulogne-sur-Mer,2003-12-31T00:00:00Z,Paris,
+Ticky Holgado,1944-06-24T00:00:00Z,Toulouse,2004-01-22T00:00:00Z,Paris,
+Claude Nougaro,1929-09-09T00:00:00Z,Toulouse,2004-03-04T00:00:00Z,Paris,
+Karen Lancaume,1973-01-19T00:00:00Z,Lyon,2005-01-28T00:00:00Z,Paris,
+Simone Simons,1985-01-17T00:00:00Z,Hoensbroek,,,
+Suzanne Flon,1918-01-28T00:00:00Z,Le Kremlin-Bicêtre,2005-06-15T00:00:00Z,Paris,
+Philippe Noiret,1930-10-01T00:00:00Z,Lille,2006-11-23T00:00:00Z,Paris,
+Abbé Pierre,1912-08-05T00:00:00Z,Lyon,2007-01-22T00:00:00Z,Paris,député
+Raymond Marcillac,1917-04-11T00:00:00Z,Levallois-Perret,2007-04-13T00:00:00Z,Paris,
+Raymond Barre,1924-04-12T00:00:00Z,Saint-Denis,2007-08-25T00:00:00Z,Paris,"Premier ministre français, commissaire européen aux affaires économiques et monétaires, député, ministre de l'Économie, des Finances et de l'Industrie, maire de Lyon"
+Henri Salvador,1917-07-18T00:00:00Z,Cayenne,2008-02-13T00:00:00Z,1er arrondissement de Paris,
+Yves Saint Laurent,1936-08-01T00:00:00Z,Oran,2008-06-01T00:00:00Z,Paris,
+Filip Nikolic,1974-09-01T00:00:00Z,Saint-Ouen-sur-Seine,2009-09-16T00:00:00Z,Paris,
+Kalthoum Sarraï,1962-09-25T00:00:00Z,Tunis,2010-01-19T00:00:00Z,Paris,
+Bernard Giraudeau,1947-06-16T00:00:00Z,La Rochelle,2010-07-17T00:00:00Z,Paris,
+Bruno Cremer,1929-10-06T00:00:00Z,Saint-Mandé,2010-08-07T00:00:00Z,Paris,
+Pierre Paul Rubens,1577-07-08T00:00:00Z,Siegen,1640-05-30T00:00:00Z,Anvers,peintre de cour
+Pierre Dumayet,1923-02-24T00:00:00Z,Houdan,2011-11-17T00:00:00Z,Paris,président
+Éric Charden,1942-10-15T00:00:00Z,Hải Phòng,2012-04-29T00:00:00Z,10e arrondissement de Paris,
+Thierry Roland,1937-08-04T00:00:00Z,Boulogne-Billancourt,2012-06-16T00:00:00Z,Paris,
+Christian Marin,1929-02-08T00:00:00Z,Lyon,2012-09-05T00:00:00Z,Paris,
+Jacques-Antoine Moerenhout,1796-03-10T00:00:00Z,Ekeren,1879-07-11T00:00:00Z,Los Angeles,Consul général de France à San Francisco
+Pierre Mondy,1925-02-10T00:00:00Z,Neuilly-sur-Seine,2012-09-15T00:00:00Z,Paris,
+Frank Alamo,1941-10-12T00:00:00Z,Paris,2012-10-11T00:00:00Z,Paris,
+Georges Lautner,1926-01-24T00:00:00Z,Nice,2013-11-22T00:00:00Z,Paris,
+Édouard Molinaro,1928-05-13T00:00:00Z,Bordeaux,2013-12-07T00:00:00Z,Paris,
+Bernard Dupuy,1925-08-21T00:00:00Z,Paris,2014-10-03T00:00:00Z,Paris,
+Mansour Hobeika,1941-12-20T00:00:00Z,Baalbek,2014-10-28T00:00:00Z,Paris,"évêque catholique, évêque diocésain"
+Jacques Chancel,1928-07-02T00:00:00Z,Ayzac-Ost,2014-12-23T00:00:00Z,16e arrondissement de Paris,
+Roger Hanin,1925-10-20T00:00:00Z,Alger,2015-02-11T00:00:00Z,15e arrondissement de Paris,
+Danièle Delorme,1926-10-09T00:00:00Z,Levallois-Perret,2015-10-17T00:00:00Z,Paris,
+Michel Galabru,1922-10-27T00:00:00Z,Safi,2016-01-04T00:00:00Z,Paris,
+Alain Decaux,1925-07-23T00:00:00Z,Lille,2016-03-27T00:00:00Z,hôpital européen Georges-Pompidou,"président, ministre délégué, fauteuil 9 de l'Académie française"
+Michel Rocard,1930-08-23T00:00:00Z,Courbevoie,2016-07-02T00:00:00Z,hôpital de la Salpêtrière,"député européen, Premier ministre français, député, sénateur, ministre de l'Agriculture, ambassadeur français, maire de Conflans-Sainte-Honorine"
+David Hamilton,1950-10-24T00:00:00Z,Dalkeith,,,"membre du 55e Parlement du Royaume-Uni, membre du 54e Parlement du Royaume-Uni, membre du 53e Parlement du Royaume-Uni"
+Simone Veil,1927-07-13T00:00:00Z,Nice,2017-06-30T00:00:00Z,7e arrondissement de Paris,"député européen, Président du Parlement européen, ministre de la Santé, secrétaire général, membre du Conseil constitutionnel, fauteuil 13 de l'Académie française"
+Mireille Darc,1938-05-15T00:00:00Z,Toulon,2017-08-27T00:00:00Z,Paris,
+Philippe Gildas,1935-11-12T00:00:00Z,Auray,2018-10-28T00:00:00Z,Paris,rédacteur en chef
+Marie Curie,1867-11-07T00:00:00Z,Varsovie,1934-07-04T00:00:00Z,Sancellemoz,
+Louis de Funès,1914-07-31T00:00:00Z,Courbevoie,1983-01-27T00:00:00Z,Nantes,
+Olivia de Havilland,1916-07-01T00:00:00Z,Tokyo,,,président du jury du festival de Cannes
+Yves Montand,1921-10-13T00:00:00Z,Monsummano Terme,1991-11-09T00:00:00Z,Senlis,président du jury du festival de Cannes
+Georges Brassens,1921-10-22T00:00:00Z,Sète,1981-10-29T00:00:00Z,Saint-Gély-du-Fesc,
+Henri Génès,1919-07-02T00:00:00Z,Tarbes,2005-08-18T00:00:00Z,Paris,
+David Feuerwerker,1912-10-02T00:00:00Z,Genève,1980-06-20T00:00:00Z,Montréal,grand-rabbin
