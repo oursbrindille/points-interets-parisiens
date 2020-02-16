@@ -1,4 +1,4 @@
 kings/node_modules
-apicache-py3
-.ipynb_checkpoints
-notebooks/.ipynb_checkpoints
+apicache-py3/
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
