@@ -3,9 +3,9 @@ import pandas as pd
 from flask_cors import CORS
 
 
-df_kings = pd.read_csv("../rois-france-avec-dates.csv")
-df_monuments = pd.read_csv("../monuments-paris-avec-dates.csv")
-df_evts = pd.read_csv("../evenements-paris-final.csv")
+df_kings = pd.read_csv("../csv/rois-france-avec-dates.csv")
+df_monuments = pd.read_csv("../csv/monuments-paris-avec-dates.csv")
+df_evts = pd.read_csv("../csv/evenements-paris-final.csv")
 
 app = Flask(__name__)
 CORS(app)
