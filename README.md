@@ -1,4 +1,4 @@
-# README
+# Résumé
 
 Plusieurs éléments :
 - jupyter notebook dans le dossier notebooks ==> Sert à récupérer les données et à les modifier
