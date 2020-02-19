@@ -32,7 +32,7 @@ const handle = (props) => {
 
 const wrapperStyle = { marginRight: 150, marginLeft: 150, marginTop: 50, marginBottom: 50 };
 
-class KingPage extends Component { 
+class ParisPage extends Component { 
     
     constructor(props){
         super(props);
@@ -51,7 +51,8 @@ class KingPage extends Component {
           "motherLabel":"",
           "mannersOfDeath":"",
           "monuments":[],
-          "evts":[]
+          "evts":[],
+          "kings":[]
         };
         this.handleGetKing = this.handleGetKing.bind(this);
         this.handleGetMonument = this.handleGetMonument.bind(this);
@@ -69,18 +70,9 @@ class KingPage extends Component {
           else {
             var obj = JSON.parse(res.text);
             console.log(obj)
-            self.setState({king: obj[0].nom});
-            self.setState({startYear: obj[0].startYear});
-            self.setState({endYear: obj[0].endYear});
-            self.setState({birthYear: obj[0].birthYear});
-            self.setState({deathYear: obj[0].deathYear});
-            self.setState({spouses: obj[0].spouses});
-            self.setState({placeOfDeathLabel: obj[0].placeOfDeathLabel});
-            self.setState({placeOfBurialLabel: obj[0].placeOfBurialLabel});
-            self.setState({fatherLabel: obj[0].fatherLabel});
-            self.setState({motherLabel: obj[0].motherLabel});
-            if(obj[0].mannersOfDeath != null){
-              self.setState({mannersOfDeath: "de "+obj[0].mannersOfDeath});
+            if(obj.length > 0){
+              console.log("not empty");
+              self.setState({kings: obj});
             }
           }
         });
@@ -137,14 +129,14 @@ handleGetEvt(year){
             </div>
             <div style={{float: "left", width:"100%", height:"100%"}}>
               <div style={{textAlign: "center", float:"left", width:"50%"}}>
-                <div><h1>Chef d'état</h1></div>
-                <div><h1>{this.state.king}({this.state.birthYear} - {this.state.deathYear})</h1></div>
-                <div>Roi de {this.state.startYear} à {this.state.endYear}</div>
-                <div>Epouse(s) : {this.state.spouses}</div>
-                <div>Père : {this.state.fatherLabel} - Mère : {this.state.motherLabel}</div>
-                <div>Mort à {this.state.placeOfDeathLabel} {this.state.mannersOfDeath}</div>
-                <div>Repose à : {this.state.placeOfBurialLabel}</div>
-                <br /><br />
+                <div><h1>Chef d'Etat</h1></div>
+                <div>{this.state.kings.map(king => (<div><div><h1>{king.nom} ({king.birthYear} - {king.deathYear})</h1></div>
+                                            <div>Roi de {king.startYear} à {king.endYear}</div>
+                                            <div>Epouse(s) : {king.spouses}</div>
+                                            <div>Père : {king.fatherLabel} - Mère : {king.motherLabel}</div>
+                                            <div>Mort à {king.placeOfDeathLabel} {king.mannersOfDeath}</div>
+                                            <div>Repose à : {king.placeOfBurialLabel}</div>
+                                            <br /><br /></div>))}</div>
               </div>
               <div style={{textAlign: "center", float:"left", width:"50%"}}>
                 <div><h1>Evenement en cours</h1></div>
@@ -160,4 +152,4 @@ handleGetEvt(year){
 }   
   
 // Exporting the component 
-export default KingPage; 
+export default ParisPage; 

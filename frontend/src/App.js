@@ -1,11 +1,11 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import KingPage from './kingPage.jsx'
+import ParisPage from './parisPage.jsx'
 
 function App() {
   return (
-      <KingPage />
+      <ParisPage />
   );
 }
 

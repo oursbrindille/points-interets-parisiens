@@ -35,7 +35,7 @@ def evenement_date(year):
 
 def which_king(year):
     df_king = df_kings[df_kings["startYear"] <= year]
-    df_king = df_king[df_king["endYear"] > year]
+    df_king = df_king[df_king["endYear"] >= year]
     return df_king
     
 def which_monument(year):
