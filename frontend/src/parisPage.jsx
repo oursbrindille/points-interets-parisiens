@@ -127,6 +127,10 @@ handleGetEvt(year){
             <Slider min={987} max={1773} defaultValue={987} handle={handle} onChange={this.handleChange}/>
             <div style={{textAlign:"center"}}><h1>Année : {this.state.sliderValue}</h1></div>
             </div>
+            <div style={{textAlign: "center", float:"left", width:"100%"}}>
+                <div><h1>Evenement en cours</h1></div>
+                <div>{this.state.evts.map(evt => (<div>- {evt.evenement}</div>))}<br/><br/></div>
+            </div>   
             <div style={{float: "left", width:"100%", height:"100%"}}>
               <div style={{textAlign: "center", float:"left", width:"50%"}}>
                 <div><h1>Chef d'Etat</h1></div>
@@ -139,10 +143,13 @@ handleGetEvt(year){
                                             <br /><br /></div>))}</div>
               </div>
               <div style={{textAlign: "center", float:"left", width:"50%"}}>
+                <div>{this.state.kings.map(king => (<div><img src={king.urlImage} style={{height: '300px'}}/></div>))}</div>
+              </div>
+            </div>     
+            <div style={{textAlign: "center", float:"left", width:"50%"}}>
                 <div><h1>Evenement en cours</h1></div>
                 <div>{this.state.evts.map(evt => (<div>- {evt.evenement}</div>))}</div>
-              </div>
-            </div>         
+              </div>    
             <div style={{textAlign: "center", float:"left", width:"100%"}}>
                 <div><h1>Monuments Parisiens</h1></div>
                 <div>{this.state.monuments.map(monument => (<div>{monument.nom}</div>))}</div>
