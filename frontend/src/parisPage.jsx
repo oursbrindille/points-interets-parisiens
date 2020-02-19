@@ -145,11 +145,7 @@ handleGetEvt(year){
               <div style={{textAlign: "center", float:"left", width:"50%"}}>
                 <div>{this.state.kings.map(king => (<div><img src={king.urlImage} style={{height: '300px'}}/></div>))}</div>
               </div>
-            </div>     
-            <div style={{textAlign: "center", float:"left", width:"50%"}}>
-                <div><h1>Evenement en cours</h1></div>
-                <div>{this.state.evts.map(evt => (<div>- {evt.evenement}</div>))}</div>
-              </div>    
+            </div>       
             <div style={{textAlign: "center", float:"left", width:"100%"}}>
                 <div><h1>Monuments Parisiens</h1></div>
                 <div>{this.state.monuments.map(monument => (<div>{monument.nom}</div>))}</div>
