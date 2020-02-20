@@ -1,6 +1,8 @@
 from flask import Flask, request, render_template
 import pandas as pd
 from flask_cors import CORS
+from sqlalchemy import create_engine
+
 
 
 df_kings = pd.read_csv("../csv/rois-france-avec-dates.csv")
@@ -10,6 +12,20 @@ df_persos = pd.read_csv("../csv/parismoyenage/extract-persos-paris-clean.csv")
 
 app = Flask(__name__)
 CORS(app)
+
+
+config = pd.read_csv('config.csv', header=None)
+id = config[0][0]
+pwd = config[0][1]
+host = config[0][2]
+db = config[0][3]
+engine = create_engine('postgresql://%s:%s@%s/%s'%(id, pwd, host, db), client_encoding='utf8')
+
+
+@app.route('/api/evts')
+def evts():
+	evts = pd.read_sql("""SELECT * FROM evenement """, engine)
+	return evts.to_json(orient='records')
 
 @app.route('/')
 def index():
