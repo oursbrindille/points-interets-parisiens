@@ -6,6 +6,7 @@ from flask_cors import CORS
 df_kings = pd.read_csv("../csv/rois-france-avec-dates.csv")
 df_monuments = pd.read_csv("../csv/monuments-paris-avec-dates.csv")
 df_evts = pd.read_csv("../csv/concat/evenements-paris.csv")
+df_persos = pd.read_csv("../csv/parismoyenage/extract-persos-paris-clean.csv")
 
 app = Flask(__name__)
 CORS(app)
@@ -33,6 +34,12 @@ def evenement_date(year):
     return df_evt.to_json(orient='records')
 
 
+@app.route('/personnage/year/<year>')
+def perso_date(year):
+    df_perso = which_perso(int(year))
+    return df_perso.to_json(orient='records')
+
+
 def which_king(year):
     df_king = df_kings[df_kings["startYear"] <= year]
     df_king = df_king[df_king["endYear"] >= year]
@@ -47,6 +54,12 @@ def which_evenement(year):
     df_evt = df_evts[df_evts["startDate"] <= year]
     df_evt = df_evt[df_evts["endDate"] >= year]
     return df_evt
+
+    
+def which_perso(year):
+    df_perso = df_persos[df_persos["birthYear"] <= year]
+    df_perso = df_perso[df_perso["deathYear"] >= year]
+    return df_perso
 
 if __name__ == "__main__":
     app.run(debug=True)

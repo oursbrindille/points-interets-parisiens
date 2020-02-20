@@ -52,14 +52,17 @@ class ParisPage extends Component {
           "mannersOfDeath":"",
           "monuments":[],
           "evts":[],
-          "kings":[]
+          "kings":[],
+          "persos":[]
         };
         this.handleGetKing = this.handleGetKing.bind(this);
         this.handleGetMonument = this.handleGetMonument.bind(this);
         this.handleGetEvt = this.handleGetEvt.bind(this);
+        this.handleGetPerso = this.handleGetPerso.bind(this);
         this.handleGetKing(987)
         this.handleGetMonument(987)
         this.handleGetEvt(987)
+        this.handleGetPerso(987)
     }
     
     handleGetKing(year){
@@ -112,12 +115,31 @@ handleGetEvt(year){
       }
     });
 }
+
+handleGetPerso(year){
+  console.log("http://localhost:5000/personnage/year/"+year)
+  let self = this;
+  gethttp().get("http://localhost:5000/personnage/year/"+year).end(function(err, res){
+      if(err) alert("Erreur lors de la récupération des données sur le serveur : " + err.message);
+      else {
+        var obj = JSON.parse(res.text);
+        console.log(obj)
+        if(obj.length > 0){
+          console.log("not empty");
+          self.setState({persos: obj});
+        }else{
+          self.setState({persos: []});
+        }
+      }
+    });
+}
     
     handleChange = sliderValue => {
         this.setState({ sliderValue });
         this.handleGetKing(sliderValue);
         this.handleGetMonument(sliderValue);
         this.handleGetEvt(sliderValue);
+        this.handleGetPerso(sliderValue);
       };
     render() 
     { 
@@ -145,12 +167,16 @@ handleGetEvt(year){
               <div style={{textAlign: "center", float:"left", width:"50%"}}>
                 <div>{this.state.kings.map(king => (<div><img src={king.urlImage} style={{height: '300px'}}/></div>))}</div>
               </div>
-            </div>       
+            </div>   
+            <div style={{textAlign: "center", float:"left", width:"100%"}}>
+                <div><h1>Personnages vivants :</h1></div>
+                <div>{this.state.persos.map(perso => (<div><h3>{perso.nom} ({perso.birthYear} - {perso.deathYear})</h3></div>))}</div> 
+            </div>    
             <div style={{textAlign: "center", float:"left", width:"100%"}}>
                 <div><h1>Monuments Parisiens</h1></div>
                 <div>{this.state.monuments.map(monument => (<div>{monument.nom}</div>))}</div>
-            </div>
-        </div>;
+            </div>  
+        </div>
       } 
 }   
   
