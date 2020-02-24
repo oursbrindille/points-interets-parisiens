@@ -37,7 +37,7 @@ class ParisPage extends Component {
     constructor(props){
         super(props);
         this.state = {
-          "sliderValue" : 987,
+          "sliderValue" : 300,
           "res" : "a",
           "king": "",
           "startYear": 0,
@@ -59,16 +59,16 @@ class ParisPage extends Component {
         this.handleGetMonument = this.handleGetMonument.bind(this);
         this.handleGetEvt = this.handleGetEvt.bind(this);
         this.handleGetPerso = this.handleGetPerso.bind(this);
-        this.handleGetKing(987)
-        this.handleGetMonument(987)
-        this.handleGetEvt(987)
-        this.handleGetPerso(987)
+        this.handleGetKing(300)
+        this.handleGetMonument(300)
+        this.handleGetEvt(300)
+        this.handleGetPerso(300)
     }
     
     handleGetKing(year){
-      console.log("http://localhost:5000/king/year/"+year)
+      console.log("http://localhost:5000/test/king/year/"+year)
       let self = this;
-      gethttp().get("http://localhost:5000/king/year/"+year).end(function(err, res){
+      gethttp().get("http://localhost:5000/test/king/year/"+year).end(function(err, res){
           if(err) alert("Erreur lors de la récupération des données sur le serveur : " + err.message);
           else {
             var obj = JSON.parse(res.text);
@@ -82,9 +82,9 @@ class ParisPage extends Component {
   }
 
   handleGetMonument(year){
-    console.log("http://localhost:5000/monument/year/"+year)
+    console.log("http://localhost:5000/test/monument/year/"+year)
     let self = this;
-    gethttp().get("http://localhost:5000/monument/year/"+year).end(function(err, res){
+    gethttp().get("http://localhost:5000/test/monument/year/"+year).end(function(err, res){
         if(err) alert("Erreur lors de la récupération des données sur le serveur : " + err.message);
         else {
           var obj = JSON.parse(res.text);
@@ -99,9 +99,9 @@ class ParisPage extends Component {
 
 
 handleGetEvt(year){
-  console.log("http://localhost:5000/evenement/year/"+year)
+  console.log("http://localhost:5000/test/evenement/year/"+year)
   let self = this;
-  gethttp().get("http://localhost:5000/evenement/year/"+year).end(function(err, res){
+  gethttp().get("http://localhost:5000/test/evenement/year/"+year).end(function(err, res){
       if(err) alert("Erreur lors de la récupération des données sur le serveur : " + err.message);
       else {
         var obj = JSON.parse(res.text);
@@ -117,9 +117,9 @@ handleGetEvt(year){
 }
 
 handleGetPerso(year){
-  console.log("http://localhost:5000/personnage/year/"+year)
+  console.log("http://localhost:5000/test/personnage/year/"+year)
   let self = this;
-  gethttp().get("http://localhost:5000/personnage/year/"+year).end(function(err, res){
+  gethttp().get("http://localhost:5000/test/personnage/year/"+year).end(function(err, res){
       if(err) alert("Erreur lors de la récupération des données sur le serveur : " + err.message);
       else {
         var obj = JSON.parse(res.text);
@@ -146,7 +146,7 @@ handleGetPerso(year){
         return <div style={{color: 'white'}}>
             <div style={wrapperStyle}>
             <p>Choisissez votre date : </p>
-            <Slider min={987} max={1773} defaultValue={987} handle={handle} onChange={this.handleChange}/>
+            <Slider min={300} max={1773} defaultValue={300} handle={handle} onChange={this.handleChange}/>
             <div style={{textAlign:"center"}}><h1>Année : {this.state.sliderValue}</h1></div>
             </div>
             <div style={{textAlign: "center", float:"left", width:"100%"}}>
