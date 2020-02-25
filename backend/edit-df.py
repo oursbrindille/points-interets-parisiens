@@ -2,26 +2,37 @@ from flask import Flask, request, render_template
 import pandas as pd
 from flask_cors import CORS
 from sqlalchemy import create_engine
+import os
 
-df = pd.read_csv("../csv/rois-france-avec-dates.csv")
 
 app = Flask(__name__)
 
 CORS(app)
 
-@app.route('/')
-def index():
+@app.route('/list')
+def list():
+    path = "/home/geof/projects/monuments-paris/csv"
+    string = "<ul>"
+
+    for filename in os.listdir(path):
+        string = string+"<li>"+filename+"</li>"
+    string = string+"</ul>"
+    return string+"<br /><form action='/edit'><input type='text' name='csvfile'><input type='submit' value='Submit'></form>"
+
+
+@app.route('/edit')
+def edit():
+    csvfile = request.values['csvfile']
+    df = pd.read_csv("../csv/"+csvfile)
     html = df.style.format({c: html_input(c) for c in df.columns}).render()
-    return "<form action='/toto'>"+html+"<input type='submit' value='Submit'></form>"
+    return "<form action='/results'>"+html+"<input type='submit' value='Submit'></form>"
+
 
 @app.route('/results')
-def toto():
+def results():
     dfr = pd.DataFrame(request.values.lists())
-    #dfr = dfr.transpose()
     new_df = dfr
-
     dicto = {}
-
     for index, row in dfr.iterrows():
         dicto.update( {row[0] : row[1]})
     
