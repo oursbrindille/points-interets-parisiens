@@ -2,10 +2,12 @@ from flask import Flask, request, render_template,redirect
 import pandas as pd
 from flask_cors import CORS
 from sqlalchemy import create_engine
+import logging
+from logging.handlers import RotatingFileHandler
 
 df_kings = pd.read_csv("../csv/rois-france-avec-dates.csv")
 df_monuments = pd.read_csv("../csv/monuments-paris-avec-dates.csv")
-df_evts = pd.read_csv("../csv/concat/evenements-paris.csv")
+df_evts = pd.read_csv("../csv/concat/evenement.csv")
 df_persos = pd.read_csv("../csv/parismoyenage/extract-persos-paris-clean.csv")
 
 app = Flask(__name__)
@@ -178,8 +180,88 @@ def update_evenement():
 
 
 
-def html_input(c):
-    return '<input name="{}" value="{{}}" />'.format(c)
+@app.route('/list/roi/', defaults={'startperiod': None, 'endperiod': None, 'updated':0})
+@app.route('/list/roi/updated/<updated>', defaults={'startperiod': None, 'endperiod': None})
+@app.route('/list/roi/startperiod/<startperiod>/endperiod/<endperiod>', defaults={'updated':0})
+@app.route('/list/roi/startperiod/<startperiod>/endperiod/<endperiod>/updated/<updated>')
+def update_rois(startperiod, endperiod, updated):
+    if((startperiod == None) & (endperiod == None)):
+        sql_query = """SELECT * FROM roi"""
+    else:
+        sql_query = """SELECT * FROM roi WHERE startTime >= """+startperiod+""" and startTime <= """+endperiod
+    rois = pd.read_sql(sql_query, engine)
+    if(updated == 0):
+        html = ""
+    else:
+        html = "<p>Changement pris en compte !</p><br />"
+
+
+    for index, row in rois.iterrows():
+        form = "<form action='/update/roi'>"
+        if(startperiod != None):
+            form = form+"<input type='hidden' name='startperiod' value='"+startperiod+"'/>&nbsp;&nbsp;"
+        if(endperiod != None):
+            form = form+"<input type='hidden' name='endperiod' value='"+endperiod+"'/>&nbsp;&nbsp;"
+        form = form+"<input type='hidden' name='id_roi' value='"+str(row['id_roi'])+"'/>&nbsp;&nbsp;"
+        form = form+"<input type='hidden' name='wikiID' value='"+str(row['wikiid'])+"'/>&nbsp;&nbsp;"
+        form = form+"<input size='20' name='nom' value='"+str(row['nom'])+"'/>&nbsp;&nbsp;"
+        form = form+"<input size='10' name='dateOfBirth' value='"+str(row['dateofbirth'])+"'/>&nbsp;&nbsp;"
+        form = form+"<input size='10' name='placeOfBirthLabel' value='"+str(row['placeofbirthlabel'])+"'/>&nbsp;&nbsp;"
+        form = form+"<input size='10' name='dateOfDeath' value='"+str(row['dateofdeath'])+"'/>&nbsp;&nbsp;"
+        form = form+"<input size='10' name='placeOfDeathLabel' value='"+str(row['placeofdeathlabel'])+"'/>&nbsp;&nbsp;"
+        form = form+"<input size='10' name='mannersOfDeath' value='"+str(row['mannersofdeath'])+"'/>&nbsp;&nbsp;"
+        form = form+"<input size='10' name='placeOfBurialLabel' value='"+str(row['placeofburiallabel'])+"'/>&nbsp;&nbsp;"
+        form = form+"<input size='10' name='fatherLabel' value='"+str(row['fatherlabel'])+"'/>&nbsp;&nbsp;"
+        form = form+"<input size='10' name='motherLabel' value='"+str(row['motherlabel'])+"'/>&nbsp;&nbsp;"
+        form = form+"<input size='10' name='spouses' value='"+str(row['spouses'])+"'/>&nbsp;&nbsp;"
+        form = form+"<input size='10' name='startTime' value='"+str(row['starttime'])+"'/>&nbsp;&nbsp;"
+        form = form+"<input size='10' name='endTime' value='"+str(row['endtime'])+"'/>&nbsp;&nbsp;"
+        form = form+"<input size='5' name='startYear' value='"+str(row['startyear'])+"'/>&nbsp;&nbsp;"
+        form = form+"<input size='5' name='endYear' value='"+str(row['endyear'])+"'/>&nbsp;&nbsp;"
+
+        form = form+"<input type='submit' name='button' value='Valider'></form>"
+        html = html+form
+
+    return html
+
+
+@app.route('/update/roi')
+def update_roi():
+    if(request.values.get('startperiod') != None):
+        startperiod = request.values['startperiod']
+    else:
+        startperiod = None
+    if(request.values.get('endperiod') != None):
+        endperiod = request.values['endperiod']
+    else:
+        endperiod = None
+        
+    id_roi = request.values['id_roi']
+    wikiID = request.values['wikiID']
+    nom = request.values['nom']
+    dateOfBirth = request.values['dateOfBirth']
+    placeOfBirthLabel = request.values['placeOfBirthLabel']
+    dateOfDeath = request.values['dateOfDeath']
+    placeOfDeathLabel = request.values['placeOfDeathLabel']
+    mannersOfDeath = request.values['mannersOfDeath']
+    placeOfBurialLabel = request.values['placeOfBurialLabel']
+    fatherLabel = request.values['fatherLabel']
+    motherLabel = request.values['motherLabel']
+    spouses = request.values['spouses']
+    startTime = request.values['startTime']
+    endTime = request.values['endTime']
+    startYear = request.values['startYear']
+    endYear = request.values['endYear']
+
+
+    sql_query = """UPDATE roi SET wikiID = '"""+wikiID+"""', nom = '"""+nom+"""', dateOfBirth = '"""+dateOfBirth+"""', placeOfBirthLabel = '"""+placeOfBirthLabel+"""', dateOfDeath = '"""+dateOfDeath+"""', placeOfDeathLabel = '"""+placeOfDeathLabel+"""', mannersOfDeath = '"""+mannersOfDeath+"""', placeOfBurialLabel = '"""+placeOfBurialLabel+"""', fatherLabel = '"""+fatherLabel+"""', motherLabel = '"""+motherLabel+"""', spouses = '"""+spouses+"""', startTime = '"""+startTime+"""', endTime = '"""+endTime+"""', startYear = """+startYear+""", endYear = """+endYear+"""  WHERE id_roi = """+id_roi
+
+    engine.execute(sql_query)
+    if((startperiod == None) & (endperiod == None)):
+        return redirect("/list/roi/updated/1", code=302)
+    else:
+        return redirect("/list/roi/startperiod/"+startperiod+"/endperiod/"+endperiod+"/updated/1", code=302)
+
 
 
 if __name__ == "__main__":
