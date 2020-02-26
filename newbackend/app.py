@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify,redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 import yaml
@@ -31,8 +31,37 @@ class Evenement(db.Model):
 def index():
     return render_template('home.html')
 
-@app.route('/data', methods=['POST', 'GET'])
-def data():
+
+@app.route('/evenement/edit', methods=['GET'])
+def editevenement():
+    evenements = getevenementjson()
+    html = ""
+    for row in evenements:
+        form = "<form action='/evenement/form/update'>"
+        form = form+"<input type='hidden' name='id_event' value=\""+str(row['id_event'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<textarea name='evenement' rows='3' cols='50'>"+str(row['evenement'])+"</textarea>&nbsp;&nbsp;"
+        form = form+"<input size='5' name='startyear' value=\""+str(row['startyear'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='5' name='endyear' value=\""+str(row['endyear'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<textarea name='commentaire' rows='3' cols='50'>"+str(row['commentaire'])+"</textarea>&nbsp;&nbsp;"
+        form = form+"<input type='submit' name='button' value='Supprimer'>&nbsp;&nbsp;"
+        form = form+"<input type='submit' name='button' value='Valider'></form>"
+        html = html+form    
+    return html
+
+@app.route('/evenement/form/update', methods=['POST', 'GET'])
+def updateevenement():
+    body = request.values
+    editData = Evenement.query.filter_by(id_event=body['id_event']).first()
+    editData.evenement = body['evenement']
+    editData.startyear = body['startyear']
+    editData.endyear = body['endyear']
+    editData.commentaire = body['commentaire']
+    db.session.commit()
+    return redirect("/evenement/edit", code=302)
+
+
+@app.route('/evenement', methods=['POST', 'GET'])
+def evenement():
     
     # POST a data to database
     if request.method == 'POST':
@@ -56,24 +85,28 @@ def data():
     
     # GET all data from database & sort by id
     if request.method == 'GET':
-        # data = User.query.all()
-        data = Evenement.query.order_by(Evenement.id_event).all()
-        print(data)
-        dataJson = []
-        for i in range(len(data)):
-            # print(str(data[i]).split('/'))
-            dataDict = {
-                'id_event': str(data[i]).split('/')[0],
-                'evenement': str(data[i]).split('/')[1],
-                'startyear': str(data[i]).split('/')[2],
-                'endyear': str(data[i]).split('/')[3],
-                'commentaire': str(data[i]).split('/')[4]
-            }
-            dataJson.append(dataDict)
-        return jsonify(dataJson)
+        evenements = getevenementjson()
+        return jsonify(evenements)
 
-@app.route('/data/<string:id>', methods=['GET', 'DELETE', 'PUT'])
-def onedata(id):
+def getevenementjson():
+    # data = User.query.all()
+    data = Evenement.query.order_by(Evenement.id_event).all()
+    print(data)
+    dataJson = []
+    for i in range(len(data)):
+        # print(str(data[i]).split('/'))
+        dataDict = {
+            'id_event': str(data[i]).split('/')[0],
+            'evenement': str(data[i]).split('/')[1],
+            'startyear': str(data[i]).split('/')[2],
+            'endyear': str(data[i]).split('/')[3],
+            'commentaire': str(data[i]).split('/')[4]
+        }
+        dataJson.append(dataDict)
+    return dataJson
+
+@app.route('/evenement/<string:id>', methods=['GET', 'DELETE', 'PUT'])
+def oneevenement(id):
 
     # GET a specific data by id
     if request.method == 'GET':
