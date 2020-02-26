@@ -100,13 +100,13 @@ def update_evts(startperiod, endperiod, updated):
     for index, row in evts.iterrows():
         form = "<form action='/update/evenement'>"
         if(startperiod != None):
-            form = form+"<input type='hidden' name='startperiod' value='"+startperiod+"'/>&nbsp;&nbsp;"
+            form = form+"<input type='hidden' name='startperiod' value=\""+startperiod+"\"/>&nbsp;&nbsp;"
         if(endperiod != None):
-            form = form+"<input type='hidden' name='endperiod' value='"+endperiod+"'/>&nbsp;&nbsp;"
-        form = form+"<input type='hidden' name='id_event' value='"+str(row['id_event'])+"'/>&nbsp;&nbsp;"
+            form = form+"<input type='hidden' name='endperiod' value=\""+endperiod+"\"/>&nbsp;&nbsp;"
+        form = form+"<input type='hidden' name='id_event' value=\""+str(row['id_event'])+"\"/>&nbsp;&nbsp;"
         form = form+"<textarea name='evenement' rows='3' cols='50'>"+str(row['evenement'])+"</textarea>&nbsp;&nbsp;"
-        form = form+"<input size='5' name='startyear' value='"+str(row['startyear'])+"'/>&nbsp;&nbsp;"
-        form = form+"<input size='5' name='endyear' value='"+str(row['endyear'])+"'/>&nbsp;&nbsp;"
+        form = form+"<input size='5' name='startyear' value=\""+str(row['startyear'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='5' name='endyear' value=\""+str(row['endyear'])+"\"/>&nbsp;&nbsp;"
         form = form+"<textarea name='commentaire' rows='3' cols='50'>"+str(row['commentaire'])+"</textarea>&nbsp;&nbsp;"
         form = form+"<input type='submit' name='button' value='Supprimer'>&nbsp;&nbsp;"
         form = form+"<input type='submit' name='button' value='Valider'></form>"
@@ -115,12 +115,12 @@ def update_evts(startperiod, endperiod, updated):
     html = html+"<p>Nouvel Evenement :</p>"
     form = "<form action='/create/evenement'>"
     if(startperiod != None):
-            form = form+"<input type='hidden' name='startperiod' value='"+startperiod+"'/>&nbsp;&nbsp;"
+            form = form+"<input type='hidden' name='startperiod' value=\""+startperiod+"\"/>&nbsp;&nbsp;"
     if(endperiod != None):
-        form = form+"<input type='hidden' name='endperiod' value='"+endperiod+"'/>&nbsp;&nbsp;"
+        form = form+"<input type='hidden' name='endperiod' value=\""+endperiod+"\"/>&nbsp;&nbsp;"
     form = form+"<textarea name='evenement' rows='3' cols='50'></textarea>&nbsp;&nbsp;"
-    form = form+"<input size='5' name='startyear' value=''/>&nbsp;&nbsp;"
-    form = form+"<input size='5' name='endyear' value=''/>&nbsp;&nbsp;"
+    form = form+"<input size='5' name='startyear' value=\"\"/>&nbsp;&nbsp;"
+    form = form+"<input size='5' name='endyear' value=\"\"/>&nbsp;&nbsp;"
     form = form+"<textarea name='commentaire' rows='3' cols='50'></textarea>&nbsp;&nbsp;"
     form = form+"<input type='submit' value='Submit'></form>"
     html = html + form
@@ -201,23 +201,23 @@ def update_rois(startperiod, endperiod, updated):
         if(startperiod != None):
             form = form+"<input type='hidden' name='startperiod' value='"+startperiod+"'/>&nbsp;&nbsp;"
         if(endperiod != None):
-            form = form+"<input type='hidden' name='endperiod' value='"+endperiod+"'/>&nbsp;&nbsp;"
-        form = form+"<input type='hidden' name='id_roi' value='"+str(row['id_roi'])+"'/>&nbsp;&nbsp;"
-        form = form+"<input type='hidden' name='wikiID' value='"+str(row['wikiid'])+"'/>&nbsp;&nbsp;"
-        form = form+"<input size='20' name='nom' value='"+str(row['nom'])+"'/>&nbsp;&nbsp;"
-        form = form+"<input size='10' name='dateOfBirth' value='"+str(row['dateofbirth'])+"'/>&nbsp;&nbsp;"
-        form = form+"<input size='10' name='placeOfBirthLabel' value='"+str(row['placeofbirthlabel'])+"'/>&nbsp;&nbsp;"
-        form = form+"<input size='10' name='dateOfDeath' value='"+str(row['dateofdeath'])+"'/>&nbsp;&nbsp;"
-        form = form+"<input size='10' name='placeOfDeathLabel' value='"+str(row['placeofdeathlabel'])+"'/>&nbsp;&nbsp;"
-        form = form+"<input size='10' name='mannersOfDeath' value='"+str(row['mannersofdeath'])+"'/>&nbsp;&nbsp;"
-        form = form+"<input size='10' name='placeOfBurialLabel' value='"+str(row['placeofburiallabel'])+"'/>&nbsp;&nbsp;"
-        form = form+"<input size='10' name='fatherLabel' value='"+str(row['fatherlabel'])+"'/>&nbsp;&nbsp;"
-        form = form+"<input size='10' name='motherLabel' value='"+str(row['motherlabel'])+"'/>&nbsp;&nbsp;"
-        form = form+"<input size='10' name='spouses' value='"+str(row['spouses'])+"'/>&nbsp;&nbsp;"
-        form = form+"<input size='10' name='startTime' value='"+str(row['starttime'])+"'/>&nbsp;&nbsp;"
-        form = form+"<input size='10' name='endTime' value='"+str(row['endtime'])+"'/>&nbsp;&nbsp;"
-        form = form+"<input size='5' name='startYear' value='"+str(row['startyear'])+"'/>&nbsp;&nbsp;"
-        form = form+"<input size='5' name='endYear' value='"+str(row['endyear'])+"'/>&nbsp;&nbsp;"
+            form = form+"<input type='hidden' name='endperiod' value=\""+endperiod+"\"/>&nbsp;&nbsp;"
+        form = form+"<input type='hidden' name='id_roi' value=\""+str(row['id_roi'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input type='hidden' name='wikiID' value=\""+str(row['wikiid'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='20' name='nom' value=\""+str(row['nom'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='10' name='dateOfBirth' value=\""+str(row['dateofbirth'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='10' name='placeOfBirthLabel' value=\""+str(row['placeofbirthlabel'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='10' name='dateOfDeath' value=\""+str(row['dateofdeath'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='10' name='placeOfDeathLabel' value=\""+str(row['placeofdeathlabel'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='10' name='mannersOfDeath' value=\""+str(row['mannersofdeath'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='10' name='placeOfBurialLabel' value=\""+str(row['placeofburiallabel'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='10' name='fatherLabel' value=\""+str(row['fatherlabel'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='10' name='motherLabel' value=\""+str(row['motherlabel'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='10' name='spouses' value=\""+str(row['spouses'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='10' name='startTime' value=\""+str(row['starttime'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='10' name='endTime' value=\""+str(row['endtime'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='5' name='startYear' value=\""+str(row['startyear'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='5' name='endYear' value=\""+str(row['endyear'])+"\"/>&nbsp;&nbsp;"
 
         form = form+"<input type='submit' name='button' value='Valider'></form>"
         html = html+form
@@ -238,7 +238,7 @@ def update_roi():
         
     id_roi = request.values['id_roi']
     wikiID = request.values['wikiID']
-    nom = request.values['nom']
+    nom = request.values['nom'].replace("'"," ")
     dateOfBirth = request.values['dateOfBirth']
     placeOfBirthLabel = request.values['placeOfBirthLabel']
     dateOfDeath = request.values['dateOfDeath']
@@ -254,7 +254,7 @@ def update_roi():
     endYear = request.values['endYear']
 
 
-    sql_query = """UPDATE roi SET wikiID = '"""+wikiID+"""', nom = '"""+nom+"""', dateOfBirth = '"""+dateOfBirth+"""', placeOfBirthLabel = '"""+placeOfBirthLabel+"""', dateOfDeath = '"""+dateOfDeath+"""', placeOfDeathLabel = '"""+placeOfDeathLabel+"""', mannersOfDeath = '"""+mannersOfDeath+"""', placeOfBurialLabel = '"""+placeOfBurialLabel+"""', fatherLabel = '"""+fatherLabel+"""', motherLabel = '"""+motherLabel+"""', spouses = '"""+spouses+"""', startTime = '"""+startTime+"""', endTime = '"""+endTime+"""', startYear = """+startYear+""", endYear = """+endYear+"""  WHERE id_roi = """+id_roi
+    sql_query = """UPDATE roi SET wikiID = '"""+wikiID+"""', nom = '"""+nom+"""', dateOfBirth = """+dateOfBirth+""", placeOfBirthLabel = '"""+placeOfBirthLabel+"""', dateOfDeath = """+dateOfDeath+""", placeOfDeathLabel = '"""+placeOfDeathLabel+"""', mannersOfDeath = '"""+mannersOfDeath+"""', placeOfBurialLabel = '"""+placeOfBurialLabel+"""', fatherLabel = '"""+fatherLabel+"""', motherLabel = '"""+motherLabel+"""', spouses = '"""+spouses+"""', startTime = """+startTime+""", endTime = """+endTime+""", startYear = """+startYear+""", endYear = """+endYear+"""  WHERE id_roi = """+id_roi
 
     engine.execute(sql_query)
     if((startperiod == None) & (endperiod == None)):

@@ -1,6 +1,6 @@
 sudo -u postgres psql -c "DROP DATABASE IF EXISTS paris;"
 echo "DROP DB OK"
-sudo -u postgres psql -c "CREATE DATABASE paris;"
+sudo -u postgres psql -c "CREATE DATABASE paris ENCODING = 'UTF-8' TEMPLATE=TEMPLATE0;"
 echo "CREATE DB OK"
 sudo -u postgres psql -d paris -f "create_table.sql"
 echo "CREATE TABLES OK"

@@ -3,3 +3,5 @@ apicache-py3/
 .ipynb_checkpoints/
 notebooks/.ipynb_checkpoints/
 backend/config.csv
+newbackend/database.yaml
+backend/database.yaml
