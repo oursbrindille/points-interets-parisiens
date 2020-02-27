@@ -101,22 +101,84 @@ def editroi():
 @app.route('/roi/form/update', methods=['POST', 'GET'])
 def updateroi():
     body = request.values
+    print("toto")
     editData = Roi.query.filter_by(id_roi=body['id_roi']).first()
-    editData.wikiid = body['wikiid']
-    editData.nom = body['nom']
-    editData.dateofbirth = body['dateofbirth']
-    editData.placeofbirthlabel = body['placeofbirthlabel']
-    editData.dateofdeath = body['dateofdeath']
-    editData.placeofdeathlabel = body['placeofdeathlabel']
-    editData.mannersofdeath = body['mannersofdeath']
-    editData.placeofburiallabel = body['placeofburiallabel']
-    editData.fatherlabel = body['fatherlabel']
-    editData.motherlabel = body['motherlabel']
-    editData.spouses = body['spouses']
-    editData.starttime = body['starttime']
-    editData.endtime = body['endtime']
-    editData.startyear = body['startyear']
-    editData.endyear = body['endyear']
+
+    if(body['wikiid'] == "None"):
+        editData.wikiid = None
+    else:
+        editData.wikiid = body['wikiid']
+    
+    if(body['nom'] == "None"):
+        editData.nom = None
+    else:
+        editData.nom = body['nom']
+    
+    if(body['dateofbirth'] == "None"):
+        editData.dateofbirth = None
+    else:
+        editData.dateofbirth = body['dateofbirth']
+    
+    if(body['placeofbirthlabel'] == "None"):
+        editData.placeofbirthlabel = None
+    else:
+        editData.placeofbirthlabel = body['placeofbirthlabel']
+    
+    if(body['dateofdeath'] == "None"):
+        editData.dateofdeath = None
+    else:
+        editData.dateofdeath = body['dateofdeath']
+    
+    if(body['placeofdeathlabel'] == "None"):
+        editData.placeofdeathlabel = None
+    else:
+        editData.placeofdeathlabel = body['placeofdeathlabel']
+    
+    if(body['mannersofdeath'] == "None"):
+        editData.mannersofdeath = None
+    else:
+        editData.mannersofdeath = body['mannersofdeath']
+    
+    if(body['placeofburiallabel'] == "None"):
+        editData.starttime = None
+    else:
+        editData.placeofburiallabel = body['placeofburiallabel']
+    
+    if(body['fatherlabel'] == "None"):
+        editData.fatherlabel = None
+    else:
+        editData.fatherlabel = body['fatherlabel']
+    
+    if(body['motherlabel'] == "None"):
+        editData.motherlabel = None
+    else:
+        editData.motherlabel = body['motherlabel']
+    
+    if(body['spouses'] == "None"):
+        editData.spouses = None
+    else:
+        editData.spouses = body['spouses']
+    
+    if(body['starttime'] == "None"):
+        editData.starttime = None
+    else:
+        editData.starttime = body['starttime']
+    
+    if(body['endtime'] == "None"):
+        editData.endtime = None
+    else:
+        editData.endtime = body['endtime']
+    
+    if(body['startyear'] == "None"):
+        editData.startyear = None
+    else:
+        editData.startyear = body['startyear']
+    
+    if(body['endyear'] == "None"):
+        editData.endyear = None
+    else:
+        editData.endyear = body['endyear']
+    
     db.session.commit()
     return redirect("/roi/edit", code=302)
 
@@ -208,6 +270,7 @@ def oneroi(id):
     # GET a specific data by id
     if request.method == 'GET':
         data = Roi.query.get(id)
+        print("dddd ==> ")
         print(data)
         dataDict = {
             'id_roi': str(data).split('/')[0],
@@ -227,6 +290,7 @@ def oneroi(id):
             'startyear': str(data).split('/')[14],
             'endyear': str(data).split('/')[15]
         }
+        
         return jsonify(dataDict)
         
     # DELETE a data
@@ -280,10 +344,26 @@ def editevenement():
 def updateevenement():
     body = request.values
     editData = Evenement.query.filter_by(id_event=body['id_event']).first()
-    editData.evenement = body['evenement']
-    editData.startyear = body['startyear']
-    editData.endyear = body['endyear']
-    editData.commentaire = body['commentaire']
+    if(body['evenement'] == "None"):
+        editData.evenement = None
+    else:
+        editData.evenement = body['evenement']
+
+    if(body['startyear'] == "None"):
+        editData.startyear = None
+    else:
+        editData.startyear = body['startyear']
+
+    if(body['endyear'] == "None"):
+        editData.endyear = None
+    else:
+        editData.endyear = body['endyear']
+        
+    if(body['commentaire'] == "None"):
+        editData.commentaire = None
+    else:
+        editData.commentaire = body['commentaire']
+
     db.session.commit()
     return redirect("/evenement/edit", code=302)
 
