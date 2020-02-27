@@ -94,6 +94,32 @@ def index():
     return render_template('home.html')
 
 
+class Personnage(db.Model):
+    __tablename__ = "personnage"
+    id_personnage = db.Column(db.Integer, primary_key=True)
+    nom = db.Column(db.String(255))
+    dateofbirth = db.Column(db.Date)
+    placeofbirthlabel = db.Column(db.String(255))
+    dateofdeath = db.Column(db.Date)
+    placeofdeathlabel = db.Column(db.String(255))
+    positions = db.Column(db.String(255))
+    birthyear = db.Column(db.Float)
+    deathyear = db.Column(db.Float)
+
+    def __init__(self, name, age):
+        self.id_personnage = id_personnage
+        self.nom = nom
+        self.dateofbirth = dateofbirth
+        self.placeofbirthlabel = placeofbirthlabel
+        self.dateofdeath = dateofdeath
+        self.placeofdeathlabel = placeofdeathlabel
+        self.positions = positions
+        self.birthyear = birthyear
+        self.deathyear = deathyear
+    
+    def __repr__(self):
+        return '%s/%s/%s/%s/%s/%s/%s/%s/%s' % (self.id_personnage,self.nom,self.dateofbirth,self.placeofbirthlabel,self.dateofdeath,self.placeofdeathlabel,self.positions,self.birthyear,self.deathyear)
+
 
 
 
@@ -231,6 +257,198 @@ def onelieu(id):
         editData.constructionyear = body['constructionyear']
         db.session.commit()
         return jsonify({'status': 'Data '+id+' is updated from PostgreSQL!'})
+
+
+
+
+
+
+
+
+@app.route('/personnage/edit', methods=['GET'])
+def editpersonnage():
+    personnages = getpersonnagejson()
+    html = ""
+    for row in personnages:
+        form = "<form action='/personnage/form/update'>"
+        form = form+"<input type='hidden' name='id_personnage' value=\""+str(row['id_personnage'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='20' name='nom' value=\""+str(row['nom'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='10' name='dateofbirth' value=\""+str(row['dateofbirth'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='10' name='placeofbirthlabel' value=\""+str(row['placeofbirthlabel'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='10' name='dateofdeath' value=\""+str(row['dateofdeath'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='10' name='placeofdeathlabel' value=\""+str(row['placeofdeathlabel'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='10' name='positions' value=\""+str(row['positions'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='5' name='birthyear' value=\""+str(row['birthyear'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='5' name='deathyear' value=\""+str(row['deathyear'])+"\"/>&nbsp;&nbsp;"  
+        form = form+"<input type='submit' name='button' value='Valider'></form>"
+        html = html+form 
+    return html
+
+@app.route('/personnage/form/update', methods=['POST', 'GET'])
+def updatepersonnage():
+    body = request.values
+    print("toto")
+    editData = Personnage.query.filter_by(id_personnage=body['id_personnage']).first()
+    
+    if(body['nom'] == "None"):
+        editData.nom = None
+    else:
+        editData.nom = body['nom']
+    
+    if(body['dateofbirth'] == "None"):
+        editData.dateofbirth = None
+    else:
+        editData.dateofbirth = body['dateofbirth']
+    
+    if(body['placeofbirthlabel'] == "None"):
+        editData.placeofbirthlabel = None
+    else:
+        editData.placeofbirthlabel = body['placeofbirthlabel']
+    
+    if(body['dateofdeath'] == "None"):
+        editData.dateofdeath = None
+    else:
+        editData.dateofdeath = body['dateofdeath']
+    
+    if(body['placeofdeathlabel'] == "None"):
+        editData.placeofdeathlabel = None
+    else:
+        editData.placeofdeathlabel = body['placeofdeathlabel']
+    
+    if(body['positions'] == "None"):
+        editData.positions = None
+    else:
+        editData.positions = body['positions']
+    
+    if(body['birthyear'] == "None"):
+        editData.birthyear = None
+    else:
+        editData.birthyear = body['birthyear']
+    
+    if(body['deathyear'] == "None"):
+        editData.deathyear = None
+    else:
+        editData.deathyear = body['deathyear']
+    
+    db.session.commit()
+    return redirect("/personnage/edit", code=302)
+
+
+@app.route('/personnage', methods=['POST', 'GET'])
+def personnage():
+    
+    # POST a data to database
+    if request.method == 'POST':
+        body = request.json
+
+        nom = body['nom']
+        dateofbirth = body['dateofbirth']
+        placeofbirthlabel = body['placeofbirthlabel']
+        dateofdeath = body['dateofdeath']
+        placeofdeathlabel = body['placeofdeathlabel']
+        positions = body['positions']
+        birthyear = body['birthyear']
+        deathyear = body['deathyear']
+
+        data = Roi(nom,dateofbirth,placeofbirthlabel,dateofdeath,placeofdeathlabel,positions,birthyear,deathyear)
+        db.session.add(data)
+        db.session.commit()
+
+        return jsonify({
+            'status': 'Data is posted to PostgreSQL!',
+   
+            'nom': nom,
+            'dateofbirth': dateofbirth,
+            'placeofbirthlabel': placeofbirthlabel,
+            'dateofdeath': dateofdeath,
+            'placeofdeathlabel': placeofdeathlabel,
+            'positions': positions,
+            'birthyear': birthyear,
+            'deathyear': deathyear
+
+        })
+    
+    # GET all data from database & sort by id
+    if request.method == 'GET':
+        personnages = getpersonnagejson()
+        return jsonify(personnages)
+
+def getpersonnagejson():
+    # data = User.query.all()
+    data = Personnage.query.order_by(Personnage.birthyear).all()
+    print(data)
+    dataJson = []
+    for i in range(len(data)):
+        # print(str(data[i]).split('/'))
+        dataDict = {
+            'id_personnage': str(data[i]).split('/')[0],
+            'nom': str(data[i]).split('/')[1],
+            'dateofbirth': str(data[i]).split('/')[2],
+            'placeofbirthlabel': str(data[i]).split('/')[3],
+            'dateofdeath': str(data[i]).split('/')[4],
+            'placeofdeathlabel': str(data[i]).split('/')[5],
+            'positions': str(data[i]).split('/')[6],
+            'birthyear': str(data[i]).split('/')[7],
+            'deathyear': str(data[i]).split('/')[8]
+        }
+        dataJson.append(dataDict)
+    return dataJson
+
+@app.route('/personnage/<string:id>', methods=['GET', 'DELETE', 'PUT'])
+def onepersonnage(id):
+
+    # GET a specific data by id
+    if request.method == 'GET':
+        data = Personnage.query.get(id)
+        print("dddd ==> ")
+        print(data)
+        dataDict = {
+            'id_personnage': str(data).split('/')[0],
+            'nom': str(data).split('/')[1],
+            'dateofbirth': str(data).split('/')[2],
+            'placeofbirthlabel': str(data).split('/')[3],
+            'dateofdeath': str(data).split('/')[4],
+            'placeofdeathlabel': str(data).split('/')[5],
+            'positions': str(data).split('/')[6],
+            'birthyear': str(data).split('/')[7],
+            'deathyear': str(data).split('/')[8]
+        }
+        
+        return jsonify(dataDict)
+        
+    # DELETE a data
+    if request.method == 'DELETE':
+        delData = Personnage.query.filter_by(id_personnage=id).first()
+        db.session.delete(delData)
+        db.session.commit()
+        return jsonify({'status': 'Data '+id+' is deleted from PostgreSQL!'})
+
+    # UPDATE a data by id
+    if request.method == 'PUT':
+        body = request.json
+        editData = Personnage.query.filter_by(id_personnage=id).first()
+        editData.nom = body['nom']
+        editData.dateofbirth = body['dateofbirth']
+        editData.placeofbirthlabel = body['placeofbirthlabel']
+        editData.dateofdeath = body['dateofdeath']
+        editData.placeofdeathlabel = body['placeofdeathlabel']
+        editData.positions = body['positions']
+        editData.birthyear = body['birthyear']
+        editData.deathyear = body['deathyear']
+
+        db.session.commit()
+        return jsonify({'status': 'Data '+id+' is updated from PostgreSQL!'})
+
+
+
+
+
+
+
+
+
+
+
 
 
 
