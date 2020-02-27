@@ -324,9 +324,10 @@ def oneroi(id):
         return jsonify({'status': 'Data '+id+' is updated from PostgreSQL!'})
 
 
-@app.route('/evenement/edit', methods=['GET'])
-def editevenement():
-    evenements = getevenementjson()
+@app.route('/evenement/edit', methods=['GET'], defaults={'start': None, 'end': None})
+@app.route('/evenement/edit/start/<start>/end/<end>', methods=['GET'])
+def editevenement(start, end):
+    evenements = getevenementjson(start,end)
     html = ""
     for row in evenements:
         form = "<form action='/evenement/form/update'>"
@@ -396,9 +397,12 @@ def evenement():
         evenements = getevenementjson()
         return jsonify(evenements)
 
-def getevenementjson():
+def getevenementjson(start, end):
     # data = User.query.all()
-    data = Evenement.query.order_by(Evenement.id_event).all()
+    if((start == None) & (end == None)):
+        data = Evenement.query.order_by(Evenement.id_event).all()
+    else:
+        data = Evenement.query.order_by(Evenement.id_event).filter(Evenement.startyear>start, Evenement.startyear<end).all()
     print(data)
     dataJson = []
     for i in range(len(data)):
