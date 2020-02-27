@@ -67,6 +67,8 @@ class Roi(db.Model):
     endtime = db.Column(db.Date)
     startyear = db.Column(db.Float)
     endyear = db.Column(db.Float)
+    birthyear = db.Column(db.Float)
+    deathyear = db.Column(db.Float)
 
     def __init__(self, name, age):
         self.id_roi = id_roi
@@ -85,9 +87,11 @@ class Roi(db.Model):
         self.endtime = endtime
         self.startyear = startyear
         self.endyear = endyear
+        self.birthyear = birthyear
+        self.deathyear = deathyear
     
     def __repr__(self):
-        return '%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s' % (self.id_roi,self.wikiid,self.nom,self.dateofbirth,self.placeofbirthlabel,self.dateofdeath,self.placeofdeathlabel,self.mannersofdeath,self.placeofburiallabel,self.fatherlabel,self.motherlabel,self.spouses,self.starttime,self.endtime,self.startyear,self.endyear)
+        return '%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s' % (self.id_roi,self.wikiid,self.nom,self.dateofbirth,self.placeofbirthlabel,self.dateofdeath,self.placeofdeathlabel,self.mannersofdeath,self.placeofburiallabel,self.fatherlabel,self.motherlabel,self.spouses,self.starttime,self.endtime,self.startyear,self.endyear,self.birthyear,self.deathyear)
 
 @app.route('/')
 def index():
@@ -457,26 +461,30 @@ def onepersonnage(id):
 
 @app.route('/roi/edit', methods=['GET'])
 def editroi():
-    rois = getroijson()
+    year = None
+    rois = getroijson(year)
     html = ""
     for row in rois:
         form = "<form action='/roi/form/update'>"
         form = form+"<input type='hidden' name='id_roi' value=\""+str(row['id_roi'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input type='hidden' name='wikiid' value=\""+str(row['wikiid'])+"\"/>&nbsp;&nbsp;"
-        form = form+"<input size='20' name='nom' value=\""+str(row['nom'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='10' name='nom' value=\""+str(row['nom'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input size='10' name='dateofbirth' value=\""+str(row['dateofbirth'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input size='10' name='placeofbirthlabel' value=\""+str(row['placeofbirthlabel'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input size='10' name='dateofdeath' value=\""+str(row['dateofdeath'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input size='10' name='placeofdeathlabel' value=\""+str(row['placeofdeathlabel'])+"\"/>&nbsp;&nbsp;"
-        form = form+"<input size='10' name='mannersofdeath' value=\""+str(row['mannersofdeath'])+"\"/>&nbsp;&nbsp;"
-        form = form+"<input size='10' name='placeofburiallabel' value=\""+str(row['placeofburiallabel'])+"\"/>&nbsp;&nbsp;"
-        form = form+"<input size='10' name='fatherlabel' value=\""+str(row['fatherlabel'])+"\"/>&nbsp;&nbsp;"
-        form = form+"<input size='10' name='motherlabel' value=\""+str(row['motherlabel'])+"\"/>&nbsp;&nbsp;"
-        form = form+"<input size='10' name='spouses' value=\""+str(row['spouses'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='5' name='mannersofdeath' value=\""+str(row['mannersofdeath'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='5' name='placeofburiallabel' value=\""+str(row['placeofburiallabel'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='5' name='fatherlabel' value=\""+str(row['fatherlabel'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='5' name='motherlabel' value=\""+str(row['motherlabel'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='5' name='spouses' value=\""+str(row['spouses'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input size='10' name='starttime' value=\""+str(row['starttime'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input size='10' name='endtime' value=\""+str(row['endtime'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input size='5' name='startyear' value=\""+str(row['startyear'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input size='5' name='endyear' value=\""+str(row['endyear'])+"\"/>&nbsp;&nbsp;"  
+        form = form+"<input size='5' name='birthyear' value=\""+str(row['birthyear'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='5' name='deathyear' value=\""+str(row['deathyear'])+"\"/>&nbsp;&nbsp;"  
+        form = form+"<input type='submit' name='button' value='Supprimer'>&nbsp;&nbsp;"
         form = form+"<input type='submit' name='button' value='Valider'></form>"
         html = html+form 
     return html
@@ -561,13 +569,27 @@ def updateroi():
         editData.endyear = None
     else:
         editData.endyear = body['endyear']
-    
-    db.session.commit()
+        
+    if(body['birthyear'] == "None"):
+        editData.birthyear = None
+    else:
+        editData.birthyear = body['birthyear']
+        
+    if(body['deathyear'] == "None"):
+        editData.deathyear = None
+    else:
+        editData.deathyear = body['deathyear']
+    if(body['button'] == 'Valider'):
+        db.session.commit()
+    if(body['button'] == 'Supprimer'):
+        db.session.delete(editData)
+        db.session.commit()
     return redirect("/roi/edit", code=302)
 
 
-@app.route('/roi', methods=['POST', 'GET'])
-def roi():
+@app.route('/roi', methods=['POST', 'GET'], defaults={'year': None})
+@app.route('/roi/year/<year>', methods=['POST', 'GET'])
+def roi(year):
     
     # POST a data to database
     if request.method == 'POST':
@@ -588,8 +610,10 @@ def roi():
         endtime = body['endtime']
         startyear = body['startyear']
         endyear = body['endyear']
+        birthyear = body['birthyear']
+        deathyear = body['deathyear']
 
-        data = Roi(wikiid,nom,dateofbirth,placeofbirthlabel,dateofdeath,placeofdeathlabel,mannersofdeath,placeofburiallabel,fatherlabel,motherlabel,spouses,starttime,endtime,startyear,endyear)
+        data = Roi(wikiid,nom,dateofbirth,placeofbirthlabel,dateofdeath,placeofdeathlabel,mannersofdeath,placeofburiallabel,fatherlabel,motherlabel,spouses,starttime,endtime,startyear,endyear,birthyear,deathyear)
         db.session.add(data)
         db.session.commit()
 
@@ -610,18 +634,25 @@ def roi():
             'starttime': starttime,
             'endtime': endtime,
             'startyear': startyear,
-            'endyear': endyear
+            'endyear': endyear,
+            'birthyear': birthyear,
+            'deathyear': deathyear
 
         })
     
     # GET all data from database & sort by id
     if request.method == 'GET':
-        rois = getroijson()
+        rois = getroijson(year)
         return jsonify(rois)
 
-def getroijson():
+def getroijson(year):
     # data = User.query.all()
-    data = Roi.query.order_by(Roi.startyear).all()
+    if(year == None):
+        data = Roi.query.order_by(Roi.startyear).all()
+    else:
+        data = Roi.query.filter(Roi.startyear<=year, Roi.endyear>=year).order_by(Roi.startyear).all()
+    #data = Roi.query.filter_by(startyear=None).all()
+    
     print(data)
     dataJson = []
     for i in range(len(data)):
@@ -642,7 +673,9 @@ def getroijson():
             'starttime': str(data[i]).split('/')[12],
             'endtime': str(data[i]).split('/')[13],
             'startyear': str(data[i]).split('/')[14],
-            'endyear': str(data[i]).split('/')[15]
+            'endyear': str(data[i]).split('/')[15],
+            'birthyear': str(data[i]).split('/')[16],
+            'deathyear': str(data[i]).split('/')[17]
         }
         dataJson.append(dataDict)
     return dataJson
@@ -671,7 +704,9 @@ def oneroi(id):
             'starttime': str(data).split('/')[12],
             'endtime': str(data).split('/')[13],
             'startyear': str(data).split('/')[14],
-            'endyear': str(data).split('/')[15]
+            'endyear': str(data).split('/')[15],
+            'birthyear': str(data).split('/')[16],
+            'deathyear': str(data).split('/')[17]
         }
         
         return jsonify(dataDict)
@@ -702,6 +737,8 @@ def oneroi(id):
         editData.endtime = body['endtime']
         editData.startyear = body['startyear']
         editData.endyear = body['endyear']
+        editData.birthyear = body['birthyear']
+        editData.deathyear = body['deathyear']
 
         db.session.commit()
         return jsonify({'status': 'Data '+id+' is updated from PostgreSQL!'})

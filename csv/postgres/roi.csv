@@ -1,121 +1,85 @@
-id_roi,wikiid,nom,dateofbirth,placeofbirthlabel,dateofdeath,placeofdeathlabel,mannersofdeath,placeofburiallabel,fatherlabel,motherlabel,spouses,starttime,endtime,startyear,endyear,birthyear,deathyear
-1,Q134259,Louis VII de France,1120-01-01,Paris,1180-09-25,Paris,,basilique Saint-Denis,Louis VI de France,Adélaïde de Savoie,"Constance de Castille, Adèle de Champagne, Aliénor d'Aquitaine",1137-08-08,1180-09-25,1137.00,1180.00,1120.00,1180.00
-2,Q165284,Louis VIII de France,1187-09-12,Paris,1226-11-15,Montpensier,dysentérie,basilique Saint-Denis,Philippe II Auguste,Isabelle de Hainaut,Blanche de Castille,1223-07-21,1226-11-15,1223.00,1226.00,1187.00,1226.00
-3,Q109223,Childebert IV,0678-01-01,t1766657890,0711-04-18,t1766657891,,Choisy-au-Bac,Thierry III,Clotilde dite Doda,,0695-01-01,0711-01-01,695.00,711.00,678.00,711.00
-4,Q133372,Charles VII de France,1403-03-03,Paris,1461-07-31,Mehun-sur-Yèvre,,basilique Saint-Denis,Charles VI,Isabeau de Bavière,Marie d'Anjou,1422-11-08,1461-08-09,1422.00,1461.00,1403.00,1461.00
-5,Q108331,Thierry IV,0712-01-01,t1766635643,0737-01-01,t1766635644,,basilique Saint-Denis,Dagobert III,,,0721-01-01,0737-01-01,721.00,737.00,712.00,737.00
-6,Q159575,Hugues Capet,0940-01-01,Dourdan,0996-10-29,Les Juifs,,basilique Saint-Denis,Hugues le Grand,Hedwige de Saxe,Adélaïde d'Aquitaine,0987-06-08,0996-10-29,987.00,996.00,940.00,996.00
-7,Q165883,Louis VI de France,1081-12-07,Paris,1137-08-08,château de la Douye,,basilique Saint-Denis,Philippe Ier de France,Berthe de Hollande,"Lucienne de Rochefort, Adélaïde de Savoie",1108-08-06,1137-08-08,1108.00,1137.00,1081.00,1137.00
-9,Q132545,Henri II,1519-04-10,Saint-Germain-en-Laye,1559-07-20,hôtel des Tournelles,,basilique Saint-Denis,François Ier,Claude de France,Catherine de Médicis,1547-04-10,1559-07-20,1547.00,1559.00,1519.00,1559.00
-10,Q134452,Charles VIII,1470-07-09,Amboise,1498-04-16,Amboise,accident vasculaire cérébral,basilique Saint-Denis,Louis XI,Charlotte de Savoie,Anne de Bretagne,1483-09-17,1498-04-25,1483.00,1498.00,1470.00,1498.00
-11,Q160349,Charles VI,1368-12-11,Paris,1422-10-30,Paris,paludisme,basilique Saint-Denis,Charles V de France,Jeanne de Bourbon,Isabeau de Bavière,1380-09-24,1422-10-30,1380.00,1422.00,1368.00,1422.00
-12,Q178908,Henri Ier de France,1008-05-04,Reims,1060-08-04,Vitry-aux-Loges,,basilique Saint-Denis,Robert II de France,Constance d'Arles,"Mathilde de Franconie, Anne de Kiev, Mathilde de Frise",1031-07-16,1060-08-10,1031.00,1060.00,1008.00,1060.00
-13,Q167782,Charles V de France,1338-01-29,Vincennes,1380-09-24,Paris,maladie infectieuse,basilique Saint-Denis,Jean II de France,Bonne de Luxembourg,Jeanne de Bourbon,1364-04-16,1380-09-24,1364.00,1380.00,1338.00,1380.00
-14,Q170586,Philippe VI de France,1293-11-24,Fontainebleau,1350-08-30,Reims,peste,basilique Saint-Denis,Charles de Valois,Marguerite d'Anjou,"Blanche de Navarre, Jeanne de Bourgogne",1328-04-09,1350-08-30,1328.00,1350.00,1293.00,1350.00
-15,Q174964,Charles IV de France,1294-06-25,Creil,1328-02-09,Vincennes,tuberculose,basilique Saint-Denis,Philippe IV de France,Jeanne Ire de Navarre,"Blanche de Bourgogne, Marie de Luxembourg, Jeanne d'Évreux",1322-01-11,1328-02-09,1322.00,1328.00,1294.00,1328.00
-16,Q178918,Robert II de France,0972-04-01,Orléans,1031-07-26,Melun,,basilique Saint-Denis,Hugues Capet,Adélaïde d'Aquitaine,"Rozala d'Italie, Berthe de Bourgogne, Constance d'Arles",0996-10-29,1031-07-26,996.00,1031.00,972.00,1031.00
-17,Q134309,Charles IX,1550-07-07,Saint-Germain-en-Laye,1574-06-09,Vincennes,tuberculose,basilique Saint-Denis,Henri II,Catherine de Médicis,Élisabeth d'Autriche,1560-12-25,1574-06-19,1560.00,1574.00,1550.00,1574.00
-18,Q109248,Dagobert III,0698-01-01,t1766646719,0715-01-01,t1766646720,,,Childebert IV,,,0711-01-01,0715-01-01,711.00,715.00,698.00,715.00
-19,Q130969,Philippe IV de France,1268-01-01,Fontainebleau,1314-12-07,Fontainebleau,"accident de chasse, accident vasculaire cérébral",basilique Saint-Denis,Philippe III de France,Isabelle d'Aragon,Jeanne Ire de Navarre,1285-10-12,1314-12-07,1285.00,1314.00,1268.00,1314.00
-20,Q191003,Carloman Ier,0751-01-01,Soissons,0771-12-04,Samoussy,,basilique Saint-Denis,Pépin le Bref,Bertrade de Laon,Gerberge,0768-10-13,0771-12-08,768.00,771.00,751.00,771.00
-22,Q82339,Clovis Ier,0466-01-01,Tournai,0511-11-29,Paris,,abbaye Sainte-Geneviève de Paris,Childéric Ier,Basine de Thuringe,"princesse franque, Clotilde",0481-01-01,0511-11-29,481.00,511.00,466.00,511.00
-23,Q132548,François II,1544-01-29,Fontainebleau,1560-12-15,Paris,méningite,basilique Saint-Denis,Henri II,Catherine de Médicis,Marie Stuart,1559-07-30,1560-12-25,1559.00,1560.00,1544.00,1560.00
-24,Q309934,Clovis IV,0677-01-01,t1766660814,0695-01-01,t1766660816,,,Thierry III,Clotilde dite Doda,,0691-01-01,0695-01-01,691.00,695.00,677.00,695.00
-25,Q371744,Marcomir,0400-01-01,,0392-01-01,,,,,,,0380-01-01,0400-01-01,380.00,400.00,400.00,392.00
-26,Q982667,Mallobaud,0400-01-01,,0400-01-01,,,,,,,0378-01-01,0378-01-01,378.00,378.00,400.00,400.00
-28,Q309909,Childéric II,0655-01-01,t1766684381,0675-01-01,Chelles,,abbaye de Saint-Germain-des-Prés,Clovis II,Bathilde,Bilichilde,0673-01-01,0675-01-01,673.00,675.00,655.00,675.00
-29,Q316874,Dagobert II,0652-01-01,t1776648527,0679-12-26,Mouzay,,,Sigebert III,Chimnechilde,,0676-01-01,0679-12-26,676.00,679.00,652.00,679.00
-30,Q316908,Clotaire IV,0685-01-01,t1766639272,0719-01-01,t1766639271,,,Childebert IV,,,0717-01-01,0719-01-01,717.00,719.00,685.00,719.00
-31,Q737533,Louis XIII,1601-09-27,Fontainebleau,1643-05-14,Saint-Germain-en-Laye,tuberculose,basilique Saint-Denis,Henri IV,Marie de Médicis,Anne d'Autriche,1610-05-14,1643-05-14,1610.00,1643.00,1601.00,1643.00
-33,Q295175,Thierry III,0657-01-01,t1766677926,0691-01-01,t1766677929,,Arras,Clovis II,Bathilde,Clotilde dite Doda,0675-01-01,0679-01-01,675.00,679.00,657.00,691.00
-34,Q295157,Childéric III,0714-01-01,t1766631886,,t1766631883,,,Chilpéric II,,,0743-01-01,0751-01-01,743.00,751.00,714.00,
-35,Q129857,François Ier,1494-09-21,Cognac,1547-04-10,Rambouillet,maladie,basilique Saint-Denis,Charles d'Orléans,Louise de Savoie,"Éléonore de Habsbourg, Claude de France",1515-01-11,1547-04-10,1515.00,1547.00,1494.00,1547.00
-36,Q169992,Jean II de France,1319-04-24,Le Mans,1364-04-16,Londres,,basilique Saint-Denis,Philippe VI de France,Jeanne de Bourgogne,"Jeanne Ire d'Auvergne, Bonne de Luxembourg",1350-08-30,1364-04-16,1350.00,1364.00,1319.00,1364.00
-37,Q58907,Philippe Ier de France,1052-05-29,Champagne-et-Fontaine,1108-08-05,Melun,,abbaye de Saint-Benoît-sur-Loire,Henri Ier de France,Anne de Kiev,"Bertrade de Montfort, Berthe de Hollande",1060-08-10,1108-08-05,1060.00,1108.00,1052.00,1108.00
-38,Q43974,Louis le Pieux,0778-04-20,Chasseneuil-du-Poitou,0840-06-24,Ingelheim am Rhein,,abbaye de Saint-Arnould,Charlemagne,Hildegarde,"Ermengarde de Hesbaye, Judith de Bavière",0814-02-01,0840-06-24,814.00,840.00,778.00,840.00
-39,Q172203,Philippe III de France,1245-04-10,Poissy,1285-10-12,Perpignan,dysentérie,basilique Saint-Denis,Saint Louis,Marguerite de Provence,"Isabelle d'Aragon, Marie de Brabant",1270-09-01,1285-10-12,1270.00,1285.00,1245.00,1285.00
-40,Q34428,Philippe II Auguste,1165-08-28,Paris,1223-07-21,Mantes-la-Jolie,,basilique Saint-Denis,Louis VII de France,Adèle de Champagne,"Agnès de Méranie, Isabelle de Hainaut, Ingeburge de Danemark",1180-09-25,1223-07-21,1180.00,1223.00,1165.00,1223.00
-21,Q81212,Pépin le Bref,0714-01-01,Liège,0768-09-28,Saint-Denis,,basilique Saint-Denis,Charles Martel,Rotrude,Bertrade de Laon,0741-01-01,0751-01-01,751.00,768.00,714.00,768.00
-32,Q936976,Henri IV,1553-12-23,château de Pau,1610-05-14,Paris,blessure par arme blanche,basilique Saint-Denis,Antoine de Bourbon,Jeanne d'Albret,"Marguerite de France, Marie de Médicis",1572-06-19,1610-05-14,1589.00,1610.00,1553.00,1610.00
-41,Q346,Saint Louis,1214-05-02,Poissy,1270-09-01,Tunis,"dysentérie, scorbut",basilique Saint-Denis,Louis VIII de France,Blanche de Castille,Marguerite de Provence,1226-11-15,1270-09-01,1226.00,1270.00,1214.00,1270.00
-43,Q58514,Louis XII,1462-07-06,Blois,1515-01-11,Paris,,basilique Saint-Denis,Charles d'Orléans,Marie de Clèves,"Marie d'Angleterre, Jeanne de France, Anne de Bretagne",1498-04-25,1515-01-11,1498.00,1515.00,1462.00,1515.00
-44,Q8058,Louis XI,1423-07-12,Bourges,1483-09-08,château de Plessis-lès-Tours,accident vasculaire cérébral,basilique Notre-Dame de Cléry,Charles VII de France,Marie d'Anjou,"Marguerite d'Écosse, Charlotte de Savoie",1461-08-09,1483-09-17,1461.00,1483.00,1423.00,1483.00
-46,Q7742,Louis XIV,1638-09-05,château de Saint-Germain-en-Laye,1715-09-01,château de Versailles,gangrène,basilique Saint-Denis,Louis XIII,Anne d'Autriche,"Madame de Maintenon, Marie-Thérèse d'Autriche",1643-05-14,1715-09-01,1643.00,1715.00,1638.00,1715.00
-47,Q7758,Charles X,1757-10-09,Versailles,1836-11-06,Gorizia,choléra,église de l'Annonciation de Kostanjevica,Louis de France,Marie-Josèphe de Saxe,Marie-Thérèse de Savoie,1824-09-16,1830-08-02,1824.00,1830.00,1757.00,1836.00
-48,Q8433,Philippe V de France,1293-01-01,Vincennes,1322-01-11,abbaye royale de Longchamp,infection,basilique Saint-Denis,Philippe IV de France,Jeanne Ire de Navarre,Jeanne de Bourgogne,1316-11-27,1322-01-11,1316.00,1322.00,1293.00,1322.00
-49,Q7738,Louis XV,1710-02-15,Versailles,1774-05-10,Versailles,variole,basilique Saint-Denis,Louis de France,Marie-Adélaïde de Savoie,Marie Leszczyńska,1715-09-01,1774-05-10,1715.00,1774.00,1710.00,1774.00
-50,Q7750,Louis XVIII,1755-11-17,Versailles,1824-09-16,Paris,maladie,basilique Saint-Denis,Louis de France,Marie-Josèphe de Saxe,Marie-Joséphine de Savoie,1815-07-08,1824-09-16,1815.00,1824.00,1755.00,1824.00
-52,Q154936,Arnulf de Carinthie,0850-01-01,t1747782579,0899-12-12,Ratisbonne,accident vasculaire cérébral,Q19309358,Carloman de Bavière,Liutswinde,Oda,,,,,850.00,899.00
-54,Q299645,Pépin d'Italie,0777-01-01,t1770155137,0810-07-12,Milan,maladie,Milan,Charlemagne,Hildegarde,,,,,,777.00,810.00
-58,Q2048758,Thierry,,t15270228,,t15270231,,,Childéric III,,,,,,,,
-59,Q232365,Clotilde,0475-01-01,Lyon,0545-06-03,Tours,,cathédrale Notre-Dame de Paris,Chilpéric II,,Clovis Ier,,,,,475.00,545.00
-60,Q302212,Pépin le Bossu,0770-01-01,,0811-01-01,abbaye de Prüm,peste,,Charlemagne,Himiltrude,,,,,,770.00,811.00
-63,Q1063034,Cararic,0500-01-01,,0509-01-01,,,,,,,,,,,500.00,509.00
-64,Q2664316,Théodomir,0400-01-01,,,,,,Richomer,,,,,,,400.00,
-65,Q2866363,Ascaric,0300-01-01,,0306-01-01,,,,,,,,,,,300.00,306.00
-66,Q3337613,Nebigast,,,,,,,,,,,,,,,
-67,Q157099,Louis IV l'Enfant,0893-07-01,Altötting,0911-10-04,Francfort-sur-le-Main,maladie,Q19309358,Arnulf de Carinthie,Oda,t1773889248,,,,,893.00,911.00
-68,Q160190,Louis III le Jeune,0835-01-01,t1773911611,0882-01-24,Francfort-sur-le-Main,maladie,abbaye de Lorsch,Louis II le Germanique,Emma de Bavière,Liutgarde de Saxe,,,,,835.00,882.00
-70,Q235392,Clodion le Chevelu,0393-01-01,t1747862906,0448-01-01,t1747862898,,,Théodomir,,,,,,,393.00,448.00
-71,Q298945,Lothaire II,0835-01-01,t1776690869,0869-08-12,Plaisance,paludisme,Q1670729,Lothaire Ier,Ermengarde de Tours,Teutberge,,,,,835.00,869.00
-73,Q736218,Gondovald,0600-01-01,t1679470781,0585-03-01,t1679470780,,,Clotaire Ier,Waldrade,,,,,,600.00,585.00
-74,Q848186,Q848186,0671-01-01,,0679-01-01,,,,Dagobert II,,,,,,,671.00,679.00
-75,Q2415213,Suavegothe,,t1633958665,,t1633958664,,,Sigismond,Q12289430,Thierry Ier,,,,,,
-76,Q169547,Judith de Bavière,0797-01-01,t1768797882,0843-04-23,Tours,,Centre-Val de Loire,Welf Ier,Heilwig,Louis le Pieux,,,,,797.00,843.00
-80,Q546611,Charles l'Enfant,0847-01-01,Francfort-sur-le-Main,0866-10-03,Buzançais,,Centre-Val de Loire,Charles II le Chauve,Ermentrude d'Orléans,,,,,,847.00,866.00
-81,Q713506,Mérogaise,0300-01-01,,0306-01-01,Trèves,,,,,,,,,,300.00,306.00
-82,Q73806,Boson de Provence,0844-01-01,t1751141117,0887-01-15,Vienne,maladie,,Bivin,Q61717067,Ermengarde,,,,,844.00,887.00
-83,Q150620,Henri Ier,0876-01-01,Saxe,0936-07-07,Memleben,accident vasculaire cérébral,abbaye de Quedlinbourg,Otton Ier de Saxe,Hedwige,"Q3555663, Mathilde de Ringelheim",,,,,876.00,936.00
-84,Q233534,Galswinthe,0540-01-01,Tolède,0568-01-01,Soissons,,,Athanagilde Ier,Goswinthe,Chilpéric Ier,,,,,540.00,568.00
-85,Q237750,Bathilde,0626-01-01,t1766682447,0680-01-30,Chelles,,,,,Clovis II,,,,,626.00,680.00
-87,Q333319,Bernard d'Italie,0797-01-01,t1747807258,0818-04-21,Milan,,Lombardie,Pépin d'Italie,Chrotais,Cunégonde,,,,,797.00,818.00
-88,Q1259648,Chilpéric,0700-01-01,t1376410675,0632-01-01,t1376410674,,,Caribert II,,,,,,,700.00,632.00
-91,Q236974,Radegonde,0518-01-01,Erfurt,0587-08-15,Poitiers,,église Sainte-Radegonde de Poitiers,Berthaire,,Clotaire Ier,,,,,518.00,587.00
-90,Q233461,Thierry Ier,0485-01-01,t1766774419,0534-01-01,t1766774422,,,Clovis Ier,,"Ne, Suavegothe",,,511.00,534.00,485.00,534.00
-53,Q230898,Frédégonde,0545-01-01,Montdidier,0597-12-10,Paris,,basilique Saint-Denis,,,Chilpéric Ier,,,,,545.00,597.00
-77,Q274597,Théodebert Ier,0500-01-01,,0548-01-01,,attaque animale,,Thierry Ier,Ne,"Deoteria, Wisigarde",,,534.00,548.00,500.00,548.00
-69,Q212852,Childebert Ier,0497-01-01,Reims,0558-12-13,Paris,,basilique Saint-Denis,Clovis Ier,Clotilde,Ultrogothe,,,511.00,558.00,497.00,558.00
-89,Q28984,Clotaire Ier,0498-01-01,t1776645748,0561-12-01,Soissons,,Soissons,Clovis Ier,Clotilde,"Chunsène, Gondioque, Ingonde, Arégonde, Waldrade, Radegonde",,,511.00,561.00,498.00,561.00
-79,Q309946,Sigebert Ier,0535-01-01,t1766745254,0575-01-01,Vitry-en-Artois,,,Clotaire Ier,Ingonde,Brunehaut,,,561.00,575.00,535.00,575.00
-86,Q295086,Gontran,0532-01-01,Soissons,0593-03-30,Chalon-sur-Saône,,,Clotaire Ier,Ingonde,"Marcatrude, Austregilde",,,561.00,592.00,532.00,593.00
-72,Q312605,Théodebert II,0585-01-01,t1766730215,0612-01-01,Chalon-sur-Saône,,,Childebert II,Faileube,"Théodechilde, Blichilde",,,595.00,612.00,585.00,612.00
-62,Q316888,Sigebert II,0602-01-01,t1776719141,0613-10-13,t1776719140,,,Thierry II,,,,,613.00,613.00,602.00,613.00
-55,Q316881,Caribert II,0618-01-01,t1766718552,0632-04-08,Blaye,,,Clotaire II,Sichilde,,,,629.00,632.00,618.00,632.00
-56,Q316892,Sigebert III,0630-01-01,t1766714810,0656-02-04,t1766714808,,,Dagobert Ier,Ragnétrude,Chimnechilde,,,639.00,656.00,630.00,656.00
-78,Q304688,Childebert III l'Adopté,0650-01-01,t1731445641,0662-01-01,t1731445642,,,Grimoald Ier,,,,,656.00,662.00,650.00,662.00
-61,Q309922,Clotaire III,0650-01-01,t1776646015,0673-01-01,t1776646014,peste,basilique Saint-Denis,Clovis II,Bathilde,,,,657.00,673.00,650.00,673.00
-42,Q53448,Henri III,1551-09-29,château de Fontainebleau,1589-08-02,Saint-Cloud,blessure par arme blanche,basilique Saint-Denis,Henri II,Catherine de Médicis,Louise de Lorraine,,,1574.00,1589.00,1551.00,1589.00
-45,Q7732,Louis XVI,1754-08-23,château de Versailles,1793-01-21,place de la Concorde,"décapitation, guillotine",basilique Saint-Denis,Louis de France,Marie-Josèphe de Saxe,Marie-Antoinette,,,1774.00,1792.00,1754.00,1793.00
-94,Q333356,Pépin Ier d'Aquitaine,0797-01-01,t1750344080,0838-12-17,Poitiers,maladie,Nouvelle-Aquitaine,Louis le Pieux,Ermengarde de Hesbaye,Ingeltrude ou Ringarde,,,,,797.00,838.00
-95,Q364485,Lothaire II d'Italie,1000-01-01,,0950-11-27,Turin,empoisonnement,Milan,Hugues d'Arles,Hilda,Adélaïde de Bourgogne,,,,,1000.00,950.00
-96,Q463984,Plectrude,0700-01-01,,0717-01-01,,,,Hugobert,Irmina d'Oeren,Pépin de Herstal,,,,,700.00,717.00
-97,Q58165,Mérovée,0415-01-01,t1748426523,0457-01-01,t1748426520,,,Clodion le Chevelu,,,,,,,415.00,457.00
-100,Q215204,Louis II d'Italie,0825-01-01,t1748354397,0875-08-16,Brescia,maladie,basilique Saint-Ambroise,Lothaire Ier,Ermengarde de Tours,Engelberge,,,,,825.00,875.00
-101,Q243872,Zwentibold,0870-01-01,t1750608408,0900-08-18,Lotharingie,,abbaye de Süsteren,Arnulf de Carinthie,Winburg,Oda de Saxe,,,,,870.00,900.00
-102,Q259627,Audovère,,t1364904131,0580-01-01,Le Mans,,,,,Chilpéric Ier,,,,,,580.00
-104,Q378763,Hugues d'Arles,0880-01-01,Arles,0947-04-15,Arles,,,Théobald d'Arles,Berthe,"Willa de Provence, Hilda, Berthe de Souabe, Marozie Ire",,,,,880.00,947.00
-105,Q888057,Ragnacaire,0500-01-01,,0509-01-01,,,,,,,,,,,500.00,509.00
-106,Q929284,Gennobaud,0400-01-01,,0388-01-01,,,,,,,,,,,400.00,388.00
-107,Q193869,Childéric Ier,0436-01-01,t1766788370,0481-01-01,Tournai,,Tournai,Mérovée,,Basine de Thuringe,,,,,436.00,481.00
-108,Q230639,Brunehaut,,Mérida,0613-01-01,Renève,,,Athanagilde Ier,Goswinthe,"Mérovée, Sigebert Ier",,,,,,613.00
-109,Q234410,Hildegarde,0758-01-01,Souabe,0783-05-04,Thionville,,abbaye de Saint-Arnould,Gérold Ier de Vintzgau,Emma d'Alémanie,Charlemagne,,,,,758.00,783.00
-112,Q283107,Charles le Jeune,0772-01-01,t1750801546,0811-12-08,Bavière,maladie,,Charlemagne,Hildegarde,,,,,,772.00,811.00
-113,Q333802,Charles de Provence,0845-01-01,t1179998082,0863-01-29,Lyon,maladie,,Lothaire Ier,Ermengarde de Tours,,,,,,845.00,863.00
-114,Q595053,Clovis III,0670-01-01,t1766667670,0676-01-01,t1766667667,,,Clotaire III,,,,,,,670.00,676.00
-115,Q715972,Hugues de France,1007-01-01,,1025-09-23,Compiègne,chute de cheval,Compiègne,Robert II de France,Constance d'Arles,,,,,,1007.00,1025.00
-116,Q887578,Clodéric,0485-01-01,,0508-01-01,Cologne,,,Sigebert le Boiteux,,,,,,,485.00,508.00
-117,Q1396545,Sunnon,0400-01-01,,0400-01-01,,,,,,,,,,,400.00,400.00
-118,Q11921573,Q11921573,,,,,,,,,,,,,,,
-119,Q61188387,Q61188387,,,,,,,,,,,,,,,
-120,Q263164,Waldrade,0530-01-01,t1707777188,0570-01-01,t1707777189,,,Waccho,Q19891002,"Garibald Ier de Bavière, Théodebald, Clotaire Ier",,,,,530.00,570.00
-57,Q378702,Pépin II d'Aquitaine,0823-01-01,t1750344146,,Senlis,,,Pépin Ier d'Aquitaine,Ingeltrude ou Ringarde,,,,,,823.00,
-98,Q189660,Clodomir,0495-01-01,inconnu,0524-06-23,Vézeronce-Curtin,,,Clovis Ier,Clotilde,Gondioque,,,511.00,524.00,495.00,524.00
-92,Q309915,Théodebald,0534-01-01,,0555-01-01,,,,Théodebert Ier,Deoteria,Waldrade,,,548.00,555.00,534.00,555.00
-111,Q243453,Caribert Ier,0520-01-01,t1766751385,0567-01-01,Chelles,,,Clotaire Ier,Ingonde,"Théodechilde, Méroflède, Marcova, Ingeberge",,,561.00,567.00,520.00,567.00
-110,Q243118,Chilpéric Ier,0537-01-01,t1766741949,0584-09-29,Chelles,assassinat,abbaye de Saint-Germain-des-Prés,Clotaire Ier,Arégonde,"Audovère, Galswinthe, Frédégonde",,,561.00,584.00,537.00,584.00
-103,Q312606,Childebert II,0570-04-08,t1776644528,0596-01-01,t1776644527,poison,,Sigebert Ier,Brunehaut,Faileube,,,575.00,596.00,570.00,596.00
-99,Q209118,Clotaire II,0584-01-01,t1776645741,0629-10-21,t1776645747,,abbaye de Saint-Germain-des-Prés,Chilpéric Ier,Frédégonde,"Bertrude, Sichilde, Haldetrude",,,584.00,629.00,584.00,629.00
-51,Q109860,Dagobert Ier,0611-01-01,t1776648529,0639-01-22,Saint-Denis,,basilique Saint-Denis,Clotaire II,Bertrude,"Berchilde, Wulfégonde, Ragnétrude, Gomatrude, Nantilde",,,623.00,639.00,611.00,639.00
-93,Q309919,Clovis II,0635-01-01,t1776645743,0657-01-01,Saint-Denis,,basilique Saint-Denis,Dagobert Ier,Nantilde,Bathilde,,,639.00,657.00,635.00,657.00
-8,Q109240,Chilpéric II,0673-01-01,t1766643120,0721-02-17,Nyon,,Noyon,Childéric II,Bilichilde,,0719-01-01,0721-01-01,715.00,721.00,673.00,721.00
-27,Q3044,Charlemagne,0748-04-06,Royaume des Francs,0814-02-01,Aix-la-Chapelle,maladie,cathédrale d'Aix-la-Chapelle,Pépin le Bref,Bertrade de Laon,"Himiltrude, Désirée de Lombardie, Luitgarde, Fastrade, Hildegarde",0768-09-24,0814-01-28,768.00,814.00,748.00,814.00
+wikiid,nom,dateofbirth,placeofbirthlabel,dateofdeath,placeofdeathlabel,mannersofdeath,placeofburiallabel,fatherlabel,motherlabel,spouses,starttime,endtime,startyear,endyear,birthyear,deathyear
+Q134259,Louis VII de France,1120-01-01,Paris,1180-09-25,Paris,,basilique Saint-Denis,Louis VI de France,Adélaïde de Savoie,"Constance de Castille, Adèle de Champagne, Aliénor d'Aquitaine",1137-08-08,1180-09-25,1137.00,1180.00,1120.00,1180.00
+Q165284,Louis VIII de France,1187-09-12,Paris,1226-11-15,Montpensier,dysentérie,basilique Saint-Denis,Philippe II Auguste,Isabelle de Hainaut,Blanche de Castille,1223-07-21,1226-11-15,1223.00,1226.00,1187.00,1226.00
+Q109223,Childebert IV,0678-01-01,t1766657890,0711-04-18,t1766657891,,Choisy-au-Bac,Thierry III,Clotilde dite Doda,,0695-01-01,0711-01-01,695.00,711.00,678.00,711.00
+,Thierry II,,,,,,,Childebert II,Faileube,Ermenberge,,,595.00,613.00,587.00,613.00
+Q133372,Charles VII de France,1403-03-03,Paris,1461-07-31,Mehun-sur-Yèvre,,basilique Saint-Denis,Charles VI,Isabeau de Bavière,Marie d'Anjou,1422-11-08,1461-08-09,1422.00,1461.00,1403.00,1461.00
+Q108331,Thierry IV,0712-01-01,t1766635643,0737-01-01,t1766635644,,basilique Saint-Denis,Dagobert III,,,0721-01-01,0737-01-01,721.00,737.00,712.00,737.00
+Q159575,Hugues Capet,0940-01-01,Dourdan,0996-10-29,Les Juifs,,basilique Saint-Denis,Hugues le Grand,Hedwige de Saxe,Adélaïde d'Aquitaine,0987-06-08,0996-10-29,987.00,996.00,940.00,996.00
+Q165883,Louis VI de France,1081-12-07,Paris,1137-08-08,château de la Douye,,basilique Saint-Denis,Philippe Ier de France,Berthe de Hollande,"Lucienne de Rochefort, Adélaïde de Savoie",1108-08-06,1137-08-08,1108.00,1137.00,1081.00,1137.00
+Q132545,Henri II,1519-04-10,Saint-Germain-en-Laye,1559-07-20,hôtel des Tournelles,,basilique Saint-Denis,François Ier,Claude de France,Catherine de Médicis,1547-04-10,1559-07-20,1547.00,1559.00,1519.00,1559.00
+Q134452,Charles VIII,1470-07-09,Amboise,1498-04-16,Amboise,accident vasculaire cérébral,basilique Saint-Denis,Louis XI,Charlotte de Savoie,Anne de Bretagne,1483-09-17,1498-04-25,1483.00,1498.00,1470.00,1498.00
+Q160349,Charles VI,1368-12-11,Paris,1422-10-30,Paris,paludisme,basilique Saint-Denis,Charles V de France,Jeanne de Bourbon,Isabeau de Bavière,1380-09-24,1422-10-30,1380.00,1422.00,1368.00,1422.00
+Q178908,Henri Ier de France,1008-05-04,Reims,1060-08-04,Vitry-aux-Loges,,basilique Saint-Denis,Robert II de France,Constance d'Arles,"Mathilde de Franconie, Anne de Kiev, Mathilde de Frise",1031-07-16,1060-08-10,1031.00,1060.00,1008.00,1060.00
+Q167782,Charles V de France,1338-01-29,Vincennes,1380-09-24,Paris,maladie infectieuse,basilique Saint-Denis,Jean II de France,Bonne de Luxembourg,Jeanne de Bourbon,1364-04-16,1380-09-24,1364.00,1380.00,1338.00,1380.00
+Q170586,Philippe VI de France,1293-11-24,Fontainebleau,1350-08-30,Reims,peste,basilique Saint-Denis,Charles de Valois,Marguerite d'Anjou,"Blanche de Navarre, Jeanne de Bourgogne",1328-04-09,1350-08-30,1328.00,1350.00,1293.00,1350.00
+Q174964,Charles IV de France,1294-06-25,Creil,1328-02-09,Vincennes,tuberculose,basilique Saint-Denis,Philippe IV de France,Jeanne Ire de Navarre,"Blanche de Bourgogne, Marie de Luxembourg, Jeanne d'Évreux",1322-01-11,1328-02-09,1322.00,1328.00,1294.00,1328.00
+Q178918,Robert II de France,0972-04-01,Orléans,1031-07-26,Melun,,basilique Saint-Denis,Hugues Capet,Adélaïde d'Aquitaine,"Rozala d'Italie, Berthe de Bourgogne, Constance d'Arles",0996-10-29,1031-07-26,996.00,1031.00,972.00,1031.00
+Q134309,Charles IX,1550-07-07,Saint-Germain-en-Laye,1574-06-09,Vincennes,tuberculose,basilique Saint-Denis,Henri II,Catherine de Médicis,Élisabeth d'Autriche,1560-12-25,1574-06-19,1560.00,1574.00,1550.00,1574.00
+Q109248,Dagobert III,0698-01-01,t1766646719,0715-01-01,t1766646720,,,Childebert IV,,,0711-01-01,0715-01-01,711.00,715.00,698.00,715.00
+Q130969,Philippe IV de France,1268-01-01,Fontainebleau,1314-12-07,Fontainebleau,"accident de chasse, accident vasculaire cérébral",basilique Saint-Denis,Philippe III de France,Isabelle d'Aragon,Jeanne Ire de Navarre,1285-10-12,1314-12-07,1285.00,1314.00,1268.00,1314.00
+Q191003,Carloman Ier,0751-01-01,Soissons,0771-12-04,Samoussy,,basilique Saint-Denis,Pépin le Bref,Bertrade de Laon,Gerberge,0768-10-13,0771-12-08,768.00,771.00,751.00,771.00
+Q82339,Clovis Ier,0466-01-01,Tournai,0511-11-29,Paris,,abbaye Sainte-Geneviève de Paris,Childéric Ier,Basine de Thuringe,"princesse franque, Clotilde",0481-01-01,0511-11-29,481.00,511.00,466.00,511.00
+Q132548,François II,1544-01-29,Fontainebleau,1560-12-15,Paris,méningite,basilique Saint-Denis,Henri II,Catherine de Médicis,Marie Stuart,1559-07-30,1560-12-25,1559.00,1560.00,1544.00,1560.00
+Q309934,Clovis IV,0677-01-01,t1766660814,0695-01-01,t1766660816,,,Thierry III,Clotilde dite Doda,,0691-01-01,0695-01-01,691.00,695.00,677.00,695.00
+Q309909,Childéric II,0655-01-01,t1766684381,0675-01-01,Chelles,,abbaye de Saint-Germain-des-Prés,Clovis II,Bathilde,Bilichilde,,,662.00,675.00,655.00,675.00
+Q316874,Dagobert II,0652-01-01,t1776648527,0679-12-26,Mouzay,,,Sigebert III,Chimnechilde,,0676-01-01,0679-12-26,676.00,679.00,652.00,679.00
+Q316908,Clotaire IV,0685-01-01,t1766639272,0719-01-01,t1766639271,,,Childebert IV,,,0717-01-01,0719-01-01,717.00,719.00,685.00,719.00
+Q737533,Louis XIII,1601-09-27,Fontainebleau,1643-05-14,Saint-Germain-en-Laye,tuberculose,basilique Saint-Denis,Henri IV,Marie de Médicis,Anne d'Autriche,1610-05-14,1643-05-14,1610.00,1643.00,1601.00,1643.00
+Q295175,Thierry III,0657-01-01,t1766677926,0691-01-01,t1766677929,,Arras,Clovis II,Bathilde,Clotilde dite Doda,,,675.00,691.00,657.00,691.00
+Q295157,Childéric III,0714-01-01,t1766631886,,t1766631883,,,Chilpéric II,,,0743-01-01,0751-01-01,743.00,751.00,714.00,
+Q129857,François Ier,1494-09-21,Cognac,1547-04-10,Rambouillet,maladie,basilique Saint-Denis,Charles d'Orléans,Louise de Savoie,"Éléonore de Habsbourg, Claude de France",1515-01-11,1547-04-10,1515.00,1547.00,1494.00,1547.00
+Q169992,Jean II de France,1319-04-24,Le Mans,1364-04-16,Londres,,basilique Saint-Denis,Philippe VI de France,Jeanne de Bourgogne,"Jeanne Ire d'Auvergne, Bonne de Luxembourg",1350-08-30,1364-04-16,1350.00,1364.00,1319.00,1364.00
+Q58907,Philippe Ier de France,1052-05-29,Champagne-et-Fontaine,1108-08-05,Melun,,abbaye de Saint-Benoît-sur-Loire,Henri Ier de France,Anne de Kiev,"Bertrade de Montfort, Berthe de Hollande",1060-08-10,1108-08-05,1060.00,1108.00,1052.00,1108.00
+Q43974,Louis le Pieux,0778-04-20,Chasseneuil-du-Poitou,0840-06-24,Ingelheim am Rhein,,abbaye de Saint-Arnould,Charlemagne,Hildegarde,"Ermengarde de Hesbaye, Judith de Bavière",0814-02-01,0840-06-24,814.00,840.00,778.00,840.00
+Q172203,Philippe III de France,1245-04-10,Poissy,1285-10-12,Perpignan,dysentérie,basilique Saint-Denis,Saint Louis,Marguerite de Provence,"Isabelle d'Aragon, Marie de Brabant",1270-09-01,1285-10-12,1270.00,1285.00,1245.00,1285.00
+Q34428,Philippe II Auguste,1165-08-28,Paris,1223-07-21,Mantes-la-Jolie,,basilique Saint-Denis,Louis VII de France,Adèle de Champagne,"Agnès de Méranie, Isabelle de Hainaut, Ingeburge de Danemark",1180-09-25,1223-07-21,1180.00,1223.00,1165.00,1223.00
+Q81212,Pépin le Bref,0714-01-01,Liège,0768-09-28,Saint-Denis,,basilique Saint-Denis,Charles Martel,Rotrude,Bertrade de Laon,0741-01-01,0751-01-01,751.00,768.00,714.00,768.00
+Q936976,Henri IV,1553-12-23,château de Pau,1610-05-14,Paris,blessure par arme blanche,basilique Saint-Denis,Antoine de Bourbon,Jeanne d'Albret,"Marguerite de France, Marie de Médicis",1572-06-19,1610-05-14,1589.00,1610.00,1553.00,1610.00
+Q346,Saint Louis,1214-05-02,Poissy,1270-09-01,Tunis,"dysentérie, scorbut",basilique Saint-Denis,Louis VIII de France,Blanche de Castille,Marguerite de Provence,1226-11-15,1270-09-01,1226.00,1270.00,1214.00,1270.00
+Q58514,Louis XII,1462-07-06,Blois,1515-01-11,Paris,,basilique Saint-Denis,Charles d'Orléans,Marie de Clèves,"Marie d'Angleterre, Jeanne de France, Anne de Bretagne",1498-04-25,1515-01-11,1498.00,1515.00,1462.00,1515.00
+Q8058,Louis XI,1423-07-12,Bourges,1483-09-08,château de Plessis-lès-Tours,accident vasculaire cérébral,basilique Notre-Dame de Cléry,Charles VII de France,Marie d'Anjou,"Marguerite d'Écosse, Charlotte de Savoie",1461-08-09,1483-09-17,1461.00,1483.00,1423.00,1483.00
+Q7742,Louis XIV,1638-09-05,château de Saint-Germain-en-Laye,1715-09-01,château de Versailles,gangrène,basilique Saint-Denis,Louis XIII,Anne d'Autriche,"Madame de Maintenon, Marie-Thérèse d'Autriche",1643-05-14,1715-09-01,1643.00,1715.00,1638.00,1715.00
+Q7758,Charles X,1757-10-09,Versailles,1836-11-06,Gorizia,choléra,église de l'Annonciation de Kostanjevica,Louis de France,Marie-Josèphe de Saxe,Marie-Thérèse de Savoie,1824-09-16,1830-08-02,1824.00,1830.00,1757.00,1836.00
+Q8433,Philippe V de France,1293-01-01,Vincennes,1322-01-11,abbaye royale de Longchamp,infection,basilique Saint-Denis,Philippe IV de France,Jeanne Ire de Navarre,Jeanne de Bourgogne,1316-11-27,1322-01-11,1316.00,1322.00,1293.00,1322.00
+Q7738,Louis XV,1710-02-15,Versailles,1774-05-10,Versailles,variole,basilique Saint-Denis,Louis de France,Marie-Adélaïde de Savoie,Marie Leszczyńska,1715-09-01,1774-05-10,1715.00,1774.00,1710.00,1774.00
+Q7750,Louis XVIII,1755-11-17,Versailles,1824-09-16,Paris,maladie,basilique Saint-Denis,Louis de France,Marie-Josèphe de Saxe,Marie-Joséphine de Savoie,1815-07-08,1824-09-16,1815.00,1824.00,1755.00,1824.00
+Q233461,Thierry Ier,0485-01-01,t1766774419,0534-01-01,t1766774422,,,Clovis Ier,,"Ne, Suavegothe",,,511.00,534.00,485.00,534.00
+Q274597,Théodebert Ier,0500-01-01,,0548-01-01,,attaque animale,,Thierry Ier,Ne,"Deoteria, Wisigarde",,,534.00,548.00,500.00,548.00
+Q212852,Childebert Ier,0497-01-01,Reims,0558-12-13,Paris,,basilique Saint-Denis,Clovis Ier,Clotilde,Ultrogothe,,,511.00,558.00,497.00,558.00
+Q28984,Clotaire Ier,0498-01-01,t1776645748,0561-12-01,Soissons,,Soissons,Clovis Ier,Clotilde,"Chunsène, Gondioque, Ingonde, Arégonde, Waldrade, Radegonde",,,511.00,561.00,498.00,561.00
+Q309946,Sigebert Ier,0535-01-01,t1766745254,0575-01-01,Vitry-en-Artois,,,Clotaire Ier,Ingonde,Brunehaut,,,561.00,575.00,535.00,575.00
+Q295086,Gontran,0532-01-01,Soissons,0593-03-30,Chalon-sur-Saône,,,Clotaire Ier,Ingonde,"Marcatrude, Austregilde",,,561.00,592.00,532.00,593.00
+Q312605,Théodebert II,0585-01-01,t1766730215,0612-01-01,Chalon-sur-Saône,,,Childebert II,Faileube,"Théodechilde, Blichilde",,,595.00,612.00,585.00,612.00
+Q316888,Sigebert II,0602-01-01,t1776719141,0613-10-13,t1776719140,,,Thierry II,,,,,613.00,613.00,602.00,613.00
+Q316881,Caribert II,0618-01-01,t1766718552,0632-04-08,Blaye,,,Clotaire II,Sichilde,,,,629.00,632.00,618.00,632.00
+Q316892,Sigebert III,0630-01-01,t1766714810,0656-02-04,t1766714808,,,Dagobert Ier,Ragnétrude,Chimnechilde,,,639.00,656.00,630.00,656.00
+Q304688,Childebert III l'Adopté,0650-01-01,t1731445641,0662-01-01,t1731445642,,,Grimoald Ier,,,,,656.00,662.00,650.00,662.00
+Q309922,Clotaire III,0650-01-01,t1776646015,0673-01-01,t1776646014,peste,basilique Saint-Denis,Clovis II,Bathilde,,,,657.00,673.00,650.00,673.00
+Q53448,Henri III,1551-09-29,château de Fontainebleau,1589-08-02,Saint-Cloud,blessure par arme blanche,basilique Saint-Denis,Henri II,Catherine de Médicis,Louise de Lorraine,,,1574.00,1589.00,1551.00,1589.00
+Q7732,Louis XVI,1754-08-23,château de Versailles,1793-01-21,place de la Concorde,"décapitation, guillotine",basilique Saint-Denis,Louis de France,Marie-Josèphe de Saxe,Marie-Antoinette,,,1774.00,1792.00,1754.00,1793.00
+Q595053,Clovis III,0670-01-01,t1766667670,0676-01-01,t1766667667,,,Clotaire III,,,,,675.00,676.00,670.00,676.00
+Q189660,Clodomir,0495-01-01,inconnu,0524-06-23,Vézeronce-Curtin,,,Clovis Ier,Clotilde,Gondioque,,,511.00,524.00,495.00,524.00
+Q309915,Théodebald,0534-01-01,,0555-01-01,,,,Théodebert Ier,Deoteria,Waldrade,,,548.00,555.00,534.00,555.00
+Q243453,Caribert Ier,0520-01-01,t1766751385,0567-01-01,Chelles,,,Clotaire Ier,Ingonde,"Théodechilde, Méroflède, Marcova, Ingeberge",,,561.00,567.00,520.00,567.00
+Q243118,Chilpéric Ier,0537-01-01,t1766741949,0584-09-29,Chelles,assassinat,abbaye de Saint-Germain-des-Prés,Clotaire Ier,Arégonde,"Audovère, Galswinthe, Frédégonde",,,561.00,584.00,537.00,584.00
+Q312606,Childebert II,0570-04-08,t1776644528,0596-01-01,t1776644527,poison,,Sigebert Ier,Brunehaut,Faileube,,,575.00,596.00,570.00,596.00
+Q209118,Clotaire II,0584-01-01,t1776645741,0629-10-21,t1776645747,,abbaye de Saint-Germain-des-Prés,Chilpéric Ier,Frédégonde,"Bertrude, Sichilde, Haldetrude",,,584.00,629.00,584.00,629.00
+Q109860,Dagobert Ier,0611-01-01,t1776648529,0639-01-22,Saint-Denis,,basilique Saint-Denis,Clotaire II,Bertrude,"Berchilde, Wulfégonde, Ragnétrude, Gomatrude, Nantilde",,,623.00,639.00,611.00,639.00
+Q309919,Clovis II,0635-01-01,t1776645743,0657-01-01,Saint-Denis,,basilique Saint-Denis,Dagobert Ier,Nantilde,Bathilde,,,639.00,657.00,635.00,657.00
+Q109240,Chilpéric II,0673-01-01,t1766643120,0721-02-17,Nyon,,Noyon,Childéric II,Bilichilde,,0719-01-01,0721-01-01,715.00,721.00,673.00,721.00
+Q3044,Charlemagne,0748-04-06,Royaume des Francs,0814-02-01,Aix-la-Chapelle,maladie,cathédrale d'Aix-la-Chapelle,Pépin le Bref,Bertrade de Laon,"Himiltrude, Désirée de Lombardie, Luitgarde, Fastrade, Hildegarde",0768-09-24,0814-01-28,768.00,814.00,748.00,814.00
+Q71231,Charles II le Chauve,0823-06-13,Francfort-sur-le-Main,0877-10-06,Avrieux,paludisme,basilique Saint-Denis,Louis le Pieux,Judith de Bavière,"Ermentrude d'Orléans, Richilde d'Ardennes",,,840.00,877.00,823.00,877.00
+Q182840,Louis II le Bègue,0846-11-01,,0879-04-10,Compiègne,,,Charles II le Chauve,Ermentrude d'Orléans,"Ansgarde de Bourgogne, Adélaïde de Frioul",,,877.00,879.00,846.00,879.00
+Q193112,Louis III,,,0882-08-05,,,,Louis II le Bègue,Ansgarde de Bourgogne,,,,879.00,882.00,864.00,882.00
+Q192846,Carloman II,,,,Les Andelys,accident de chasse,,Louis II le Bègue,Ansgarde de Bourgogne,,,,879.00,884.00,867.00,884.00
+Q150712,Charles III le Gros,,Francie orientale,0888-01-13,Neudingen,maladie,abbaye de Reichenau,Louis II le Germanique,Emma de Bavière,Richarde,,,885.00,887.00,839.00,888.00
+Q208086,Eudes Ier,,Neustrie,0898-01-03,La Fère,,basilique Saint-Denis,Robert le Fort,Adélaïde de Tours,Théodérade,,,888.00,898.00,852.00,898.00
+Q187519,Charles III le Simple,0879-09-17,Péronne,0929-10-07,Péronne,,Hauts-de-France,Louis II le Bègue,Adélaïde de Frioul,"Eadgifu, Frédérune",,,898.00,922.00,879.00,929.00
+Q208082,Robert Ier,0860-08-15,Angers,0923-06-15,Soissons,,,Robert le Fort,Adélaïde de Tours,Béatrice de Vermandois,,,922.00,923.00,860.00,923.00
+Q273273,Raoul de Bourgogne,,Auxerre,0936-01-15,Auxerre,maladie,,Richard de Bourgogne,Adélaïde de Bourgogne,Emma de France,,,923.00,936.00,890.00,936.00
+Q193658,Louis IV d'Outremer,,Laon,,Reims,chute de cheval,basilique Saint-Remi de Reims,Charles III le Simple,Eadgifu,Gerberge de Saxe,0936-06-19,0954-09-10,936.00,954.00,920.00,954.00
+Q242832,Lothaire,,Laon,0986-03-02,Laon,,basilique Saint-Remi de Reims,Louis IV d'Outremer,Gerberge de Saxe,Emma d'Italie,0954-09-10,0986-03-02,954.00,986.00,941.00,986.00
+Q205289,Louis V,,,0987-05-22,Compiègne,accident de chasse,abbaye Saint-Corneille,Lothaire,Emma d'Italie,Adélaïde d'Anjou,0986-03-02,0987-05-21,986.00,987.00,967.00,987.00
+Q8384,Louis X de France,1289-10-04,Paris,1316-06-05,Vincennes,maladie,basilique Saint-Denis,Philippe IV de France,Jeanne Ire de Navarre,"Marguerite de Bourgogne, Clémence de Hongrie",1314-11-29,1316-06-05,1314.00,1316.00,1289.00,1316.00
+Q8404,Jean Ier de France,1316-11-15,Paris,1316-11-20,Paris,,basilique Saint-Denis,Louis X de France,Clémence de Hongrie,,1316-11-15,1316-11-20,1316.00,1316.00,1316.00,1316.00

@@ -37,7 +37,7 @@ class ParisPage extends Component {
     constructor(props){
         super(props);
         this.state = {
-          "sliderValue" : 300,
+          "sliderValue" : 481,
           "res" : "a",
           "king": "",
           "startYear": 0,
@@ -59,16 +59,16 @@ class ParisPage extends Component {
         this.handleGetMonument = this.handleGetMonument.bind(this);
         this.handleGetEvt = this.handleGetEvt.bind(this);
         this.handleGetPerso = this.handleGetPerso.bind(this);
-        this.handleGetKing(300)
-        this.handleGetMonument(300)
-        this.handleGetEvt(300)
-        this.handleGetPerso(300)
+        this.handleGetKing(481)
+        //this.handleGetMonument(300)
+        //this.handleGetEvt(300)
+        //this.handleGetPerso(300)
     }
     
     handleGetKing(year){
-      console.log("http://localhost:5000/test/king/year/"+year)
+      console.log("http://localhost:5000/roi/year/"+year)
       let self = this;
-      gethttp().get("http://localhost:5000/test/king/year/"+year).end(function(err, res){
+      gethttp().get("http://localhost:5000/roi/year/"+year).end(function(err, res){
           if(err) alert("Erreur lors de la récupération des données sur le serveur : " + err.message);
           else {
             var obj = JSON.parse(res.text);
@@ -137,16 +137,16 @@ handleGetPerso(year){
     handleChange = sliderValue => {
         this.setState({ sliderValue });
         this.handleGetKing(sliderValue);
-        this.handleGetMonument(sliderValue);
-        this.handleGetEvt(sliderValue);
-        this.handleGetPerso(sliderValue);
+        //this.handleGetMonument(sliderValue);
+        //this.handleGetEvt(sliderValue);
+        //this.handleGetPerso(sliderValue);
       };
     render() 
     { 
         return <div style={{color: 'white'}}>
             <div style={wrapperStyle}>
             <p>Choisissez votre date : </p>
-            <Slider min={300} max={1773} defaultValue={300} handle={handle} onChange={this.handleChange}/>
+            <Slider min={481} max={1792} defaultValue={481} handle={handle} onChange={this.handleChange}/>
             <div style={{textAlign:"center"}}><h1>Année : {this.state.sliderValue}</h1></div>
             </div>
             <div style={{textAlign: "center", float:"left", width:"100%"}}>
@@ -156,12 +156,12 @@ handleGetPerso(year){
             <div style={{float: "left", width:"100%", height:"100%"}}>
               <div style={{textAlign: "center", float:"left", width:"50%"}}>
                 <div><h1>Chef d'Etat</h1></div>
-                <div>{this.state.kings.map(king => (<div><div><h1>{king.nom} ({king.birthYear} - {king.deathYear})</h1></div>
-                                            <div>Roi de {king.startYear} à {king.endYear}</div>
+                <div>{this.state.kings.map(king => (<div><div><h1>{king.nom} ({king.birthyear} - {king.deathyear})</h1></div>
+                                            <div>Roi de {king.startyear} à {king.endyear}</div>
                                             <div>Epouse(s) : {king.spouses}</div>
-                                            <div>Père : {king.fatherLabel} - Mère : {king.motherLabel}</div>
-                                            <div>Mort à {king.placeOfDeathLabel} {king.mannersOfDeath}</div>
-                                            <div>Repose à : {king.placeOfBurialLabel}</div>
+                                            <div>Père : {king.fatherlabel} - Mère : {king.motherlabel}</div>
+                                            <div>Mort à {king.placeofdeathlabel} {king.mannersofdeath}</div>
+                                            <div>Repose à : {king.placeofburiallabel}</div>
                                             <br /><br /></div>))}</div>
               </div>
               <div style={{textAlign: "center", float:"left", width:"50%"}}>
