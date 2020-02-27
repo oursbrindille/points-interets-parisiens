@@ -27,6 +27,28 @@ class Evenement(db.Model):
     def __repr__(self):
         return '%s/%s/%s/%s/%s' % (self.id_event, self.evenement, self.startyear, self.endyear, self.commentaire)
 
+
+class Lieu(db.Model):
+    __tablename__ = "lieu"
+    id_lieu = db.Column(db.Integer, primary_key=True)
+    nom = db.Column(db.String(255))
+    lon = db.Column(db.Float)
+    lat = db.Column(db.Float)
+    inception = db.Column(db.String(255))
+    constructionyear = db.Column(db.Float)
+
+    def __init__(self, name, age):
+        self.id_lieu = id_lieu
+        self.nom = nom
+        self.lon = lon
+        self.lat = lat
+        self.inception = inception
+        self.constructionyear = constructionyear
+    
+    def __repr__(self):
+        return '%s/%s/%s/%s/%s/%s' % (self.id_lieu, self.nom, self.lon, self.lat, self.inception,self.constructionyear)
+
+
 class Roi(db.Model):
     __tablename__ = "roi"
     id_roi = db.Column(db.Integer, primary_key=True)
@@ -70,6 +92,149 @@ class Roi(db.Model):
 @app.route('/')
 def index():
     return render_template('home.html')
+
+
+
+
+
+
+@app.route('/lieu/edit', methods=['GET'])
+def editlieu():
+    lieux = getlieujson()
+    html = "<p>"+str(len(lieux))+"</p>"
+    for row in lieux:
+        form = "<form action='/lieu/form/update'>"
+        form = form+"<input type='hidden' name='id_lieu' value=\""+str(row['id_lieu'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<textarea name='nom' rows='3' cols='50'>"+str(row['nom'])+"</textarea>&nbsp;&nbsp;"
+        form = form+"<input size='5' name='lon' value=\""+str(row['lon'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='5' name='lat' value=\""+str(row['lat'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='10' name='inception' value=\""+str(row['inception'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='5' name='constructionyear' value=\""+str(row['constructionyear'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input type='submit' name='button' value='Supprimer'>&nbsp;&nbsp;"
+        form = form+"<input type='submit' name='button' value='Valider'></form>"
+        html = html+form    
+    return html
+
+@app.route('/lieu/form/update', methods=['POST', 'GET'])
+def updatelieu():
+    body = request.values
+    editData = Lieu.query.filter_by(id_lieu=body['id_lieu']).first()
+    if(body['nom'] == "None"):
+        editData.nom = None
+    else:
+        editData.nom = body['nom']
+
+    if(body['lon'] == "None"):
+        editData.lon = None
+    else:
+        editData.lon = body['lon']
+
+    if(body['lat'] == "None"):
+        editData.lat = None
+    else:
+        editData.lat = body['lat']
+        
+    if(body['inception'] == "None"):
+        editData.inception = None
+    else:
+        editData.inception = body['inception']
+        
+    if(body['constructionyear'] == "None"):
+        editData.constructionyear = None
+    else:
+        editData.constructionyear = body['constructionyear']
+
+    db.session.commit()
+    return redirect("/lieu/edit", code=302)
+
+
+@app.route('/lieu', methods=['POST', 'GET'])
+def lieu():
+    
+    # POST a data to database
+    if request.method == 'POST':
+        body = request.json
+        nom = body['nom']
+        lon = body['lon']
+        lat = body['lat']
+        inception = body['inception']
+        constructionyear = body['constructionyear']
+
+        data = Lieu(nom, lon, lat, inception, constructionyear)
+        db.session.add(data)
+        db.session.commit()
+
+        return jsonify({
+            'status': 'Data is posted to PostgreSQL!',
+            'nom': nom,
+            'lon': lon,
+            'lat': lat,
+            'inception': inception,
+            'constructionyear': constructionyear
+        })
+    
+    # GET all data from database & sort by id
+    if request.method == 'GET':
+        lieux = getlieujson()
+        return jsonify(lieux)
+
+def getlieujson():
+    # data = User.query.all()
+    data = Lieu.query.order_by(Lieu.id_lieu).all()
+    print(data)
+    dataJson = []
+    for i in range(len(data)):
+        # print(str(data[i]).split('/'))
+        dataDict = {
+            'id_lieu': str(data[i]).split('/')[0],
+            'nom': str(data[i]).split('/')[1],
+            'lon': str(data[i]).split('/')[2],
+            'lat': str(data[i]).split('/')[3],
+            'inception': str(data[i]).split('/')[4],
+            'constructionyear': str(data[i]).split('/')[5]
+        }
+        dataJson.append(dataDict)
+    return dataJson
+
+@app.route('/lieu/<string:id>', methods=['GET', 'DELETE', 'PUT'])
+def onelieu(id):
+
+    # GET a specific data by id
+    if request.method == 'GET':
+        data = Lieu.query.get(id)
+        print(data)
+        dataDict = {
+            'id_lieu': str(data).split('/')[0],
+            'nom': str(data).split('/')[1],
+            'lon': str(data).split('/')[2],
+            'lat': str(data).split('/')[3],
+            'inception': str(data).split('/')[4],
+            'constructionyear': str(data).split('/')[5]
+        }
+        return jsonify(dataDict)
+        
+    # DELETE a data
+    if request.method == 'DELETE':
+        delData = Lieu.query.filter_by(id_lieu=id).first()
+        db.session.delete(delData)
+        db.session.commit()
+        return jsonify({'status': 'Data '+id+' is deleted from PostgreSQL!'})
+
+    # UPDATE a data by id
+    if request.method == 'PUT':
+        body = request.json
+        editData = Lieu.query.filter_by(id_lieu=id).first()
+        editData.nom = body['nom']
+        editData.lon = body['lon']
+        editData.lat = body['lat']
+        editData.inception = body['inception']
+        editData.constructionyear = body['constructionyear']
+        db.session.commit()
+        return jsonify({'status': 'Data '+id+' is updated from PostgreSQL!'})
+
+
+
+
 
 
 @app.route('/roi/edit', methods=['GET'])
@@ -328,7 +493,7 @@ def oneroi(id):
 @app.route('/evenement/edit/start/<start>/end/<end>', methods=['GET'])
 def editevenement(start, end):
     evenements = getevenementjson(start,end)
-    html = ""
+    html = "<p>"+str(len(evenements))+"</p>"
     for row in evenements:
         form = "<form action='/evenement/form/update'>"
         form = form+"<input type='hidden' name='id_event' value=\""+str(row['id_event'])+"\"/>&nbsp;&nbsp;"
