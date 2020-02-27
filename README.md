@@ -8,7 +8,7 @@ Plusieurs éléments :
 ## Mise en route :
 
 1. cd backend
-2. python demo.py
+2. python app.py
 3. cd ../frontend
 3. npm install
 5. npm start
