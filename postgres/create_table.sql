@@ -69,4 +69,3 @@ CREATE TABLE instance_roi
     lat NUMERIC(14,11)
 )
 TABLESPACE pg_default;
-

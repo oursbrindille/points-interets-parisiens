@@ -268,9 +268,10 @@ def onelieu(id):
 
 
 
-@app.route('/personnage/edit', methods=['GET'])
-def editpersonnage():
-    personnages = getpersonnagejson()
+@app.route('/personnage/edit', methods=['GET'], defaults={'start': None, 'end': None})
+@app.route('/personnage/edit/start/<start>/end/<end>', methods=['GET'])
+def editpersonnage(start, end):
+    personnages = getpersonnagejson(start, end)
     html = ""
     for row in personnages:
         form = "<form action='/personnage/form/update'>"
@@ -402,8 +403,9 @@ def updatepersonnage():
     return redirect("/personnage/edit", code=302)
 
 
-@app.route('/personnage', methods=['POST', 'GET'])
-def personnage():
+@app.route('/personnage', methods=['POST', 'GET'], defaults={'start': None, 'end': None})
+@app.route('/personnage/start/<start>/end/<end>', methods=['POST', 'GET'])
+def personnage(start, end):
     
     # POST a data to database
     if request.method == 'POST':
@@ -438,12 +440,16 @@ def personnage():
     
     # GET all data from database & sort by id
     if request.method == 'GET':
-        personnages = getpersonnagejson()
+        personnages = getpersonnagejson(start, end)
         return jsonify(personnages)
 
-def getpersonnagejson():
+def getpersonnagejson(start, end):
     # data = User.query.all()
-    data = Personnage.query.order_by(Personnage.birthyear).all()
+    if((start == None) & (end == None)):
+        data = Personnage.query.order_by(Personnage.birthyear).all()
+    else:
+        data = Personnage.query.filter(Personnage.birthyear>=start, Personnage.birthyear<=end).order_by(Personnage.birthyear).all()
+
     print(data)
     dataJson = []
     for i in range(len(data)):
