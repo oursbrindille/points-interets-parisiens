@@ -58,3 +58,15 @@ CREATE TABLE personnage
     deathYear DECIMAL(9,2)
 )
 TABLESPACE pg_default;
+
+
+
+CREATE TABLE instance_roi
+(
+	id_instance_roi SERIAL PRIMARY KEY NOT NULL,
+    id_roi CHARACTER VARYING,
+    lon NUMERIC(14,11),
+    lat NUMERIC(14,11)
+)
+TABLESPACE pg_default;
+
