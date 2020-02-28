@@ -14,21 +14,67 @@ CORS(app)
 def index():
     return "Background Jobs"
 
-
-class InstanceRoi(db.Model):
-    __tablename__ = "instance_roi"
-    id_instance_roi = db.Column(db.Integer, primary_key=True)
-    id_roi = db.Column(db.Integer)
+class InstanceObject(db.Model):
+    __tablename__ = "instance_object"
+    id_instance_object = db.Column(db.Integer, primary_key=True)
+    id_external_object = db.Column(db.Integer)
+    type_object = db.Column(db.String(255))
     lon = db.Column(db.Float)
     lat = db.Column(db.Float)
 
-    def __init__(self, id_roi, lon, lat):
-        self.id_roi = id_roi
+    def __init__(self, id_external_object, type_object, lon, lat):
+        self.id_external_object = id_external_object
+        self.type_object = type_object
         self.lon = lon
         self.lat = lat
     
     def __repr__(self):
-        return '%s/%s/%s/%s' % (self.id_instance_roi, self.id_roi, self.lon, self.lat)
+        return '%s/%s/%s/%s/%s' % (self.id_instance_object, self.id_external_object, self.type_object, self.lon, self.lat)
+
+class Evenement(db.Model):
+    __tablename__ = "evenement"
+    id_event = db.Column(db.Integer, primary_key=True)
+    evenement = db.Column(db.String(255))
+    startyear = db.Column(db.Float)
+    endyear = db.Column(db.Float)
+    commentaire = db.Column(db.String(255))
+
+    def __init__(self, name, age):
+        self.id_event = id_event
+        self.evenement = evenement
+        self.startyear = startyear
+        self.endyear = endyear
+        self.commentaire = commentaire
+    
+    def __repr__(self):
+        return '%s/%s/%s/%s/%s' % (self.id_event, self.evenement, self.startyear, self.endyear, self.commentaire)
+
+
+class Personnage(db.Model):
+    __tablename__ = "personnage"
+    id_personnage = db.Column(db.Integer, primary_key=True)
+    nom = db.Column(db.String(255))
+    dateofbirth = db.Column(db.Date)
+    placeofbirthlabel = db.Column(db.String(255))
+    dateofdeath = db.Column(db.Date)
+    placeofdeathlabel = db.Column(db.String(255))
+    positions = db.Column(db.String(255))
+    birthyear = db.Column(db.Float)
+    deathyear = db.Column(db.Float)
+
+    def __init__(self, nom, dateofbirth, placeofbirthlabel, dateofdeath, placeofdeathlabel, positions, birthyear, deathyear):
+        self.nom = nom
+        self.dateofbirth = dateofbirth
+        self.placeofbirthlabel = placeofbirthlabel
+        self.dateofdeath = dateofdeath
+        self.placeofdeathlabel = placeofdeathlabel
+        self.positions = positions
+        self.birthyear = birthyear
+        self.deathyear = deathyear
+    
+    def __repr__(self):
+        return '%s/%s/%s/%s/%s/%s/%s/%s/%s' % (self.id_personnage,self.nom,self.dateofbirth,self.placeofbirthlabel,self.dateofdeath,self.placeofdeathlabel,self.positions,self.birthyear,self.deathyear)
+
 
 class Roi(db.Model):
     __tablename__ = "roi"
@@ -93,25 +139,34 @@ def getrois():
 
 @app.route('/generate')
 def generate():
-    instances = getinstanceroijson()
+    instances = getinstanceobjectjson()
     rois = getroijson(500,600)
+    evenements = getevenementjson(500,600)
+    personnages = getpersonnagejson(500,600)
 
     html = ""
     for instance in instances:
-        delData = InstanceRoi.query.filter_by(id_instance_roi=instance["id_instance_roi"]).first()
+        delData = InstanceObject.query.filter_by(id_instance_object=instance["id_instance_object"]).first()
         db.session.delete(delData)
         db.session.commit()
 
     for i in range(100):
-        data = InstanceRoi(rois[random.randint(0,9)]['nom'], genlon(), genlat())
+        r = random.random()
+        if(r < 0.33):
+            data = InstanceObject(rois[random.randint(0,len(rois)-1)]['nom'], "roi", genlon(), genlat())
+        if((r >=0.33) & (r < 0.66)):
+            data = InstanceObject(evenements[random.randint(0,len(evenements)-1)]['evenement'], "evenement", genlon(), genlat())
+        if(r >=0.66):
+            data = InstanceObject(personnages[random.randint(0,len(personnages)-1)]['nom'], "personnage", genlon(), genlat())
+
         db.session.add(data)
         db.session.commit()
     
-    instances = getinstanceroijson()
+    instances = getinstanceobjectjson()
     return jsonify(instances)
 
-@app.route('/instance-roi', methods=['POST', 'GET'])
-def instanceroi():
+@app.route('/instances', methods=['POST', 'GET'])
+def instances():
     
     # POST a data to database
     if request.method == 'POST':
@@ -133,21 +188,22 @@ def instanceroi():
     
     # GET all data from database & sort by id
     if request.method == 'GET':
-        instances = getinstanceroijson()
+        instances = getinstanceobjectjson()
         return jsonify(instances)
 
-def getinstanceroijson():
+def getinstanceobjectjson():
     # data = User.query.all()
-    data = InstanceRoi.query.order_by(InstanceRoi.id_instance_roi).all()
+    data = InstanceObject.query.order_by(InstanceObject.id_instance_object).all()
     print(data)
     dataJson = []
     for i in range(len(data)):
         # print(str(data[i]).split('/'))
         dataDict = {
-            'id_instance_roi': str(data[i]).split('/')[0],
-            'id_roi': str(data[i]).split('/')[1],
-            'lon': str(data[i]).split('/')[2],
-            'lat': str(data[i]).split('/')[3]
+            'id_instance_object': str(data[i]).split('/')[0],
+            'id_external_object': str(data[i]).split('/')[1],
+            'type_object': str(data[i]).split('/')[2],
+            'lon': str(data[i]).split('/')[3],
+            'lat': str(data[i]).split('/')[4]
         }
         dataJson.append(dataDict)
     return dataJson
@@ -180,6 +236,52 @@ def getroijson(start, end):
             'endyear': str(data[i]).split('/')[15],
             'birthyear': str(data[i]).split('/')[16],
             'deathyear': str(data[i]).split('/')[17]
+        }
+        dataJson.append(dataDict)
+    return dataJson
+
+def getevenementjson(start, end):
+    # data = User.query.all()
+    if((start == None) & (end == None)):
+        data = Evenement.query.order_by(Evenement.id_event).all()
+    else:
+        data = Evenement.query.order_by(Evenement.id_event).filter(Evenement.startyear>start, Evenement.startyear<end).all()
+    print(data)
+    dataJson = []
+    for i in range(len(data)):
+        # print(str(data[i]).split('/'))
+        dataDict = {
+            'id_event': str(data[i]).split('/')[0],
+            'evenement': str(data[i]).split('/')[1],
+            'startyear': str(data[i]).split('/')[2],
+            'endyear': str(data[i]).split('/')[3],
+            'commentaire': str(data[i]).split('/')[4]
+        }
+        dataJson.append(dataDict)
+    return dataJson
+
+
+def getpersonnagejson(start, end):
+    # data = User.query.all()
+    if((start == None) & (end == None)):
+        data = Personnage.query.order_by(Personnage.birthyear).all()
+    else:
+        data = Personnage.query.filter(Personnage.birthyear>=start, Personnage.birthyear<=end).order_by(Personnage.birthyear).all()
+
+    print(data)
+    dataJson = []
+    for i in range(len(data)):
+        # print(str(data[i]).split('/'))
+        dataDict = {
+            'id_personnage': str(data[i]).split('/')[0],
+            'nom': str(data[i]).split('/')[1],
+            'dateofbirth': str(data[i]).split('/')[2],
+            'placeofbirthlabel': str(data[i]).split('/')[3],
+            'dateofdeath': str(data[i]).split('/')[4],
+            'placeofdeathlabel': str(data[i]).split('/')[5],
+            'positions': str(data[i]).split('/')[6],
+            'birthyear': str(data[i]).split('/')[7],
+            'deathyear': str(data[i]).split('/')[8]
         }
         dataJson.append(dataDict)
     return dataJson
