@@ -61,10 +61,11 @@ TABLESPACE pg_default;
 
 
 
-CREATE TABLE instance_roi
+CREATE TABLE instance_object
 (
-	id_instance_roi SERIAL PRIMARY KEY NOT NULL,
-    id_roi CHARACTER VARYING,
+	id_instance_object SERIAL PRIMARY KEY NOT NULL,
+    id_external_object CHARACTER VARYING,
+    type_object CHARACTER VARYING,
     lon NUMERIC(14,11),
     lat NUMERIC(14,11)
 )
