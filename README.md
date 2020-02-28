@@ -7,6 +7,7 @@ Plusieurs éléments :
 
 ## Mise en route :
 
+0. sudo service postgresql start
 1. cd backend
 2. python app.py
 3. cd ../frontend
