@@ -93,10 +93,6 @@ class Roi(db.Model):
     def __repr__(self):
         return '%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s' % (self.id_roi,self.wikiid,self.nom,self.dateofbirth,self.placeofbirthlabel,self.dateofdeath,self.placeofdeathlabel,self.mannersofdeath,self.placeofburiallabel,self.fatherlabel,self.motherlabel,self.spouses,self.starttime,self.endtime,self.startyear,self.endyear,self.birthyear,self.deathyear)
 
-@app.route('/')
-def index():
-    return render_template('home.html')
-
 
 class Personnage(db.Model):
     __tablename__ = "personnage"
@@ -110,8 +106,7 @@ class Personnage(db.Model):
     birthyear = db.Column(db.Float)
     deathyear = db.Column(db.Float)
 
-    def __init__(self, name, age):
-        self.id_personnage = id_personnage
+    def __init__(self, nom, dateofbirth, placeofbirthlabel, dateofdeath, placeofdeathlabel, positions, birthyear, deathyear):
         self.nom = nom
         self.dateofbirth = dateofbirth
         self.placeofbirthlabel = placeofbirthlabel
@@ -124,6 +119,10 @@ class Personnage(db.Model):
     def __repr__(self):
         return '%s/%s/%s/%s/%s/%s/%s/%s/%s' % (self.id_personnage,self.nom,self.dateofbirth,self.placeofbirthlabel,self.dateofdeath,self.placeofdeathlabel,self.positions,self.birthyear,self.deathyear)
 
+
+@app.route('/')
+def index():
+    return render_template('home.html')
 
 
 
@@ -286,7 +285,72 @@ def editpersonnage():
         form = form+"<input size='5' name='deathyear' value=\""+str(row['deathyear'])+"\"/>&nbsp;&nbsp;"  
         form = form+"<input type='submit' name='button' value='Valider'></form>"
         html = html+form 
+    
+    form = "<form action='/personnage/form/create'>"
+    form = form+"<input size='20' name='nom' value=''/>&nbsp;&nbsp;"
+    form = form+"<input size='10' name='dateofbirth' value=''/>&nbsp;&nbsp;"
+    form = form+"<input size='10' name='placeofbirthlabel' value=''/>&nbsp;&nbsp;"
+    form = form+"<input size='10' name='dateofdeath' value=''/>&nbsp;&nbsp;"
+    form = form+"<input size='10' name='placeofdeathlabel' value=''/>&nbsp;&nbsp;"
+    form = form+"<input size='10' name='positions' value=''/>&nbsp;&nbsp;"
+    form = form+"<input size='5' name='birthyear' value=''/>&nbsp;&nbsp;"
+    form = form+"<input size='5' name='deathyear' value=''/>&nbsp;&nbsp;"  
+    form = form+"<input type='submit' name='button' value='Ajouter'></form>"
+    html = html+form
     return html
+
+
+
+@app.route('/personnage/form/create', methods=['POST','GET'])
+def createpersonnage():
+    body = request.values
+    
+
+    if(body['nom'] == "None"):
+        nom = None
+    else:
+        nom = body['nom']
+    
+    if(body['dateofbirth'] == "None"):
+        dateofbirth = None
+    else:
+        dateofbirth = body['dateofbirth']
+    
+    if(body['placeofbirthlabel'] == "None"):
+        placeofbirthlabel = None
+    else:
+        placeofbirthlabel = body['placeofbirthlabel']
+    
+    if(body['dateofdeath'] == "None"):
+        dateofdeath = None
+    else:
+        dateofdeath = body['dateofdeath']
+    
+    if(body['placeofdeathlabel'] == "None"):
+        placeofdeathlabel = None
+    else:
+        placeofdeathlabel = body['placeofdeathlabel']
+    
+    if(body['positions'] == "None"):
+        positions = None
+    else:
+        positions = body['positions']
+    
+    if(body['birthyear'] == "None"):
+        birthyear = None
+    else:
+        birthyear = body['birthyear']
+    
+    if(body['deathyear'] == "None"):
+        deathyear = None
+    else:
+        deathyear = body['deathyear']
+
+    data = Personnage(nom,dateofbirth,placeofbirthlabel,dateofdeath,placeofdeathlabel,positions,birthyear,deathyear)
+    db.session.add(data)
+    db.session.commit()
+    return redirect("/personnage/edit", code=302)
+
 
 @app.route('/personnage/form/update', methods=['POST', 'GET'])
 def updatepersonnage():
@@ -789,8 +853,9 @@ def updateevenement():
     return redirect("/evenement/edit", code=302)
 
 
-@app.route('/evenement', methods=['POST', 'GET'])
-def evenement():
+@app.route('/evenement', methods=['POST', 'GET'], defaults={'start': None, 'end': None})
+@app.route('/evenement/start/<start>/end/<end>', methods=['POST', 'GET'])
+def evenement(start, end):
     
     # POST a data to database
     if request.method == 'POST':
@@ -814,7 +879,7 @@ def evenement():
     
     # GET all data from database & sort by id
     if request.method == 'GET':
-        evenements = getevenementjson()
+        evenements = getevenementjson(start, end)
         return jsonify(evenements)
 
 def getevenementjson(start, end):

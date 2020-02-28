@@ -10,5 +10,5 @@ sudo -u postgres psql -d paris -c "\copy roi(wikiID, nom, dateOfBirth, placeOfBi
 echo "POPULATE ROI OK"
 sudo -u postgres psql -d paris -c "\copy lieu(nom, lon, lat, inception, height, constructionYear) FROM '/home/geof/projects/monuments-paris/csv/concat/monument.csv' delimiter ',' csv header encoding 'UTF8';"
 echo "POPULATE LIEU OK"
-sudo -u postgres psql -d paris -c "\copy personnage(nom, dateOfBirth, placeOfBirthLabel, dateOfDeath, placeOfDeathLabel, positions, birthYear, deathYear) FROM '/home/geof/projects/monuments-paris/csv/concat/personnage.csv' delimiter ',' csv header encoding 'UTF8';"
-echo "POPULATE PERSONNAGE OK"
+#sudo -u postgres psql -d paris -c "\copy personnage(nom, dateOfBirth, placeOfBirthLabel, dateOfDeath, placeOfDeathLabel, positions, birthYear, deathYear) FROM '/home/geof/projects/monuments-paris/csv/concat/personnage.csv' delimiter ',' csv header encoding 'UTF8';"
+#echo "POPULATE PERSONNAGE OK"
