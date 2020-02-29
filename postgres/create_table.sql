@@ -70,3 +70,23 @@ CREATE TABLE instance_object
     lat NUMERIC(14,11)
 )
 TABLESPACE pg_default;
+
+
+CREATE TABLE instance_object_user
+(
+	id_instance_object_user SERIAL PRIMARY KEY NOT NULL,
+    id_external_object CHARACTER VARYING,
+    id_user CHARACTER VARYING,
+    type_object CHARACTER VARYING,
+    lon NUMERIC(14,11),
+    lat NUMERIC(14,11)
+)
+TABLESPACE pg_default;
+
+
+CREATE TABLE user_info
+(
+	id_user SERIAL PRIMARY KEY NOT NULL,
+    pseudo CHARACTER VARYING
+)
+TABLESPACE pg_default;

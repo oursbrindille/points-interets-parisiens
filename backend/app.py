@@ -9,6 +9,18 @@ app.config['SQLALCHEMY_DATABASE_URI'] = db_config['uri']
 db = SQLAlchemy(app)
 CORS(app)
 
+class UserInfo(db.Model):
+    __tablename__ = "user_info"
+    id_user = db.Column(db.Integer, primary_key=True)
+    pseudo = db.Column(db.String(255))
+
+    def __init__(self, pseudo):
+        self.pseudo = pseudo
+    
+    def __repr__(self):
+        return '%s/%s' % (self.id_user, self.pseudo)
+
+
 class Evenement(db.Model):
     __tablename__ = "evenement"
     id_event = db.Column(db.Integer, primary_key=True)
@@ -123,6 +135,75 @@ class Personnage(db.Model):
 @app.route('/')
 def index():
     return render_template('home.html')
+
+
+
+@app.route('/user', methods=['POST', 'GET'])
+def user():
+    
+    # POST a data to database
+    if request.method == 'POST':
+        body = request.json
+        pseudo = body['pseudo']
+
+        data = UserInfo(pseudo)
+        db.session.add(data)
+        db.session.commit()
+
+        return jsonify({
+            'status': 'Data is posted to PostgreSQL!',
+            'pseudo': pseudo
+        })
+    
+    # GET all data from database & sort by id
+    if request.method == 'GET':
+        users = getuserjson()
+        return jsonify(users)
+
+def getuserjson():
+    # data = User.query.all()
+    data = UserInfo.query.order_by(UserInfo.id_user).all()
+    print(data)
+    dataJson = []
+    for i in range(len(data)):
+        # print(str(data[i]).split('/'))
+        dataDict = {
+            'id_user': str(data[i]).split('/')[0],
+            'pseudo': str(data[i]).split('/')[1]
+        }
+        dataJson.append(dataDict)
+    return dataJson
+
+@app.route('/user/<string:id>', methods=['GET', 'DELETE', 'PUT'])
+def oneuser(id):
+
+    # GET a specific data by id
+    if request.method == 'GET':
+        data = UserInfo.query.get(id)
+        print(data)
+        dataDict = {
+            'id_user': str(data).split('/')[0],
+            'pseudo': str(data).split('/')[1]
+        }
+        return jsonify(dataDict)
+        
+    # DELETE a data
+    if request.method == 'DELETE':
+        delData = UserInfo.query.filter_by(id_user=id).first()
+        db.session.delete(delData)
+        db.session.commit()
+        return jsonify({'status': 'Data '+id+' is deleted from PostgreSQL!'})
+
+    # UPDATE a data by id
+    if request.method == 'PUT':
+        body = request.json
+        editData = UserInfo.query.filter_by(id_user=id).first()
+        editData.nom = body['pseudo']
+        db.session.commit()
+        return jsonify({'status': 'Data '+id+' is updated from PostgreSQL!'})
+
+
+
 
 
 
