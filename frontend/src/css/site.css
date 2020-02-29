@@ -1,0 +1,54 @@
+.sidebarStyle {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 12px;
+    background-color: #404040;
+    color: #ffffff;
+    z-index: 1 !important;
+    padding: 6px;
+    font-weight: bold;
+}
+     
+.mapContainer {
+    position: absolute;
+    
+    width: 700px;
+    height: 700px;
+}
+
+.marker-roi {
+    background-image: url('../images/crown.png');
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    border-radius: 30%;
+    cursor: pointer;
+}
+.marker-evenement {
+    background-image: url('../images/shout.png');
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    border-radius: 30%;
+    cursor: pointer;
+}
+.marker-personnage {
+    background-image: url('../images/cape.png');
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    border-radius: 30%;
+    cursor: pointer;
+}
+
+.mapboxgl-popup {
+    max-width: 200px;
+}
+  
+.mapboxgl-popup-content {
+    text-align: center;
+    width: 100px;
+    font-family: 'Open Sans', sans-serif;
+}
