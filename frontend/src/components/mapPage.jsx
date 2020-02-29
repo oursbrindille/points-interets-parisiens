@@ -21,7 +21,8 @@ class MapPage extends Component {
         zoom: 11.5,
         instances:[],
         ownInstance:[],
-        rois:[]
+        rois:[],
+        headerMessage:""
     };
 
 
@@ -52,18 +53,21 @@ class MapPage extends Component {
         this.catchInstance()
     }
 
-    getInstances(){
+    getInstances(id){
+      let self = this;
       fetch('http://localhost:5000/instance-user/user/1')
       .then(res => res.json())
       .then((data) => {
-        this.setState({ ownInstance: data })
-        console.log(this.state.rois);
-        this.componentDidUpdate();
-        console.log(this.state.rois);
-        this.forceUpdate()
+        self.state.rois.forEach(function(roi){
+          console.log(roi.id_roi);
+          if(roi.id_roi == id){
+            self.setState({ ownInstance: data })
+            self.setState({ headerMessage: "Félicitations ! Vous venez d'attraper "+roi.nom})
+            self.forceUpdate()
+          }
+        });
       })
       .catch(console.log)
-      console.log("yyyy")
     }
 
     catchInstance(id, type, lon, lat){
@@ -86,7 +90,7 @@ class MapPage extends Component {
           .then(res => {
             if(res.status === 200){
               console.log("valou", tosend);
-              self.getInstances()
+              self.getInstances(tosend.id_external_object)
               
             } else {
               alert("Réponse " + res.statusCode + " : " + res.body);
@@ -127,8 +131,6 @@ class MapPage extends Component {
 
             new mapboxgl.Marker(el)
             .setLngLat(coord)
-            .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-              .setHTML('<p>' + marker.id_external_object + '</p>'))
             .addTo(self.map);
         });
         
@@ -179,6 +181,7 @@ class MapPage extends Component {
                   <div ref={el => this.mapContainer = el} className='mapContainer' />
                 </div>
                 <div style={{float:"left", width:"55%"}}>
+                  <div><h2>{this.state.headerMessage}</h2></div>
                   <div>{this.state.rois.map(roi => (<div>{roi.nom} - {roi.nb}</div>))}</div>
                 </div>
             </div>
