@@ -12,3 +12,5 @@ sudo -u postgres psql -d paris -c "\copy lieu(nom, lon, lat, inception, height, 
 echo "POPULATE LIEU OK"
 sudo -u postgres psql -d paris -c "\copy personnage(nom, dateOfBirth, placeOfBirthLabel, dateOfDeath, placeOfDeathLabel, positions, birthYear, deathYear) FROM '/home/geof/projects/monuments-paris/csv/postgres/personnage.csv' delimiter ',' csv header encoding 'UTF8';"
 echo "POPULATE PERSONNAGE OK"
+sudo -u postgres psql -d paris -c "\copy user_info(pseudo) FROM '/home/geof/projects/monuments-paris/csv/postgres/user.csv' delimiter ',' csv header encoding 'UTF8';"
+echo "POPULATE PERSONNAGE OK"
