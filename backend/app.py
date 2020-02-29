@@ -21,6 +21,26 @@ class UserInfo(db.Model):
         return '%s/%s' % (self.id_user, self.pseudo)
 
 
+class InstanceObjectUser(db.Model):
+    __tablename__ = "instance_object_user"
+    id_instance_object_user = db.Column(db.Integer, primary_key=True)
+    id_external_object = db.Column(db.Integer)
+    id_user = db.Column(db.Integer)
+    type_object = db.Column(db.String(255))
+    lon = db.Column(db.Float)
+    lat = db.Column(db.Float)
+
+    def __init__(self, id_external_object, id_user, type_object, lon, lat):
+        self.id_external_object = id_external_object
+        self.id_user = id_user
+        self.type_object = type_object
+        self.lon = lon
+        self.lat = lat
+    
+    def __repr__(self):
+        return '%s/%s/%s/%s/%s/%s' % (self.id_instance_object_user, self.id_external_object, self.id_user, self.type_object, self.lon, self.lat)
+
+
 class Evenement(db.Model):
     __tablename__ = "evenement"
     id_event = db.Column(db.Integer, primary_key=True)
@@ -204,6 +224,57 @@ def oneuser(id):
 
 
 
+@app.route('/instance-user', methods=['POST', 'GET'], defaults={'userid': None})
+@app.route('/instance-user/user/<string:userid>', methods=['POST', 'GET'])
+def instanceuser(userid):
+    
+    # POST a data to database
+    if request.method == 'POST':
+        body = request.json
+        id_external_object = body['id_external_object']
+        id_user = body['id_user']
+        type_object = body['type_object']
+        lon = body['lon']
+        lat = body['lat']
+
+        data = InstanceObjectUser(id_external_object, id_user, type_object, lon, lat)
+        db.session.add(data)
+        db.session.commit()
+
+        return jsonify({
+            'status': 'Data is posted to PostgreSQL!',
+            'id_external_object': id_external_object,
+            'id_user': id_user,
+            'type_object': type_object,
+            'lon': lon,
+            'lat': lat
+        })
+    
+    # GET all data from database & sort by id
+    if request.method == 'GET':
+        instances = getinstanceuserjson(userid)
+        return jsonify(instances)
+
+def getinstanceuserjson(userid):
+    # data = User.query.all()
+    if(userid == None):
+        data = InstanceObjectUser.query.order_by(InstanceObjectUser.id_instance_object_user).all()
+    else:
+        data = InstanceObjectUser.query.filter_by(id_user=userid).order_by(InstanceObjectUser.id_instance_object_user).all()
+    print(data)
+    dataJson = []
+    for i in range(len(data)):
+        # print(str(data[i]).split('/'))
+        dataDict = {
+            'id_instance_object_user': str(data[i]).split('/')[0],
+            'id_external_object': str(data[i]).split('/')[1],
+            'id_user': str(data[i]).split('/')[2],
+            'type_object': str(data[i]).split('/')[3],
+            'lon': str(data[i]).split('/')[4],
+            'lat': str(data[i]).split('/')[5]
+        }
+        dataJson.append(dataDict)
+    return dataJson
 
 
 
