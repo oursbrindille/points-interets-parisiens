@@ -7,6 +7,7 @@ app = Flask(__name__)
 db_config = yaml.load(open('database.yaml'))
 app.config['SQLALCHEMY_DATABASE_URI'] = db_config['uri']
 db = SQLAlchemy(app)
+
 CORS(app)
 
 class UserInfo(db.Model):
@@ -809,9 +810,10 @@ def updateroi():
     return redirect("/roi/edit", code=302)
 
 
-@app.route('/roi', methods=['POST', 'GET'], defaults={'year': None})
-@app.route('/roi/year/<year>', methods=['POST', 'GET'])
-def roi(year):
+@app.route('/roi', methods=['POST', 'GET'], defaults={'year': None, 'start':None,'end':None})
+@app.route('/roi/year/<year>', methods=['POST', 'GET'], defaults={'start':None,'end':None})
+@app.route('/roi/start/<start>/end/<end>', methods=['POST', 'GET'], defaults={'year':None})
+def roi(year, start, end):
     
     # POST a data to database
     if request.method == 'POST':
@@ -864,13 +866,16 @@ def roi(year):
     
     # GET all data from database & sort by id
     if request.method == 'GET':
-        rois = getroijson(year)
+        rois = getroijson(year, start, end)
         return jsonify(rois)
 
-def getroijson(year):
+def getroijson(year, start, end):
     # data = User.query.all()
     if(year == None):
-        data = Roi.query.order_by(Roi.startyear).all()
+        if((start == None) & (end == None)):
+            data = Roi.query.order_by(Roi.startyear).all()
+        else:
+            data = Roi.query.filter(Roi.startyear>=start, Roi.startyear<=end).order_by(Roi.startyear).all()
     else:
         data = Roi.query.filter(Roi.startyear<=year, Roi.endyear>=year).order_by(Roi.startyear).all()
     #data = Roi.query.filter_by(startyear=None).all()

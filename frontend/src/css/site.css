@@ -1,8 +1,8 @@
 .sidebarStyle {
     display: inline-block;
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 50px;
+    left: 50px;
     margin: 12px;
     background-color: #404040;
     color: #ffffff;
@@ -12,7 +12,6 @@
 }
      
 .mapContainer {
-    position: absolute;
     
     width: 700px;
     height: 700px;

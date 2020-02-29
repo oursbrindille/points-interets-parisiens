@@ -153,11 +153,11 @@ def generate():
     for i in range(100):
         r = random.random()
         if(r < 0.33):
-            data = InstanceObject(rois[random.randint(0,len(rois)-1)]['nom'], "roi", genlon(), genlat())
+            data = InstanceObject(rois[random.randint(0,len(rois)-1)]['id_roi'], "roi", genlon(), genlat())
         if((r >=0.33) & (r < 0.66)):
-            data = InstanceObject(evenements[random.randint(0,len(evenements)-1)]['evenement'], "evenement", genlon(), genlat())
+            data = InstanceObject(evenements[random.randint(0,len(evenements)-1)]['id_event'], "evenement", genlon(), genlat())
         if(r >=0.66):
-            data = InstanceObject(personnages[random.randint(0,len(personnages)-1)]['nom'], "personnage", genlon(), genlat())
+            data = InstanceObject(personnages[random.randint(0,len(personnages)-1)]['id_personnage'], "personnage", genlon(), genlat())
 
         db.session.add(data)
         db.session.commit()

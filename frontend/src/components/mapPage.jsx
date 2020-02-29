@@ -4,32 +4,13 @@ import mapboxgl from 'mapbox-gl';
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoic2Fib3N0aXgiLCJhIjoiY2p6Y3BkdnJ4MDd2czNjbWdsYXB4MTJoNSJ9.U65hBBejoDAAJH5wrdLejg';
 
-var geojson = {
-    type: 'FeatureCollection',
-    features: [{
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [2.40167, 48.858983]
-      },
-      properties: {
-        title: 'Mapbox',
-        description: 'Washington, D.C.'
-      }
-    },
-    {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [-122.414, 37.776]
-      },
-      properties: {
-        title: 'Mapbox',
-        description: 'San Francisco, California'
-      }
-    }]
-  };
-  
+var count = 0
+
+export function gethttp(){
+  var http = require('superagent');
+  return http;
+}
+
 class MapPage extends Component { 
     
     constructor(props) {
@@ -40,8 +21,8 @@ class MapPage extends Component {
         zoom: 11.5,
         instances:[],
         ownInstance:[],
-        toto:""
-        };
+        rois:[]
+    };
 
 
         fetch('http://localhost:5001/generate')
@@ -51,12 +32,71 @@ class MapPage extends Component {
         })
         .catch(console.log)
 
+        
+        fetch('http://localhost:5000/instance-user/user/1')
+        .then(res => res.json())
+        .then((data) => {
+          this.setState({ ownInstance: data })
+        })
+        .catch(console.log)
+
+        
+        fetch('http://localhost:5000/roi/start/500/end/600')
+        .then(res => res.json())
+        .then((data) => {
+          this.setState({ rois: data })
+        })
+        .catch(console.log)
+
         this.catchInstance = this.catchInstance.bind(this);
+        this.catchInstance()
     }
 
-    catchInstance(){
-        this.state.toto = 'oooo'
-        console.log("ooooo")
+    getInstances(){
+      fetch('http://localhost:5000/instance-user/user/1')
+      .then(res => res.json())
+      .then((data) => {
+        this.setState({ ownInstance: data })
+        console.log(this.state.rois);
+        this.componentDidUpdate();
+        console.log(this.state.rois);
+        this.forceUpdate()
+      })
+      .catch(console.log)
+      console.log("yyyy")
+    }
+
+    catchInstance(id, type, lon, lat){
+        let self = this;
+
+        var tosend = {}
+        tosend.id_external_object = id
+        tosend.id_user = 1
+        tosend.type_object = type
+        tosend.lon = lon
+        tosend.lat = lat
+        console.log(id, type, lon, lat)
+        console.log(JSON.stringify(tosend));
+
+        if(id != undefined){
+
+          gethttp().post("http://localhost:5000/instance-user")
+          .set('Content-Type', 'application/json')
+          .send(JSON.stringify(tosend))
+          .then(res => {
+            if(res.status === 200){
+              console.log("valou", tosend);
+              self.getInstances()
+              
+            } else {
+              alert("Réponse " + res.statusCode + " : " + res.body);
+            }
+          })
+          .catch(err =>{
+            console.log("fail");
+            alert("Erreur lors de l'envoi des données au serveur : " + err.message);
+          });
+        }
     }
 
     componentDidUpdate() {
@@ -69,7 +109,7 @@ class MapPage extends Component {
             // create a HTML element for each feature
             var el = document.createElement('div');
             el.addEventListener('click', function() {
-               self.catchInstance()
+               self.catchInstance(marker.id_external_object, marker.type_object, marker.lon, marker.lat)
             });
             if(marker.type_object == "roi"){ 
                 el.className = 'marker-roi';
@@ -91,8 +131,17 @@ class MapPage extends Component {
               .setHTML('<p>' + marker.id_external_object + '</p>'))
             .addTo(self.map);
         });
+        
 
-
+        self.state.rois.forEach(function(roi){
+          count = 0
+          self.state.ownInstance.forEach(function(instance){
+            if(roi.id_roi == instance.id_external_object){
+              count = count + 1
+            }
+          });
+          roi.nb = count
+        });
     }
 
     
@@ -122,11 +171,16 @@ class MapPage extends Component {
          
     render() {
         return (
-            <div>
-                <div className='sidebarStyle'>
-                    <div>Longitude: {this.state.lng} | Latitude: {this.state.lat} | Zoom: {this.state.zoom}</div>
-                    </div>
-                <div ref={el => this.mapContainer = el} className='mapContainer' />
+            <div style={{float:"left", width:"100%", height:"100%", margin:"50px"}}>
+                <div style={{float:"left", width:"45%"}}>
+                  <div className='sidebarStyle'>
+                      <div>Longitude: {this.state.lng} | Latitude: {this.state.lat} | Zoom: {this.state.zoom}</div>
+                      </div>
+                  <div ref={el => this.mapContainer = el} className='mapContainer' />
+                </div>
+                <div style={{float:"left", width:"55%"}}>
+                  <div>{this.state.rois.map(roi => (<div>{roi.nom} - {roi.nb}</div>))}</div>
+                </div>
             </div>
         )
     }
