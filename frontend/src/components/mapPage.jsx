@@ -23,7 +23,9 @@ class MapPage extends Component {
         instances:[],
         ownInstance:[],
         rois:[],
-        headerMessage:"",
+        evenements:[],
+        headerMessage:"MerovinGo!",
+        secondMessage:"Observer aux alentours, et tenter d'attraper de la connaissance!",
         baseImageUrl:"../images/kings/"
     };
 
@@ -56,6 +58,23 @@ class MapPage extends Component {
         })
         .catch(console.log)
 
+        
+        fetch('http://localhost:5000/evenement/start/500/end/600')
+        .then(res => res.json())
+        .then((data) => {
+          for (var i = 0; i < data.length; i++) {
+            if(data[i].startyear == data[i].endyear){
+              data[i].showdate = data[i].startyear
+            }else{
+              data[i].showdate = data[i].startyear+" - "+data[i].endyear
+            }
+            data[i].showevt = "?"
+            data[i].shownb = ""
+          }
+          this.setState({ evenements: data })
+        })
+        .catch(console.log)
+
         this.catchInstance = this.catchInstance.bind(this);
         this.catchInstance()
     }
@@ -69,7 +88,15 @@ class MapPage extends Component {
           console.log(roi.id_roi);
           if(roi.id_roi == id){
             self.setState({ ownInstance: data })
-            self.setState({ headerMessage: "Félicitations ! Vous venez d'attraper "+roi.nom})
+            self.setState({ headerMessage: "Félicitations ! Vous venez d'attraper : ", secondMessage: roi.nom})
+            self.forceUpdate()
+          }
+        });
+        self.state.evenements.forEach(function(evenement){
+          console.log(evenement.id_event);
+          if(evenement.id_event == id){
+            self.setState({ ownInstance: data })
+            self.setState({ headerMessage: "Félicitations ! Vous venez d'attraper l'événement :", secondMessage: evenement.showdate+" - "+evenement.evenement})
             self.forceUpdate()
           }
         });
@@ -145,7 +172,7 @@ class MapPage extends Component {
         self.state.rois.forEach(function(roi){
           count = 0
           self.state.ownInstance.forEach(function(instance){
-            if(roi.id_roi == instance.id_external_object){
+            if(roi.id_roi == instance.id_external_object && instance.type_object == "roi"){
               count = count + 1
             }
           });
@@ -160,8 +187,25 @@ class MapPage extends Component {
             roi.shownb = " (x"+roi.nb+")"
           }
         });
-    }
 
+        
+        self.state.evenements.forEach(function(evenement){
+          count = 0
+          self.state.ownInstance.forEach(function(instance){
+            if(evenement.id_event == instance.id_external_object && instance.type_object == "evenement"){
+              count = count + 1
+            }
+          });
+          evenement.nb = count
+          if(evenement.nb ==0){
+            evenement.showevt = "?"
+            evenement.shownb = ""
+          }else{
+            evenement.showevt = evenement.evenement
+            evenement.shownb = " (x"+evenement.nb+")"
+          }
+        });
+    }
     
     componentDidMount() {
 
@@ -189,71 +233,50 @@ class MapPage extends Component {
          
     render() {
         return (
-            <div style={{float:"left", width:"100%", height:"100%", margin:"50px"}}>
-                <div style={{float:"left", width:"45%"}}>
-                  <div className='sidebarStyle'>
-                      <div>Longitude: {this.state.lng} | Latitude: {this.state.lat} | Zoom: {this.state.zoom}</div>
-                      </div>
-                  <div ref={el => this.mapContainer = el} className='mapContainer' />
+          <div>
+            <div style={{margin:"20px"}}>
+              <div className='sidebarStyle'>
+                <div style={{width:"385px",textAlign:"center"}}>
+                  <h4>{this.state.headerMessage}</h4><h5><i>{this.state.secondMessage}</i></h5>
                 </div>
-                <div style={{float:"left", width:"55%"}}>
-                  <div><h2>{this.state.headerMessage}</h2></div>
-                  <div style={{float:"left", height:"100%", textAlign:"center",color:"white"}}>{this.state.rois.map(roi => (<div style={{margin:"10px",float:"left", height:"100%"}}><img src={require("../images/kings/"+roi.showimage)} width="100px" height="100px"/><br/>{roi.shownom}{roi.shownb}</div>))}</div>
-                  <div style={{float:"left", height:"100%"}}>
-                  <Timeline lineColor={'#ddd'}>
-                    <TimelineItem
-                      key="001"
-                      dateText="11/2010 – Present"
-                      style={{ color: '#e86971' }}
-                    >
-                      <h3>Title, Company</h3>
-                      <h4>Subtitle</h4>
-                    </TimelineItem>
-                    <TimelineItem
-                      key="002"
-                      dateText="04/2009 – 11/2010"
-                      dateInnerStyle={{ background: '#61b8ff', color: '#000' }}
-                      bodyContainerStyle={{
-                        background: '#ddd',
-                        padding: '20px',
-                        borderRadius: '8px',
-                        boxShadow: '0.5rem 0.5rem 2rem 0 rgba(0, 0, 0, 0.2)',
-                      }}
-                    >
-                      <h3 style={{ color: '#61b8ff' }}>Title, Company</h3>
-                      <h4 style={{ color: '#61b8ff' }}>Subtitle</h4>
-                    </TimelineItem>
-                    <TimelineItem
-                      key="003"
-                      dateComponent={(
-                        <div
-                          style={{
-                            display: 'block',
-                            float: 'left',
+              </div>
+              <div ref={el => this.mapContainer = el} className='mapContainer' />
+            </div>
+
+
+            <div style={{float:"left", width:"100%", height:"100%"}}>
+                <div style={{float:"left", width:"25%"}}>
+                  &nbsp;
+                </div>
+                <div style={{float:"left", width:"70%", marginLeft:"20px"}}>
+                  <div style={{float:"left", height:"100%",textAlign:"center",color:"white", backgroundColor:"#12556B", borderRadius:"10px"}}><h3>Votre KingDex</h3>{this.state.rois.map(roi => (<div style={{margin:"20px",textAlign:"center",float:"left", height:"100%"}}><img src={require("../images/kings/"+roi.showimage)} width="100px" height="100px"/><br/>{roi.shownom}{roi.shownb}</div>))}</div>
+                  
+
+
+                  <div style={{float:"left", height:"100%",textAlign:"center",color:"white", width:"100%", backgroundColor:"#12556B", marginTop:"20px", borderRadius:"10px"}}>
+                    <h3>MérovinFRISE</h3>
+                    <Timeline lineColor={'#ddd'}>
+                      {this.state.evenements.map(evenement => (
+                        <TimelineItem
+                          key="002"
+                          dateText={evenement.showdate}
+                          dateInnerStyle={{ background: '#61b8ff', color: '#000' }}
+                          bodyContainerStyle={{
+                            background: '#ddd',
                             padding: '10px',
-                            background: 'rgb(150, 150, 150)',
-                            color: '#fff',
+                            borderRadius: '8px',
+                            boxShadow: '0.5rem 0.5rem 2rem 0 rgba(0, 0, 0, 0.2)',
                           }}
                         >
-                          11/2008 – 04/2009
-                        </div>
-                      )}
-                    >
-                      <h3>Title, Company</h3>
-                      <h4>Subtitle</h4>
-                    </TimelineItem>
-                    <TimelineItem
-                      key="004"
-                      dateText="08/2008 – 11/2008"
-                      dateInnerStyle={{ background: '#76bb7f' }}
-                    >
-                      <h3>Title, Company</h3>
-                      <h4>Subtitle</h4>
-                    </TimelineItem>
-                  </Timeline>
+                          <h4 style={{ color: '#777777' }}>{evenement.showevt}</h4>
+                        </TimelineItem>
+                      ))}
+                    </Timeline>
                   </div>
+
                 </div>
             </div>
+          </div>
         )
     }
 }
