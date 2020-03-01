@@ -102,6 +102,7 @@ class Roi(db.Model):
     endyear = db.Column(db.Float)
     birthyear = db.Column(db.Float)
     deathyear = db.Column(db.Float)
+    urlimage = db.Column(db.String(255))
 
     def __init__(self, name, age):
         self.id_roi = id_roi
@@ -122,9 +123,10 @@ class Roi(db.Model):
         self.endyear = endyear
         self.birthyear = birthyear
         self.deathyear = deathyear
+        self.urlimage = urlimage
     
     def __repr__(self):
-        return '%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s' % (self.id_roi,self.wikiid,self.nom,self.dateofbirth,self.placeofbirthlabel,self.dateofdeath,self.placeofdeathlabel,self.mannersofdeath,self.placeofburiallabel,self.fatherlabel,self.motherlabel,self.spouses,self.starttime,self.endtime,self.startyear,self.endyear,self.birthyear,self.deathyear)
+        return '%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s' % (self.id_roi,self.wikiid,self.nom,self.dateofbirth,self.placeofbirthlabel,self.dateofdeath,self.placeofdeathlabel,self.mannersofdeath,self.placeofburiallabel,self.fatherlabel,self.motherlabel,self.spouses,self.starttime,self.endtime,self.startyear,self.endyear,self.birthyear,self.deathyear,self.urlimage)
 
 
 class Personnage(db.Model):
@@ -685,7 +687,9 @@ def onepersonnage(id):
 @app.route('/roi/edit', methods=['GET'])
 def editroi():
     year = None
-    rois = getroijson(year)
+    start = None
+    end = None
+    rois = getroijson(year,start,end)
     html = ""
     for row in rois:
         form = "<form action='/roi/form/update'>"
@@ -707,6 +711,7 @@ def editroi():
         form = form+"<input size='5' name='endyear' value=\""+str(row['endyear'])+"\"/>&nbsp;&nbsp;"  
         form = form+"<input size='5' name='birthyear' value=\""+str(row['birthyear'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input size='5' name='deathyear' value=\""+str(row['deathyear'])+"\"/>&nbsp;&nbsp;"  
+        form = form+"<input type='hidden' name='urlimage' value=\""+str(row['urlimage'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input type='submit' name='button' value='Supprimer'>&nbsp;&nbsp;"
         form = form+"<input type='submit' name='button' value='Valider'></form>"
         html = html+form 
@@ -802,11 +807,19 @@ def updateroi():
         editData.deathyear = None
     else:
         editData.deathyear = body['deathyear']
+        
+    if(body['urlimage'] == "None"):
+        editData.urlimage = None
+    else:
+        editData.urlimage = body['urlimage']
+
     if(body['button'] == 'Valider'):
         db.session.commit()
+
     if(body['button'] == 'Supprimer'):
         db.session.delete(editData)
         db.session.commit()
+
     return redirect("/roi/edit", code=302)
 
 
@@ -836,8 +849,9 @@ def roi(year, start, end):
         endyear = body['endyear']
         birthyear = body['birthyear']
         deathyear = body['deathyear']
+        urlimage = body['urlimage']
 
-        data = Roi(wikiid,nom,dateofbirth,placeofbirthlabel,dateofdeath,placeofdeathlabel,mannersofdeath,placeofburiallabel,fatherlabel,motherlabel,spouses,starttime,endtime,startyear,endyear,birthyear,deathyear)
+        data = Roi(wikiid,nom,dateofbirth,placeofbirthlabel,dateofdeath,placeofdeathlabel,mannersofdeath,placeofburiallabel,fatherlabel,motherlabel,spouses,starttime,endtime,startyear,endyear,birthyear,deathyear,urlimage)
         db.session.add(data)
         db.session.commit()
 
@@ -860,7 +874,8 @@ def roi(year, start, end):
             'startyear': startyear,
             'endyear': endyear,
             'birthyear': birthyear,
-            'deathyear': deathyear
+            'deathyear': deathyear,
+            'urlimage': urlimage
 
         })
     
@@ -902,7 +917,8 @@ def getroijson(year, start, end):
             'startyear': str(data[i]).split('/')[14],
             'endyear': str(data[i]).split('/')[15],
             'birthyear': str(data[i]).split('/')[16],
-            'deathyear': str(data[i]).split('/')[17]
+            'deathyear': str(data[i]).split('/')[17],
+            'urlimage': str(data[i]).split('/')[18]
         }
         dataJson.append(dataDict)
     return dataJson
@@ -933,7 +949,8 @@ def oneroi(id):
             'startyear': str(data).split('/')[14],
             'endyear': str(data).split('/')[15],
             'birthyear': str(data).split('/')[16],
-            'deathyear': str(data).split('/')[17]
+            'deathyear': str(data).split('/')[17],
+            'urlimage': str(data).split('/')[18]
         }
         
         return jsonify(dataDict)
@@ -966,6 +983,7 @@ def oneroi(id):
         editData.endyear = body['endyear']
         editData.birthyear = body['birthyear']
         editData.deathyear = body['deathyear']
+        editData.urlimage = body['urlimage']
 
         db.session.commit()
         return jsonify({'status': 'Data '+id+' is updated from PostgreSQL!'})

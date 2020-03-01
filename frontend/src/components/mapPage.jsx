@@ -1,6 +1,7 @@
 import React, {Component} from 'react'; 
 import ReactDOM from 'react-dom';
 import mapboxgl from 'mapbox-gl';
+import { Timeline, TimelineItem }  from 'vertical-timeline-component-for-react';
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoic2Fib3N0aXgiLCJhIjoiY2p6Y3BkdnJ4MDd2czNjbWdsYXB4MTJoNSJ9.U65hBBejoDAAJH5wrdLejg';
 
@@ -22,7 +23,8 @@ class MapPage extends Component {
         instances:[],
         ownInstance:[],
         rois:[],
-        headerMessage:""
+        headerMessage:"",
+        baseImageUrl:"../images/kings/"
     };
 
 
@@ -45,6 +47,11 @@ class MapPage extends Component {
         fetch('http://localhost:5000/roi/start/500/end/600')
         .then(res => res.json())
         .then((data) => {
+          for (var i = 0; i < data.length; i++) {
+            data[i].showimage = "question-mark.png"
+            data[i].shownom = "?"
+            data[i].shownb = ""
+          }
           this.setState({ rois: data })
         })
         .catch(console.log)
@@ -143,6 +150,15 @@ class MapPage extends Component {
             }
           });
           roi.nb = count
+          if(roi.nb ==0){
+            roi.showimage = "question-mark.png"
+            roi.shownom = "?"
+            roi.shownb = ""
+          }else{
+            roi.showimage = roi.urlimage
+            roi.shownom = roi.nom
+            roi.shownb = " (x"+roi.nb+")"
+          }
         });
     }
 
@@ -182,7 +198,60 @@ class MapPage extends Component {
                 </div>
                 <div style={{float:"left", width:"55%"}}>
                   <div><h2>{this.state.headerMessage}</h2></div>
-                  <div>{this.state.rois.map(roi => (<div>{roi.nom} - {roi.nb}</div>))}</div>
+                  <div style={{float:"left", height:"100%", textAlign:"center",color:"white"}}>{this.state.rois.map(roi => (<div style={{margin:"10px",float:"left", height:"100%"}}><img src={require("../images/kings/"+roi.showimage)} width="100px" height="100px"/><br/>{roi.shownom}{roi.shownb}</div>))}</div>
+                  <div style={{float:"left", height:"100%"}}>
+                  <Timeline lineColor={'#ddd'}>
+                    <TimelineItem
+                      key="001"
+                      dateText="11/2010 – Present"
+                      style={{ color: '#e86971' }}
+                    >
+                      <h3>Title, Company</h3>
+                      <h4>Subtitle</h4>
+                    </TimelineItem>
+                    <TimelineItem
+                      key="002"
+                      dateText="04/2009 – 11/2010"
+                      dateInnerStyle={{ background: '#61b8ff', color: '#000' }}
+                      bodyContainerStyle={{
+                        background: '#ddd',
+                        padding: '20px',
+                        borderRadius: '8px',
+                        boxShadow: '0.5rem 0.5rem 2rem 0 rgba(0, 0, 0, 0.2)',
+                      }}
+                    >
+                      <h3 style={{ color: '#61b8ff' }}>Title, Company</h3>
+                      <h4 style={{ color: '#61b8ff' }}>Subtitle</h4>
+                    </TimelineItem>
+                    <TimelineItem
+                      key="003"
+                      dateComponent={(
+                        <div
+                          style={{
+                            display: 'block',
+                            float: 'left',
+                            padding: '10px',
+                            background: 'rgb(150, 150, 150)',
+                            color: '#fff',
+                          }}
+                        >
+                          11/2008 – 04/2009
+                        </div>
+                      )}
+                    >
+                      <h3>Title, Company</h3>
+                      <h4>Subtitle</h4>
+                    </TimelineItem>
+                    <TimelineItem
+                      key="004"
+                      dateText="08/2008 – 11/2008"
+                      dateInnerStyle={{ background: '#76bb7f' }}
+                    >
+                      <h3>Title, Company</h3>
+                      <h4>Subtitle</h4>
+                    </TimelineItem>
+                  </Timeline>
+                  </div>
                 </div>
             </div>
         )

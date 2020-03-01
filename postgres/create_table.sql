@@ -28,7 +28,8 @@ CREATE TABLE roi
     startYear DECIMAL(9,2) default NULL,
     endYear DECIMAL(9,2) default NULL,
     birthYear DECIMAL(9,2) default NULL,
-    deathYear DECIMAL(9,2) default NULL
+    deathYear DECIMAL(9,2) default NULL,
+    urlImage CHARACTER VARYING
 )
 TABLESPACE pg_default;
 
