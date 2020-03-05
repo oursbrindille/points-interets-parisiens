@@ -18,6 +18,7 @@ from classes.instanceobjectuser import InstanceObjectUser
 from classes.evenement import Evenement
 from classes.lieu import Lieu
 from classes.personnage import Personnage
+from classes.objet import Objet
 from classes.instanceobject import InstanceObject
 
 columns_userinfo = ['id_user', 'pseudo']
@@ -25,6 +26,7 @@ columns_instanceobjectuser = ['id_instance_object_user', 'id_external_object','i
 columns_evenement = ['id_event','evenement','startyear','endyear','commentaire', 'prod']
 columns_lieu = ['id_lieu','nom','lon','lat','inception', 'constructionyear', 'prod']
 columns_personnage = ['id_personnage','wikiid','nom','dateofbirth','placeofbirthlabel', 'dateofdeath','placeofdeathlabel','mannersofdeath','placeofburiallabel','fatherlabel','motherlabel','spouses','starttime','endtime','startyear','endyear','birthyear','deathyear','urlimage', 'prod']
+columns_objet = ['id_objet','nom','startyear','endyear','prod']
 columns_instanceobject = ['id_instance_object', 'id_external_object', 'type_object','lon','lat']
 
 
@@ -73,7 +75,7 @@ def oneuser(id):
         return putonegeneric("user", columns_userinfo, id, newbody)
 
 
-################ INSTANCE OBJECT ################
+################ INSTANCE POP FROM USER ################
 
 
 @app.route('/catch', methods=['POST', 'GET'], defaults={'userid': None})
@@ -98,7 +100,7 @@ def instanceuser(userid):
         instances = getobjectsjson(data, columns_instanceobjectuser)
         return jsonify(instances)
 
-############ BEWARE SEP INSTANCES et INSTANCEUSER
+############ INSTANCE POP
 
 @app.route('/instances/generate')
 def generate():
@@ -134,6 +136,83 @@ def generate():
 
 
 
+############### OBJET ###############
+
+@app.route('/objet/edit', methods=['GET'])
+def editobjet():
+    data = Objet.query.order_by(Objet.id_objet).all()
+    objets = getobjectsjson(data, columns_objet)
+    html = "<p>"+str(len(objets))+"</p>"
+
+    form = "<form action='/objet' method='post'>"
+    form = form+"<textarea name='nom' rows='3' cols='50' placeholder='nom'></textarea>&nbsp;&nbsp;"
+    form = form+"<input size='5' name='startyear' value='' placeholder='startyear'/>&nbsp;&nbsp;"
+    form = form+"<input size='5' name='endyear' value='' placeholder='endyear'/>&nbsp;&nbsp;"
+    form = form+"<input size='5' name='prod' value='' placeholder='prod'/>&nbsp;&nbsp;"
+    form = form+"<input type='submit' name='button' value='Valider'></form>"
+    html = html+form    
+
+    for row in objets:
+        form = "<form action='/objet/"+str(row['id_objet'])+"' method='post'>"
+        form = form+"<input type='hidden' name='id_objet' value=\""+str(row['id_objet'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<textarea name='nom' rows='3' cols='50'>"+str(row['nom'])+"</textarea>&nbsp;&nbsp;"
+        form = form+"<input size='5' name='startyear' value=\""+str(row['startyear'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='5' name='endyear' value=\""+str(row['endyear'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='5' name='prod' value=\""+str(row['prod'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input type='submit' name='button' value='Supprimer'>&nbsp;&nbsp;"
+        form = form+"<input type='submit' name='button' value='Valider'></form>"
+        html = html+form    
+    return html
+
+@app.route('/objet', methods=['POST', 'GET'])
+def objet():
+    # POST a data to database
+    if request.method == 'POST':
+        if(request.json == None):
+            body = request.form
+        else:
+            body = request.json
+        newbody = {}
+        for key in body:
+            if((body[key] == "None") | (body[key] == "")):
+                newbody[key] = None
+            else:
+                newbody[key] = body[key]
+        data = Objet(newbody['nom'],newbody['startyear'],newbody['endyear'],newbody['prod'])
+        db.session.add(data)
+        db.session.commit()
+        newbody['status'] = "All good"
+        return jsonify(newbody)
+    
+    # GET all data from database & sort by id
+    if request.method == 'GET':
+        data = Objet.query.order_by(Objet.id_objet).all()
+        objets = getobjectsjson(data, columns_objet)
+        return jsonify(objets)
+
+
+@app.route('/objet/<string:id>', methods=['GET', 'POST'])
+def oneobjet(id):
+    # GET a specific data by id
+    if request.method == 'GET':
+        return getonegeneric("objet", columns_objet, id)
+        
+    # UPDATE or DELETE a data by id
+    if request.method == 'POST':
+            if(request.json == None):
+                body = request.form
+            else:
+                body = request.json
+            if(body['button'] == "Supprimer"):
+                return delonegeneric("objet", id)
+            if(body['button'] == "Valider"):
+                newbody = {}
+                for key in body:
+                    newbody[key] = body[key]
+                return putonegeneric("objet", columns_objet, id, newbody)
+
+
+
 
 ############### LIEU ###############
 
@@ -166,18 +245,6 @@ def editlieu():
         form = form+"<input type='submit' name='button' value='Valider'></form>"
         html = html+form    
     return html
-
-@app.route('/lieu/form/update', methods=['POST', 'GET'])
-def updatelieu():
-    body = request.values
-    editData = Lieu.query.filter_by(id_lieu=body['id_lieu']).first()
-    for key in body:
-        if(body[key] == "None"):
-            setattr(editData, key, None)
-        else:
-            setattr(editData, key, body[key])
-    db.session.commit()
-    return redirect("/lieu/edit", code=302)
 
 
 @app.route('/lieu', methods=['POST', 'GET'])
@@ -453,6 +520,8 @@ def getonedata(type, id):
         data = Personnage.query.get(id)
     if(type == "lieu"): 
         data = Lieu.query.get(id)
+    if(type == "objet"):
+        data = Objet.query.get(id)
     if(type == "user"):
         data = UserInfo.query.get(id)
 
