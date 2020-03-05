@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, jsonify,redirect
 from flask_cors import CORS
 import yaml
 from database import db
-import collections
+import random
 
 app = Flask(__name__)
 db_config = yaml.load(open('database.yaml'))
@@ -17,6 +17,7 @@ from classes.evenement import Evenement
 from classes.lieu import Lieu
 from classes.roi import Roi
 from classes.personnage import Personnage
+from classes.instanceobject import InstanceObject
 
 
 
@@ -65,8 +66,8 @@ def oneuser(id):
 ################ INSTANCE OBJECT ################
 
 
-@app.route('/instance-user', methods=['POST', 'GET'], defaults={'userid': None})
-@app.route('/instance-user/user/<string:userid>', methods=['POST', 'GET'])
+@app.route('/instances', methods=['POST', 'GET'], defaults={'userid': None})
+@app.route('/instances/user/<string:userid>', methods=['POST', 'GET'])
 def instanceuser(userid):
     
     # POST a data to database
@@ -80,13 +81,63 @@ def instanceuser(userid):
     
     # GET all data from database & sort by id
     if request.method == 'GET':
-        columns = ['id_external_object', 'id_user', 'type_object','lon','lat']
+        columns = ['id_instance_object_user', 'id_external_object', 'id_user', 'type_object','lon','lat']
         if(userid == None):
             data = InstanceObjectUser.query.order_by(InstanceObjectUser.id_instance_object_user).all()
         else:
             data = InstanceObjectUser.query.filter_by(id_user=userid).order_by(InstanceObjectUser.id_instance_object_user).all()
         instances = getobjectsjson(data, columns)
         return jsonify(instances)
+
+############ BEWARE SEP INSTANCES et INSTANCEUSER
+
+@app.route('/instances/generate')
+def generate():
+    columns = ['id_instance_object', 'id_external_object', 'type_object','lon','lat']
+    data = InstanceObject.query.order_by(InstanceObject.id_instance_object).all()
+    instances = getobjectsjson(data, columns)
+    
+    columns_persos = ['id_personnage','nom','dateofbirth','placeofbirthlabel','dateofdeath', 'placeofdeathlabel','positions','birthyear','deathyear']
+    columns_rois = ['id_roi','wikiid','nom','dateofbirth','placeofbirthlabel', 'dateofdeath','placeofdeathlabel','mannersofdeath','placeofburiallabel','fatherlabel','motherlabel','spouses','starttime','endtime','startyear','endyear','birthyear','deathyear','urlimage']
+    columns_events = ['id_event','evenement','startyear','endyear','commentaire']
+
+
+    data = Roi.query.filter(Roi.startyear>=400, Roi.startyear<=600).order_by(Roi.startyear).all()
+    rois = getobjectsjson(data, columns_rois)
+
+    data = Evenement.query.order_by(Evenement.startyear).filter(Evenement.startyear>400, Evenement.startyear<600).all()
+    evenements = getobjectsjson(data, columns_events)
+
+    data = Personnage.query.filter(Personnage.birthyear>=400, Personnage.birthyear<=600).order_by(Personnage.birthyear).all()
+    personnages = getobjectsjson(data, columns_persos)
+
+
+    html = ""
+    for instance in instances:
+        delData = InstanceObject.query.filter_by(id_instance_object=instance["id_instance_object"]).first()
+        db.session.delete(delData)
+        db.session.commit()
+
+
+
+    for i in range(100):
+        r = random.random()
+        if(r < 0.33):
+            data = InstanceObject(rois[random.randint(0,len(rois)-1)]['id_roi'], "roi", genlon(), genlat())
+        if((r >=0.33) & (r < 0.66)):
+            data = InstanceObject(evenements[random.randint(0,len(evenements)-1)]['id_event'], "evenement", genlon(), genlat())
+        if(r >=0.66):
+            data = InstanceObject(personnages[random.randint(0,len(personnages)-1)]['id_personnage'], "personnage", genlon(), genlat())
+
+        db.session.add(data)
+        db.session.commit()
+    
+    data = InstanceObject.query.order_by(InstanceObject.id_instance_object).all()
+    instances = getobjectsjson(data, columns)
+    return jsonify(instances)
+
+
+
 
 ############### LIEU ###############
 
@@ -547,10 +598,22 @@ def getobjectsjson(data, columns):
         dataDict = {}
         j = 0
         for key in columns:
+            print("key " + key + " value " + str(data[i]).split('/')[j])
             dataDict[key] = str(data[i]).split('/')[j]
             j = j + 1
         dataJson.append(dataDict)
     return dataJson
+
+
+def genlat():
+    rand = random.random()
+    lat = (48.903767 - 48.811945)*rand+48.811945
+    return "%.6f" %lat
+
+def genlon():
+    rand = random.random()
+    lon = (2.416740 - 2.251700)*rand+2.251700
+    return "%.6f" %lon
 
 
 if __name__ == '__main__':

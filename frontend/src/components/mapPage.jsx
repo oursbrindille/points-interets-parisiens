@@ -33,7 +33,7 @@ class MapPage extends Component {
     };
 
 
-        fetch('http://localhost:5001/generate')
+        fetch('http://localhost:5000/instances/generate')
         .then(res => res.json())
         .then((data) => {
           this.setState({ instances: data })
@@ -41,7 +41,7 @@ class MapPage extends Component {
         .catch(console.log)
 
         
-        fetch('http://localhost:5000/instance-user/user/1')
+        fetch('http://localhost:5000/instances/user/1')
         .then(res => res.json())
         .then((data) => {
           this.setState({ ownInstance: data })
@@ -84,7 +84,7 @@ class MapPage extends Component {
 
     getInstances(id){
       let self = this;
-      fetch('http://localhost:5000/instance-user/user/1')
+      fetch('http://localhost:5000/instances/user/1')
       .then(res => res.json())
       .then((data) => {
         self.state.rois.forEach(function(roi){
@@ -121,7 +121,7 @@ class MapPage extends Component {
 
         if(id != undefined){
 
-          gethttp().post("http://localhost:5000/instance-user")
+          gethttp().post("http://localhost:5000/instances")
           .set('Content-Type', 'application/json')
           .send(JSON.stringify(tosend))
           .then(res => {
