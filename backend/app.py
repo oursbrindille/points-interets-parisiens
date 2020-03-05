@@ -3,6 +3,8 @@ from flask_cors import CORS
 import yaml
 from database import db
 import random
+from flask_sqlalchemy import SQLAlchemy
+
 
 app = Flask(__name__)
 db_config = yaml.load(open('database.yaml'))
@@ -19,6 +21,13 @@ from classes.roi import Roi
 from classes.personnage import Personnage
 from classes.instanceobject import InstanceObject
 
+columns_userinfo = ['id_user', 'pseudo']
+columns_instanceobjectuser = ['id_instance_object_user', 'id_external_object','id_user','type_object','lon','lat']
+columns_evenement = ['id_event','evenement','startyear','endyear','commentaire']
+columns_lieu = ['id_lieu','nom','lon','lat','inception', 'constructionyear']
+columns_roi = ['id_roi','wikiid','nom','dateofbirth','placeofbirthlabel', 'dateofdeath','placeofdeathlabel','mannersofdeath','placeofburiallabel','fatherlabel','motherlabel','spouses','starttime','endtime','startyear','endyear','birthyear','deathyear','urlimage']
+columns_personnage = ['id_personnage','nom','dateofbirth','placeofbirthlabel','dateofdeath', 'placeofdeathlabel','positions','birthyear','deathyear']
+columns_instanceobject = ['id_instance_object', 'id_external_object', 'type_object','lon','lat']
 
 
 @app.route('/')
@@ -40,18 +49,15 @@ def user():
 
     # GET all data from database & sort by id
     if request.method == 'GET':
-        columns = ['id_user', 'pseudo']
         data = UserInfo.query.order_by(UserInfo.id_user).all()
-        users = getobjectsjson(data, columns)
+        users = getobjectsjson(data, columns_userinfo)
         return jsonify(users)
 
 @app.route('/user/<string:id>', methods=['GET', 'DELETE', 'PUT'])
 def oneuser(id):
-    columns = ['id_user','pseudo']
-
     # GET a specific data by id
     if request.method == 'GET':
-        return getonegeneric("user", columns, id)
+        return getonegeneric("user", columns_userinfo, id)
         
     # DELETE a data
     if request.method == 'DELETE':
@@ -60,14 +66,14 @@ def oneuser(id):
     # UPDATE a data by id
     if request.method == 'PUT':
         body = request.json
-        return putonegeneric("user", columns, id, body)
+        return putonegeneric("user", columns_userinfo, id, body)
 
 
 ################ INSTANCE OBJECT ################
 
 
-@app.route('/instances', methods=['POST', 'GET'], defaults={'userid': None})
-@app.route('/instances/user/<string:userid>', methods=['POST', 'GET'])
+@app.route('/catch', methods=['POST', 'GET'], defaults={'userid': None})
+@app.route('/catch/user/<string:userid>', methods=['POST', 'GET'])
 def instanceuser(userid):
     
     # POST a data to database
@@ -81,35 +87,28 @@ def instanceuser(userid):
     
     # GET all data from database & sort by id
     if request.method == 'GET':
-        columns = ['id_instance_object_user', 'id_external_object', 'id_user', 'type_object','lon','lat']
         if(userid == None):
             data = InstanceObjectUser.query.order_by(InstanceObjectUser.id_instance_object_user).all()
         else:
             data = InstanceObjectUser.query.filter_by(id_user=userid).order_by(InstanceObjectUser.id_instance_object_user).all()
-        instances = getobjectsjson(data, columns)
+        instances = getobjectsjson(data, columns_instanceobjectuser)
         return jsonify(instances)
 
 ############ BEWARE SEP INSTANCES et INSTANCEUSER
 
 @app.route('/instances/generate')
 def generate():
-    columns = ['id_instance_object', 'id_external_object', 'type_object','lon','lat']
     data = InstanceObject.query.order_by(InstanceObject.id_instance_object).all()
-    instances = getobjectsjson(data, columns)
+    instances = getobjectsjson(data, columns_instanceobject)
     
-    columns_persos = ['id_personnage','nom','dateofbirth','placeofbirthlabel','dateofdeath', 'placeofdeathlabel','positions','birthyear','deathyear']
-    columns_rois = ['id_roi','wikiid','nom','dateofbirth','placeofbirthlabel', 'dateofdeath','placeofdeathlabel','mannersofdeath','placeofburiallabel','fatherlabel','motherlabel','spouses','starttime','endtime','startyear','endyear','birthyear','deathyear','urlimage']
-    columns_events = ['id_event','evenement','startyear','endyear','commentaire']
-
-
     data = Roi.query.filter(Roi.startyear>=400, Roi.startyear<=600).order_by(Roi.startyear).all()
-    rois = getobjectsjson(data, columns_rois)
+    rois = getobjectsjson(data, columns_roi)
 
     data = Evenement.query.order_by(Evenement.startyear).filter(Evenement.startyear>400, Evenement.startyear<600).all()
-    evenements = getobjectsjson(data, columns_events)
+    evenements = getobjectsjson(data, columns_evenement)
 
     data = Personnage.query.filter(Personnage.birthyear>=400, Personnage.birthyear<=600).order_by(Personnage.birthyear).all()
-    personnages = getobjectsjson(data, columns_persos)
+    personnages = getobjectsjson(data, columns_personnage)
 
 
     html = ""
@@ -133,7 +132,7 @@ def generate():
         db.session.commit()
     
     data = InstanceObject.query.order_by(InstanceObject.id_instance_object).all()
-    instances = getobjectsjson(data, columns)
+    instances = getobjectsjson(data, columns_instanceobject)
     return jsonify(instances)
 
 
@@ -143,9 +142,8 @@ def generate():
 
 @app.route('/lieu/edit', methods=['GET'])
 def editlieu():
-    columns = ['id_lieu','nom','lon','lat','inception', 'constructionyear']
     data = Lieu.query.order_by(Lieu.id_lieu).all()
-    lieux = getobjectsjson(data, columns)
+    lieux = getobjectsjson(data, columns_lieu)
     html = "<p>"+str(len(lieux))+"</p>"
     for row in lieux:
         form = "<form action='/lieu/form/update'>"
@@ -186,19 +184,16 @@ def lieu():
     
     # GET all data from database & sort by id
     if request.method == 'GET':
-        columns = ['id_lieu','nom','lon','lat','inception', 'constructionyear']
         data = Lieu.query.order_by(Lieu.id_lieu).all()
-        lieux = getobjectsjson(data, columns)
+        lieux = getobjectsjson(data, columns_lieu)
         return jsonify(lieux)
 
 
 @app.route('/lieu/<string:id>', methods=['GET', 'DELETE', 'PUT'])
 def onelieu(id):
-    columns = ['id_lieu','nom','lon','lat','inception', 'constructionyear']
-
     # GET a specific data by id
     if request.method == 'GET':
-        return getonegeneric("lieu", columns, id)
+        return getonegeneric("lieu", columns_lieu, id)
         
     # DELETE a data
     if request.method == 'DELETE':
@@ -207,7 +202,7 @@ def onelieu(id):
     # UPDATE a data by id
     if request.method == 'PUT':
         body = request.json
-        return putonegeneric("lieu", columns, id, body)
+        return putonegeneric("lieu", columns_lieu, id, body)
 
 
 
@@ -218,14 +213,12 @@ def onelieu(id):
 @app.route('/personnage/edit', methods=['GET'], defaults={'start': None, 'end': None})
 @app.route('/personnage/edit/start/<start>/end/<end>', methods=['GET'])
 def editpersonnage(start, end):
-    columns = ['id_personnage','nom','dateofbirth','placeofbirthlabel','dateofdeath', 'placeofdeathlabel','positions','birthyear','deathyear']
-
     if((start == None) & (end == None)):
         data = Personnage.query.order_by(Personnage.birthyear).all()
     else:
         data = Personnage.query.filter(Personnage.birthyear>=start, Personnage.birthyear<=end).order_by(Personnage.birthyear).all()
 
-    personnages = getobjectsjson(data, columns)
+    personnages = getobjectsjson(data, columns_personnage)
     html = ""
     for row in personnages:
         form = "<form action='/personnage/form/update'>"
@@ -259,49 +252,13 @@ def editpersonnage(start, end):
 @app.route('/personnage/form/create', methods=['POST','GET'])
 def createpersonnage():
     body = request.values
-    
-
-    if(body['nom'] == "None"):
-        nom = None
-    else:
-        nom = body['nom']
-    
-    if(body['dateofbirth'] == "None"):
-        dateofbirth = None
-    else:
-        dateofbirth = body['dateofbirth']
-    
-    if(body['placeofbirthlabel'] == "None"):
-        placeofbirthlabel = None
-    else:
-        placeofbirthlabel = body['placeofbirthlabel']
-    
-    if(body['dateofdeath'] == "None"):
-        dateofdeath = None
-    else:
-        dateofdeath = body['dateofdeath']
-    
-    if(body['placeofdeathlabel'] == "None"):
-        placeofdeathlabel = None
-    else:
-        placeofdeathlabel = body['placeofdeathlabel']
-    
-    if(body['positions'] == "None"):
-        positions = None
-    else:
-        positions = body['positions']
-    
-    if(body['birthyear'] == "None"):
-        birthyear = None
-    else:
-        birthyear = body['birthyear']
-    
-    if(body['deathyear'] == "None"):
-        deathyear = None
-    else:
-        deathyear = body['deathyear']
-
-    data = Personnage(nom,dateofbirth,placeofbirthlabel,dateofdeath,placeofdeathlabel,positions,birthyear,deathyear)
+    newbody = {}
+    for key in body:
+        if(body[key] == "None"):
+            newbody[key] = None
+        else:
+            newbody[key] = body[key]
+    data = Personnage(newbody['nom'],newbody['dateofbirth'],newbody['placeofbirthlabel'],newbody['dateofdeath'],newbody['placeofdeathlabel'],newbody['positions'],newbody['birthyear'],newbody['deathyear'])
     db.session.add(data)
     db.session.commit()
     return redirect("/personnage/edit", code=302)
@@ -336,22 +293,19 @@ def personnage(start, end):
  
     # GET all data from database & sort by id
     if request.method == 'GET':
-        columns = ['id_personnage','nom','dateofbirth','placeofbirthlabel','dateofdeath', 'placeofdeathlabel','positions','birthyear','deathyear']
         if((start == None) & (end == None)):
             data = Personnage.query.order_by(Personnage.birthyear).all()
         else:
             data = Personnage.query.filter(Personnage.birthyear>=start, Personnage.birthyear<=end).order_by(Personnage.birthyear).all()
-        personnages = getobjectsjson(data, columns)
+        personnages = getobjectsjson(data, columns_personnage)
         return jsonify(personnages)
 
 
 @app.route('/personnage/<string:id>', methods=['GET', 'DELETE', 'PUT'])
 def onepersonnage(id):
-    columns = ['id_personnage','nom','dateofbirth','placeofbirthlabel','dateofdeath', 'placeofdeathlabel','positions','birthyear','deathyear']
-
     # GET a specific data by id
     if request.method == 'GET':
-        return getonegeneric("personnage", columns, id)
+        return getonegeneric("personnage", columns_personnage, id)
         
     # DELETE a data
     if request.method == 'DELETE':
@@ -360,7 +314,7 @@ def onepersonnage(id):
     # UPDATE a data by id
     if request.method == 'PUT':
         body = request.json
-        return putonegeneric("personnage", columns, id, body)
+        return putonegeneric("personnage", columns_personnage, id, body)
 
 
 
@@ -369,7 +323,6 @@ def onepersonnage(id):
 
 @app.route('/roi/edit', methods=['GET'])
 def editroi():
-    columns = ['id_roi','wikiid','nom','dateofbirth','placeofbirthlabel', 'dateofdeath','placeofdeathlabel','mannersofdeath','placeofburiallabel','fatherlabel','motherlabel','spouses','starttime','endtime','startyear','endyear','birthyear','deathyear','urlimage']
     year = None
     start = None
     end = None
@@ -381,7 +334,7 @@ def editroi():
     else:
         data = Roi.query.filter(Roi.startyear<=year, Roi.endyear>=year).order_by(Roi.startyear).all()
 
-    rois = getobjectsjson(data, columns)
+    rois = getobjectsjson(data, columns_roi)
     html = ""
     for row in rois:
         form = "<form action='/roi/form/update'>"
@@ -445,7 +398,6 @@ def roi(year, start, end):
     
     # GET all data from database & sort by id
     if request.method == 'GET':
-        columns = ['id_roi','wikiid','nom','dateofbirth','placeofbirthlabel', 'dateofdeath','placeofdeathlabel','mannersofdeath','placeofburiallabel','fatherlabel','motherlabel','spouses','starttime','endtime','startyear','endyear','birthyear','deathyear','urlimage']
         if(year == None):
             if((start == None) & (end == None)):
                 data = Roi.query.order_by(Roi.startyear).all()
@@ -454,16 +406,14 @@ def roi(year, start, end):
         else:
             data = Roi.query.filter(Roi.startyear<=year, Roi.endyear>=year).order_by(Roi.startyear).all()
 
-        rois = getobjectsjson(data, columns)
+        rois = getobjectsjson(data, columns_roi)
         return jsonify(rois)
 
 @app.route('/roi/<string:id>', methods=['GET', 'DELETE', 'PUT'])
 def oneroi(id):
-    columns = ['id_roi','wikiid','nom','dateofbirth','placeofbirthlabel', 'dateofdeath','placeofdeathlabel','mannersofdeath','placeofburiallabel','fatherlabel','motherlabel','spouses','starttime','endtime','startyear','endyear','birthyear','deathyear','urlimage']
-
-    # GET a specific data by id
+     # GET a specific data by id
     if request.method == 'GET':
-        return getonegeneric("roi", columns, id)
+        return getonegeneric("roi", columns_roi, id)
         
     # DELETE a data
     if request.method == 'DELETE':
@@ -472,7 +422,7 @@ def oneroi(id):
     # UPDATE a data by id
     if request.method == 'PUT':
         body = request.json
-        return putonegeneric("roi", columns, id, body)
+        return putonegeneric("roi", columns_roi, id, body)
 
 
 ############## EVENEMENT ################
@@ -484,8 +434,7 @@ def editevenement(start, end):
         data = Evenement.query.order_by(Evenement.id_event).all()
     else:
         data = Evenement.query.order_by(Evenement.startyear).filter(Evenement.startyear>start, Evenement.startyear<end).all()
-    columns = ['id_event','evenement','startyear','endyear','commentaire']
-    evenements = getobjectsjson(data, columns)
+    evenements = getobjectsjson(data, columns_evenement)
 
     html = "<p>"+str(len(evenements))+"</p>"
     for row in evenements:
@@ -532,8 +481,7 @@ def evenement(start, end):
             data = Evenement.query.order_by(Evenement.id_event).all()
         else:
             data = Evenement.query.order_by(Evenement.startyear).filter(Evenement.startyear>start, Evenement.startyear<end).all()
-        columns = ['id_event','evenement','startyear','endyear','commentaire']
-        evenements = getobjectsjson(data, columns)
+        evenements = getobjectsjson(data, columns_evenement)
         return jsonify(evenements)
 
 @app.route('/evenement/<string:id>', methods=['GET', 'DELETE', 'PUT'])
@@ -542,7 +490,7 @@ def oneevenement(id):
 
     # GET a specific data by id
     if request.method == 'GET':
-        return getonegeneric("evenement", columns, id)
+        return getonegeneric("evenement", columns_evenement, id)
         
     # DELETE a data
     if request.method == 'DELETE':
@@ -551,7 +499,7 @@ def oneevenement(id):
     # UPDATE a data by id
     if request.method == 'PUT':
         body = request.json
-        return putonegeneric("evenement", columns, id, body)
+        return putonegeneric("evenement", columns_evenement, id, body)
 
 
 ####### GENERIC FUNCTIONS #######

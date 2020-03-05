@@ -41,7 +41,7 @@ class MapPage extends Component {
         .catch(console.log)
 
         
-        fetch('http://localhost:5000/instances/user/1')
+        fetch('http://localhost:5000/catch/user/1')
         .then(res => res.json())
         .then((data) => {
           this.setState({ ownInstance: data })
@@ -84,7 +84,7 @@ class MapPage extends Component {
 
     getInstances(id){
       let self = this;
-      fetch('http://localhost:5000/instances/user/1')
+      fetch('http://localhost:5000/catch/user/1')
       .then(res => res.json())
       .then((data) => {
         self.state.rois.forEach(function(roi){
@@ -121,7 +121,7 @@ class MapPage extends Component {
 
         if(id != undefined){
 
-          gethttp().post("http://localhost:5000/instances")
+          gethttp().post("http://localhost:5000/catch")
           .set('Content-Type', 'application/json')
           .send(JSON.stringify(tosend))
           .then(res => {
@@ -266,7 +266,6 @@ class MapPage extends Component {
                     <h2>Any content 2</h2>
                   </TabPanel>
                 </Tabs>
-
 
                   <div style={{float:"left", height:"100%",textAlign:"center",color:"white", backgroundColor:"#12556B", borderRadius:"10px"}}><h3>Votre KingDex</h3>{this.state.rois.map(roi => (<div style={{margin:"20px",textAlign:"center",float:"left", height:"100%"}}><img src={require("../images/kings/"+roi.showimage)} width="100px" height="100px"/><br/>{roi.shownom}{roi.shownb}</div>))}</div>
                   
