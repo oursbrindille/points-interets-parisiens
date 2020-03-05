@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify,redirect
 from flask_cors import CORS
 import yaml
 from database import db
+import collections
 
 app = Flask(__name__)
 db_config = yaml.load(open('database.yaml'))
@@ -843,7 +844,13 @@ def oneroi(id):
 @app.route('/evenement/edit', methods=['GET'], defaults={'start': None, 'end': None})
 @app.route('/evenement/edit/start/<start>/end/<end>', methods=['GET'])
 def editevenement(start, end):
-    evenements = getevenementjson(start,end)
+    if((start == None) & (end == None)):
+        data = Evenement.query.order_by(Evenement.id_event).all()
+    else:
+        data = Evenement.query.order_by(Evenement.startyear).filter(Evenement.startyear>start, Evenement.startyear<end).all()
+    columns = ['id_event','evenement','startyear','endyear','commentaire']
+    evenements = getobjectsjson(data, columns)
+
     html = "<p>"+str(len(evenements))+"</p>"
     for row in evenements:
         form = "<form action='/evenement/form/update'>"
@@ -861,112 +868,95 @@ def editevenement(start, end):
 def updateevenement():
     body = request.values
     editData = Evenement.query.filter_by(id_event=body['id_event']).first()
-    if(body['evenement'] == "None"):
-        editData.evenement = None
-    else:
-        editData.evenement = body['evenement']
-
-    if(body['startyear'] == "None"):
-        editData.startyear = None
-    else:
-        editData.startyear = body['startyear']
-
-    if(body['endyear'] == "None"):
-        editData.endyear = None
-    else:
-        editData.endyear = body['endyear']
-        
-    if(body['commentaire'] == "None"):
-        editData.commentaire = None
-    else:
-        editData.commentaire = body['commentaire']
-
+    for key in body:
+        print(key)
+        if(body[key] == "None"):
+            setattr(editData, key, None)
+        else:
+            setattr(editData, key, body[key])
     db.session.commit()
-    return redirect("/evenement/edit", code=302)
+    return "440" #redirect("/evenement/edit", code=302)
 
 
 @app.route('/evenement', methods=['POST', 'GET'], defaults={'start': None, 'end': None})
 @app.route('/evenement/start/<start>/end/<end>', methods=['POST', 'GET'])
 def evenement(start, end):
-    
     # POST a data to database
     if request.method == 'POST':
         body = request.json
-        evenement = body['evenement']
-        startyear = body['startyear']
-        endyear = body['endyear']
-        commentaire = body['commentaire']
-
-        data = Evenement(evenement, startyear, endyear, commentaire)
+        data = Evenement(body['evenement'], body['startyear'], body['endyear'], body['commentaire'])
         db.session.add(data)
         db.session.commit()
-
-        return jsonify({
-            'status': 'Data is posted to PostgreSQL!',
-            'evenemnent': evenement,
-            'staryear': startyear,
-            'endyear': endyear,
-            'commentaire': commentaire
-        })
+        body['status'] = "All good"
+        return jsonify(body)
     
     # GET all data from database & sort by id
     if request.method == 'GET':
-        evenements = getevenementjson(start, end)
+        if((start == None) & (end == None)):
+            data = Evenement.query.order_by(Evenement.id_event).all()
+        else:
+            data = Evenement.query.order_by(Evenement.startyear).filter(Evenement.startyear>start, Evenement.startyear<end).all()
+        columns = ['id_event','evenement','startyear','endyear','commentaire']
+        evenements = getobjectsjson(data, columns)
         return jsonify(evenements)
-
-def getevenementjson(start, end):
-    # data = User.query.all()
-    if((start == None) & (end == None)):
-        data = Evenement.query.order_by(Evenement.id_event).all()
-    else:
-        data = Evenement.query.order_by(Evenement.startyear).filter(Evenement.startyear>start, Evenement.startyear<end).all()
-    print(data)
-    dataJson = []
-    for i in range(len(data)):
-        # print(str(data[i]).split('/'))
-        dataDict = {
-            'id_event': str(data[i]).split('/')[0],
-            'evenement': str(data[i]).split('/')[1],
-            'startyear': str(data[i]).split('/')[2],
-            'endyear': str(data[i]).split('/')[3],
-            'commentaire': str(data[i]).split('/')[4]
-        }
-        dataJson.append(dataDict)
-    return dataJson
 
 @app.route('/evenement/<string:id>', methods=['GET', 'DELETE', 'PUT'])
 def oneevenement(id):
+    columns = ['id_event','evenement','startyear','endyear','commentaire']
 
     # GET a specific data by id
     if request.method == 'GET':
-        data = Evenement.query.get(id)
-        print(data)
-        dataDict = {
-            'id_event': str(data).split('/')[0],
-            'evenement': str(data).split('/')[1],
-            'startyear': str(data).split('/')[2],
-            'endyear': str(data).split('/')[3],
-            'commentaire': str(data).split('/')[4]
-        }
-        return jsonify(dataDict)
+        return getonegeneric("evenement", columns, id)
         
     # DELETE a data
     if request.method == 'DELETE':
-        delData = Evenement.query.filter_by(id_event=id).first()
-        db.session.delete(delData)
-        db.session.commit()
-        return jsonify({'status': 'Data '+id+' is deleted from PostgreSQL!'})
+        return delonegeneric("evenement", id)
 
     # UPDATE a data by id
     if request.method == 'PUT':
         body = request.json
+        return putonegeneric("evenement", columns, id, body)
+
+
+####### GENERIC FUNCTIONS #######
+
+
+def getonegeneric(type, columns, id):
+    if(type == "evenement"): 
+        data = Evenement.query.get(id)
+    dataDict = {}
+    j = 0
+    for key in columns:
+        dataDict[key] = str(data).split('/')[j]
+        j = j + 1
+    return jsonify(dataDict)
+
+def delonegeneric(type, id):
+    if(type == "evenement"):
+        delData = Evenement.query.filter_by(id_event=id).first()
+    db.session.delete(delData)
+    db.session.commit()
+    return jsonify({'status': 'Data '+id+' is deleted from PostgreSQL!'})
+
+def putonegeneric(type, columns, id, body):
+    if(type == "evenement"):
         editData = Evenement.query.filter_by(id_event=id).first()
-        editData.evenement = body['evenement']
-        editData.startyear = body['startyear']
-        editData.endyear = body['endyear']
-        editData.commentaire = body['commentaire']
-        db.session.commit()
-        return jsonify({'status': 'Data '+id+' is updated from PostgreSQL!'})
+    for key in body:
+        editData[key] = body[key]
+    db.session.commit()
+    return jsonify({'status': 'Data '+id+' is updated from PostgreSQL!'})
+
+def getobjectsjson(data, columns):
+    dataJson = []
+    for i in range(len(data)):
+        dataDict = {}
+        j = 0
+        for key in columns:
+            dataDict[key] = str(data[i]).split('/')[j]
+            j = j + 1
+        dataJson.append(dataDict)
+    return dataJson
+
 
 if __name__ == '__main__':
     app.debug = True

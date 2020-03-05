@@ -8,8 +8,7 @@ class Evenement(db.Model):
     endyear = db.Column(db.Float)
     commentaire = db.Column(db.String(255))
 
-    def __init__(self, name, age):
-        self.id_event = id_event
+    def __init__(self, evenement, startyear, endyear, commentaire):
         self.evenement = evenement
         self.startyear = startyear
         self.endyear = endyear
