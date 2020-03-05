@@ -535,13 +535,24 @@ def onepersonnage(id):
 
 
 
+############ ROI #############
+
 
 @app.route('/roi/edit', methods=['GET'])
 def editroi():
+    columns = ['id_roi','wikiid','nom','dateofbirth','placeofbirthlabel', 'dateofdeath','placeofdeathlabel','mannersofdeath','placeofburiallabel','fatherlabel','motherlabel','spouses','starttime','endtime','startyear','endyear','birthyear','deathyear','urlimage']
     year = None
     start = None
     end = None
-    rois = getroijson(year,start,end)
+    if(year == None):
+        if((start == None) & (end == None)):
+            data = Roi.query.order_by(Roi.startyear).all()
+        else:
+            data = Roi.query.filter(Roi.startyear>=start, Roi.startyear<=end).order_by(Roi.startyear).all()
+    else:
+        data = Roi.query.filter(Roi.startyear<=year, Roi.endyear>=year).order_by(Roi.startyear).all()
+
+    rois = getobjectsjson(data, columns)
     html = ""
     for row in rois:
         form = "<form action='/roi/form/update'>"
@@ -572,99 +583,13 @@ def editroi():
 @app.route('/roi/form/update', methods=['POST', 'GET'])
 def updateroi():
     body = request.values
-    print("toto")
     editData = Roi.query.filter_by(id_roi=body['id_roi']).first()
-
-    if(body['wikiid'] == "None"):
-        editData.wikiid = None
-    else:
-        editData.wikiid = body['wikiid']
-    
-    if(body['nom'] == "None"):
-        editData.nom = None
-    else:
-        editData.nom = body['nom']
-    
-    if(body['dateofbirth'] == "None"):
-        editData.dateofbirth = None
-    else:
-        editData.dateofbirth = body['dateofbirth']
-    
-    if(body['placeofbirthlabel'] == "None"):
-        editData.placeofbirthlabel = None
-    else:
-        editData.placeofbirthlabel = body['placeofbirthlabel']
-    
-    if(body['dateofdeath'] == "None"):
-        editData.dateofdeath = None
-    else:
-        editData.dateofdeath = body['dateofdeath']
-    
-    if(body['placeofdeathlabel'] == "None"):
-        editData.placeofdeathlabel = None
-    else:
-        editData.placeofdeathlabel = body['placeofdeathlabel']
-    
-    if(body['mannersofdeath'] == "None"):
-        editData.mannersofdeath = None
-    else:
-        editData.mannersofdeath = body['mannersofdeath']
-    
-    if(body['placeofburiallabel'] == "None"):
-        editData.starttime = None
-    else:
-        editData.placeofburiallabel = body['placeofburiallabel']
-    
-    if(body['fatherlabel'] == "None"):
-        editData.fatherlabel = None
-    else:
-        editData.fatherlabel = body['fatherlabel']
-    
-    if(body['motherlabel'] == "None"):
-        editData.motherlabel = None
-    else:
-        editData.motherlabel = body['motherlabel']
-    
-    if(body['spouses'] == "None"):
-        editData.spouses = None
-    else:
-        editData.spouses = body['spouses']
-    
-    if(body['starttime'] == "None"):
-        editData.starttime = None
-    else:
-        editData.starttime = body['starttime']
-    
-    if(body['endtime'] == "None"):
-        editData.endtime = None
-    else:
-        editData.endtime = body['endtime']
-    
-    if(body['startyear'] == "None"):
-        editData.startyear = None
-    else:
-        editData.startyear = body['startyear']
-    
-    if(body['endyear'] == "None"):
-        editData.endyear = None
-    else:
-        editData.endyear = body['endyear']
-        
-    if(body['birthyear'] == "None"):
-        editData.birthyear = None
-    else:
-        editData.birthyear = body['birthyear']
-        
-    if(body['deathyear'] == "None"):
-        editData.deathyear = None
-    else:
-        editData.deathyear = body['deathyear']
-        
-    if(body['urlimage'] == "None"):
-        editData.urlimage = None
-    else:
-        editData.urlimage = body['urlimage']
-
+    for key in body:
+        print(key)
+        if(body[key] == "None"):
+            setattr(editData, key, None)
+        else:
+            setattr(editData, key, body[key])
     if(body['button'] == 'Valider'):
         db.session.commit()
 
@@ -683,163 +608,45 @@ def roi(year, start, end):
     # POST a data to database
     if request.method == 'POST':
         body = request.json
-
-        wikiid = body['wikiid']
-        nom = body['nom']
-        dateofbirth = body['dateofbirth']
-        placeofbirthlabel = body['placeofbirthlabel']
-        dateofdeath = body['dateofdeath']
-        placeofdeathlabel = body['placeofdeathlabel']
-        mannersofdeath = body['mannersofdeath']
-        placeofburiallabel = body['placeofburiallabel']
-        fatherlabel = body['fatherlabel']
-        motherlabel = body['motherlabel']
-        spouses = body['spouses']
-        starttime = body['starttime']
-        endtime = body['endtime']
-        startyear = body['startyear']
-        endyear = body['endyear']
-        birthyear = body['birthyear']
-        deathyear = body['deathyear']
-        urlimage = body['urlimage']
-
-        data = Roi(wikiid,nom,dateofbirth,placeofbirthlabel,dateofdeath,placeofdeathlabel,mannersofdeath,placeofburiallabel,fatherlabel,motherlabel,spouses,starttime,endtime,startyear,endyear,birthyear,deathyear,urlimage)
+        data = Roi(body['wikiid'],body['nom'],body['dateofbirth'],body['placeofbirthlabel'],body['dateofdeath'],body['placeofdeathlabel'],body['mannersofdeath'],body['placeofburiallabel'],body['fatherlabel'],body['motherlabel'],body['spouses'],body['starttime'],body['endtime'],body['startyear'],body['endyear'],body['birthyear'],body['deathyear'],body['urlimage'])
         db.session.add(data)
         db.session.commit()
-
-        return jsonify({
-            'status': 'Data is posted to PostgreSQL!',
-   
-            'wikiid': wikiid,
-            'nom': nom,
-            'dateofbirth': dateofbirth,
-            'placeofbirthlabel': placeofbirthlabel,
-            'dateofdeath': dateofdeath,
-            'placeofdeathlabel': placeofdeathlabel,
-            'mannersofdeath': mannersofdeath,
-            'placeofburiallabel': placeofburiallabel,
-            'fatherlabel': fatherlabel,
-            'motherlabel': motherlabel,
-            'spouses': spouses,
-            'starttime': starttime,
-            'endtime': endtime,
-            'startyear': startyear,
-            'endyear': endyear,
-            'birthyear': birthyear,
-            'deathyear': deathyear,
-            'urlimage': urlimage
-
-        })
+        body['status'] = "All good"
+        return jsonify(body)
     
     # GET all data from database & sort by id
     if request.method == 'GET':
-        rois = getroijson(year, start, end)
-        return jsonify(rois)
-
-def getroijson(year, start, end):
-    # data = User.query.all()
-    if(year == None):
-        if((start == None) & (end == None)):
-            data = Roi.query.order_by(Roi.startyear).all()
+        columns = ['id_roi','wikiid','nom','dateofbirth','placeofbirthlabel', 'dateofdeath','placeofdeathlabel','mannersofdeath','placeofburiallabel','fatherlabel','motherlabel','spouses','starttime','endtime','startyear','endyear','birthyear','deathyear','urlimage']
+        if(year == None):
+            if((start == None) & (end == None)):
+                data = Roi.query.order_by(Roi.startyear).all()
+            else:
+                data = Roi.query.filter(Roi.startyear>=start, Roi.startyear<=end).order_by(Roi.startyear).all()
         else:
-            data = Roi.query.filter(Roi.startyear>=start, Roi.startyear<=end).order_by(Roi.startyear).all()
-    else:
-        data = Roi.query.filter(Roi.startyear<=year, Roi.endyear>=year).order_by(Roi.startyear).all()
-    #data = Roi.query.filter_by(startyear=None).all()
-    
-    print(data)
-    dataJson = []
-    for i in range(len(data)):
-        # print(str(data[i]).split('/'))
-        dataDict = {
-            'id_roi': str(data[i]).split('/')[0],
-            'wikiid': str(data[i]).split('/')[1],
-            'nom': str(data[i]).split('/')[2],
-            'dateofbirth': str(data[i]).split('/')[3],
-            'placeofbirthlabel': str(data[i]).split('/')[4],
-            'dateofdeath': str(data[i]).split('/')[5],
-            'placeofdeathlabel': str(data[i]).split('/')[6],
-            'mannersofdeath': str(data[i]).split('/')[7],
-            'placeofburiallabel': str(data[i]).split('/')[8],
-            'fatherlabel': str(data[i]).split('/')[9],
-            'motherlabel': str(data[i]).split('/')[10],
-            'spouses': str(data[i]).split('/')[11],
-            'starttime': str(data[i]).split('/')[12],
-            'endtime': str(data[i]).split('/')[13],
-            'startyear': str(data[i]).split('/')[14],
-            'endyear': str(data[i]).split('/')[15],
-            'birthyear': str(data[i]).split('/')[16],
-            'deathyear': str(data[i]).split('/')[17],
-            'urlimage': str(data[i]).split('/')[18]
-        }
-        dataJson.append(dataDict)
-    return dataJson
+            data = Roi.query.filter(Roi.startyear<=year, Roi.endyear>=year).order_by(Roi.startyear).all()
+
+        rois = getobjectsjson(data, columns)
+        return jsonify(rois)
 
 @app.route('/roi/<string:id>', methods=['GET', 'DELETE', 'PUT'])
 def oneroi(id):
+    columns = ['id_roi','wikiid','nom','dateofbirth','placeofbirthlabel', 'dateofdeath','placeofdeathlabel','mannersofdeath','placeofburiallabel','fatherlabel','motherlabel','spouses','starttime','endtime','startyear','endyear','birthyear','deathyear','urlimage']
 
     # GET a specific data by id
     if request.method == 'GET':
-        data = Roi.query.get(id)
-        print("dddd ==> ")
-        print(data)
-        dataDict = {
-            'id_roi': str(data).split('/')[0],
-            'wikiid': str(data).split('/')[1],
-            'nom': str(data).split('/')[2],
-            'dateofbirth': str(data).split('/')[3],
-            'placeofbirthlabel': str(data).split('/')[4],
-            'dateofdeath': str(data).split('/')[5],
-            'placeofdeathlabel': str(data).split('/')[6],
-            'mannersofdeath': str(data).split('/')[7],
-            'placeofburiallabel': str(data).split('/')[8],
-            'fatherlabel': str(data).split('/')[9],
-            'motherlabel': str(data).split('/')[10],
-            'spouses': str(data).split('/')[11],
-            'starttime': str(data).split('/')[12],
-            'endtime': str(data).split('/')[13],
-            'startyear': str(data).split('/')[14],
-            'endyear': str(data).split('/')[15],
-            'birthyear': str(data).split('/')[16],
-            'deathyear': str(data).split('/')[17],
-            'urlimage': str(data).split('/')[18]
-        }
-        
-        return jsonify(dataDict)
+        return getonegeneric("roi", columns, id)
         
     # DELETE a data
     if request.method == 'DELETE':
-        delData = Roi.query.filter_by(id_roi=id).first()
-        db.session.delete(delData)
-        db.session.commit()
-        return jsonify({'status': 'Data '+id+' is deleted from PostgreSQL!'})
+        return delonegeneric("roi", id)
 
     # UPDATE a data by id
     if request.method == 'PUT':
         body = request.json
-        editData = Roi.query.filter_by(id_roi=id).first()
-        editData.wikiid = body['wikiid']
-        editData.nom = body['nom']
-        editData.dateofbirth = body['dateofbirth']
-        editData.placeofbirthlabel = body['placeofbirthlabel']
-        editData.dateofdeath = body['dateofdeath']
-        editData.placeofdeathlabel = body['placeofdeathlabel']
-        editData.mannersofdeath = body['mannersofdeath']
-        editData.placeofburiallabel = body['placeofburiallabel']
-        editData.fatherlabel = body['fatherlabel']
-        editData.motherlabel = body['motherlabel']
-        editData.spouses = body['spouses']
-        editData.starttime = body['starttime']
-        editData.endtime = body['endtime']
-        editData.startyear = body['startyear']
-        editData.endyear = body['endyear']
-        editData.birthyear = body['birthyear']
-        editData.deathyear = body['deathyear']
-        editData.urlimage = body['urlimage']
+        return putonegeneric("roi", columns, id, body)
 
-        db.session.commit()
-        return jsonify({'status': 'Data '+id+' is updated from PostgreSQL!'})
 
+############## EVENEMENT ################
 
 @app.route('/evenement/edit', methods=['GET'], defaults={'start': None, 'end': None})
 @app.route('/evenement/edit/start/<start>/end/<end>', methods=['GET'])
@@ -920,10 +727,19 @@ def oneevenement(id):
 
 ####### GENERIC FUNCTIONS #######
 
-
-def getonegeneric(type, columns, id):
+def getonedata(type, id):
     if(type == "evenement"): 
         data = Evenement.query.get(id)
+    if(type == "roi"): 
+        data = Roi.query.get(id)
+    if(type == "lieu"): 
+        data = Lieu.query.get(id)
+    if(type == "personnage"): 
+        data = Personnage.query.get(id)
+    return data
+
+def getonegeneric(type, columns, id):
+    data = getonedata(type, id)
     dataDict = {}
     j = 0
     for key in columns:
@@ -932,15 +748,13 @@ def getonegeneric(type, columns, id):
     return jsonify(dataDict)
 
 def delonegeneric(type, id):
-    if(type == "evenement"):
-        delData = Evenement.query.filter_by(id_event=id).first()
+    delData = getonedata(type, id)
     db.session.delete(delData)
     db.session.commit()
     return jsonify({'status': 'Data '+id+' is deleted from PostgreSQL!'})
 
 def putonegeneric(type, columns, id, body):
-    if(type == "evenement"):
-        editData = Evenement.query.filter_by(id_event=id).first()
+    editData = getonedata(type, id)
     for key in body:
         editData[key] = body[key]
     db.session.commit()

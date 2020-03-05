@@ -22,8 +22,7 @@ class Roi(db.Model):
     deathyear = db.Column(db.Float)
     urlimage = db.Column(db.String(255))
 
-    def __init__(self, name, age):
-        self.id_roi = id_roi
+    def __init__(self, wikiid, nom, dateofbirth, placeofbirthlabel, dateofdeath, placeofdeathlabel, mannersofdeath, placeofburiallabel, fatherlabel, motherlabel, spouses, starttime, endtime, startyear, endyear, birthyear, deathyear, urlimage):
         self.wikiid = wikiid
         self.nom = nom
         self.dateofbirth = dateofbirth
