@@ -1,20 +1,20 @@
-nom,dateofbirth,placeofbirthlabel,dateofdeath,placeofdeathlabel,positions,birthyear,deathyear
-Geneviève de Paris,,Nanterre,,Paris,Patronne de la ville,420.00,500.00
-Alaric,,,,,Roi des Wisigoths,484.00,507.00
-Amélius,,,,,Evêque de Paris,500.00,600.00
-Saffaracus,,,,,Evêque de Paris,500.00,600.00
-Grégoire de Tours,,Cité des Arvernes,0594-11-17,Tours,"Evêque de Tours, Historien de l'Eglise et des Francs",538.00,594.00
-Clotilde,,,,Tours,Reine des Francs,474.00,545.00
-Heraclius,,,,,Evêque de Paris,500.00,600.00
-Amelius,,,,,Evêque de Paris,500.00,600.00
-Saint Séverin,,,,Paris,Ermite,500.00,540.00
-Saffaracus,,,,,Evêque de Paris,500.00,600.00
-Eusebius,,,,,Evêque de Paris,500.00,600.00
-Germain de Paris,,Autun,,Paris,Evêque de Paris,496.00,576.00
-Ragnemod,,,,,Evêque de Paris,500.00,600.00
-Prétextat,,,,,Evêque de Rouen,500.00,586.00
-Priscus,,,,,Juif,500.00,582.00
-Pathir,,,,,Meurtrier de Priscus,500.00,600.00
-Leudaste,,,,,comte de Tours,540.00,583.00
-Frédégonde,,,,Paris,"Reine des Francs, Reine de Neustrie",545.00,597.00
-Brunehaut,,Espagne Wisigothique,,Renève,Reine des Francs,547.00,613.00
+nom,dateofbirth,placeofbirthlabel,dateofdeath,placeofdeathlabel,positions,birthyear,deathyear,prod
+Geneviève de Paris,,Nanterre,,Paris,Patronne de la ville,420.0,500.0,0
+Alaric,,,,,Roi des Wisigoths,484.0,507.0,0
+Amélius,,,,,Evêque de Paris,500.0,600.0,0
+Saffaracus,,,,,Evêque de Paris,500.0,600.0,0
+Grégoire de Tours,,Cité des Arvernes,0594-11-17,Tours,"Evêque de Tours, Historien de l'Eglise et des Francs",538.0,594.0,0
+Clotilde,,,,Tours,Reine des Francs,474.0,545.0,0
+Heraclius,,,,,Evêque de Paris,500.0,600.0,0
+Amelius,,,,,Evêque de Paris,500.0,600.0,0
+Saint Séverin,,,,Paris,Ermite,500.0,540.0,0
+Saffaracus,,,,,Evêque de Paris,500.0,600.0,0
+Eusebius,,,,,Evêque de Paris,500.0,600.0,0
+Germain de Paris,,Autun,,Paris,Evêque de Paris,496.0,576.0,0
+Ragnemod,,,,,Evêque de Paris,500.0,600.0,0
+Prétextat,,,,,Evêque de Rouen,500.0,586.0,0
+Priscus,,,,,Juif,500.0,582.0,0
+Pathir,,,,,Meurtrier de Priscus,500.0,600.0,0
+Leudaste,,,,,comte de Tours,540.0,583.0,0
+Frédégonde,,,,Paris,"Reine des Francs, Reine de Neustrie",545.0,597.0,0
+Brunehaut,,Espagne Wisigothique,,Renève,Reine des Francs,547.0,613.0,0

@@ -23,10 +23,10 @@ from classes.instanceobject import InstanceObject
 
 columns_userinfo = ['id_user', 'pseudo']
 columns_instanceobjectuser = ['id_instance_object_user', 'id_external_object','id_user','type_object','lon','lat']
-columns_evenement = ['id_event','evenement','startyear','endyear','commentaire']
-columns_lieu = ['id_lieu','nom','lon','lat','inception', 'constructionyear']
-columns_roi = ['id_roi','wikiid','nom','dateofbirth','placeofbirthlabel', 'dateofdeath','placeofdeathlabel','mannersofdeath','placeofburiallabel','fatherlabel','motherlabel','spouses','starttime','endtime','startyear','endyear','birthyear','deathyear','urlimage']
-columns_personnage = ['id_personnage','nom','dateofbirth','placeofbirthlabel','dateofdeath', 'placeofdeathlabel','positions','birthyear','deathyear']
+columns_evenement = ['id_event','evenement','startyear','endyear','commentaire', 'prod']
+columns_lieu = ['id_lieu','nom','lon','lat','inception', 'constructionyear', 'prod']
+columns_roi = ['id_roi','wikiid','nom','dateofbirth','placeofbirthlabel', 'dateofdeath','placeofdeathlabel','mannersofdeath','placeofburiallabel','fatherlabel','motherlabel','spouses','starttime','endtime','startyear','endyear','birthyear','deathyear','urlimage', 'prod']
+columns_personnage = ['id_personnage','nom','dateofbirth','placeofbirthlabel','dateofdeath', 'placeofdeathlabel','positions','birthyear','deathyear', 'prod']
 columns_instanceobject = ['id_instance_object', 'id_external_object', 'type_object','lon','lat']
 
 
@@ -153,6 +153,7 @@ def editlieu():
         form = form+"<input size='5' name='lat' value=\""+str(row['lat'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input size='10' name='inception' value=\""+str(row['inception'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input size='5' name='constructionyear' value=\""+str(row['constructionyear'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='5' name='prod' value=\""+str(row['prod'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input type='submit' name='button' value='Supprimer'>&nbsp;&nbsp;"
         form = form+"<input type='submit' name='button' value='Valider'></form>"
         html = html+form    
@@ -176,7 +177,7 @@ def lieu():
     # POST a data to database
     if request.method == 'POST':
         body = request.json
-        data = Lieu(body['nom'],body['lon'],body['lat'],body['inception'],body['constructionyear'])
+        data = Lieu(body['nom'],body['lon'],body['lat'],body['inception'],body['constructionyear'],body['prod'])
         db.session.add(data)
         db.session.commit()
         body['status'] = "All good"
@@ -220,6 +221,20 @@ def editpersonnage(start, end):
 
     personnages = getobjectsjson(data, columns_personnage)
     html = ""
+    
+    form = "<form action='/personnage/form/create'>"
+    form = form+"<input size='20' name='nom' value=''/>&nbsp;&nbsp;"
+    form = form+"<input size='10' name='dateofbirth' value=''/>&nbsp;&nbsp;"
+    form = form+"<input size='10' name='placeofbirthlabel' value=''/>&nbsp;&nbsp;"
+    form = form+"<input size='10' name='dateofdeath' value=''/>&nbsp;&nbsp;"
+    form = form+"<input size='10' name='placeofdeathlabel' value=''/>&nbsp;&nbsp;"
+    form = form+"<input size='10' name='positions' value=''/>&nbsp;&nbsp;"
+    form = form+"<input size='5' name='birthyear' value=''/>&nbsp;&nbsp;"
+    form = form+"<input size='5' name='deathyear' value=''/>&nbsp;&nbsp;"  
+    form = form+"<input size='5' name='prod' value=''/>&nbsp;&nbsp;"  
+    form = form+"<input type='submit' name='button' value='Ajouter'></form>"
+    html = html+form
+    
     for row in personnages:
         form = "<form action='/personnage/form/update'>"
         form = form+"<input type='hidden' name='id_personnage' value=\""+str(row['id_personnage'])+"\"/>&nbsp;&nbsp;"
@@ -231,20 +246,10 @@ def editpersonnage(start, end):
         form = form+"<input size='10' name='positions' value=\""+str(row['positions'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input size='5' name='birthyear' value=\""+str(row['birthyear'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input size='5' name='deathyear' value=\""+str(row['deathyear'])+"\"/>&nbsp;&nbsp;"  
+        form = form+"<input size='5' name='prod' value=\""+str(row['prod'])+"\"/>&nbsp;&nbsp;"  
         form = form+"<input type='submit' name='button' value='Valider'></form>"
         html = html+form 
     
-    form = "<form action='/personnage/form/create'>"
-    form = form+"<input size='20' name='nom' value=''/>&nbsp;&nbsp;"
-    form = form+"<input size='10' name='dateofbirth' value=''/>&nbsp;&nbsp;"
-    form = form+"<input size='10' name='placeofbirthlabel' value=''/>&nbsp;&nbsp;"
-    form = form+"<input size='10' name='dateofdeath' value=''/>&nbsp;&nbsp;"
-    form = form+"<input size='10' name='placeofdeathlabel' value=''/>&nbsp;&nbsp;"
-    form = form+"<input size='10' name='positions' value=''/>&nbsp;&nbsp;"
-    form = form+"<input size='5' name='birthyear' value=''/>&nbsp;&nbsp;"
-    form = form+"<input size='5' name='deathyear' value=''/>&nbsp;&nbsp;"  
-    form = form+"<input type='submit' name='button' value='Ajouter'></form>"
-    html = html+form
     return html
 
 
@@ -258,7 +263,7 @@ def createpersonnage():
             newbody[key] = None
         else:
             newbody[key] = body[key]
-    data = Personnage(newbody['nom'],newbody['dateofbirth'],newbody['placeofbirthlabel'],newbody['dateofdeath'],newbody['placeofdeathlabel'],newbody['positions'],newbody['birthyear'],newbody['deathyear'])
+    data = Personnage(newbody['nom'],newbody['dateofbirth'],newbody['placeofbirthlabel'],newbody['dateofdeath'],newbody['placeofdeathlabel'],newbody['positions'],newbody['birthyear'],newbody['deathyear'],newbody['prod'])
     db.session.add(data)
     db.session.commit()
     return redirect("/personnage/edit", code=302)
@@ -284,7 +289,7 @@ def personnage(start, end):
     # POST a data to database
     if request.method == 'POST':
         body = request.json
-        data = Personnage(body['nom'],body['dateofbirth'],body['placeofbirthlabel'],body['dateofdeath'],body['placeofdeathlabel'],body['positions'],body['birthyear'],body['deathyear'])
+        data = Personnage(body['nom'],body['dateofbirth'],body['placeofbirthlabel'],body['dateofdeath'],body['placeofdeathlabel'],body['positions'],body['birthyear'],body['deathyear'],body['prod'])
         db.session.add(data)
         db.session.commit()
         body['status'] = "All good"
@@ -336,27 +341,52 @@ def editroi():
 
     rois = getobjectsjson(data, columns_roi)
     html = ""
+    form = "<form action='/roi' method='post'>"
+    form = form+"<input name='wikiid' value='' placeholder='wikiid' />&nbsp;&nbsp;"
+    form = form+"<input size='10' name='nom' value='' placeholder='nom'/>&nbsp;&nbsp;"
+    form = form+"<input size='10' name='dateofbirth' value='' placeholder='dateofbirth'/>&nbsp;&nbsp;"
+    form = form+"<input size='10' name='placeofbirthlabel' value='' placeholder='placeofbirthlabel'/>&nbsp;&nbsp;"
+    form = form+"<input size='10' name='dateofdeath' value='' placeholder='dateofdeath'/>&nbsp;&nbsp;"
+    form = form+"<input size='10' name='placeofdeathlabel' value='' placeholder='placeofdeathlabel'/>&nbsp;&nbsp;"
+    form = form+"<input type='hidden' size='5' name='mannersofdeath' value='' placeholder='mannersofdeath'/>&nbsp;&nbsp;"
+    form = form+"<input size='5' name='placeofburiallabel' value='' placeholder='placeofburiallabel'/>&nbsp;&nbsp;"
+    form = form+"<input type='hidden' size='5' name='fatherlabel' value='' placeholder='fatherlabel'/>&nbsp;&nbsp;"
+    form = form+"<input type='hidden' size='5' name='motherlabel' value='' placeholder='motherlabel'/>&nbsp;&nbsp;"
+    form = form+"<input type='hidden' size='5' name='spouses' value='' placeholder='spouses'/>&nbsp;&nbsp;"
+    form = form+"<input size='10' name='starttime' value='' placeholder='starttime'/>&nbsp;&nbsp;"
+    form = form+"<input size='10' name='endtime' value='' placeholder='endtime'/>&nbsp;&nbsp;"
+    form = form+"<input size='5' name='startyear' value='' placeholder='startyear'/>&nbsp;&nbsp;"
+    form = form+"<input size='5' name='endyear' value='' placeholder='endyear'/>&nbsp;&nbsp;"  
+    form = form+"<input size='5' name='birthyear' value='' placeholder='birthyear'/>&nbsp;&nbsp;"
+    form = form+"<input size='5' name='deathyear' value='' placeholder='deathyear'/>&nbsp;&nbsp;"  
+    form = form+"<input size='1' name='prod' value='' placeholder='prod'/>&nbsp;&nbsp;"
+    form = form+"<input name='urlimage' value='' placeholder='urlimage'/>&nbsp;&nbsp;"
+    form = form+"<input type='submit' name='button' value='Supprimer'>&nbsp;&nbsp;"
+    form = form+"<input type='submit' name='button' value='Valider'></form>"
+    html = html+form 
+
     for row in rois:
         form = "<form action='/roi/form/update'>"
         form = form+"<input type='hidden' name='id_roi' value=\""+str(row['id_roi'])+"\"/>&nbsp;&nbsp;"
-        form = form+"<input type='hidden' name='wikiid' value=\""+str(row['wikiid'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='5' name='wikiid' value=\""+str(row['wikiid'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input size='10' name='nom' value=\""+str(row['nom'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input size='10' name='dateofbirth' value=\""+str(row['dateofbirth'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input size='10' name='placeofbirthlabel' value=\""+str(row['placeofbirthlabel'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input size='10' name='dateofdeath' value=\""+str(row['dateofdeath'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input size='10' name='placeofdeathlabel' value=\""+str(row['placeofdeathlabel'])+"\"/>&nbsp;&nbsp;"
-        form = form+"<input size='5' name='mannersofdeath' value=\""+str(row['mannersofdeath'])+"\"/>&nbsp;&nbsp;"
-        form = form+"<input size='5' name='placeofburiallabel' value=\""+str(row['placeofburiallabel'])+"\"/>&nbsp;&nbsp;"
-        form = form+"<input size='5' name='fatherlabel' value=\""+str(row['fatherlabel'])+"\"/>&nbsp;&nbsp;"
-        form = form+"<input size='5' name='motherlabel' value=\""+str(row['motherlabel'])+"\"/>&nbsp;&nbsp;"
-        form = form+"<input size='5' name='spouses' value=\""+str(row['spouses'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input type='hidden' size='5' name='mannersofdeath' value=\""+str(row['mannersofdeath'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input type='hidden' size='5' name='placeofburiallabel' value=\""+str(row['placeofburiallabel'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input type='hidden' size='5' name='fatherlabel' value=\""+str(row['fatherlabel'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input type='hidden' size='5' name='motherlabel' value=\""+str(row['motherlabel'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input type='hidden' size='5' name='spouses' value=\""+str(row['spouses'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input size='10' name='starttime' value=\""+str(row['starttime'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input size='10' name='endtime' value=\""+str(row['endtime'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input size='5' name='startyear' value=\""+str(row['startyear'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input size='5' name='endyear' value=\""+str(row['endyear'])+"\"/>&nbsp;&nbsp;"  
         form = form+"<input size='5' name='birthyear' value=\""+str(row['birthyear'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input size='5' name='deathyear' value=\""+str(row['deathyear'])+"\"/>&nbsp;&nbsp;"  
-        form = form+"<input type='hidden' name='urlimage' value=\""+str(row['urlimage'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='1' name='prod' value=\""+str(row['prod'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='5' name='urlimage' value=\""+str(row['urlimage'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input type='submit' name='button' value='Supprimer'>&nbsp;&nbsp;"
         form = form+"<input type='submit' name='button' value='Valider'></form>"
         html = html+form 
@@ -389,12 +419,23 @@ def roi(year, start, end):
     
     # POST a data to database
     if request.method == 'POST':
-        body = request.json
-        data = Roi(body['wikiid'],body['nom'],body['dateofbirth'],body['placeofbirthlabel'],body['dateofdeath'],body['placeofdeathlabel'],body['mannersofdeath'],body['placeofburiallabel'],body['fatherlabel'],body['motherlabel'],body['spouses'],body['starttime'],body['endtime'],body['startyear'],body['endyear'],body['birthyear'],body['deathyear'],body['urlimage'])
+        if(request.json == None):
+            body = request.form
+        else:
+            body = request.json
+        newbody = {}
+        for key in body:
+            if((body[key] == "None") | (body[key] == "")):
+                newbody[key] = None
+            else:
+                newbody[key] = body[key]
+        print(newbody)
+
+        data = Roi(newbody['wikiid'],newbody['nom'],newbody['dateofbirth'],newbody['placeofbirthlabel'],newbody['dateofdeath'],newbody['placeofdeathlabel'],newbody['mannersofdeath'],newbody['placeofburiallabel'],newbody['fatherlabel'],newbody['motherlabel'],newbody['spouses'],newbody['starttime'],newbody['endtime'],newbody['startyear'],newbody['endyear'],newbody['birthyear'],newbody['deathyear'],newbody['urlimage'],newbody['prod'])
         db.session.add(data)
         db.session.commit()
-        body['status'] = "All good"
-        return jsonify(body)
+        newbody['status'] = "All good"
+        return jsonify(newbody)
     
     # GET all data from database & sort by id
     if request.method == 'GET':
@@ -444,6 +485,7 @@ def editevenement(start, end):
         form = form+"<input size='5' name='startyear' value=\""+str(row['startyear'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input size='5' name='endyear' value=\""+str(row['endyear'])+"\"/>&nbsp;&nbsp;"
         form = form+"<textarea name='commentaire' rows='3' cols='50'>"+str(row['commentaire'])+"</textarea>&nbsp;&nbsp;"
+        form = form+"<textarea name='prod' rows='3' cols='50'>"+str(row['prod'])+"</textarea>&nbsp;&nbsp;"
         form = form+"<input type='submit' name='button' value='Supprimer'>&nbsp;&nbsp;"
         form = form+"<input type='submit' name='button' value='Valider'></form>"
         html = html+form    
@@ -469,7 +511,7 @@ def evenement(start, end):
     # POST a data to database
     if request.method == 'POST':
         body = request.json
-        data = Evenement(body['evenement'], body['startyear'], body['endyear'], body['commentaire'])
+        data = Evenement(body['evenement'], body['startyear'], body['endyear'], body['commentaire'],body['prod'])
         db.session.add(data)
         db.session.commit()
         body['status'] = "All good"

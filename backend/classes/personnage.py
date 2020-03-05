@@ -11,8 +11,9 @@ class Personnage(db.Model):
     positions = db.Column(db.String(255))
     birthyear = db.Column(db.Float)
     deathyear = db.Column(db.Float)
+    prod = db.Column(db.Integer)
 
-    def __init__(self, nom, dateofbirth, placeofbirthlabel, dateofdeath, placeofdeathlabel, positions, birthyear, deathyear):
+    def __init__(self, nom, dateofbirth, placeofbirthlabel, dateofdeath, placeofdeathlabel, positions, birthyear, deathyear, prod):
         self.nom = nom
         self.dateofbirth = dateofbirth
         self.placeofbirthlabel = placeofbirthlabel
@@ -21,7 +22,8 @@ class Personnage(db.Model):
         self.positions = positions
         self.birthyear = birthyear
         self.deathyear = deathyear
+        self.prod = prod
     
     def __repr__(self):
-        return '%s/%s/%s/%s/%s/%s/%s/%s/%s' % (self.id_personnage,self.nom,self.dateofbirth,self.placeofbirthlabel,self.dateofdeath,self.placeofdeathlabel,self.positions,self.birthyear,self.deathyear)
+        return '%s/%s/%s/%s/%s/%s/%s/%s/%s/%s' % (self.id_personnage,self.nom,self.dateofbirth,self.placeofbirthlabel,self.dateofdeath,self.placeofdeathlabel,self.positions,self.birthyear,self.deathyear, self.prod)
 

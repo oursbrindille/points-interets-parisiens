@@ -5,7 +5,8 @@ CREATE TABLE evenement
     evenement CHARACTER VARYING,
     startYear DECIMAL(9,2),
     endYear DECIMAL(9,2),
-    commentaire CHARACTER VARYING
+    commentaire CHARACTER VARYING,
+    prod CHARACTER VARYING
 )
 TABLESPACE pg_default;
 
@@ -29,7 +30,8 @@ CREATE TABLE roi
     endYear DECIMAL(9,2) default NULL,
     birthYear DECIMAL(9,2) default NULL,
     deathYear DECIMAL(9,2) default NULL,
-    urlImage CHARACTER VARYING
+    urlImage CHARACTER VARYING,
+    prod CHARACTER VARYING
 )
 TABLESPACE pg_default;
 
@@ -41,7 +43,8 @@ CREATE TABLE lieu
     lat NUMERIC(14, 11),
     inception CHARACTER VARYING,
     height DECIMAL(9,2),
-    constructionYear DECIMAL(9,2)
+    constructionYear DECIMAL(9,2),
+    prod CHARACTER VARYING
 )
 TABLESPACE pg_default;
 
@@ -56,7 +59,8 @@ CREATE TABLE personnage
     placeOfDeathLabel CHARACTER VARYING,
     positions CHARACTER VARYING,
     birthYear DECIMAL(9,2),
-    deathYear DECIMAL(9,2)
+    deathYear DECIMAL(9,2),
+    prod CHARACTER VARYING
 )
 TABLESPACE pg_default;
 
