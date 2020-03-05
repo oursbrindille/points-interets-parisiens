@@ -1,8 +1,8 @@
 from database import db
 
-class Roi(db.Model):
-    __tablename__ = "roi"
-    id_roi = db.Column(db.Integer, primary_key=True)
+class Personnage(db.Model):
+    __tablename__ = "personnage"
+    id_personnage = db.Column(db.Integer, primary_key=True)
     wikiid = db.Column(db.String(255))
     nom = db.Column(db.String(255))
     dateofbirth = db.Column(db.Date)
@@ -45,4 +45,4 @@ class Roi(db.Model):
         self.prod = prod
     
     def __repr__(self):
-        return '%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s' % (self.id_roi,self.wikiid,self.nom,self.dateofbirth,self.placeofbirthlabel,self.dateofdeath,self.placeofdeathlabel,self.mannersofdeath,self.placeofburiallabel,self.fatherlabel,self.motherlabel,self.spouses,self.starttime,self.endtime,self.startyear,self.endyear,self.birthyear,self.deathyear,self.urlimage, self.prod)
+        return '%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s' % (self.id_personnage,self.wikiid,self.nom,self.dateofbirth,self.placeofbirthlabel,self.dateofdeath,self.placeofdeathlabel,self.mannersofdeath,self.placeofburiallabel,self.fatherlabel,self.motherlabel,self.spouses,self.starttime,self.endtime,self.startyear,self.endyear,self.birthyear,self.deathyear,self.urlimage, self.prod)

@@ -17,14 +17,14 @@ from classes.userinfo import UserInfo
 from classes.instanceobjectuser import InstanceObjectUser
 from classes.evenement import Evenement
 from classes.lieu import Lieu
-from classes.roi import Roi
+from classes.personnage import Personnage
 from classes.instanceobject import InstanceObject
 
 columns_userinfo = ['id_user', 'pseudo']
 columns_instanceobjectuser = ['id_instance_object_user', 'id_external_object','id_user','type_object','lon','lat']
 columns_evenement = ['id_event','evenement','startyear','endyear','commentaire', 'prod']
 columns_lieu = ['id_lieu','nom','lon','lat','inception', 'constructionyear', 'prod']
-columns_roi = ['id_roi','wikiid','nom','dateofbirth','placeofbirthlabel', 'dateofdeath','placeofdeathlabel','mannersofdeath','placeofburiallabel','fatherlabel','motherlabel','spouses','starttime','endtime','startyear','endyear','birthyear','deathyear','urlimage', 'prod']
+columns_personnage = ['id_personnage','wikiid','nom','dateofbirth','placeofbirthlabel', 'dateofdeath','placeofdeathlabel','mannersofdeath','placeofburiallabel','fatherlabel','motherlabel','spouses','starttime','endtime','startyear','endyear','birthyear','deathyear','urlimage', 'prod']
 columns_instanceobject = ['id_instance_object', 'id_external_object', 'type_object','lon','lat']
 
 
@@ -105,8 +105,8 @@ def generate():
     data = InstanceObject.query.order_by(InstanceObject.id_instance_object).all()
     instances = getobjectsjson(data, columns_instanceobject)
     
-    data = Roi.query.filter(Roi.startyear>=400, Roi.startyear<=600).order_by(Roi.startyear).all()
-    rois = getobjectsjson(data, columns_roi)
+    data = Personnage.query.filter(Personnage.startyear>=400, Personnage.startyear<=600).order_by(Personnage.startyear).all()
+    personnages = getobjectsjson(data, columns_personnage)
 
     data = Evenement.query.order_by(Evenement.startyear).filter(Evenement.startyear>400, Evenement.startyear<600).all()
     evenements = getobjectsjson(data, columns_evenement)
@@ -122,7 +122,7 @@ def generate():
     for i in range(100):
         r = random.random()
         if(r < 0.50):
-            data = InstanceObject(rois[random.randint(0,len(rois)-1)]['id_roi'], "roi", genlon(), genlat())
+            data = InstanceObject(personnages[random.randint(0,len(personnages)-1)]['id_personnage'], "personnage", genlon(), genlat())
         if(r >= 0.50):
             data = InstanceObject(evenements[random.randint(0,len(evenements)-1)]['id_event'], "evenement", genlon(), genlat())
         db.session.add(data)
@@ -231,22 +231,22 @@ def onelieu(id):
 ############ ROI #############
 
 
-@app.route('/roi/edit', methods=['GET'])
-def editroi():
+@app.route('/personnage/edit', methods=['GET'])
+def editpersonnage():
     year = None
     start = None
     end = None
     if(year == None):
         if((start == None) & (end == None)):
-            data = Roi.query.order_by(Roi.startyear).all()
+            data = Personnage.query.order_by(Personnage.startyear).all()
         else:
-            data = Roi.query.filter(Roi.startyear>=start, Roi.startyear<=end).order_by(Roi.startyear).all()
+            data = Personnage.query.filter(Personnage.startyear>=start, Personnage.startyear<=end).order_by(Personnage.startyear).all()
     else:
-        data = Roi.query.filter(Roi.startyear<=year, Roi.endyear>=year).order_by(Roi.startyear).all()
+        data = Personnage.query.filter(Personnage.startyear<=year, Personnage.endyear>=year).order_by(Personnage.startyear).all()
 
-    rois = getobjectsjson(data, columns_roi)
+    personnages = getobjectsjson(data, columns_personnage)
     html = ""
-    form = "<form action='/roi' method='post'>"
+    form = "<form action='/personnage' method='post'>"
     form = form+"<input name='wikiid' value='' placeholder='wikiid' />&nbsp;&nbsp;"
     form = form+"<input size='10' name='nom' value='' placeholder='nom'/>&nbsp;&nbsp;"
     form = form+"<input size='10' name='dateofbirth' value='' placeholder='dateofbirth'/>&nbsp;&nbsp;"
@@ -270,9 +270,9 @@ def editroi():
     form = form+"<input type='submit' name='button' value='Valider'></form>"
     html = html+form 
 
-    for row in rois:
-        form = "<form action='/roi/"+str(row['id_roi'])+"' method='post'>"
-        form = form+"<input type='hidden' name='id_roi' value=\""+str(row['id_roi'])+"\"/>&nbsp;&nbsp;"
+    for row in personnages:
+        form = "<form action='/personnage/"+str(row['id_personnage'])+"' method='post'>"
+        form = form+"<input type='hidden' name='id_personnage' value=\""+str(row['id_personnage'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input size='5' name='wikiid' value=\""+str(row['wikiid'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input size='10' name='nom' value=\""+str(row['nom'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input size='10' name='dateofbirth' value=\""+str(row['dateofbirth'])+"\"/>&nbsp;&nbsp;"
@@ -297,10 +297,10 @@ def editroi():
         html = html+form 
     return html
 
-@app.route('/roi', methods=['POST', 'GET'], defaults={'year': None, 'start':None,'end':None})
-@app.route('/roi/year/<year>', methods=['POST', 'GET'], defaults={'start':None,'end':None})
-@app.route('/roi/start/<start>/end/<end>', methods=['POST', 'GET'], defaults={'year':None})
-def roi(year, start, end):
+@app.route('/personnage', methods=['POST', 'GET'], defaults={'year': None, 'start':None,'end':None})
+@app.route('/personnage/year/<year>', methods=['POST', 'GET'], defaults={'start':None,'end':None})
+@app.route('/personnage/start/<start>/end/<end>', methods=['POST', 'GET'], defaults={'year':None})
+def personnage(year, start, end):
     
     # POST a data to database
     if request.method == 'POST':
@@ -315,7 +315,7 @@ def roi(year, start, end):
             else:
                 newbody[key] = body[key]
 
-        data = Roi(newbody['wikiid'],newbody['nom'],newbody['dateofbirth'],newbody['placeofbirthlabel'],newbody['dateofdeath'],newbody['placeofdeathlabel'],newbody['mannersofdeath'],newbody['placeofburiallabel'],newbody['fatherlabel'],newbody['motherlabel'],newbody['spouses'],newbody['starttime'],newbody['endtime'],newbody['startyear'],newbody['endyear'],newbody['birthyear'],newbody['deathyear'],newbody['urlimage'],newbody['prod'])
+        data = Personnage(newbody['wikiid'],newbody['nom'],newbody['dateofbirth'],newbody['placeofbirthlabel'],newbody['dateofdeath'],newbody['placeofdeathlabel'],newbody['mannersofdeath'],newbody['placeofburiallabel'],newbody['fatherlabel'],newbody['motherlabel'],newbody['spouses'],newbody['starttime'],newbody['endtime'],newbody['startyear'],newbody['endyear'],newbody['birthyear'],newbody['deathyear'],newbody['urlimage'],newbody['prod'])
         db.session.add(data)
         db.session.commit()
         newbody['status'] = "All good"
@@ -325,20 +325,20 @@ def roi(year, start, end):
     if request.method == 'GET':
         if(year == None):
             if((start == None) & (end == None)):
-                data = Roi.query.order_by(Roi.startyear).all()
+                data = Personnage.query.order_by(Personnage.startyear).all()
             else:
-                data = Roi.query.filter(Roi.startyear>=start, Roi.startyear<=end).order_by(Roi.startyear).all()
+                data = Personnage.query.filter(Personnage.startyear>=start, Personnage.startyear<=end).order_by(Personnage.startyear).all()
         else:
-            data = Roi.query.filter(Roi.startyear<=year, Roi.endyear>=year).order_by(Roi.startyear).all()
+            data = Personnage.query.filter(Personnage.startyear<=year, Personnage.endyear>=year).order_by(Personnage.startyear).all()
 
-        rois = getobjectsjson(data, columns_roi)
-        return jsonify(rois)
+        personnages = getobjectsjson(data, columns_personnage)
+        return jsonify(personnages)
 
-@app.route('/roi/<string:id>', methods=['GET', 'POST'])
-def oneroi(id):
+@app.route('/personnage/<string:id>', methods=['GET', 'POST'])
+def onepersonnage(id):
      # GET a specific data by id
     if request.method == 'GET':
-        return getonegeneric("roi", columns_roi, id)
+        return getonegeneric("personnage", columns_personnage, id)
         
     # UPDATE or DELETE a data by id
     if request.method == 'POST':
@@ -347,12 +347,12 @@ def oneroi(id):
             else:
                 body = request.json
             if(body['button'] == "Supprimer"):
-                return delonegeneric("roi", id)
+                return delonegeneric("personnage", id)
             if(body['button'] == "Valider"):
                 newbody = {}
                 for key in body:
                     newbody[key] = body[key]
-                return putonegeneric("roi", columns_roi, id, newbody)
+                return putonegeneric("personnage", columns_personnage, id, newbody)
 
 
 ############## EVENEMENT ################
@@ -449,8 +449,8 @@ def oneevenement(id):
 def getonedata(type, id):
     if(type == "evenement"): 
         data = Evenement.query.get(id)
-    if(type == "roi"): 
-        data = Roi.query.get(id)
+    if(type == "personnage"): 
+        data = Personnage.query.get(id)
     if(type == "lieu"): 
         data = Lieu.query.get(id)
     if(type == "user"):

@@ -10,9 +10,9 @@ CREATE TABLE evenement
 )
 TABLESPACE pg_default;
 
-CREATE TABLE roi
+CREATE TABLE personnage
 (
-	id_roi SERIAL PRIMARY KEY NOT NULL,
+	id_personnage SERIAL PRIMARY KEY NOT NULL,
     wikiID CHARACTER VARYING,
     nom CHARACTER VARYING,
     dateOfBirth date default NULL,
@@ -44,22 +44,6 @@ CREATE TABLE lieu
     inception CHARACTER VARYING,
     height DECIMAL(9,2),
     constructionYear DECIMAL(9,2),
-    prod CHARACTER VARYING
-)
-TABLESPACE pg_default;
-
-
-CREATE TABLE personnage
-(
-	id_personnage SERIAL PRIMARY KEY NOT NULL,
-    nom CHARACTER VARYING,
-    dateOfBirth date default NULL,
-    placeOfBirthLabel CHARACTER VARYING,
-    dateOfDeath date default NULL,
-    placeOfDeathLabel CHARACTER VARYING,
-    positions CHARACTER VARYING,
-    birthYear DECIMAL(9,2),
-    deathYear DECIMAL(9,2),
     prod CHARACTER VARYING
 )
 TABLESPACE pg_default;
