@@ -24,72 +24,45 @@ from classes.personnage import Personnage
 def index():
     return render_template('home.html')
 
-
+################### USER ##############
 
 @app.route('/user', methods=['POST', 'GET'])
 def user():
-    
     # POST a data to database
     if request.method == 'POST':
         body = request.json
-        pseudo = body['pseudo']
-
-        data = UserInfo(pseudo)
+        data = InstanceObjectUser(body['pseudo'])
         db.session.add(data)
         db.session.commit()
+        body['status'] = "All good"
+        return jsonify(body)
 
-        return jsonify({
-            'status': 'Data is posted to PostgreSQL!',
-            'pseudo': pseudo
-        })
-    
     # GET all data from database & sort by id
     if request.method == 'GET':
-        users = getuserjson()
+        columns = ['id_user', 'pseudo']
+        data = UserInfo.query.order_by(UserInfo.id_user).all()
+        users = getobjectsjson(data, columns)
         return jsonify(users)
-
-def getuserjson():
-    # data = User.query.all()
-    data = UserInfo.query.order_by(UserInfo.id_user).all()
-    print(data)
-    dataJson = []
-    for i in range(len(data)):
-        # print(str(data[i]).split('/'))
-        dataDict = {
-            'id_user': str(data[i]).split('/')[0],
-            'pseudo': str(data[i]).split('/')[1]
-        }
-        dataJson.append(dataDict)
-    return dataJson
 
 @app.route('/user/<string:id>', methods=['GET', 'DELETE', 'PUT'])
 def oneuser(id):
+    columns = ['id_user','pseudo']
 
     # GET a specific data by id
     if request.method == 'GET':
-        data = UserInfo.query.get(id)
-        print(data)
-        dataDict = {
-            'id_user': str(data).split('/')[0],
-            'pseudo': str(data).split('/')[1]
-        }
-        return jsonify(dataDict)
+        return getonegeneric("user", columns, id)
         
     # DELETE a data
     if request.method == 'DELETE':
-        delData = UserInfo.query.filter_by(id_user=id).first()
-        db.session.delete(delData)
-        db.session.commit()
-        return jsonify({'status': 'Data '+id+' is deleted from PostgreSQL!'})
+        return delonegeneric("user", id)
 
     # UPDATE a data by id
     if request.method == 'PUT':
         body = request.json
-        editData = UserInfo.query.filter_by(id_user=id).first()
-        editData.nom = body['pseudo']
-        db.session.commit()
-        return jsonify({'status': 'Data '+id+' is updated from PostgreSQL!'})
+        return putonegeneric("user", columns, id, body)
 
+
+################ INSTANCE OBJECT ################
 
 
 @app.route('/instance-user', methods=['POST', 'GET'], defaults={'userid': None})
@@ -99,57 +72,29 @@ def instanceuser(userid):
     # POST a data to database
     if request.method == 'POST':
         body = request.json
-        id_external_object = body['id_external_object']
-        id_user = body['id_user']
-        type_object = body['type_object']
-        lon = body['lon']
-        lat = body['lat']
-
-        data = InstanceObjectUser(id_external_object, id_user, type_object, lon, lat)
+        data = InstanceObjectUser(body['id_external_object'], body['id_user'], body['type_object'], body['lon'], body['lat'])
         db.session.add(data)
         db.session.commit()
-
-        return jsonify({
-            'status': 'Data is posted to PostgreSQL!',
-            'id_external_object': id_external_object,
-            'id_user': id_user,
-            'type_object': type_object,
-            'lon': lon,
-            'lat': lat
-        })
+        body['status'] = "All good"
+        return jsonify(body)
     
     # GET all data from database & sort by id
     if request.method == 'GET':
-        instances = getinstanceuserjson(userid)
+        columns = ['id_external_object', 'id_user', 'type_object','lon','lat']
+        if(userid == None):
+            data = InstanceObjectUser.query.order_by(InstanceObjectUser.id_instance_object_user).all()
+        else:
+            data = InstanceObjectUser.query.filter_by(id_user=userid).order_by(InstanceObjectUser.id_instance_object_user).all()
+        instances = getobjectsjson(data, columns)
         return jsonify(instances)
 
-def getinstanceuserjson(userid):
-    # data = User.query.all()
-    if(userid == None):
-        data = InstanceObjectUser.query.order_by(InstanceObjectUser.id_instance_object_user).all()
-    else:
-        data = InstanceObjectUser.query.filter_by(id_user=userid).order_by(InstanceObjectUser.id_instance_object_user).all()
-    print(data)
-    dataJson = []
-    for i in range(len(data)):
-        # print(str(data[i]).split('/'))
-        dataDict = {
-            'id_instance_object_user': str(data[i]).split('/')[0],
-            'id_external_object': str(data[i]).split('/')[1],
-            'id_user': str(data[i]).split('/')[2],
-            'type_object': str(data[i]).split('/')[3],
-            'lon': str(data[i]).split('/')[4],
-            'lat': str(data[i]).split('/')[5]
-        }
-        dataJson.append(dataDict)
-    return dataJson
-
-
-
+############### LIEU ###############
 
 @app.route('/lieu/edit', methods=['GET'])
 def editlieu():
-    lieux = getlieujson()
+    columns = ['id_lieu','nom','lon','lat','inception', 'constructionyear']
+    data = Lieu.query.order_by(Lieu.id_lieu).all()
+    lieux = getobjectsjson(data, columns)
     html = "<p>"+str(len(lieux))+"</p>"
     for row in lieux:
         form = "<form action='/lieu/form/update'>"
@@ -168,130 +113,68 @@ def editlieu():
 def updatelieu():
     body = request.values
     editData = Lieu.query.filter_by(id_lieu=body['id_lieu']).first()
-    if(body['nom'] == "None"):
-        editData.nom = None
-    else:
-        editData.nom = body['nom']
-
-    if(body['lon'] == "None"):
-        editData.lon = None
-    else:
-        editData.lon = body['lon']
-
-    if(body['lat'] == "None"):
-        editData.lat = None
-    else:
-        editData.lat = body['lat']
-        
-    if(body['inception'] == "None"):
-        editData.inception = None
-    else:
-        editData.inception = body['inception']
-        
-    if(body['constructionyear'] == "None"):
-        editData.constructionyear = None
-    else:
-        editData.constructionyear = body['constructionyear']
-
+    for key in body:
+        if(body[key] == "None"):
+            setattr(editData, key, None)
+        else:
+            setattr(editData, key, body[key])
     db.session.commit()
     return redirect("/lieu/edit", code=302)
 
 
 @app.route('/lieu', methods=['POST', 'GET'])
 def lieu():
-    
     # POST a data to database
     if request.method == 'POST':
         body = request.json
-        nom = body['nom']
-        lon = body['lon']
-        lat = body['lat']
-        inception = body['inception']
-        constructionyear = body['constructionyear']
-
-        data = Lieu(nom, lon, lat, inception, constructionyear)
+        data = Lieu(body['nom'],body['lon'],body['lat'],body['inception'],body['constructionyear'])
         db.session.add(data)
         db.session.commit()
-
-        return jsonify({
-            'status': 'Data is posted to PostgreSQL!',
-            'nom': nom,
-            'lon': lon,
-            'lat': lat,
-            'inception': inception,
-            'constructionyear': constructionyear
-        })
+        body['status'] = "All good"
+        return jsonify(body)
     
     # GET all data from database & sort by id
     if request.method == 'GET':
-        lieux = getlieujson()
+        columns = ['id_lieu','nom','lon','lat','inception', 'constructionyear']
+        data = Lieu.query.order_by(Lieu.id_lieu).all()
+        lieux = getobjectsjson(data, columns)
         return jsonify(lieux)
 
-def getlieujson():
-    # data = User.query.all()
-    data = Lieu.query.order_by(Lieu.id_lieu).all()
-    print(data)
-    dataJson = []
-    for i in range(len(data)):
-        # print(str(data[i]).split('/'))
-        dataDict = {
-            'id_lieu': str(data[i]).split('/')[0],
-            'nom': str(data[i]).split('/')[1],
-            'lon': str(data[i]).split('/')[2],
-            'lat': str(data[i]).split('/')[3],
-            'inception': str(data[i]).split('/')[4],
-            'constructionyear': str(data[i]).split('/')[5]
-        }
-        dataJson.append(dataDict)
-    return dataJson
 
 @app.route('/lieu/<string:id>', methods=['GET', 'DELETE', 'PUT'])
 def onelieu(id):
+    columns = ['id_lieu','nom','lon','lat','inception', 'constructionyear']
 
     # GET a specific data by id
     if request.method == 'GET':
-        data = Lieu.query.get(id)
-        print(data)
-        dataDict = {
-            'id_lieu': str(data).split('/')[0],
-            'nom': str(data).split('/')[1],
-            'lon': str(data).split('/')[2],
-            'lat': str(data).split('/')[3],
-            'inception': str(data).split('/')[4],
-            'constructionyear': str(data).split('/')[5]
-        }
-        return jsonify(dataDict)
+        return getonegeneric("lieu", columns, id)
         
     # DELETE a data
     if request.method == 'DELETE':
-        delData = Lieu.query.filter_by(id_lieu=id).first()
-        db.session.delete(delData)
-        db.session.commit()
-        return jsonify({'status': 'Data '+id+' is deleted from PostgreSQL!'})
+        return delonegeneric("lieu", id)
 
     # UPDATE a data by id
     if request.method == 'PUT':
         body = request.json
-        editData = Lieu.query.filter_by(id_lieu=id).first()
-        editData.nom = body['nom']
-        editData.lon = body['lon']
-        editData.lat = body['lat']
-        editData.inception = body['inception']
-        editData.constructionyear = body['constructionyear']
-        db.session.commit()
-        return jsonify({'status': 'Data '+id+' is updated from PostgreSQL!'})
+        return putonegeneric("lieu", columns, id, body)
 
 
 
 
-
-
+############ PERSONNAGE ##########
 
 
 @app.route('/personnage/edit', methods=['GET'], defaults={'start': None, 'end': None})
 @app.route('/personnage/edit/start/<start>/end/<end>', methods=['GET'])
 def editpersonnage(start, end):
-    personnages = getpersonnagejson(start, end)
+    columns = ['id_personnage','nom','dateofbirth','placeofbirthlabel','dateofdeath', 'placeofdeathlabel','positions','birthyear','deathyear']
+
+    if((start == None) & (end == None)):
+        data = Personnage.query.order_by(Personnage.birthyear).all()
+    else:
+        data = Personnage.query.filter(Personnage.birthyear>=start, Personnage.birthyear<=end).order_by(Personnage.birthyear).all()
+
+    personnages = getobjectsjson(data, columns)
     html = ""
     for row in personnages:
         form = "<form action='/personnage/form/update'>"
@@ -376,49 +259,12 @@ def createpersonnage():
 @app.route('/personnage/form/update', methods=['POST', 'GET'])
 def updatepersonnage():
     body = request.values
-    print("toto")
     editData = Personnage.query.filter_by(id_personnage=body['id_personnage']).first()
-    
-    if(body['nom'] == "None"):
-        editData.nom = None
-    else:
-        editData.nom = body['nom']
-    
-    if(body['dateofbirth'] == "None"):
-        editData.dateofbirth = None
-    else:
-        editData.dateofbirth = body['dateofbirth']
-    
-    if(body['placeofbirthlabel'] == "None"):
-        editData.placeofbirthlabel = None
-    else:
-        editData.placeofbirthlabel = body['placeofbirthlabel']
-    
-    if(body['dateofdeath'] == "None"):
-        editData.dateofdeath = None
-    else:
-        editData.dateofdeath = body['dateofdeath']
-    
-    if(body['placeofdeathlabel'] == "None"):
-        editData.placeofdeathlabel = None
-    else:
-        editData.placeofdeathlabel = body['placeofdeathlabel']
-    
-    if(body['positions'] == "None"):
-        editData.positions = None
-    else:
-        editData.positions = body['positions']
-    
-    if(body['birthyear'] == "None"):
-        editData.birthyear = None
-    else:
-        editData.birthyear = body['birthyear']
-    
-    if(body['deathyear'] == "None"):
-        editData.deathyear = None
-    else:
-        editData.deathyear = body['deathyear']
-    
+    for key in body:
+        if(body[key] == "None"):
+            setattr(editData, key, None)
+        else:
+            setattr(editData, key, body[key])
     db.session.commit()
     return redirect("/personnage/edit", code=302)
 
@@ -430,108 +276,40 @@ def personnage(start, end):
     # POST a data to database
     if request.method == 'POST':
         body = request.json
-
-        nom = body['nom']
-        dateofbirth = body['dateofbirth']
-        placeofbirthlabel = body['placeofbirthlabel']
-        dateofdeath = body['dateofdeath']
-        placeofdeathlabel = body['placeofdeathlabel']
-        positions = body['positions']
-        birthyear = body['birthyear']
-        deathyear = body['deathyear']
-
-        data = Roi(nom,dateofbirth,placeofbirthlabel,dateofdeath,placeofdeathlabel,positions,birthyear,deathyear)
+        data = Personnage(body['nom'],body['dateofbirth'],body['placeofbirthlabel'],body['dateofdeath'],body['placeofdeathlabel'],body['positions'],body['birthyear'],body['deathyear'])
         db.session.add(data)
         db.session.commit()
+        body['status'] = "All good"
+        return jsonify(body)
 
-        return jsonify({
-            'status': 'Data is posted to PostgreSQL!',
-   
-            'nom': nom,
-            'dateofbirth': dateofbirth,
-            'placeofbirthlabel': placeofbirthlabel,
-            'dateofdeath': dateofdeath,
-            'placeofdeathlabel': placeofdeathlabel,
-            'positions': positions,
-            'birthyear': birthyear,
-            'deathyear': deathyear
-
-        })
-    
+ 
     # GET all data from database & sort by id
     if request.method == 'GET':
-        personnages = getpersonnagejson(start, end)
+        columns = ['id_personnage','nom','dateofbirth','placeofbirthlabel','dateofdeath', 'placeofdeathlabel','positions','birthyear','deathyear']
+        if((start == None) & (end == None)):
+            data = Personnage.query.order_by(Personnage.birthyear).all()
+        else:
+            data = Personnage.query.filter(Personnage.birthyear>=start, Personnage.birthyear<=end).order_by(Personnage.birthyear).all()
+        personnages = getobjectsjson(data, columns)
         return jsonify(personnages)
 
-def getpersonnagejson(start, end):
-    # data = User.query.all()
-    if((start == None) & (end == None)):
-        data = Personnage.query.order_by(Personnage.birthyear).all()
-    else:
-        data = Personnage.query.filter(Personnage.birthyear>=start, Personnage.birthyear<=end).order_by(Personnage.birthyear).all()
-
-    print(data)
-    dataJson = []
-    for i in range(len(data)):
-        # print(str(data[i]).split('/'))
-        dataDict = {
-            'id_personnage': str(data[i]).split('/')[0],
-            'nom': str(data[i]).split('/')[1],
-            'dateofbirth': str(data[i]).split('/')[2],
-            'placeofbirthlabel': str(data[i]).split('/')[3],
-            'dateofdeath': str(data[i]).split('/')[4],
-            'placeofdeathlabel': str(data[i]).split('/')[5],
-            'positions': str(data[i]).split('/')[6],
-            'birthyear': str(data[i]).split('/')[7],
-            'deathyear': str(data[i]).split('/')[8]
-        }
-        dataJson.append(dataDict)
-    return dataJson
 
 @app.route('/personnage/<string:id>', methods=['GET', 'DELETE', 'PUT'])
 def onepersonnage(id):
+    columns = ['id_personnage','nom','dateofbirth','placeofbirthlabel','dateofdeath', 'placeofdeathlabel','positions','birthyear','deathyear']
 
     # GET a specific data by id
     if request.method == 'GET':
-        data = Personnage.query.get(id)
-        print("dddd ==> ")
-        print(data)
-        dataDict = {
-            'id_personnage': str(data).split('/')[0],
-            'nom': str(data).split('/')[1],
-            'dateofbirth': str(data).split('/')[2],
-            'placeofbirthlabel': str(data).split('/')[3],
-            'dateofdeath': str(data).split('/')[4],
-            'placeofdeathlabel': str(data).split('/')[5],
-            'positions': str(data).split('/')[6],
-            'birthyear': str(data).split('/')[7],
-            'deathyear': str(data).split('/')[8]
-        }
-        
-        return jsonify(dataDict)
+        return getonegeneric("personnage", columns, id)
         
     # DELETE a data
     if request.method == 'DELETE':
-        delData = Personnage.query.filter_by(id_personnage=id).first()
-        db.session.delete(delData)
-        db.session.commit()
-        return jsonify({'status': 'Data '+id+' is deleted from PostgreSQL!'})
+        return delonegeneric("personnage", id)
 
     # UPDATE a data by id
     if request.method == 'PUT':
         body = request.json
-        editData = Personnage.query.filter_by(id_personnage=id).first()
-        editData.nom = body['nom']
-        editData.dateofbirth = body['dateofbirth']
-        editData.placeofbirthlabel = body['placeofbirthlabel']
-        editData.dateofdeath = body['dateofdeath']
-        editData.placeofdeathlabel = body['placeofdeathlabel']
-        editData.positions = body['positions']
-        editData.birthyear = body['birthyear']
-        editData.deathyear = body['deathyear']
-
-        db.session.commit()
-        return jsonify({'status': 'Data '+id+' is updated from PostgreSQL!'})
+        return putonegeneric("personnage", columns, id, body)
 
 
 
@@ -736,6 +514,9 @@ def getonedata(type, id):
         data = Lieu.query.get(id)
     if(type == "personnage"): 
         data = Personnage.query.get(id)
+    if(type == "user"):
+        data = UserInfo.query.get(id)
+
     return data
 
 def getonegeneric(type, columns, id):
