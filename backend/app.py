@@ -234,7 +234,6 @@ def onelieu(id):
                 newbody = {}
                 for key in body:
                     newbody[key] = body[key]
-                print(newbody)
                 return putonegeneric("lieu", columns_lieu, id, newbody)
 
 
@@ -335,7 +334,6 @@ def onepersonnage(id):
                 newbody = {}
                 for key in body:
                     newbody[key] = body[key]
-                print(newbody)
                 return putonegeneric("personnage", columns_personnage, id, newbody)
 
 
@@ -426,7 +424,6 @@ def roi(year, start, end):
                 newbody[key] = None
             else:
                 newbody[key] = body[key]
-        print(newbody)
 
         data = Roi(newbody['wikiid'],newbody['nom'],newbody['dateofbirth'],newbody['placeofbirthlabel'],newbody['dateofdeath'],newbody['placeofdeathlabel'],newbody['mannersofdeath'],newbody['placeofburiallabel'],newbody['fatherlabel'],newbody['motherlabel'],newbody['spouses'],newbody['starttime'],newbody['endtime'],newbody['startyear'],newbody['endyear'],newbody['birthyear'],newbody['deathyear'],newbody['urlimage'],newbody['prod'])
         db.session.add(data)
@@ -465,7 +462,6 @@ def oneroi(id):
                 newbody = {}
                 for key in body:
                     newbody[key] = body[key]
-                print(newbody)
                 return putonegeneric("roi", columns_roi, id, newbody)
 
 
@@ -556,7 +552,6 @@ def oneevenement(id):
                 newbody = {}
                 for key in body:
                     newbody[key] = body[key]
-                print(newbody)
                 return putonegeneric("evenement", columns_evenement, id, newbody)
 
 ####### GENERIC FUNCTIONS #######
@@ -606,7 +601,6 @@ def getobjectsjson(data, columns):
         dataDict = {}
         j = 0
         for key in columns:
-            print("key " + key + " value " + str(data[i]).split('/')[j])
             dataDict[key] = str(data[i]).split('/')[j]
             j = j + 1
         dataJson.append(dataDict)
