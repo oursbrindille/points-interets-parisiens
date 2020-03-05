@@ -25,7 +25,7 @@ class MapPage extends Component {
         zoom: 11.5,
         instances:[],
         ownInstance:[],
-        rois:[],
+        personnages:[],
         evenements:[],
         headerMessage:"MerovinGo!",
         secondMessage:"Observer aux alentours, et tenter d'attraper de la connaissance!",
@@ -49,7 +49,7 @@ class MapPage extends Component {
         .catch(console.log)
 
         
-        fetch('http://localhost:5000/roi/start/500/end/600')
+        fetch('http://localhost:5000/personnage/start/500/end/600')
         .then(res => res.json())
         .then((data) => {
           for (var i = 0; i < data.length; i++) {
@@ -57,7 +57,7 @@ class MapPage extends Component {
             data[i].shownom = "?"
             data[i].shownb = ""
           }
-          this.setState({ rois: data })
+          this.setState({ personnages: data })
         })
         .catch(console.log)
 
@@ -87,11 +87,11 @@ class MapPage extends Component {
       fetch('http://localhost:5000/catch/user/1')
       .then(res => res.json())
       .then((data) => {
-        self.state.rois.forEach(function(roi){
-          console.log(roi.id_roi);
-          if(roi.id_roi == id){
+        self.state.personnages.forEach(function(personnage){
+          console.log(personnage.id_personnage);
+          if(personnage.id_personnage == id){
             self.setState({ ownInstance: data })
-            self.setState({ headerMessage: "Félicitations ! Vous venez d'attraper : ", secondMessage: roi.nom})
+            self.setState({ headerMessage: "Félicitations ! Vous venez d'attraper : ", secondMessage: personnage.nom})
             self.forceUpdate()
           }
         });
@@ -152,14 +152,11 @@ class MapPage extends Component {
             el.addEventListener('click', function() {
                self.catchInstance(marker.id_external_object, marker.type_object, marker.lon, marker.lat)
             });
-            if(marker.type_object == "roi"){ 
-                el.className = 'marker-roi';
+            if(marker.type_object == "personnage"){ 
+                el.className = 'marker-personnage';
             }
             if(marker.type_object == "evenement"){
                 el.className = 'marker-evenement';
-            }
-            if(marker.type_object == "personnage"){
-                el.className = 'marker-personnage';
             }
         
             var coord = []
@@ -172,22 +169,22 @@ class MapPage extends Component {
         });
         
 
-        self.state.rois.forEach(function(roi){
+        self.state.personnages.forEach(function(personnage){
           count = 0
           self.state.ownInstance.forEach(function(instance){
-            if(roi.id_roi == instance.id_external_object && instance.type_object == "roi"){
+            if(personnage.id_personnage == instance.id_external_object && instance.type_object == "personnage"){
               count = count + 1
             }
           });
-          roi.nb = count
-          if(roi.nb ==0){
-            roi.showimage = "question-mark.png"
-            roi.shownom = "?"
-            roi.shownb = ""
+          personnage.nb = count
+          if(personnage.nb ==0){
+            personnage.showimage = "question-mark.png"
+            personnage.shownom = "?"
+            personnage.shownb = ""
           }else{
-            roi.showimage = roi.urlimage
-            roi.shownom = roi.nom
-            roi.shownb = " (x"+roi.nb+")"
+            personnage.showimage = personnage.urlimage
+            personnage.shownom = personnage.nom
+            personnage.shownb = " (x"+personnage.nb+")"
           }
         });
 
@@ -267,7 +264,7 @@ class MapPage extends Component {
                   </TabPanel>
                 </Tabs>
 
-                  <div style={{float:"left", height:"100%",textAlign:"center",color:"white", backgroundColor:"#12556B", borderRadius:"10px"}}><h3>Votre KingDex</h3>{this.state.rois.map(roi => (<div style={{margin:"20px",textAlign:"center",float:"left", height:"100%"}}><img src={require("../images/kings/"+roi.showimage)} width="100px" height="100px"/><br/>{roi.shownom}{roi.shownb}</div>))}</div>
+                  <div style={{float:"left", height:"100%",textAlign:"center",color:"white", backgroundColor:"#12556B", borderRadius:"10px"}}><h3>Votre KingDex</h3>{this.state.personnages.map(personnage => (<div style={{margin:"20px",textAlign:"center",float:"left", height:"100%"}}><img src={require("../images/kings/"+personnage.showimage)} width="100px" height="100px"/><br/>{personnage.shownom}{personnage.shownb}</div>))}</div>
                   
 
 

@@ -49,6 +49,16 @@ CREATE TABLE lieu
 TABLESPACE pg_default;
 
 
+CREATE TABLE objet
+(
+	id_objet SERIAL PRIMARY KEY NOT NULL,
+    nom CHARACTER VARYING,
+    startYear DECIMAL(9,2) default NULL,
+    endYear DECIMAL(9,2) default NULL,
+    prod CHARACTER VARYING
+)
+TABLESPACE pg_default;
+
 
 CREATE TABLE instance_object
 (
