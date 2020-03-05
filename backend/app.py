@@ -1,158 +1,22 @@
 from flask import Flask, render_template, request, jsonify,redirect
-from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 import yaml
+from database import db
 
 app = Flask(__name__)
 db_config = yaml.load(open('database.yaml'))
 app.config['SQLALCHEMY_DATABASE_URI'] = db_config['uri']
-db = SQLAlchemy(app)
+db.init_app(app)
 
 CORS(app)
 
-class UserInfo(db.Model):
-    __tablename__ = "user_info"
-    id_user = db.Column(db.Integer, primary_key=True)
-    pseudo = db.Column(db.String(255))
+from classes.userinfo import UserInfo
+from classes.instanceobjectuser import InstanceObjectUser
+from classes.evenement import Evenement
+from classes.lieu import Lieu
+from classes.roi import Roi
+from classes.personnage import Personnage
 
-    def __init__(self, pseudo):
-        self.pseudo = pseudo
-    
-    def __repr__(self):
-        return '%s/%s' % (self.id_user, self.pseudo)
-
-
-class InstanceObjectUser(db.Model):
-    __tablename__ = "instance_object_user"
-    id_instance_object_user = db.Column(db.Integer, primary_key=True)
-    id_external_object = db.Column(db.Integer)
-    id_user = db.Column(db.Integer)
-    type_object = db.Column(db.String(255))
-    lon = db.Column(db.Float)
-    lat = db.Column(db.Float)
-
-    def __init__(self, id_external_object, id_user, type_object, lon, lat):
-        self.id_external_object = id_external_object
-        self.id_user = id_user
-        self.type_object = type_object
-        self.lon = lon
-        self.lat = lat
-    
-    def __repr__(self):
-        return '%s/%s/%s/%s/%s/%s' % (self.id_instance_object_user, self.id_external_object, self.id_user, self.type_object, self.lon, self.lat)
-
-
-class Evenement(db.Model):
-    __tablename__ = "evenement"
-    id_event = db.Column(db.Integer, primary_key=True)
-    evenement = db.Column(db.String(255))
-    startyear = db.Column(db.Float)
-    endyear = db.Column(db.Float)
-    commentaire = db.Column(db.String(255))
-
-    def __init__(self, name, age):
-        self.id_event = id_event
-        self.evenement = evenement
-        self.startyear = startyear
-        self.endyear = endyear
-        self.commentaire = commentaire
-    
-    def __repr__(self):
-        return '%s/%s/%s/%s/%s' % (self.id_event, self.evenement, self.startyear, self.endyear, self.commentaire)
-
-
-class Lieu(db.Model):
-    __tablename__ = "lieu"
-    id_lieu = db.Column(db.Integer, primary_key=True)
-    nom = db.Column(db.String(255))
-    lon = db.Column(db.Float)
-    lat = db.Column(db.Float)
-    inception = db.Column(db.String(255))
-    constructionyear = db.Column(db.Float)
-
-    def __init__(self, name, age):
-        self.id_lieu = id_lieu
-        self.nom = nom
-        self.lon = lon
-        self.lat = lat
-        self.inception = inception
-        self.constructionyear = constructionyear
-    
-    def __repr__(self):
-        return '%s/%s/%s/%s/%s/%s' % (self.id_lieu, self.nom, self.lon, self.lat, self.inception,self.constructionyear)
-
-
-class Roi(db.Model):
-    __tablename__ = "roi"
-    id_roi = db.Column(db.Integer, primary_key=True)
-    wikiid = db.Column(db.String(255))
-    nom = db.Column(db.String(255))
-    dateofbirth = db.Column(db.Date)
-    placeofbirthlabel = db.Column(db.String(255))
-    dateofdeath = db.Column(db.Date)
-    placeofdeathlabel = db.Column(db.String(255))
-    mannersofdeath = db.Column(db.String(255))
-    placeofburiallabel = db.Column(db.String(255))
-    fatherlabel = db.Column(db.String(255))
-    motherlabel = db.Column(db.String(255))
-    spouses = db.Column(db.String(255))
-    starttime = db.Column(db.Date)
-    endtime = db.Column(db.Date)
-    startyear = db.Column(db.Float)
-    endyear = db.Column(db.Float)
-    birthyear = db.Column(db.Float)
-    deathyear = db.Column(db.Float)
-    urlimage = db.Column(db.String(255))
-
-    def __init__(self, name, age):
-        self.id_roi = id_roi
-        self.wikiid = wikiid
-        self.nom = nom
-        self.dateofbirth = dateofbirth
-        self.placeofbirthlabel = placeofbirthlabel
-        self.dateofdeath = dateofdeath
-        self.placeofdeathlabel = placeofdeathlabel
-        self.mannersofdeath = mannersofdeath
-        self.placeofburiallabel = placeofburiallabel
-        self.fatherlabel = fatherlabel
-        self.motherlabel = motherlabel
-        self.spouses = spouses
-        self.starttime = starttime
-        self.endtime = endtime
-        self.startyear = startyear
-        self.endyear = endyear
-        self.birthyear = birthyear
-        self.deathyear = deathyear
-        self.urlimage = urlimage
-    
-    def __repr__(self):
-        return '%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s' % (self.id_roi,self.wikiid,self.nom,self.dateofbirth,self.placeofbirthlabel,self.dateofdeath,self.placeofdeathlabel,self.mannersofdeath,self.placeofburiallabel,self.fatherlabel,self.motherlabel,self.spouses,self.starttime,self.endtime,self.startyear,self.endyear,self.birthyear,self.deathyear,self.urlimage)
-
-
-class Personnage(db.Model):
-    __tablename__ = "personnage"
-    id_personnage = db.Column(db.Integer, primary_key=True)
-    nom = db.Column(db.String(255))
-    dateofbirth = db.Column(db.Date)
-    placeofbirthlabel = db.Column(db.String(255))
-    dateofdeath = db.Column(db.Date)
-    placeofdeathlabel = db.Column(db.String(255))
-    positions = db.Column(db.String(255))
-    birthyear = db.Column(db.Float)
-    deathyear = db.Column(db.Float)
-
-    def __init__(self, nom, dateofbirth, placeofbirthlabel, dateofdeath, placeofdeathlabel, positions, birthyear, deathyear):
-        self.nom = nom
-        self.dateofbirth = dateofbirth
-        self.placeofbirthlabel = placeofbirthlabel
-        self.dateofdeath = dateofdeath
-        self.placeofdeathlabel = placeofdeathlabel
-        self.positions = positions
-        self.birthyear = birthyear
-        self.deathyear = deathyear
-    
-    def __repr__(self):
-        return '%s/%s/%s/%s/%s/%s/%s/%s/%s' % (self.id_personnage,self.nom,self.dateofbirth,self.placeofbirthlabel,self.dateofdeath,self.placeofdeathlabel,self.positions,self.birthyear,self.deathyear)
 
 
 @app.route('/')
@@ -671,19 +535,6 @@ def onepersonnage(id):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 @app.route('/roi/edit', methods=['GET'])
 def editroi():
     year = None
@@ -996,7 +847,7 @@ def editevenement(start, end):
     html = "<p>"+str(len(evenements))+"</p>"
     for row in evenements:
         form = "<form action='/evenement/form/update'>"
-        form = form+"<input type='hidden' name='id_event' value=\""+str(row['id_event'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input name='id_event' value=\""+str(row['id_event'])+"\"/>&nbsp;&nbsp;"
         form = form+"<textarea name='evenement' rows='3' cols='50'>"+str(row['evenement'])+"</textarea>&nbsp;&nbsp;"
         form = form+"<input size='5' name='startyear' value=\""+str(row['startyear'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input size='5' name='endyear' value=\""+str(row['endyear'])+"\"/>&nbsp;&nbsp;"

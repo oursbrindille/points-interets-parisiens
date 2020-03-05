@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import mapboxgl from 'mapbox-gl';
 import { Timeline, TimelineItem }  from 'vertical-timeline-component-for-react';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
+
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoic2Fib3N0aXgiLCJhIjoiY2p6Y3BkdnJ4MDd2czNjbWdsYXB4MTJoNSJ9.U65hBBejoDAAJH5wrdLejg';
 
@@ -249,6 +252,22 @@ class MapPage extends Component {
                   &nbsp;
                 </div>
                 <div style={{float:"left", width:"70%", marginLeft:"20px"}}>
+
+                <Tabs>
+                  <TabList>
+                    <Tab>Title 1</Tab>
+                    <Tab>Title 2</Tab>
+                  </TabList>
+
+                  <TabPanel>
+                    <h2>Any content 1</h2>
+                  </TabPanel>
+                  <TabPanel>
+                    <h2>Any content 2</h2>
+                  </TabPanel>
+                </Tabs>
+
+
                   <div style={{float:"left", height:"100%",textAlign:"center",color:"white", backgroundColor:"#12556B", borderRadius:"10px"}}><h3>Votre KingDex</h3>{this.state.rois.map(roi => (<div style={{margin:"20px",textAlign:"center",float:"left", height:"100%"}}><img src={require("../images/kings/"+roi.showimage)} width="100px" height="100px"/><br/>{roi.shownom}{roi.shownb}</div>))}</div>
                   
 
