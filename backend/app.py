@@ -18,7 +18,6 @@ from classes.instanceobjectuser import InstanceObjectUser
 from classes.evenement import Evenement
 from classes.lieu import Lieu
 from classes.roi import Roi
-from classes.personnage import Personnage
 from classes.instanceobject import InstanceObject
 
 columns_userinfo = ['id_user', 'pseudo']
@@ -26,7 +25,6 @@ columns_instanceobjectuser = ['id_instance_object_user', 'id_external_object','i
 columns_evenement = ['id_event','evenement','startyear','endyear','commentaire', 'prod']
 columns_lieu = ['id_lieu','nom','lon','lat','inception', 'constructionyear', 'prod']
 columns_roi = ['id_roi','wikiid','nom','dateofbirth','placeofbirthlabel', 'dateofdeath','placeofdeathlabel','mannersofdeath','placeofburiallabel','fatherlabel','motherlabel','spouses','starttime','endtime','startyear','endyear','birthyear','deathyear','urlimage', 'prod']
-columns_personnage = ['id_personnage','nom','dateofbirth','placeofbirthlabel','dateofdeath', 'placeofdeathlabel','positions','birthyear','deathyear', 'prod']
 columns_instanceobject = ['id_instance_object', 'id_external_object', 'type_object','lon','lat']
 
 
@@ -113,10 +111,6 @@ def generate():
     data = Evenement.query.order_by(Evenement.startyear).filter(Evenement.startyear>400, Evenement.startyear<600).all()
     evenements = getobjectsjson(data, columns_evenement)
 
-    data = Personnage.query.filter(Personnage.birthyear>=400, Personnage.birthyear<=600).order_by(Personnage.birthyear).all()
-    personnages = getobjectsjson(data, columns_personnage)
-
-
     html = ""
     for instance in instances:
         delData = InstanceObject.query.filter_by(id_instance_object=instance["id_instance_object"]).first()
@@ -127,13 +121,10 @@ def generate():
 
     for i in range(100):
         r = random.random()
-        if(r < 0.33):
+        if(r < 0.50):
             data = InstanceObject(rois[random.randint(0,len(rois)-1)]['id_roi'], "roi", genlon(), genlat())
-        if((r >=0.33) & (r < 0.66)):
+        if(r >= 0.50):
             data = InstanceObject(evenements[random.randint(0,len(evenements)-1)]['id_event'], "evenement", genlon(), genlat())
-        if(r >=0.66):
-            data = InstanceObject(personnages[random.randint(0,len(personnages)-1)]['id_personnage'], "personnage", genlon(), genlat())
-
         db.session.add(data)
         db.session.commit()
     
@@ -235,107 +226,6 @@ def onelieu(id):
                 for key in body:
                     newbody[key] = body[key]
                 return putonegeneric("lieu", columns_lieu, id, newbody)
-
-
-
-############ PERSONNAGE ##########
-
-
-@app.route('/personnage/edit', methods=['GET'], defaults={'start': None, 'end': None})
-@app.route('/personnage/edit/start/<start>/end/<end>', methods=['GET'])
-def editpersonnage(start, end):
-    if((start == None) & (end == None)):
-        data = Personnage.query.order_by(Personnage.birthyear).all()
-    else:
-        data = Personnage.query.filter(Personnage.birthyear>=start, Personnage.birthyear<=end).order_by(Personnage.birthyear).all()
-
-    personnages = getobjectsjson(data, columns_personnage)
-    html = ""
-    
-    form = "<form action='/personnage' method='post'>"
-    form = form+"<input size='20' name='nom' value='' placeholder='nom'/>&nbsp;&nbsp;"
-    form = form+"<input size='10' name='dateofbirth' value='' placeholder='dateofbirth'/>&nbsp;&nbsp;"
-    form = form+"<input size='10' name='placeofbirthlabel' value='' placeholder='placeofbirthlabel'/>&nbsp;&nbsp;"
-    form = form+"<input size='10' name='dateofdeath' value='' placeholder='dateofdeath'/>&nbsp;&nbsp;"
-    form = form+"<input size='10' name='placeofdeathlabel' value='' placeholder='placeofdeathlabel'/>&nbsp;&nbsp;"
-    form = form+"<input size='10' name='positions' value='' placeholder='positions'/>&nbsp;&nbsp;"
-    form = form+"<input size='5' name='birthyear' value='' placeholder='birthyear'/>&nbsp;&nbsp;"
-    form = form+"<input size='5' name='deathyear' value='' placeholder='deathyear'/>&nbsp;&nbsp;"  
-    form = form+"<input size='5' name='prod' value='' placeholder='prod'/>&nbsp;&nbsp;"  
-    form = form+"<input type='submit' name='button' value='Ajouter'></form>"
-    html = html+form
-    
-    for row in personnages:
-        form = "<form action='/personnage/"+str(row['id_personnage'])+"' method='post'>"
-        form = form+"<input type='hidden' name='id_personnage' value=\""+str(row['id_personnage'])+"\"/>&nbsp;&nbsp;"
-        form = form+"<input size='20' name='nom' value=\""+str(row['nom'])+"\"/>&nbsp;&nbsp;"
-        form = form+"<input size='10' name='dateofbirth' value=\""+str(row['dateofbirth'])+"\"/>&nbsp;&nbsp;"
-        form = form+"<input size='10' name='placeofbirthlabel' value=\""+str(row['placeofbirthlabel'])+"\"/>&nbsp;&nbsp;"
-        form = form+"<input size='10' name='dateofdeath' value=\""+str(row['dateofdeath'])+"\"/>&nbsp;&nbsp;"
-        form = form+"<input size='10' name='placeofdeathlabel' value=\""+str(row['placeofdeathlabel'])+"\"/>&nbsp;&nbsp;"
-        form = form+"<input size='10' name='positions' value=\""+str(row['positions'])+"\"/>&nbsp;&nbsp;"
-        form = form+"<input size='5' name='birthyear' value=\""+str(row['birthyear'])+"\"/>&nbsp;&nbsp;"
-        form = form+"<input size='5' name='deathyear' value=\""+str(row['deathyear'])+"\"/>&nbsp;&nbsp;"  
-        form = form+"<input size='5' name='prod' value=\""+str(row['prod'])+"\"/>&nbsp;&nbsp;"  
-        form = form+"<input type='submit' name='button' value='Supprimer'>&nbsp;&nbsp;"
-        form = form+"<input type='submit' name='button' value='Valider'></form>"
-        html = html+form 
-    
-    return html
-
-@app.route('/personnage', methods=['POST', 'GET'], defaults={'start': None, 'end': None})
-@app.route('/personnage/start/<start>/end/<end>', methods=['POST', 'GET'])
-def personnage(start, end):
-    
-    # POST a data to database
-    if request.method == 'POST':
-        if(request.json == None):
-            body = request.form
-        else:
-            body = request.json
-        newbody = {}
-        for key in body:
-            if((body[key] == "None") | (body[key] == "")):
-                newbody[key] = None
-            else:
-                newbody[key] = body[key]
-        data = Personnage(newbody['nom'],newbody['dateofbirth'],newbody['placeofbirthlabel'],newbody['dateofdeath'],newbody['placeofdeathlabel'],newbody['positions'],newbody['birthyear'],newbody['deathyear'],newbody['prod'])
-        db.session.add(data)
-        db.session.commit()
-        newbody['status'] = "All good"
-        return jsonify(newbody)
-
- 
-    # GET all data from database & sort by id
-    if request.method == 'GET':
-        if((start == None) & (end == None)):
-            data = Personnage.query.order_by(Personnage.birthyear).all()
-        else:
-            data = Personnage.query.filter(Personnage.birthyear>=start, Personnage.birthyear<=end).order_by(Personnage.birthyear).all()
-        personnages = getobjectsjson(data, columns_personnage)
-        return jsonify(personnages)
-
-
-@app.route('/personnage/<string:id>', methods=['GET', 'POST'])
-def onepersonnage(id):
-    # GET a specific data by id
-    if request.method == 'GET':
-        return getonegeneric("personnage", columns_personnage, id)
-        
-    # UPDATE or DELETE a data by id
-    if request.method == 'POST':
-            if(request.json == None):
-                body = request.form
-            else:
-                body = request.json
-            if(body['button'] == "Supprimer"):
-                return delonegeneric("personnage", id)
-            if(body['button'] == "Valider"):
-                newbody = {}
-                for key in body:
-                    newbody[key] = body[key]
-                return putonegeneric("personnage", columns_personnage, id, newbody)
-
 
 
 ############ ROI #############
@@ -563,8 +453,6 @@ def getonedata(type, id):
         data = Roi.query.get(id)
     if(type == "lieu"): 
         data = Lieu.query.get(id)
-    if(type == "personnage"): 
-        data = Personnage.query.get(id)
     if(type == "user"):
         data = UserInfo.query.get(id)
 
