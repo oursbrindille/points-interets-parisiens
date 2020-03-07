@@ -55,6 +55,7 @@ CREATE TABLE objet
     nom CHARACTER VARYING,
     startYear DECIMAL(9,2) default NULL,
     endYear DECIMAL(9,2) default NULL,
+    urlImage CHARACTER VARYING,
     prod CHARACTER VARYING
 )
 TABLESPACE pg_default;

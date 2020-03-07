@@ -4,6 +4,9 @@ import yaml
 from database import db
 import random
 from flask_sqlalchemy import SQLAlchemy
+import configparser
+config = configparser.ConfigParser()
+config.read('conf.ini')
 
 
 app = Flask(__name__)
@@ -26,7 +29,7 @@ columns_instanceobjectuser = ['id_instance_object_user', 'id_external_object','i
 columns_evenement = ['id_event','evenement','startyear','endyear','commentaire', 'prod']
 columns_lieu = ['id_lieu','nom','lon','lat','inception', 'constructionyear', 'prod']
 columns_personnage = ['id_personnage','wikiid','nom','dateofbirth','placeofbirthlabel', 'dateofdeath','placeofdeathlabel','mannersofdeath','placeofburiallabel','fatherlabel','motherlabel','spouses','starttime','endtime','startyear','endyear','birthyear','deathyear','urlimage', 'prod']
-columns_objet = ['id_objet','nom','startyear','endyear','prod']
+columns_objet = ['id_objet','nom','startyear','endyear','urlimage', 'prod']
 columns_instanceobject = ['id_instance_object', 'id_external_object', 'type_object','lon','lat']
 
 
@@ -148,6 +151,7 @@ def editobjet():
     form = form+"<textarea name='nom' rows='3' cols='50' placeholder='nom'></textarea>&nbsp;&nbsp;"
     form = form+"<input size='5' name='startyear' value='' placeholder='startyear'/>&nbsp;&nbsp;"
     form = form+"<input size='5' name='endyear' value='' placeholder='endyear'/>&nbsp;&nbsp;"
+    form = form+"<input size='10' name='urlimage' value='' placeholder='urlimage'/>&nbsp;&nbsp;"
     form = form+"<input size='5' name='prod' value='' placeholder='prod'/>&nbsp;&nbsp;"
     form = form+"<input type='submit' name='button' value='Valider'></form>"
     html = html+form    
@@ -158,6 +162,7 @@ def editobjet():
         form = form+"<textarea name='nom' rows='3' cols='50'>"+str(row['nom'])+"</textarea>&nbsp;&nbsp;"
         form = form+"<input size='5' name='startyear' value=\""+str(row['startyear'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input size='5' name='endyear' value=\""+str(row['endyear'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='10' name='urlimage' value=\""+str(row['urlimage'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input size='5' name='prod' value=\""+str(row['prod'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input type='submit' name='button' value='Supprimer'>&nbsp;&nbsp;"
         form = form+"<input type='submit' name='button' value='Valider'></form>"
@@ -178,7 +183,7 @@ def objet():
                 newbody[key] = None
             else:
                 newbody[key] = body[key]
-        data = Objet(newbody['nom'],newbody['startyear'],newbody['endyear'],newbody['prod'])
+        data = Objet(newbody['nom'],newbody['startyear'],newbody['endyear'],newbody['urlimage'],newbody['prod'])
         db.session.add(data)
         db.session.commit()
         newbody['status'] = "All good"
@@ -566,12 +571,12 @@ def getobjectsjson(data, columns):
 
 def genlat():
     rand = random.random()
-    lat = (48.903767 - 48.811945)*rand+48.811945
+    lat = (float(config['SPECIFIC']['maxlat']) - float(config['SPECIFIC']['minlat']))*rand+float(config['SPECIFIC']['minlat'])
     return "%.6f" %lat
 
 def genlon():
     rand = random.random()
-    lon = (2.416740 - 2.251700)*rand+2.251700
+    lon = (float(config['SPECIFIC']['maxlon']) - float(config['SPECIFIC']['minlon']))*rand+float(config['SPECIFIC']['minlon'])
     return "%.6f" %lon
 
 

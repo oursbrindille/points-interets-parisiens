@@ -10,7 +10,7 @@ sudo -u postgres psql -d paris -c "\copy personnage(wikiID, nom, dateOfBirth, pl
 echo "POPULATE PERSONNAGE OK"
 sudo -u postgres psql -d paris -c "\copy lieu(nom, lon, lat, inception, height, constructionYear, prod) FROM '/home/geof/projects/monuments-paris/csv/postgres/lieu.csv' delimiter ',' csv header encoding 'UTF8';"
 echo "POPULATE LIEU OK"
-sudo -u postgres psql -d paris -c "\copy objet(nom, startYear,endYear,prod) FROM '/home/geof/projects/monuments-paris/csv/postgres/objet.csv' delimiter ',' csv header encoding 'UTF8';"
+sudo -u postgres psql -d paris -c "\copy objet(nom, startYear,endYear,urlImage,prod) FROM '/home/geof/projects/monuments-paris/csv/postgres/objet.csv' delimiter ',' csv header encoding 'UTF8';"
 echo "POPULATE OBJET OK"
 sudo -u postgres psql -d paris -c "\copy user_info(pseudo) FROM '/home/geof/projects/monuments-paris/csv/postgres/user.csv' delimiter ',' csv header encoding 'UTF8';"
 echo "POPULATE USER OK"

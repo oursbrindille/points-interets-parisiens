@@ -20,9 +20,9 @@ class MapPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-        lng: 2.3367,
-        lat: 48.8608,
-        zoom: 11.5,
+        lng: 2.3038,
+        lat: 48.8422,
+        zoom: 14.5,
         instances:[],
         ownInstance:[],
         personnages:[],
@@ -252,42 +252,45 @@ class MapPage extends Component {
 
                 <Tabs>
                   <TabList>
-                    <Tab>Title 1</Tab>
-                    <Tab>Title 2</Tab>
+                    <Tab>KingDEX</Tab>
+                    <Tab>MerovinFRISE</Tab>
                   </TabList>
 
                   <TabPanel>
-                    <h2>Any content 1</h2>
+                    <div style={{float:"left", height:"100%",textAlign:"center",color:"white", backgroundColor:"#12556B", borderRadius:"10px"}}>
+                      <h3>Votre KingDex</h3>
+                      {this.state.personnages.map(personnage => (
+                        <div style={{margin:"20px",textAlign:"center",float:"left", height:"100%"}}>
+                            <img src={require("../images/kings/"+personnage.showimage)} width="100px" height="100px"/>
+                            <br/>
+                            {personnage.shownom}{personnage.shownb}
+                        </div>))}
+                    </div>
                   </TabPanel>
                   <TabPanel>
-                    <h2>Any content 2</h2>
+                    <div style={{float:"left", height:"100%",textAlign:"center",color:"white", width:"100%", backgroundColor:"#12556B", marginTop:"20px", borderRadius:"10px"}}>
+                      <h3>MérovinFRISE</h3>
+                      <Timeline lineColor={'#ddd'}>
+                        {this.state.evenements.map(evenement => (
+                          <TimelineItem
+                            key="002"
+                            dateText={evenement.showdate}
+                            dateInnerStyle={{ background: '#61b8ff', color: '#000' }}
+                            bodyContainerStyle={{
+                              background: '#ddd',
+                              padding: '10px',
+                              borderRadius: '8px',
+                              boxShadow: '0.5rem 0.5rem 2rem 0 rgba(0, 0, 0, 0.2)',
+                            }}
+                          >
+                            <h4 style={{ color: '#777777' }}>{evenement.showevt}</h4>
+                          </TimelineItem>
+                        ))}
+                      </Timeline>
+                    </div>
                   </TabPanel>
                 </Tabs>
 
-                  <div style={{float:"left", height:"100%",textAlign:"center",color:"white", backgroundColor:"#12556B", borderRadius:"10px"}}><h3>Votre KingDex</h3>{this.state.personnages.map(personnage => (<div style={{margin:"20px",textAlign:"center",float:"left", height:"100%"}}><img src={require("../images/kings/"+personnage.showimage)} width="100px" height="100px"/><br/>{personnage.shownom}{personnage.shownb}</div>))}</div>
-                  
-
-
-                  <div style={{float:"left", height:"100%",textAlign:"center",color:"white", width:"100%", backgroundColor:"#12556B", marginTop:"20px", borderRadius:"10px"}}>
-                    <h3>MérovinFRISE</h3>
-                    <Timeline lineColor={'#ddd'}>
-                      {this.state.evenements.map(evenement => (
-                        <TimelineItem
-                          key="002"
-                          dateText={evenement.showdate}
-                          dateInnerStyle={{ background: '#61b8ff', color: '#000' }}
-                          bodyContainerStyle={{
-                            background: '#ddd',
-                            padding: '10px',
-                            borderRadius: '8px',
-                            boxShadow: '0.5rem 0.5rem 2rem 0 rgba(0, 0, 0, 0.2)',
-                          }}
-                        >
-                          <h4 style={{ color: '#777777' }}>{evenement.showevt}</h4>
-                        </TimelineItem>
-                      ))}
-                    </Timeline>
-                  </div>
 
                 </div>
             </div>
