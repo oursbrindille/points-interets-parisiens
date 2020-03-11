@@ -28,7 +28,7 @@ columns_userinfo = ['id_user', 'pseudo']
 columns_instanceobjectuser = ['id_instance_object_user', 'id_external_object','id_user','type_object','lon','lat']
 columns_evenement = ['id_event','evenement','startyear','endyear','commentaire', 'prod']
 columns_lieu = ['id_lieu','nom','lon','lat','inception', 'constructionyear', 'prod']
-columns_personnage = ['id_personnage','wikiid','nom','dateofbirth','placeofbirthlabel', 'dateofdeath','placeofdeathlabel','mannersofdeath','placeofburiallabel','fatherlabel','motherlabel','spouses','starttime','endtime','startyear','endyear','birthyear','deathyear','urlimage', 'prod']
+columns_personnage = ['id_personnage','wikiid','nom','dateofbirth','placeofbirthlabel', 'dateofdeath','placeofdeathlabel','mannersofdeath','placeofburiallabel','fatherlabel','motherlabel','spouses','starttime','endtime','startyear','endyear','birthyear','deathyear','urlimage', 'cat', 'prod']
 columns_objet = ['id_objet','nom','startyear','endyear','urlimage', 'prod']
 columns_instanceobject = ['id_instance_object', 'id_external_object', 'type_object','lon','lat']
 
@@ -110,10 +110,10 @@ def generate():
     data = InstanceObject.query.order_by(InstanceObject.id_instance_object).all()
     instances = getobjectsjson(data, columns_instanceobject)
     
-    data = Personnage.query.filter(Personnage.startyear>=400, Personnage.startyear<=600).order_by(Personnage.startyear).all()
+    data = Personnage.query.filter(Personnage.birthyear>=400, Personnage.birthyear<=600).order_by(Personnage.startyear).all()
     personnages = getobjectsjson(data, columns_personnage)
 
-    data = Evenement.query.order_by(Evenement.startyear).filter(Evenement.startyear>400, Evenement.startyear<600).all()
+    data = Evenement.query.order_by(Evenement.startyear).filter(Evenement.startyear>400, Evenement.startyear<600, Evenement.prod == "1").all()
     evenements = getobjectsjson(data, columns_evenement)
 
     html = ""
@@ -300,7 +300,7 @@ def onelieu(id):
                 return putonegeneric("lieu", columns_lieu, id, newbody)
 
 
-############ ROI #############
+############ PERSONNAGE #############
 
 
 @app.route('/personnage/edit', methods=['GET'])
@@ -336,8 +336,9 @@ def editpersonnage():
     form = form+"<input size='5' name='endyear' value='' placeholder='endyear'/>&nbsp;&nbsp;"  
     form = form+"<input size='5' name='birthyear' value='' placeholder='birthyear'/>&nbsp;&nbsp;"
     form = form+"<input size='5' name='deathyear' value='' placeholder='deathyear'/>&nbsp;&nbsp;"  
-    form = form+"<input size='1' name='prod' value='' placeholder='prod'/>&nbsp;&nbsp;"
+    form = form+"<input size='1' name='cat' value='' placeholder='cat'/>&nbsp;&nbsp;"
     form = form+"<input name='urlimage' value='' placeholder='urlimage'/>&nbsp;&nbsp;"
+    form = form+"<input size='1' name='prod' value='' placeholder='prod'/>&nbsp;&nbsp;" 
     form = form+"<input type='submit' name='button' value='Supprimer'>&nbsp;&nbsp;"
     form = form+"<input type='submit' name='button' value='Valider'></form>"
     html = html+form 
@@ -362,8 +363,9 @@ def editpersonnage():
         form = form+"<input size='5' name='endyear' value=\""+str(row['endyear'])+"\"/>&nbsp;&nbsp;"  
         form = form+"<input size='5' name='birthyear' value=\""+str(row['birthyear'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input size='5' name='deathyear' value=\""+str(row['deathyear'])+"\"/>&nbsp;&nbsp;"  
-        form = form+"<input size='1' name='prod' value=\""+str(row['prod'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='1' name='cat' value=\""+str(row['cat'])+"\"/>&nbsp;&nbsp;"
         form = form+"<input size='5' name='urlimage' value=\""+str(row['urlimage'])+"\"/>&nbsp;&nbsp;"
+        form = form+"<input size='1' name='prod' value=\""+str(row['prod'])+"\"/>&nbsp;&nbsp;" 
         form = form+"<input type='submit' name='button' value='Supprimer'>&nbsp;&nbsp;"
         form = form+"<input type='submit' name='button' value='Valider'></form>"
         html = html+form 
@@ -387,11 +389,11 @@ def personnage(year, start, end):
             else:
                 newbody[key] = body[key]
 
-        data = Personnage(newbody['wikiid'],newbody['nom'],newbody['dateofbirth'],newbody['placeofbirthlabel'],newbody['dateofdeath'],newbody['placeofdeathlabel'],newbody['mannersofdeath'],newbody['placeofburiallabel'],newbody['fatherlabel'],newbody['motherlabel'],newbody['spouses'],newbody['starttime'],newbody['endtime'],newbody['startyear'],newbody['endyear'],newbody['birthyear'],newbody['deathyear'],newbody['urlimage'],newbody['prod'])
+        data = Personnage(newbody['wikiid'],newbody['nom'],newbody['dateofbirth'],newbody['placeofbirthlabel'],newbody['dateofdeath'],newbody['placeofdeathlabel'],newbody['mannersofdeath'],newbody['placeofburiallabel'],newbody['fatherlabel'],newbody['motherlabel'],newbody['spouses'],newbody['starttime'],newbody['endtime'],newbody['startyear'],newbody['endyear'],newbody['birthyear'],newbody['deathyear'],newbody['urlimage'],newbody['cat'],newbody['prod'])
         db.session.add(data)
         db.session.commit()
         newbody['status'] = "All good"
-        return jsonify(newbody)
+        return redirect('/personnage/edit')
     
     # GET all data from database & sort by id
     if request.method == 'GET':
@@ -399,7 +401,7 @@ def personnage(year, start, end):
             if((start == None) & (end == None)):
                 data = Personnage.query.order_by(Personnage.startyear).all()
             else:
-                data = Personnage.query.filter(Personnage.startyear>=start, Personnage.startyear<=end).order_by(Personnage.startyear).all()
+                data = Personnage.query.filter(Personnage.birthyear>=start, Personnage.birthyear<=end).order_by(Personnage.startyear).all()
         else:
             data = Personnage.query.filter(Personnage.startyear<=year, Personnage.endyear>=year).order_by(Personnage.startyear).all()
 
@@ -424,7 +426,8 @@ def onepersonnage(id):
                 newbody = {}
                 for key in body:
                     newbody[key] = body[key]
-                return putonegeneric("personnage", columns_personnage, id, newbody)
+                putonegeneric("personnage", columns_personnage, id, newbody)
+                return redirect('/personnage/edit')
 
 
 ############## EVENEMENT ################
@@ -488,9 +491,9 @@ def evenement(start, end):
     # GET all data from database & sort by id
     if request.method == 'GET':
         if((start == None) & (end == None)):
-            data = Evenement.query.order_by(Evenement.id_event).all()
+            data = Evenement.query.filter(Evenement.prod == "1").order_by(Evenement.id_event).all()
         else:
-            data = Evenement.query.order_by(Evenement.startyear).filter(Evenement.startyear>start, Evenement.startyear<end).all()
+            data = Evenement.query.order_by(Evenement.startyear).filter(Evenement.startyear>start, Evenement.startyear<end, Evenement.prod == "1").all()
         evenements = getobjectsjson(data, columns_evenement)
         return jsonify(evenements)
 

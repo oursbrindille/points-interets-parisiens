@@ -25,6 +25,7 @@ class MapPage extends Component {
         zoom: 14.5,
         instances:[],
         ownInstance:[],
+        rois:[],
         personnages:[],
         evenements:[],
         headerMessage:"MerovinGo!",
@@ -49,20 +50,28 @@ class MapPage extends Component {
         .catch(console.log)
 
         
-        fetch('http://localhost:5000/personnage/start/500/end/600')
+        fetch('http://localhost:5000/personnage/start/400/end/600')
         .then(res => res.json())
         .then((data) => {
+          var persos = []
+          var kings = []
           for (var i = 0; i < data.length; i++) {
             data[i].showimage = "question-mark.png"
             data[i].shownom = "?"
             data[i].shownb = ""
+            if(data[i].cat == "roi"){
+              kings.push(data[i])
+            }else{
+              persos.push(data[i])
+            }
           }
-          this.setState({ personnages: data })
+          this.setState({ rois: kings })
+          this.setState({ personnages: persos })
         })
         .catch(console.log)
 
         
-        fetch('http://localhost:5000/evenement/start/500/end/600')
+        fetch('http://localhost:5000/evenement/start/400/end/600')
         .then(res => res.json())
         .then((data) => {
           for (var i = 0; i < data.length; i++) {
@@ -88,7 +97,13 @@ class MapPage extends Component {
       .then(res => res.json())
       .then((data) => {
         self.state.personnages.forEach(function(personnage){
-          console.log(personnage.id_personnage);
+          if(personnage.id_personnage == id){
+            self.setState({ ownInstance: data })
+            self.setState({ headerMessage: "Félicitations ! Vous venez d'attraper : ", secondMessage: personnage.nom})
+            self.forceUpdate()
+          }
+        });
+        self.state.rois.forEach(function(personnage){
           if(personnage.id_personnage == id){
             self.setState({ ownInstance: data })
             self.setState({ headerMessage: "Félicitations ! Vous venez d'attraper : ", secondMessage: personnage.nom})
@@ -96,7 +111,6 @@ class MapPage extends Component {
           }
         });
         self.state.evenements.forEach(function(evenement){
-          console.log(evenement.id_event);
           if(evenement.id_event == id){
             self.setState({ ownInstance: data })
             self.setState({ headerMessage: "Félicitations ! Vous venez d'attraper l'événement :", secondMessage: evenement.showdate+" - "+evenement.evenement})
@@ -126,7 +140,6 @@ class MapPage extends Component {
           .send(JSON.stringify(tosend))
           .then(res => {
             if(res.status === 200){
-              console.log("valou", tosend);
               self.getInstances(tosend.id_external_object)
               
             } else {
@@ -134,7 +147,6 @@ class MapPage extends Component {
             }
           })
           .catch(err =>{
-            console.log("fail");
             alert("Erreur lors de l'envoi des données au serveur : " + err.message);
           });
         }
@@ -143,7 +155,6 @@ class MapPage extends Component {
     componentDidUpdate() {
         let self = this;
 
-        console.log('mounted or updated');
         // add markers to map
         
         this.state.instances.forEach(function(marker){
@@ -170,6 +181,26 @@ class MapPage extends Component {
         
 
         self.state.personnages.forEach(function(personnage){
+          count = 0
+          self.state.ownInstance.forEach(function(instance){
+            if(personnage.id_personnage == instance.id_external_object && instance.type_object == "personnage"){
+              count = count + 1
+            }
+          });
+          personnage.nb = count
+          if(personnage.nb ==0){
+            personnage.showimage = "question-mark.png"
+            personnage.shownom = "?"
+            personnage.shownb = ""
+          }else{
+            personnage.showimage = personnage.urlimage
+            personnage.shownom = personnage.nom
+            personnage.shownb = " (x"+personnage.nb+")"
+          }
+        });
+
+
+        self.state.rois.forEach(function(personnage){
           count = 0
           self.state.ownInstance.forEach(function(instance){
             if(personnage.id_personnage == instance.id_external_object && instance.type_object == "personnage"){
@@ -224,7 +255,6 @@ class MapPage extends Component {
             });
         });
 
-        console.log(this.state.instances)
 
 
     }
@@ -253,15 +283,16 @@ class MapPage extends Component {
                 <Tabs>
                   <TabList>
                     <Tab>KingDEX</Tab>
-                    <Tab>MerovinFRISE</Tab>
+                    <Tab>Frise Chrono</Tab>
+                    <Tab>Vos Persos</Tab>
                   </TabList>
 
                   <TabPanel>
                     <div style={{float:"left", height:"100%",textAlign:"center",color:"white", backgroundColor:"#12556B", borderRadius:"10px"}}>
                       <h3>Votre KingDex</h3>
-                      {this.state.personnages.map(personnage => (
+                      {this.state.rois.map(personnage => (
                         <div style={{margin:"20px",textAlign:"center",float:"left", height:"100%"}}>
-                            <img src={require("../images/kings/"+personnage.showimage)} width="100px" height="100px"/>
+                            <img src={window.location.origin+"/images/kings/"+personnage.showimage} width="100px" height="100px"/>
                             <br/>
                             {personnage.shownom}{personnage.shownb}
                         </div>))}
@@ -269,12 +300,12 @@ class MapPage extends Component {
                   </TabPanel>
                   <TabPanel>
                     <div style={{float:"left", height:"100%",textAlign:"center",color:"white", width:"100%", backgroundColor:"#12556B", marginTop:"20px", borderRadius:"10px"}}>
-                      <h3>MérovinFRISE</h3>
+                      <h3>Frise Chrono</h3>
                       <Timeline lineColor={'#ddd'}>
                         {this.state.evenements.map(evenement => (
                           <TimelineItem
                             key="002"
-                            dateText={evenement.showdate}
+                            dateText={evenement.showdate | 0}
                             dateInnerStyle={{ background: '#61b8ff', color: '#000' }}
                             bodyContainerStyle={{
                               background: '#ddd',
@@ -288,6 +319,17 @@ class MapPage extends Component {
                         ))}
                       </Timeline>
                     </div>
+                  </TabPanel>
+                  <TabPanel>
+                    <div style={{float:"left", height:"100%",textAlign:"center",color:"white", backgroundColor:"#12556B", borderRadius:"10px"}}>
+                        <h3>Vos Persos</h3>
+                        {this.state.personnages.map(personnage => (
+                          <div style={{margin:"20px",textAlign:"center",float:"left", height:"100%"}}>
+                              <img src={window.location.origin+"/images/kings/"+personnage.showimage} width="100px" height="100px"/>
+                              <br/>
+                              {personnage.shownom}{personnage.shownb}
+                          </div>))}
+                      </div>
                   </TabPanel>
                 </Tabs>
 

@@ -31,6 +31,7 @@ CREATE TABLE personnage
     birthYear DECIMAL(9,2) default NULL,
     deathYear DECIMAL(9,2) default NULL,
     urlImage CHARACTER VARYING,
+    cat CHARACTER VARYING,
     prod CHARACTER VARYING
 )
 TABLESPACE pg_default;

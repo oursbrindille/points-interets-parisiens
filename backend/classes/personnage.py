@@ -21,9 +21,10 @@ class Personnage(db.Model):
     birthyear = db.Column(db.Float)
     deathyear = db.Column(db.Float)
     urlimage = db.Column(db.String(255))
+    cat = db.Column(db.Integer)
     prod = db.Column(db.Integer)
 
-    def __init__(self, wikiid, nom, dateofbirth, placeofbirthlabel, dateofdeath, placeofdeathlabel, mannersofdeath, placeofburiallabel, fatherlabel, motherlabel, spouses, starttime, endtime, startyear, endyear, birthyear, deathyear, urlimage, prod):
+    def __init__(self, wikiid, nom, dateofbirth, placeofbirthlabel, dateofdeath, placeofdeathlabel, mannersofdeath, placeofburiallabel, fatherlabel, motherlabel, spouses, starttime, endtime, startyear, endyear, birthyear, deathyear, urlimage, cat, prod):
         self.wikiid = wikiid
         self.nom = nom
         self.dateofbirth = dateofbirth
@@ -42,7 +43,8 @@ class Personnage(db.Model):
         self.birthyear = birthyear
         self.deathyear = deathyear
         self.urlimage = urlimage
+        self.cat = cat
         self.prod = prod
     
     def __repr__(self):
-        return '%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s' % (self.id_personnage,self.wikiid,self.nom,self.dateofbirth,self.placeofbirthlabel,self.dateofdeath,self.placeofdeathlabel,self.mannersofdeath,self.placeofburiallabel,self.fatherlabel,self.motherlabel,self.spouses,self.starttime,self.endtime,self.startyear,self.endyear,self.birthyear,self.deathyear,self.urlimage, self.prod)
+        return '%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s/%s' % (self.id_personnage,self.wikiid,self.nom,self.dateofbirth,self.placeofbirthlabel,self.dateofdeath,self.placeofdeathlabel,self.mannersofdeath,self.placeofburiallabel,self.fatherlabel,self.motherlabel,self.spouses,self.starttime,self.endtime,self.startyear,self.endyear,self.birthyear,self.deathyear,self.urlimage, self.cat, self.prod)
