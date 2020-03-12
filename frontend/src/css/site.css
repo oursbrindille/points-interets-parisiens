@@ -1,9 +1,10 @@
 .sidebarStyle {
     display: inline-block;
     position: fixed;
-    top: 10px;
-    left: 10px;
-    margin: 12px;
+    top: 1%;
+    left: 3%;
+    width: 90%;
+    height: 80%;
     background-color: #12556B;
     color: #ffffff;
     z-index: 1 !important;
@@ -67,7 +68,6 @@
 }
 
 .menuButton {
-    width: 100%;
     display: inline-block;
     position: fixed;
     color: #ffffff;
@@ -84,12 +84,14 @@
 
 .eventButton {
     bottom: 25%;
-    text-align: center;
+    left: 42%;
+    width: 15%;
 }
 
 .kingButton {
     bottom: 35%;
     left: 10%;
+    width: 15%;
     
 }
 
@@ -97,18 +99,25 @@
     text-align: right;
     bottom: 35%;
     right: 10%;
-    
+    width: 15%;
 }
 
 .monumentButton {
     bottom: 15%;
     left: 10%;   
+    width: 15%;
 }
 
 .objectButton {
     text-align: right;
     bottom: 15%;
-    right: 10%;   
+    right: 10%;  
+    width: 15%; 
+}
+
+.infoButton {
+    text-align: right;
+    right: 2%;   
 }
 
 .screenGray {
@@ -121,10 +130,28 @@
     height: 100%;
 }
 
+.screenGray {
+    display: inline-block;
+    position: fixed;    
+    background-color: "red";
+    opacity: 0.90;
+    z-index: 1 !important;
+    width: 100%;
+    height: 100%;
+}
+
 .alert-shown {
     display: block;
 }
 
 .alert-hidden {
     display: none;
+}
+
+.vignette {
+    margin: 20px;
+    text-align: center;
+    height: 100%;
+    z-index: 2 !important;
+
 }

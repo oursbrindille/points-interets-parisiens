@@ -27,17 +27,25 @@ class MobilePageIndex extends Component {
         this.state = {
         lng: 2.3038,
         lat: 48.8422,
-        zoom: 14.5,
+        zoom: 16.5,
         instances:[],
         ownInstance:[],
         rois:[],
         personnages:[],
         evenements:[],
-        headerMessage:"MerovinGo!",
-        secondMessage:"Observer aux alentours, et tenter d'attraper de la connaissance!",
+        headerMessage:"",
+        secondMessage:"",
+        urlImage: "",
+        isImage: false,
         baseImageUrl:"../images/kings/",
         showBox1: false,
-        showMenu: false
+        showMenu: false,
+        showKing: false,
+        showCharacter: false,
+        showMonument: false,
+        showObject: false,
+        showEvent: false,
+        showThing: false
     };
 
 
@@ -97,33 +105,105 @@ class MobilePageIndex extends Component {
         this.catchInstance = this.catchInstance.bind(this);
         this.catchInstance()
         
-
+        this.setState({
+          showBox1: true
+        });
+    
+        setTimeout(() => {
+            this.setState({
+                showBox1: false
+            });
+          }, 5000);
 
     }
 
     handleClickShowAlert() {
-      let self = this;
-
-      console.log("clik")
       this.setState({
         showBox1: true
       });
-  
-      setTimeout(() => {
-          this.setState({
-              showBox1: false
-          });
-        }, 2000);
     }
 
     handleClickShowMenu() {
+      console.log("menu")
       this.setState({
-        showMenu: true
+        showMenu: true,
+        showCharacter: false,
+        showEvent: false,
+        showKing: false,
+        showMonument: false,
+        showObject: false
       });
     }
+
     handleClickCloseMenu() {
       this.setState({
-        showMenu: false
+        showMenu: false,
+        showThing: false
+      });
+    }
+    
+    handleClickCloseInfo() {
+      this.setState({
+        showBox1: false
+      });
+    }
+
+    
+    handleClickShowKing() {
+      console.log("king")
+      this.setState({
+        showKing: true
+      });
+      this.setState({
+        showMenu: false,
+        showThing: true
+      });
+    }
+
+    
+    handleClickShowCharacter() {
+      console.log("Character")
+      this.setState({
+        showCharacter: true
+      });
+      this.setState({
+        showMenu: false,
+        showThing: true
+      });
+    }
+
+    
+    handleClickShowMonument() {
+      console.log("monument")
+      this.setState({
+        showMonument: true
+      });
+      this.setState({
+        showMenu: false,
+        showThing: true
+      });
+    }
+
+    
+    handleClickShowObject() {
+      console.log("obj")
+      this.setState({
+        showObject: true
+      });
+      this.setState({
+        showMenu: false,
+        showThing: true
+      });
+    }
+    
+    handleClickShowEvent() {
+      console.log("eve")
+      this.setState({
+        showEvent: true
+      });
+      this.setState({
+        showMenu: false,
+        showThing: true
       });
     }
 
@@ -135,21 +215,25 @@ class MobilePageIndex extends Component {
         self.state.personnages.forEach(function(personnage){
           if(personnage.id_personnage == id){
             self.setState({ ownInstance: data })
-            self.setState({ headerMessage: "Félicitations ! Vous venez d'attraper : ", secondMessage: personnage.nom})
+            console.log(personnage)
+            self.setState({ headerMessage: "Félicitations ! Vous venez d'attraper : ", secondMessage: personnage.nom, urlImage: personnage.urlimage, isImage: true})
+            self.handleClickShowAlert()
             self.forceUpdate()
           }
         });
         self.state.rois.forEach(function(personnage){
           if(personnage.id_personnage == id){
             self.setState({ ownInstance: data })
-            self.setState({ headerMessage: "Félicitations ! Vous venez d'attraper : ", secondMessage: personnage.nom})
+            self.setState({ headerMessage: "Félicitations ! Vous venez d'attraper : ", secondMessage: personnage.nom, urlImage: personnage.urlimage, isImage: true})
+            self.handleClickShowAlert()
             self.forceUpdate()
           }
         });
         self.state.evenements.forEach(function(evenement){
           if(evenement.id_event == id){
             self.setState({ ownInstance: data })
-            self.setState({ headerMessage: "Félicitations ! Vous venez d'attraper l'événement :", secondMessage: evenement.showdate+" - "+evenement.evenement})
+            self.setState({ headerMessage: "Félicitations ! Vous venez d'attraper l'événement :", secondMessage: evenement.showdate+" - "+evenement.evenement, urlImage: "book.png",isImage: true})
+            self.handleClickShowAlert()
             self.forceUpdate()
           }
         });
@@ -302,19 +386,25 @@ class MobilePageIndex extends Component {
         return (
           <div>
             <div>
-              <div className='sidebarStyle'>
+            <div className={`sidebarStyle ${this.state.showBox1 ? 'alert-shown' : 'alert-hidden'}`}>
                 <div style={{textAlign:"center"}}>
-                  <h4>{this.state.headerMessage}</h4><h5><i>{this.state.secondMessage}</i></h5>
-                  <button onClick={this.handleClickShowAlert.bind(this)}>
-                    Show alert
-                  </button>
+                  <h4>{this.state.headerMessage}</h4>
+                  {this.state.isImage ? <span><img src={window.location.origin+"/images/kings/"+this.state.urlImage} width="40%"/></span> : <span>toto</span>}
+                  <h5><i>{this.state.secondMessage}</i></h5>
+                  <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempor magna eget porta hendrerit. Nulla dignissim luctus tortor, in ultrices nulla varius a. Praesent sed ante neque. Vestibulum hendrerit eget leo eu sollicitudin. Sed metus risus, pellentesque eget ullamcorper ut, faucibus vel sapien. Nullam dui tellus, pretium pretium diam at, rhoncus commodo turpis.</h5>
                 </div>
               </div>
               
+              <div className={`menuButton infoButton ${this.state.showMenu ? 'alert-shown' : 'alert-hidden'}`}>
+                <span onClick={this.handleClickCloseInfo.bind(this)}>
+                  <img src={window.location.origin+"/images/error.png"} width="10%"  />
+                </span>
+              </div>
+
               <div className={`screenGray ${this.state.showMenu ? 'alert-shown' : 'alert-hidden'}`}>
                 &nbsp;
               </div>
-              <div className={`menuButton homeButton ${this.state.showMenu ? 'alert-hidden' : 'alert-shown'}`}>
+              <div className={`menuButton homeButton ${this.state.showMenu ? 'alert-hidden' : this.state.showThing ? 'alert-hidden' : 'alert-shown'}`}>
                 <span onClick={this.handleClickShowMenu.bind(this)}>
                   <img src={window.location.origin+"/images/parchment.png"} width="15%"  />
                 </span>
@@ -324,27 +414,94 @@ class MobilePageIndex extends Component {
                   <img src={window.location.origin+"/images/error.png"} width="10%"  />
                 </span>
               </div>
-              <div className={`menuButton kingButton ${this.state.showMenu ? 'alert-shown' : 'alert-hidden'}`}>
-                  <img src={window.location.origin+"/images/monarchy.png"} width="15%"/>
-              </div>
               <div className={`menuButton characterButton ${this.state.showMenu ? 'alert-shown' : 'alert-hidden'}`}>
-                  <img src={window.location.origin+"/images/knight.png"} width="15%"/>
+                <span onClick={this.handleClickShowCharacter.bind(this)}>
+                  <img src={window.location.origin+"/images/knight.png"} width="100%"/>
+                </span>
               </div>
-              <div className={`menuButton objectButton ${this.state.showMenu ? 'alert-shown' : 'alert-hidden'}`}>
-                  <img src={window.location.origin+"/images/chest.png"} width="15%"/>
+              <div className={`menuButton kingButton ${this.state.showMenu ? 'alert-shown' : 'alert-hidden'}`}>
+                <span onClick={this.handleClickShowKing.bind(this)}>
+                  <img src={window.location.origin+"/images/monarchy.png"} width="100%"/>
+                </span>
               </div>
               <div className={`menuButton monumentButton ${this.state.showMenu ? 'alert-shown' : 'alert-hidden'}`}>
-                  <img src={window.location.origin+"/images/fortress.png"} width="15%"/>
+                <span onClick={this.handleClickShowMonument.bind(this)}>
+                  <img src={window.location.origin+"/images/fortress.png"} width="100%"/>
+                </span>
+              </div>
+              <div className={`menuButton objectButton ${this.state.showMenu ? 'alert-shown' : 'alert-hidden'}`}>
+                <span onClick={this.handleClickShowObject.bind(this)}>
+                  <img src={window.location.origin+"/images/chest.png"} width="100%"/>
+                </span>
               </div>
               <div className={`menuButton eventButton ${this.state.showMenu ? 'alert-shown' : 'alert-hidden'}`}>
-                  <img src={window.location.origin+"/images/event.png"} width="15%"/>
+                <span onClick={this.handleClickShowEvent.bind(this)}>
+                  <img src={window.location.origin+"/images/event.png"} width="100%"/>
+                </span>
               </div>
 
 
+              
+              <div className={`kingPage ${this.state.showKing ? 'alert-shown' : 'alert-hidden'}`}>
+                <span onClick={this.handleClickShowMenu.bind(this)}>
+                  <img style={{margin: "3%"}} src={window.location.origin+"/images/previous.png"} width="10%"/>
+                </span>
+                <h3 style={{textAlign: "center", color: "white"}}>Votre KingDex</h3>
+                {this.state.rois.map(personnage => (
+                  <div className="vignette">
+                      <img src={window.location.origin+"/images/kings/"+personnage.showimage} width="100px" height="100px"/>
+                      <br/>
+                      {personnage.shownom}{personnage.shownb}
+                  </div>))}
+              </div>
+              <div className={`characterPage ${this.state.showCharacter ? 'alert-shown' : 'alert-hidden'}`}>
+                <span onClick={this.handleClickShowMenu.bind(this)}>
+                  <img style={{margin: "3%"}} src={window.location.origin+"/images/previous.png"} width="10%"/>
+                </span>
+                <h3 style={{textAlign: "center", color: "white"}}>Vos Persos</h3>
+                {this.state.personnages.map(personnage => (
+                  <div className="vignette">
+                      <img src={window.location.origin+"/images/kings/"+personnage.showimage} width="100px" height="100px"/>
+                      <br/>
+                      {personnage.shownom}{personnage.shownb}
+                  </div>))}
 
-              <div className={`alert alert-success ${this.state.showBox1 ? 'alert-shown' : 'alert-hidden'}`}>
-                    <strong>Success!</strong> Thank you for subscribing!
-            </div>
+
+
+              </div>
+              <div className={`monumentPage ${this.state.showMonument ? 'alert-shown' : 'alert-hidden'}`}>
+                mon
+              </div>
+              <div className={`objectPage ${this.state.showObject ? 'alert-shown' : 'alert-hidden'}`}>
+                obj
+              </div>
+              <div className={`eventPage ${this.state.showEvent ? 'alert-shown' : 'alert-hidden'}`}>
+              <span onClick={this.handleClickShowMenu.bind(this)}>
+                  <img style={{margin: "3%"}} src={window.location.origin+"/images/previous.png"} width="10%"/>
+                </span>
+                
+                <div style={{height:"100%",textAlign:"center",color:"white", width:"100%", borderRadius:"10px"}}>
+                      <h3>Frise Chrono</h3>
+                      <Timeline lineColor={'#ddd'}>
+                        {this.state.evenements.map(evenement => (
+                          <TimelineItem
+                            key="002"
+                            dateText={evenement.showdate | 0}
+                            dateInnerStyle={{ background: '#61b8ff', color: '#000' }}
+                            bodyContainerStyle={{
+                              background: '#ddd',
+                              borderRadius: '8px',
+                            }}
+                          >
+                            <h4 style={{ color: '#777777' }}>{evenement.showevt}</h4>
+                          </TimelineItem>
+                        ))}
+                      </Timeline>
+                    </div>
+
+
+              </div>
+
               <div ref={el => this.mapContainer = el} className='mapContainer2' />
             </div>
           </div>
