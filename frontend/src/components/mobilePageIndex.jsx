@@ -36,7 +36,8 @@ class MobilePageIndex extends Component {
         headerMessage:"MerovinGo!",
         secondMessage:"Observer aux alentours, et tenter d'attraper de la connaissance!",
         baseImageUrl:"../images/kings/",
-        showBox1: false
+        showBox1: false,
+        showMenu: false
     };
 
 
@@ -101,32 +102,30 @@ class MobilePageIndex extends Component {
     }
 
     handleClickShowAlert() {
-        let self = this;
+      let self = this;
 
-        console.log("clik")
-        this.setState({
-          showBox1: true
-        });
-    
-        setTimeout(() => {
-            this.setState({
-                showBox1: false
-            });
-          }, 2000);
+      console.log("clik")
+      this.setState({
+        showBox1: true
+      });
+  
+      setTimeout(() => {
+          this.setState({
+              showBox1: false
+          });
+        }, 2000);
+    }
 
-
-          var el = document.createElement('div');
-
-          el.className = 'marker-personnage';
-          
-          var coord = []
-          coord[0] = 2.3038
-          coord[1] = 48.8422
-
-          new mapboxgl.Marker(el)
-          .setLngLat(coord)
-          .addTo(self.map);
-      }
+    handleClickShowMenu() {
+      this.setState({
+        showMenu: true
+      });
+    }
+    handleClickCloseMenu() {
+      this.setState({
+        showMenu: false
+      });
+    }
 
     getInstances(id){
       let self = this;
@@ -311,12 +310,43 @@ class MobilePageIndex extends Component {
                   </button>
                 </div>
               </div>
+              
+              <div className={`screenGray ${this.state.showMenu ? 'alert-shown' : 'alert-hidden'}`}>
+                &nbsp;
+              </div>
+              <div className={`menuButton homeButton ${this.state.showMenu ? 'alert-hidden' : 'alert-shown'}`}>
+                <span onClick={this.handleClickShowMenu.bind(this)}>
+                  <img src={window.location.origin+"/images/parchment.png"} width="15%"  />
+                </span>
+              </div>
+              <div className={`menuButton homeButton ${this.state.showMenu ? 'alert-shown' : 'alert-hidden'}`}>
+                <span onClick={this.handleClickCloseMenu.bind(this)}>
+                  <img src={window.location.origin+"/images/error.png"} width="10%"  />
+                </span>
+              </div>
+              <div className={`menuButton kingButton ${this.state.showMenu ? 'alert-shown' : 'alert-hidden'}`}>
+                  <img src={window.location.origin+"/images/monarchy.png"} width="15%"/>
+              </div>
+              <div className={`menuButton characterButton ${this.state.showMenu ? 'alert-shown' : 'alert-hidden'}`}>
+                  <img src={window.location.origin+"/images/knight.png"} width="15%"/>
+              </div>
+              <div className={`menuButton objectButton ${this.state.showMenu ? 'alert-shown' : 'alert-hidden'}`}>
+                  <img src={window.location.origin+"/images/chest.png"} width="15%"/>
+              </div>
+              <div className={`menuButton monumentButton ${this.state.showMenu ? 'alert-shown' : 'alert-hidden'}`}>
+                  <img src={window.location.origin+"/images/fortress.png"} width="15%"/>
+              </div>
+              <div className={`menuButton eventButton ${this.state.showMenu ? 'alert-shown' : 'alert-hidden'}`}>
+                  <img src={window.location.origin+"/images/event.png"} width="15%"/>
+              </div>
+
+
+
               <div className={`alert alert-success ${this.state.showBox1 ? 'alert-shown' : 'alert-hidden'}`}>
                     <strong>Success!</strong> Thank you for subscribing!
             </div>
               <div ref={el => this.mapContainer = el} className='mapContainer2' />
             </div>
-
           </div>
         )
     }
