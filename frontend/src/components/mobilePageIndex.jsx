@@ -9,7 +9,7 @@ import 'react-tabs/style/react-tabs.css';
 mapboxgl.accessToken = 'pk.eyJ1Ijoic2Fib3N0aXgiLCJhIjoiY2p6Y3BkdnJ4MDd2czNjbWdsYXB4MTJoNSJ9.U65hBBejoDAAJH5wrdLejg';
 
 var count = 0
-var baseURL = "http://localhost:5000/"
+var baseURL = process.env.BACKEND_SERVER_URL
 
 export function gethttp(){
   var http = require('superagent');
