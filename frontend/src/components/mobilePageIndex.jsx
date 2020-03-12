@@ -97,6 +97,8 @@ class MobilePageIndex extends Component {
     }
 
     handleClickShowAlert() {
+        let self = this;
+        
         console.log("clik")
         this.setState({
           showBox1: true
@@ -107,6 +109,19 @@ class MobilePageIndex extends Component {
                 showBox1: false
             });
           }, 2000);
+
+
+          var el = document.createElement('div');
+
+          el.className = 'marker-personnage';
+          
+          var coord = []
+          coord[0] = 2.3038
+          coord[1] = 48.8422
+
+          new mapboxgl.Marker(el)
+          .setLngLat(coord)
+          .addTo(self.map);
       }
 
     getInstances(id){
