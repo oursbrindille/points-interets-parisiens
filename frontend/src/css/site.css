@@ -34,7 +34,9 @@
 
 .marker-roi {
     background-image: url('../images/crown.png');
-    background-size: cover;
+    background-size: cover;    
+    background-position: center;
+    background-repeat: no-repeat;
     width: 30px;
     height: 30px;
     border-radius: 30%;
@@ -43,6 +45,8 @@
 .marker-evenement {
     background-image: url('../images/shout.png');
     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     width: 30px;
     height: 30px;
     border-radius: 30%;
@@ -51,6 +55,8 @@
 .marker-personnage {
     background-image: url('../images/cape.png');
     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     width: 30px;
     height: 30px;
     border-radius: 30%;
