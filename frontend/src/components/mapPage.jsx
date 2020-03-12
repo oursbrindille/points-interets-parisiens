@@ -136,7 +136,7 @@ class MapPage extends Component {
 
         if(id != undefined){
 
-          gethttp().post("http://localhost:5000/catch")
+          gethttp().post(baseURL+"catch")
           .set('Content-Type', 'application/json')
           .send(JSON.stringify(tosend))
           .then(res => {
