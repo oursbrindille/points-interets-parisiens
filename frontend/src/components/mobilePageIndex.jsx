@@ -31,7 +31,8 @@ class MobilePageIndex extends Component {
         evenements:[],
         headerMessage:"MerovinGo!",
         secondMessage:"Observer aux alentours, et tenter d'attraper de la connaissance!",
-        baseImageUrl:"../images/kings/"
+        baseImageUrl:"../images/kings/",
+        showBox1: false
     };
 
 
@@ -90,7 +91,23 @@ class MobilePageIndex extends Component {
 
         this.catchInstance = this.catchInstance.bind(this);
         this.catchInstance()
+        
+
+
     }
+
+    handleClickShowAlert() {
+        console.log("clik")
+        this.setState({
+          showBox1: true
+        });
+    
+        setTimeout(() => {
+            this.setState({
+                showBox1: false
+            });
+          }, 2000);
+      }
 
     getInstances(id){
       let self = this;
@@ -121,6 +138,10 @@ class MobilePageIndex extends Component {
       })
       .catch(console.log)
     }
+
+
+
+
 
     catchInstance(id, type, lon, lat){
         let self = this;
@@ -267,12 +288,19 @@ class MobilePageIndex extends Component {
           <div>
             <div>
               <div className='sidebarStyle'>
-                <div style={{width:"385px",textAlign:"center"}}>
+                <div style={{textAlign:"center"}}>
                   <h4>{this.state.headerMessage}</h4><h5><i>{this.state.secondMessage}</i></h5>
+                  <button onClick={this.handleClickShowAlert.bind(this)}>
+                    Show alert
+                  </button>
                 </div>
               </div>
+              <div className={`alert alert-success ${this.state.showBox1 ? 'alert-shown' : 'alert-hidden'}`}>
+                    <strong>Success!</strong> Thank you for subscribing!
+            </div>
               <div ref={el => this.mapContainer = el} className='mapContainer2' />
             </div>
+
           </div>
         )
     }
