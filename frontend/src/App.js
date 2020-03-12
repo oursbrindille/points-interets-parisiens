@@ -12,8 +12,7 @@ function App() {
      <BrowserRouter>
         <div>
           <Switch>
-            <Route path="/" component={ParisPage} exact />
-            <Route path="/map" component={MapPage} />
+            <Route path="/" component={MapPage} exact />
           </Switch>
         </div>
       </BrowserRouter>

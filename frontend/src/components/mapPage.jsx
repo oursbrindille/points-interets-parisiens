@@ -9,6 +9,7 @@ import 'react-tabs/style/react-tabs.css';
 mapboxgl.accessToken = 'pk.eyJ1Ijoic2Fib3N0aXgiLCJhIjoiY2p6Y3BkdnJ4MDd2czNjbWdsYXB4MTJoNSJ9.U65hBBejoDAAJH5wrdLejg';
 
 var count = 0
+var baseURL = "http://localhost:5000/"
 
 export function gethttp(){
   var http = require('superagent');
@@ -34,7 +35,7 @@ class MapPage extends Component {
     };
 
 
-        fetch('http://localhost:5000/instances/generate')
+        fetch(baseURL+'instances/generate')
         .then(res => res.json())
         .then((data) => {
           this.setState({ instances: data })
@@ -42,7 +43,7 @@ class MapPage extends Component {
         .catch(console.log)
 
         
-        fetch('http://localhost:5000/catch/user/1')
+        fetch(baseURL+'catch/user/1')
         .then(res => res.json())
         .then((data) => {
           this.setState({ ownInstance: data })
@@ -50,7 +51,7 @@ class MapPage extends Component {
         .catch(console.log)
 
         
-        fetch('http://localhost:5000/personnage/start/400/end/600')
+        fetch(baseURL+'personnage/start/400/end/600')
         .then(res => res.json())
         .then((data) => {
           var persos = []
@@ -71,7 +72,7 @@ class MapPage extends Component {
         .catch(console.log)
 
         
-        fetch('http://localhost:5000/evenement/start/400/end/600')
+        fetch(baseURL+'evenement/start/400/end/600')
         .then(res => res.json())
         .then((data) => {
           for (var i = 0; i < data.length; i++) {
@@ -93,7 +94,7 @@ class MapPage extends Component {
 
     getInstances(id){
       let self = this;
-      fetch('http://localhost:5000/catch/user/1')
+      fetch(baseURL+'catch/user/1')
       .then(res => res.json())
       .then((data) => {
         self.state.personnages.forEach(function(personnage){
