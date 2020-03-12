@@ -305,7 +305,6 @@ class MobilePageIndex extends Component {
                   <button onClick={this.handleClickShowAlert.bind(this)}>
                     Show alert
                   </button>
-                  {this.state.instances.map(instance => (<p>{instance.id_external_object}</p>))}
                 </div>
               </div>
               <div className={`alert alert-success ${this.state.showBox1 ? 'alert-shown' : 'alert-hidden'}`}>
