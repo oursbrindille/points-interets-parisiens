@@ -155,9 +155,6 @@ class MobilePageIndex extends Component {
     }
 
 
-
-
-
     catchInstance(id, type, lon, lat){
         let self = this;
 
