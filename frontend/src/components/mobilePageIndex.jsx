@@ -395,7 +395,7 @@ class MobilePageIndex extends Component {
                 </div>
               </div>
               
-              <div className={`menuButton infoButton ${this.state.showMenu ? 'alert-shown' : 'alert-hidden'}`}>
+              <div className={`menuButton infoButton ${this.state.showBox1 ? 'alert-shown' : 'alert-hidden'}`}>
                 <span onClick={this.handleClickCloseInfo.bind(this)}>
                   <img src={window.location.origin+"/images/error.png"} width="10%"  />
                 </span>
