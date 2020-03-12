@@ -5,6 +5,7 @@ import './css/site.css';
 import ParisPage from './components/parisPage.jsx'
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import MapPage from './components/mapPage';
+import MobilePageIndex from './components/mobilePageIndex';
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <div>
           <Switch>
             <Route path="/" component={MapPage} exact />
+            <Route path="/mobile" component={MobilePageIndex} exact />
           </Switch>
         </div>
       </BrowserRouter>
