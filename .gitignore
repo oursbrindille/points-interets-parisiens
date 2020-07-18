@@ -4,3 +4,4 @@ apicache-py3/
 notebooks/.ipynb_checkpoints/
 backend/config.csv
 backend/database.yaml
+venv/
