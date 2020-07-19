@@ -1,0 +1,51 @@
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+app.py:13: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  db_config = yaml.load(open('database.yaml'))
+/home/oursbrindille/projects/points-interets-parisiens/venv/lib/python3.7/site-packages/flask_sqlalchemy/__init__.py:835: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+ * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+/home/oursbrindille/projects/points-interets-parisiens/backend/app.py:13: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  db_config = yaml.load(open('database.yaml'))
+/home/oursbrindille/projects/points-interets-parisiens/venv/lib/python3.7/site-packages/flask_sqlalchemy/__init__.py:835: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+ * Debugger is active!
+ * Debugger PIN: 124-852-449
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+app.py:13: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  db_config = yaml.load(open('database.yaml'))
+/home/oursbrindille/projects/points-interets-parisiens/venv/lib/python3.7/site-packages/flask_sqlalchemy/__init__.py:835: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+ * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+/home/oursbrindille/projects/points-interets-parisiens/backend/app.py:13: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  db_config = yaml.load(open('database.yaml'))
+/home/oursbrindille/projects/points-interets-parisiens/venv/lib/python3.7/site-packages/flask_sqlalchemy/__init__.py:835: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+ * Debugger is active!
+ * Debugger PIN: 124-852-449
+127.0.0.1 - - [19/Jul/2020 15:16:30] "[37mGET / HTTP/1.0[0m" 200 -
+127.0.0.1 - - [19/Jul/2020 15:17:11] "[37mGET /personnage/year/481 HTTP/1.0[0m" 200 -
+127.0.0.1 - - [19/Jul/2020 15:17:36] "[37mGET /personnage/year/481 HTTP/1.0[0m" 200 -
+127.0.0.1 - - [19/Jul/2020 15:17:36] "[37mGET /personnage/year/481 HTTP/1.0[0m" 200 -
+127.0.0.1 - - [19/Jul/2020 15:17:41] "[37mGET /personnage HTTP/1.0[0m" 200 -
+127.0.0.1 - - [19/Jul/2020 15:17:41] "[37mGET /personnage/year/1039 HTTP/1.0[0m" 200 -
+127.0.0.1 - - [19/Jul/2020 15:20:16] "[37mGET /personnage HTTP/1.0[0m" 200 -
+127.0.0.1 - - [19/Jul/2020 15:20:16] "[37mGET /personnage/year/1015 HTTP/1.0[0m" 200 -
+127.0.0.1 - - [19/Jul/2020 15:20:17] "[37mGET /personnage HTTP/1.0[0m" 200 -
+127.0.0.1 - - [19/Jul/2020 15:20:17] "[37mGET /personnage/year/1549 HTTP/1.0[0m" 200 -
+127.0.0.1 - - [19/Jul/2020 15:20:17] "[37mGET /personnage HTTP/1.0[0m" 200 -
+127.0.0.1 - - [19/Jul/2020 15:20:17] "[37mGET /personnage/year/1743 HTTP/1.0[0m" 200 -
+127.0.0.1 - - [19/Jul/2020 15:22:25] "[37mGET /personnage/year/481 HTTP/1.0[0m" 200 -
+127.0.0.1 - - [19/Jul/2020 15:22:28] "[37mGET /personnage/year/481 HTTP/1.0[0m" 200 -
+127.0.0.1 - - [19/Jul/2020 15:22:29] "[37mGET /personnage/year/481 HTTP/1.0[0m" 200 -
+127.0.0.1 - - [19/Jul/2020 15:22:31] "[37mGET /personnage HTTP/1.0[0m" 200 -
+127.0.0.1 - - [19/Jul/2020 15:22:32] "[37mGET /personnage/year/1778 HTTP/1.0[0m" 200 -
